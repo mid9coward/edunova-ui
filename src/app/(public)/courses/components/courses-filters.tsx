@@ -106,14 +106,14 @@ const CoursesFilters = ({
 		<div className="space-y-4 sm:space-y-6">
 			{/* Filter Header */}
 			<div className="flex items-center justify-between">
-				<h3 className="text-base sm:text-lg font-semibold text-gray-900">
+				<h3 className="text-base sm:text-lg font-semibold text-foreground">
 					Filters
 				</h3>
 				<Button
 					variant="ghost"
 					size="sm"
 					onClick={clearAllFilters}
-					className="text-blue-600 hover:text-blue-700 h-8 sm:h-9 text-xs sm:text-sm"
+					className="text-primary hover:text-primary/90 h-8 sm:h-9 text-xs sm:text-sm"
 				>
 					<RotateCcw className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
 					Clear All
@@ -122,7 +122,7 @@ const CoursesFilters = ({
 
 			{/* Categories */}
 			<div>
-				<h4 className="text-sm sm:text-base font-medium text-gray-900 mb-2 sm:mb-3">
+				<h4 className="text-sm sm:text-base font-medium text-foreground mb-2 sm:mb-3">
 					Categories
 				</h4>
 				<div className="space-y-1.5 sm:space-y-2">
@@ -131,7 +131,7 @@ const CoursesFilters = ({
 						  Array.from({length: 5}).map((_, i) => (
 								<div
 									key={i}
-									className="p-2 sm:p-3 rounded-lg border border-gray-200"
+									className="p-2 sm:p-3 rounded-lg border border-border"
 								>
 									<div className="flex items-center justify-between">
 										<div className="flex items-center space-x-2 sm:space-x-3">
@@ -150,8 +150,8 @@ const CoursesFilters = ({
 										onClick={() => onCategoryChange(category.id)}
 										className={`w-full capitalize flex items-center justify-between p-2 sm:p-3 rounded-lg border transition-all duration-200 ${
 											selectedCategory === category.id
-												? "border-blue-500 bg-blue-50 text-blue-700"
-												: "border-gray-200 hover:border-gray-300 hover:bg-gray-50"
+												? "border-primary/50 bg-primary/15 text-primary"
+												: "border-border hover:border-primary/40 hover:bg-card/60"
 										}`}
 									>
 										<div className="flex items-center space-x-2 sm:space-x-3 min-w-0">
@@ -178,7 +178,7 @@ const CoursesFilters = ({
 
 			{/* Price Range */}
 			<div>
-				<h4 className="text-sm sm:text-base font-medium text-gray-900 mb-2 sm:mb-3">
+				<h4 className="text-sm sm:text-base font-medium text-foreground mb-2 sm:mb-3">
 					Price Range
 				</h4>
 				<div className="space-y-3 sm:space-y-4">
@@ -191,7 +191,7 @@ const CoursesFilters = ({
 							step={50000}
 							className="w-full"
 						/>
-						<div className="flex items-center justify-between mt-1.5 sm:mt-2 text-[10px] sm:text-xs text-gray-600">
+						<div className="flex items-center justify-between mt-1.5 sm:mt-2 text-[10px] sm:text-xs text-muted-foreground">
 							<span>{priceRange[0].toLocaleString()} VND</span>
 							<span>{priceRange[1].toLocaleString()} VND+</span>
 						</div>
@@ -214,7 +214,7 @@ const CoursesFilters = ({
 
 			{/* Level */}
 			<div>
-				<h4 className="text-sm sm:text-base font-medium text-gray-900 mb-2 sm:mb-3">
+				<h4 className="text-sm sm:text-base font-medium text-foreground mb-2 sm:mb-3">
 					Level
 				</h4>
 				<div className="space-y-2 sm:space-y-3">
@@ -229,7 +229,7 @@ const CoursesFilters = ({
 								/>
 								<label
 									htmlFor={level.id}
-									className="text-xs sm:text-sm font-medium text-gray-700 cursor-pointer"
+									className="text-xs sm:text-sm font-medium text-foreground cursor-pointer"
 								>
 									{level.name}
 								</label>
@@ -241,7 +241,7 @@ const CoursesFilters = ({
 
 			{/* Rating */}
 			<div>
-				<h4 className="text-sm sm:text-base font-medium text-gray-900 mb-2 sm:mb-3">
+				<h4 className="text-sm sm:text-base font-medium text-foreground mb-2 sm:mb-3">
 					Rating
 				</h4>
 				<div className="space-y-1.5 sm:space-y-2">
@@ -251,8 +251,8 @@ const CoursesFilters = ({
 							onClick={() => onRatingChange(rating)}
 							className={`w-full flex items-center justify-between p-2 rounded-lg border transition-all duration-200 ${
 								selectedRating === rating
-									? "border-blue-500 bg-blue-50 text-blue-700"
-									: "border-gray-200 hover:border-gray-300 hover:bg-gray-50"
+									? "border-primary/50 bg-primary/15 text-primary"
+									: "border-border hover:border-primary/40 hover:bg-card/60"
 							}`}
 						>
 							<div className="flex items-center space-x-1.5 sm:space-x-2">
@@ -263,7 +263,7 @@ const CoursesFilters = ({
 											className={`h-2.5 w-2.5 sm:h-3 sm:w-3 ${
 												i < Math.floor(rating)
 													? "text-yellow-400 fill-current"
-													: "text-gray-300"
+													: "text-muted-foreground"
 											}`}
 										/>
 									))}

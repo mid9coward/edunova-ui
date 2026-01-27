@@ -19,7 +19,7 @@ const CheckoutActions = ({
 			<Button
 				onClick={onCheckout}
 				disabled={isCheckoutPending}
-				className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-3 sm:py-4 text-sm sm:text-base font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] rounded-lg sm:rounded-xl border border-transparent hover:border-blue-300 h-11 sm:h-auto"
+				className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-primary-foreground py-3 sm:py-4 text-sm sm:text-base font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] rounded-lg sm:rounded-xl border border-transparent hover:border-primary/40 h-11 sm:h-auto"
 				size="lg"
 			>
 				{isCheckoutPending ? (
@@ -37,7 +37,7 @@ const CheckoutActions = ({
 			</Button>
 
 			{/* Security Notice */}
-			<p className="text-[10px] sm:text-xs text-gray-500 text-center">
+			<p className="text-[10px] sm:text-xs text-muted-foreground text-center">
 				🔒 Secure checkout • 30-day money-back guarantee
 			</p>
 		</div>

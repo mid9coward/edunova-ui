@@ -21,7 +21,7 @@ interface CourseListItemProps {
 
 const CourseListItem = ({course}: CourseListItemProps) => {
 	return (
-		<div className="group border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-300 bg-white rounded-lg overflow-hidden">
+		<div className="group border border-border hover:border-primary/40 hover:shadow-md transition-all duration-300 bg-card rounded-lg overflow-hidden">
 			<div className="flex flex-row gap-3 sm:gap-4 p-3 sm:p-4">
 				{/* Thumbnail */}
 				<div className="relative w-24 h-24 sm:w-48 sm:h-auto sm:aspect-video md:w-56 lg:w-64 overflow-hidden rounded-lg flex-shrink-0">
@@ -80,7 +80,7 @@ const CourseListItem = ({course}: CourseListItemProps) => {
 						{/* Category & Level & Discount (Mobile) */}
 						<div className="flex items-center justify-between gap-2 mb-1.5 sm:mb-2">
 							<div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
-								<span className="text-[10px] sm:text-xs font-medium text-blue-600 capitalize bg-blue-50 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full flex-shrink-0">
+								<span className="text-[10px] sm:text-xs font-medium text-primary capitalize bg-primary/15 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full flex-shrink-0">
 									{course.category?.name}
 								</span>
 								{/* Level Badge - Mobile only */}
@@ -121,26 +121,26 @@ const CourseListItem = ({course}: CourseListItemProps) => {
 							href={getRoutes.courseDetail(course.slug)}
 							aria-label={`View course: ${course.title}`}
 						>
-							<h3 className="font-semibold text-sm sm:text-lg md:text-xl text-gray-900 hover:text-blue-600 transition-colors line-clamp-2 group-hover:text-blue-600 leading-tight mb-1 sm:mb-2">
+							<h3 className="font-semibold text-sm sm:text-lg md:text-xl text-foreground hover:text-primary transition-colors line-clamp-2 group-hover:text-primary leading-tight mb-1 sm:mb-2">
 								{course.title}
 							</h3>
 						</Link>
 
 						{/* Instructor - Hidden on mobile */}
-						<p className="hidden sm:block text-xs sm:text-sm text-gray-500 mb-2 sm:mb-3">
+						<p className="hidden sm:block text-xs sm:text-sm text-muted-foreground mb-2 sm:mb-3">
 							by{" "}
-							<span className="text-gray-700 font-medium">
+							<span className="text-foreground font-medium">
 								{course.author?.username}
 							</span>
 						</p>
 
 						{/* Description/Excerpt - Hidden on mobile */}
-						<p className="hidden sm:block text-xs sm:text-sm text-gray-600 line-clamp-2 md:line-clamp-3 leading-relaxed mb-3 sm:mb-4">
+						<p className="hidden sm:block text-xs sm:text-sm text-muted-foreground line-clamp-2 md:line-clamp-3 leading-relaxed mb-3 sm:mb-4">
 							{course?.excerpt}
 						</p>
 
 						{/* Stats */}
-						<div className="flex items-center flex-wrap gap-x-2 sm:gap-x-4 md:gap-x-6 gap-y-1 text-[10px] sm:text-sm text-gray-500 mb-2 sm:mb-4">
+						<div className="flex items-center flex-wrap gap-x-2 sm:gap-x-4 md:gap-x-6 gap-y-1 text-[10px] sm:text-sm text-muted-foreground mb-2 sm:mb-4">
 							<div className="flex items-center space-x-0.5 sm:space-x-1">
 								<Clock className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
 								<span>{formatDuration(course.totalDuration || 0)}</span>
@@ -152,7 +152,7 @@ const CourseListItem = ({course}: CourseListItemProps) => {
 							{/* Rating - Mobile only */}
 							<div className="flex items-center space-x-0.5 sm:hidden">
 								<Star className="h-3 w-3 text-yellow-400 fill-current" />
-								<span className="font-medium text-gray-900">
+								<span className="font-medium text-foreground">
 									{formatRating(course.averageRating || 0)}
 								</span>
 							</div>
@@ -175,10 +175,10 @@ const CourseListItem = ({course}: CourseListItemProps) => {
 									/>
 								))}
 							</div>
-							<span className="text-xs sm:text-sm font-medium text-gray-900">
+							<span className="text-xs sm:text-sm font-medium text-foreground">
 								{formatRating(course.averageRating || 0)}
 							</span>
-							<span className="text-xs sm:text-sm text-gray-500">
+							<span className="text-xs sm:text-sm text-muted-foreground">
 								({formatStudentCount(course.totalReviews || 0)})
 							</span>
 						</div>
@@ -199,12 +199,12 @@ const CourseListItem = ({course}: CourseListItemProps) => {
 								) : (
 									<div className="flex flex-col items-end">
 										{course.oldPrice && course.oldPrice > course.price && (
-											<span className="hidden sm:inline text-xs sm:text-sm text-gray-500 line-through">
+											<span className="hidden sm:inline text-xs sm:text-sm text-muted-foreground line-through">
 												{formatPrice(course.oldPrice)}
 											</span>
 										)}
 										<span
-											className="text-sm sm:text-lg md:text-xl font-bold text-gray-900"
+											className="text-sm sm:text-lg md:text-xl font-bold text-foreground"
 											itemProp="price"
 											content={course.price.toString()}
 										>

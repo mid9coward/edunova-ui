@@ -123,7 +123,7 @@ const TeamSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-background">
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -134,14 +134,14 @@ const TeamSection = () => {
             <Users className="h-3 w-3" />
             <span>Meet Our Team</span>
           </Badge>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
             The{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
               Passionate People
             </span>{" "}
             Behind EduNova
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Our diverse team of educators, technologists, and innovators is
             united by a shared mission: transforming lives through exceptional
             online education.
@@ -156,13 +156,13 @@ const TeamSection = () => {
               className="relative overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 group"
             >
               {/* Background Gradient */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/0 via-purple-50/0 to-blue-50/0 group-hover:from-blue-50/100 group-hover:via-purple-50/50 group-hover:to-blue-50/100 transition-all duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-secondary/0 to-primary/0 group-hover:from-primary/10 group-hover:via-secondary/10 group-hover:to-primary/10 transition-all duration-500" />
 
               <CardContent className="relative z-10 p-6 text-center">
                 {/* Avatar */}
                 <div className="relative mx-auto mb-6 w-24 h-24 group-hover:scale-110 transition-transform duration-300">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full animate-pulse opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
-                  <div className="relative w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary to-secondary rounded-full animate-pulse opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
+                  <div className="relative w-full h-full bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center shadow-lg">
                     <span className="text-white text-2xl font-bold">
                       {member.name
                         .split(" ")
@@ -171,64 +171,64 @@ const TeamSection = () => {
                     </span>
                   </div>
                   {/* Status Indicator */}
-                  <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-4 border-white flex items-center justify-center">
-                    <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
+                  <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-4 border-background flex items-center justify-center">
+                    <div className="w-2 h-2 bg-background rounded-full animate-pulse" />
                   </div>
                 </div>
 
                 {/* Basic Info */}
                 <div className="space-y-3 mb-6">
-                  <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-700 transition-colors duration-300">
+                  <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
                     {member.name}
                   </h3>
-                  <p className="text-blue-600 font-semibold text-sm uppercase tracking-wide">
+                  <p className="text-primary font-semibold text-sm uppercase tracking-wide">
                     {member.role}
                   </p>
-                  <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
+                  <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3">
                     {member.bio}
                   </p>
                 </div>
 
                 {/* Location & Achievement */}
                 <div className="space-y-2 mb-6 text-sm">
-                  <div className="flex items-center justify-center space-x-2 text-gray-500">
+                  <div className="flex items-center justify-center space-x-2 text-muted-foreground">
                     <MapPin className="h-4 w-4" />
                     <span>{member.location}</span>
                   </div>
-                  <div className="flex items-center justify-center space-x-2 text-gray-500">
+                  <div className="flex items-center justify-center space-x-2 text-muted-foreground">
                     <Award className="h-4 w-4" />
                     <span className="line-clamp-1">{member.achievements}</span>
                   </div>
                 </div>
 
                 {/* Stats */}
-                <div className="grid grid-cols-3 gap-4 mb-6 p-3 bg-gray-50 rounded-lg group-hover:bg-white/80 transition-colors duration-300">
+                <div className="grid grid-cols-3 gap-4 mb-6 p-3 bg-background/60 rounded-lg group-hover:bg-background/80 transition-colors duration-300">
                   <div className="text-center">
                     <div className="flex items-center justify-center space-x-1">
                       <Star className="h-3 w-3 text-yellow-500 fill-current" />
-                      <span className="text-sm font-bold text-gray-900">
+                      <span className="text-sm font-bold text-foreground">
                         {member.rating}
                       </span>
                     </div>
-                    <p className="text-xs text-gray-600">Rating</p>
+                    <p className="text-xs text-muted-foreground">Rating</p>
                   </div>
                   <div className="text-center">
                     <div className="flex items-center justify-center space-x-1">
-                      <BookOpen className="h-3 w-3 text-blue-500" />
-                      <span className="text-sm font-bold text-gray-900">
+                      <BookOpen className="h-3 w-3 text-primary" />
+                      <span className="text-sm font-bold text-foreground">
                         {member.courses}
                       </span>
                     </div>
-                    <p className="text-xs text-gray-600">Courses</p>
+                    <p className="text-xs text-muted-foreground">Courses</p>
                   </div>
                   <div className="text-center">
                     <div className="flex items-center justify-center space-x-1">
                       <Users className="h-3 w-3 text-green-500" />
-                      <span className="text-sm font-bold text-gray-900">
+                      <span className="text-sm font-bold text-foreground">
                         {member.students}
                       </span>
                     </div>
-                    <p className="text-xs text-gray-600">Students</p>
+                    <p className="text-xs text-muted-foreground">Students</p>
                   </div>
                 </div>
 
@@ -238,7 +238,7 @@ const TeamSection = () => {
                     <Badge
                       key={skillIndex}
                       variant="secondary"
-                      className="text-xs py-1 px-2 bg-blue-100 text-blue-700 hover:bg-blue-200 transition-colors duration-200"
+                      className="text-xs py-1 px-2 bg-primary/15 text-primary hover:bg-primary/25 transition-colors duration-200"
                     >
                       {skill}
                     </Badge>
@@ -254,7 +254,7 @@ const TeamSection = () => {
                     asChild
                   >
                     <Link href={member.social.linkedin}>
-                      <Linkedin className="h-4 w-4 text-blue-600" />
+                      <Linkedin className="h-4 w-4 text-primary" />
                     </Link>
                   </Button>
                   <Button
@@ -264,7 +264,7 @@ const TeamSection = () => {
                     asChild
                   >
                     <Link href={member.social.twitter}>
-                      <Twitter className="h-4 w-4 text-blue-500" />
+                      <Twitter className="h-4 w-4 text-primary" />
                     </Link>
                   </Button>
                   <Button
@@ -274,15 +274,15 @@ const TeamSection = () => {
                     asChild
                   >
                     <Link href={`mailto:${member.social.email}`}>
-                      <Mail className="h-4 w-4 text-gray-600" />
+                      <Mail className="h-4 w-4 text-muted-foreground" />
                     </Link>
                   </Button>
                 </div>
               </CardContent>
 
               {/* Decorative Elements */}
-              <div className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="absolute -bottom-2 -left-2 w-3 h-3 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100" />
+              <div className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br from-primary to-secondary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute -bottom-2 -left-2 w-3 h-3 bg-gradient-to-br from-secondary to-accent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100" />
             </Card>
           ))}
         </div>
@@ -290,12 +290,12 @@ const TeamSection = () => {
         {/* Bottom CTA */}
         <div className="text-center">
           <div className="relative max-w-2xl mx-auto">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 via-purple-600/5 to-blue-600/5 rounded-2xl transform -rotate-1" />
-            <div className="relative bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10 rounded-2xl transform -rotate-1" />
+            <div className="relative bg-card rounded-2xl p-8 shadow-lg border border-border">
+              <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
                 Want to Join Our Team?
               </h3>
-              <p className="text-gray-600 mb-6">
+              <p className="text-muted-foreground mb-6">
                 We&apos;re always looking for passionate educators, developers,
                 and innovators to help us transform online education.
               </p>

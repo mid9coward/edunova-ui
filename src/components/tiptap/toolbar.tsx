@@ -395,7 +395,7 @@ const HighlightColorButton = () => {
 const TextColorButton = () => {
 	const {editor} = useEditorStore();
 	const [color, setColor] = useState(
-		editor?.getAttributes("textStyle").color || "#000000"
+		editor?.getAttributes("textStyle").color || "#f8f8f2"
 	);
 
 	const onChange = (newColor: string) => {
@@ -405,11 +405,15 @@ const TextColorButton = () => {
 
 	// Common colors for quick selection
 	const commonColors = [
-		"#000000",
+		"#f8f8f2",
+		"#bd93f9",
+		"#ff79c6",
+		"#8be9fd",
+		"#50fa7b",
+		"#ffb86c",
+		"#ff5555",
 		"#ffffff",
-		"#ff0000",
-		"#00ff00",
-		"#0000ff",
+		"#000000",
 		"#ffff00",
 		"#ff00ff",
 		"#00ffff",

@@ -174,7 +174,7 @@ const CoursesContent = ({initialCoursesData}: CoursesContentProps) => {
 							</Select>
 
 							{/* View Mode Toggle */}
-							<div className="flex items-center border border-gray-200 rounded-lg p-1">
+							<div className="flex items-center border border-border rounded-lg p-1 bg-card/60">
 								<Button
 									variant={viewMode === "grid" ? "default" : "ghost"}
 									size="sm"

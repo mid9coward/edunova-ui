@@ -211,7 +211,7 @@ const HeroSection = () => {
 
             {/* Hero Image */}
             <Image
-              src="/images/hero.png"
+              src="/images/dracula.png"
               alt="Learning Student"
               fill
               fetchPriority="high"

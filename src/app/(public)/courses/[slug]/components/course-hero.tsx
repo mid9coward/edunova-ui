@@ -50,9 +50,9 @@ const CourseHero = ({course}: CourseHeroProps) => {
 			)}
 
 			{/* Hero Section */}
-			<div className="bg-gray-900 text-white relative overflow-hidden">
+			<div className="bg-background text-foreground relative overflow-hidden">
 				{/* Background Pattern */}
-				<div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-purple-900/20"></div>
+				<div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-secondary/10 to-accent/15"></div>
 				<div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10"></div>
 
 				<div className="container mx-auto px-4 sm:px-6 py-6 sm:py-8 relative">
@@ -60,7 +60,7 @@ const CourseHero = ({course}: CourseHeroProps) => {
 					<div className="mb-4 sm:mb-6">
 						<Link
 							href={ROUTE_CONFIG.COURSES}
-							className="inline-flex items-center text-sm sm:text-base text-gray-300 hover:text-white transition-colors"
+							className="inline-flex items-center text-sm sm:text-base text-muted-foreground hover:text-foreground transition-colors"
 						>
 							<ChevronLeft className="h-4 w-4 mr-1" />
 							Back to Courses
@@ -80,7 +80,7 @@ const CourseHero = ({course}: CourseHeroProps) => {
 								<h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 leading-tight">
 									{course.title}
 								</h1>
-								<div className="text-base sm:text-lg lg:text-xl text-gray-300 leading-relaxed prose prose-invert max-w-none prose-headings:text-white prose-p:text-gray-300 prose-strong:text-white prose-a:text-blue-400">
+								<div className="text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed prose max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground prose-a:text-primary">
 									{course.excerpt}
 								</div>
 							</div>
@@ -103,12 +103,12 @@ const CourseHero = ({course}: CourseHeroProps) => {
 									<span className="font-medium">
 										{course.averageRating || 4.5}
 									</span>
-									<span className="text-gray-400 hidden sm:inline">
+									<span className="text-muted-foreground hidden sm:inline">
 										({formatStudentCount(course.totalReviews || 0)} reviews)
 									</span>
 								</div>
 
-								<div className="flex items-center space-x-1 text-gray-300">
+								<div className="flex items-center space-x-1 text-muted-foreground">
 									<Users className="h-3 w-3 sm:h-4 sm:w-4" />
 									<span>
 										{formatStudentCount(course.enrolledStudents || 0)}{" "}
@@ -116,7 +116,7 @@ const CourseHero = ({course}: CourseHeroProps) => {
 									</span>
 								</div>
 
-								<div className="flex items-center space-x-1 text-gray-300">
+								<div className="flex items-center space-x-1 text-muted-foreground">
 									<Clock className="h-3 w-3 sm:h-4 sm:w-4" />
 									<span>{formatDuration(course.totalDuration || 0)}</span>
 								</div>
@@ -124,7 +124,7 @@ const CourseHero = ({course}: CourseHeroProps) => {
 
 							{/* Instructor */}
 							<div className="flex items-center space-x-3">
-								<div className="relative w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 overflow-hidden rounded-full bg-gray-200">
+								<div className="relative w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 overflow-hidden rounded-full bg-card">
 									<Image
 										src={course.author?.avatar || DEFAULT_AVATAR}
 										alt={course.author?.username || "Instructor"}
@@ -134,7 +134,9 @@ const CourseHero = ({course}: CourseHeroProps) => {
 									/>
 								</div>
 								<div>
-									<p className="text-xs sm:text-sm text-gray-400">Created by</p>
+									<p className="text-xs sm:text-sm text-muted-foreground">
+										Created by
+									</p>
 									<p className="text-sm sm:text-base font-medium">
 										{course.author?.username || "Unknown Instructor"}
 									</p>
@@ -142,7 +144,7 @@ const CourseHero = ({course}: CourseHeroProps) => {
 							</div>
 
 							{/* Course Details */}
-							<div className="flex flex-wrap items-center gap-3 sm:gap-4 lg:gap-6 text-xs sm:text-sm text-gray-400">
+							<div className="flex flex-wrap items-center gap-3 sm:gap-4 lg:gap-6 text-xs sm:text-sm text-muted-foreground">
 								<div className="flex items-center space-x-1">
 									<Globe className="h-3 w-3 sm:h-4 sm:w-4" />
 									<span>English</span>
@@ -165,7 +167,7 @@ const CourseHero = ({course}: CourseHeroProps) => {
 								</div>
 								<Badge
 									variant="outline"
-									className="text-xs sm:text-sm text-gray-300 border-gray-600"
+									className="text-xs sm:text-sm text-muted-foreground border-border"
 								>
 									{course.level.charAt(0).toUpperCase() + course.level.slice(1)}
 								</Badge>
@@ -175,7 +177,7 @@ const CourseHero = ({course}: CourseHeroProps) => {
 						{/* Right Content - Video Preview */}
 						<div className="relative order-first lg:order-last">
 							<div
-								className={`relative aspect-video bg-gray-800 rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl group ${
+								className={`relative aspect-video bg-card rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl group ${
 									hasIntroVideo ? "cursor-pointer" : ""
 								}`}
 								onClick={() => {
@@ -205,8 +207,8 @@ const CourseHero = ({course}: CourseHeroProps) => {
 								{/* Play Button Overlay - Only show if video exists */}
 								{hasIntroVideo && (
 									<div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-										<div className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-full flex items-center justify-center transform scale-90 group-hover:scale-100 transition-transform duration-300 shadow-lg">
-											<Play className="h-6 w-6 sm:h-8 sm:w-8 text-gray-900 ml-1 fill-current" />
+										<div className="w-16 h-16 sm:w-20 sm:h-20 bg-foreground rounded-full flex items-center justify-center transform scale-90 group-hover:scale-100 transition-transform duration-300 shadow-lg">
+											<Play className="h-6 w-6 sm:h-8 sm:w-8 text-background ml-1 fill-current" />
 										</div>
 									</div>
 								)}
@@ -214,35 +216,35 @@ const CourseHero = ({course}: CourseHeroProps) => {
 
 							{/* Course Features */}
 							<div className="mt-4 sm:mt-6 grid grid-cols-2 gap-2 sm:gap-3 lg:gap-4">
-								<div className="text-center p-3 sm:p-4 bg-white/5 rounded-lg backdrop-blur-sm">
-									<div className="text-lg sm:text-xl lg:text-2xl font-bold text-blue-400">
+								<div className="text-center p-3 sm:p-4 bg-card/60 rounded-lg backdrop-blur-sm">
+									<div className="text-lg sm:text-xl lg:text-2xl font-bold text-accent">
 										{course.totalLessons || 0}
 									</div>
-									<div className="text-xs sm:text-sm text-gray-400">
+									<div className="text-xs sm:text-sm text-muted-foreground">
 										Lessons
 									</div>
 								</div>
-								<div className="text-center p-3 sm:p-4 bg-white/5 rounded-lg backdrop-blur-sm">
-									<div className="text-lg sm:text-xl lg:text-2xl font-bold text-green-400">
+								<div className="text-center p-3 sm:p-4 bg-card/60 rounded-lg backdrop-blur-sm">
+									<div className="text-lg sm:text-xl lg:text-2xl font-bold text-green-500">
 										25
 									</div>
-									<div className="text-xs sm:text-sm text-gray-400">
+									<div className="text-xs sm:text-sm text-muted-foreground">
 										Resources
 									</div>
 								</div>
-								<div className="text-center p-3 sm:p-4 bg-white/5 rounded-lg backdrop-blur-sm">
-									<div className="text-lg sm:text-xl lg:text-2xl font-bold text-purple-400">
+								<div className="text-center p-3 sm:p-4 bg-card/60 rounded-lg backdrop-blur-sm">
+									<div className="text-lg sm:text-xl lg:text-2xl font-bold text-secondary">
 										∞
 									</div>
-									<div className="text-xs sm:text-sm text-gray-400">
+									<div className="text-xs sm:text-sm text-muted-foreground">
 										Lifetime Access
 									</div>
 								</div>
-								<div className="text-center p-3 sm:p-4 bg-white/5 rounded-lg backdrop-blur-sm">
-									<div className="text-lg sm:text-xl lg:text-2xl font-bold text-yellow-400">
+								<div className="text-center p-3 sm:p-4 bg-card/60 rounded-lg backdrop-blur-sm">
+									<div className="text-lg sm:text-xl lg:text-2xl font-bold text-amber-500">
 										⭐
 									</div>
-									<div className="text-xs sm:text-sm text-gray-400">
+									<div className="text-xs sm:text-sm text-muted-foreground">
 										Certificate
 									</div>
 								</div>

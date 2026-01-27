@@ -5,10 +5,10 @@ export const stripeConfig = {
 	appearance: {
 		theme: "stripe" as const,
 		variables: {
-			colorPrimary: "#3b82f6",
-			colorBackground: "#ffffff",
-			colorText: "#1f2937",
-			colorDanger: "#ef4444",
+			colorPrimary: "#bd93f9",
+			colorBackground: "#282a36",
+			colorText: "#f8f8f2",
+			colorDanger: "#ff5555",
 			fontFamily: '"Inter", system-ui, sans-serif',
 			spacingUnit: "4px",
 			borderRadius: "8px",

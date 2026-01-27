@@ -65,7 +65,7 @@ const BlogHeader = ({blog}: BlogHeaderProps) => {
 				{/* Category */}
 				<div className="flex justify-center mb-4 sm:mb-6">
 					<Badge
-						className="bg-blue-100 text-blue-700 hover:bg-blue-200 text-xs sm:text-sm px-2.5 sm:px-3 py-1"
+						className="bg-primary/15 text-primary hover:bg-primary/25 text-xs sm:text-sm px-2.5 sm:px-3 py-1"
 						itemProp="articleSection"
 					>
 						{blog.category?.name || "Uncategorized"}
@@ -74,7 +74,7 @@ const BlogHeader = ({blog}: BlogHeaderProps) => {
 
 				{/* Title */}
 				<h1
-					className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 text-center leading-tight px-4"
+					className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 sm:mb-6 text-center leading-tight px-4"
 					itemProp="headline"
 				>
 					{blog.title}
@@ -83,7 +83,7 @@ const BlogHeader = ({blog}: BlogHeaderProps) => {
 				{/* Excerpt */}
 				{blog.excerpt && (
 					<p
-						className="text-base sm:text-lg md:text-xl text-gray-600 text-center mb-6 sm:mb-8 leading-relaxed px-4"
+						className="text-base sm:text-lg md:text-xl text-muted-foreground text-center mb-6 sm:mb-8 leading-relaxed px-4"
 						itemProp="description"
 					>
 						{blog.excerpt}
@@ -91,7 +91,7 @@ const BlogHeader = ({blog}: BlogHeaderProps) => {
 				)}
 
 				{/* Meta Information */}
-				<div className="flex flex-wrap justify-center items-center gap-3 sm:gap-4 md:gap-6 text-xs sm:text-sm text-gray-500 mb-6 sm:mb-8 px-4">
+				<div className="flex flex-wrap justify-center items-center gap-3 sm:gap-4 md:gap-6 text-xs sm:text-sm text-muted-foreground mb-6 sm:mb-8 px-4">
 					<div className="flex items-center space-x-1.5 sm:space-x-2">
 						<CalendarDays
 							className="h-3.5 w-3.5 sm:h-4 sm:w-4"
@@ -142,12 +142,12 @@ const BlogHeader = ({blog}: BlogHeaderProps) => {
 					</div>
 					<div className="text-center">
 						<p
-							className="font-medium text-sm sm:text-base text-gray-900"
+							className="font-medium text-sm sm:text-base text-foreground"
 							itemProp="name"
 						>
 							{blog.author?.username || blog.author?.name || "Anonymous"}
 						</p>
-						<p className="text-xs sm:text-sm text-gray-500">Author</p>
+						<p className="text-xs sm:text-sm text-muted-foreground">Author</p>
 					</div>
 				</div>
 			</header>

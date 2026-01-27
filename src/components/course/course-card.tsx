@@ -21,7 +21,7 @@ interface CourseCardProps {
 
 export function CourseCard({course}: CourseCardProps) {
 	return (
-		<div className="group overflow-hidden border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-300 bg-white rounded-xl flex flex-col h-full">
+		<div className="group overflow-hidden border border-border hover:border-primary/40 hover:shadow-lg transition-all duration-300 bg-card rounded-xl flex flex-col h-full">
 			{/* Thumbnail */}
 			<div className="relative aspect-video overflow-hidden flex-shrink-0">
 				<Image
@@ -66,8 +66,8 @@ export function CourseCard({course}: CourseCardProps) {
 			{/* Content */}
 			<div className="p-4 flex flex-col flex-grow">
 				{/* Header: Category & Date */}
-				<div className="flex items-center justify-between text-xs text-gray-500 mb-3">
-					<span className="font-medium text-blue-600  capitalize bg-blue-50 px-2.5 py-1 rounded-full">
+				<div className="flex items-center justify-between text-xs text-muted-foreground mb-3">
+					<span className="font-medium text-primary capitalize bg-primary/15 px-2.5 py-1 rounded-full">
 						{course.category?.name}
 					</span>
 					<span>{formatLastUpdated(course.updatedAt)}</span>
@@ -79,25 +79,25 @@ export function CourseCard({course}: CourseCardProps) {
 					className="mb-2"
 					aria-label={`View course: ${course.title}`}
 				>
-					<h3 className="font-semibold text-lg text-gray-900 hover:text-blue-600 transition-colors line-clamp-2 group-hover:text-blue-600 leading-tight">
+					<h3 className="font-semibold text-lg text-foreground hover:text-primary transition-colors line-clamp-2 group-hover:text-primary leading-tight">
 						{course.title}
 					</h3>
 				</Link>
 
 				{/* Instructor */}
-				<p className="text-sm text-gray-500 mb-3">
+				<p className="text-sm text-muted-foreground mb-3">
 					by{" "}
-					<span className="text-gray-700 font-medium">
+					<span className="text-foreground font-medium">
 						{course.author?.username}
 					</span>
 				</p>
 
-				<p className="text-sm text-gray-600 line-clamp-2 leading-relaxed mb-4">
+				<p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed mb-4">
 					{course?.excerpt}
 				</p>
 
 				{/* Course Stats - Compact */}
-				<div className="flex items-center justify-between text-sm text-gray-500 mb-4">
+				<div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
 					<div className="flex items-center space-x-1">
 						<Clock size={16} />
 						<span>{formatDuration(course.totalDuration || 0)}</span>
@@ -131,10 +131,10 @@ export function CourseCard({course}: CourseCardProps) {
 								/>
 							))}
 						</div>
-						<span className="text-sm font-medium text-gray-900">
+						<span className="text-sm font-medium text-foreground">
 							{formatRating(course.averageRating || 0)}
 						</span>
-						<span className="text-sm text-gray-500">
+						<span className="text-sm text-muted-foreground">
 							({formatStudentCount(course.totalReviews || 0)})
 						</span>
 					</div>
@@ -153,12 +153,12 @@ export function CourseCard({course}: CourseCardProps) {
 						) : (
 							<div className="flex flex-col items-end">
 								{course.oldPrice && course.oldPrice > course.price && (
-									<span className=" text-gray-500 line-through">
+									<span className="text-muted-foreground line-through">
 										{formatPrice(course.oldPrice)}
 									</span>
 								)}
 								<span
-									className="text-xl font-bold text-gray-900"
+									className="text-xl font-bold text-foreground"
 									itemProp="price"
 									content={course.price.toString()}
 								>

@@ -30,11 +30,11 @@ interface CourseCurriculumProps {
 const CourseCurriculum = ({chapters, isLoading}: CourseCurriculumProps) => {
 	if (isLoading) {
 		return (
-			<div className="bg-gradient-to-br from-white via-blue-50/30 to-purple-50/20 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200/50 overflow-hidden backdrop-blur-sm">
+			<div className="bg-card rounded-xl sm:rounded-2xl shadow-xl border border-border overflow-hidden backdrop-blur-sm">
 				{/* Header */}
-				<div className="p-4 sm:p-6 lg:p-8 border-b border-gradient-to-r from-blue-200/50 to-purple-200/50">
+				<div className="p-4 sm:p-6 lg:p-8 border-b border-border">
 					<div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-						<div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg sm:rounded-xl flex items-center justify-center">
+						<div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-primary to-secondary rounded-lg sm:rounded-xl flex items-center justify-center">
 							<Layers className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
 						</div>
 						<div className="flex-1">
@@ -49,7 +49,7 @@ const CourseCurriculum = ({chapters, isLoading}: CourseCurriculumProps) => {
 					{[1, 2, 3].map((i) => (
 						<div
 							key={i}
-							className="bg-white/70 rounded-lg sm:rounded-xl p-4 sm:p-6 border border-gray-200/50"
+							className="bg-background/60 rounded-lg sm:rounded-xl p-4 sm:p-6 border border-border"
 						>
 							<div className="flex items-center justify-between mb-3 sm:mb-4">
 								<Skeleton className="h-5 sm:h-6 w-2/3" />
@@ -76,18 +76,18 @@ const CourseCurriculum = ({chapters, isLoading}: CourseCurriculumProps) => {
 
 	if (chapters.length === 0) {
 		return (
-			<div className="bg-gradient-to-br from-white via-blue-50/30 to-purple-50/20 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200/50 overflow-hidden backdrop-blur-sm">
+			<div className="bg-card rounded-xl sm:rounded-2xl shadow-xl border border-border overflow-hidden backdrop-blur-sm">
 				{/* Header */}
-				<div className="p-4 sm:p-6 lg:p-8 border-b border-gray-200/50 bg-gradient-to-r from-blue-50/50 to-purple-50/50">
+				<div className="p-4 sm:p-6 lg:p-8 border-b border-border bg-background/60">
 					<div className="flex items-center gap-2 sm:gap-3">
-						<div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg sm:rounded-xl flex items-center justify-center">
+						<div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-primary to-secondary rounded-lg sm:rounded-xl flex items-center justify-center">
 							<Layers className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
 						</div>
 						<div>
-							<h3 className="text-lg sm:text-xl lg:text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+							<h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground">
 								Course Curriculum
 							</h3>
-							<p className="text-gray-600 text-xs sm:text-sm">
+							<p className="text-muted-foreground text-xs sm:text-sm">
 								Explore course content and lessons
 							</p>
 						</div>
@@ -96,13 +96,13 @@ const CourseCurriculum = ({chapters, isLoading}: CourseCurriculumProps) => {
 
 				{/* Empty State */}
 				<div className="p-8 sm:p-12 text-center">
-					<div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-						<BookOpen className="h-8 w-8 sm:h-10 sm:w-10 text-gray-400" />
+					<div className="w-16 h-16 sm:w-20 sm:h-20 bg-background/60 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
+						<BookOpen className="h-8 w-8 sm:h-10 sm:w-10 text-muted-foreground" />
 					</div>
-					<h4 className="text-lg sm:text-xl font-semibold text-gray-700 mb-2">
+					<h4 className="text-lg sm:text-xl font-semibold text-foreground mb-2">
 						No Curriculum Available
 					</h4>
-					<p className="text-sm sm:text-base text-gray-500 max-w-sm mx-auto">
+					<p className="text-sm sm:text-base text-muted-foreground max-w-sm mx-auto">
 						This course doesn&apos;t have any curriculum content yet. Check back
 						later for updates.
 					</p>
@@ -127,18 +127,18 @@ const CourseCurriculum = ({chapters, isLoading}: CourseCurriculumProps) => {
 	);
 
 	return (
-		<div className="bg-gradient-to-br from-white via-blue-50/30 to-purple-50/20 rounded-xl sm:rounded-2xl shadow-xl border border-gray-200/50 overflow-hidden backdrop-blur-sm">
+		<div className="bg-card rounded-xl sm:rounded-2xl shadow-xl border border-border overflow-hidden backdrop-blur-sm">
 			{/* Enhanced Header */}
-			<div className="p-4 sm:p-6 lg:p-8 border-b border-gray-200/50 bg-gradient-to-r from-blue-50/50 to-purple-50/50">
+			<div className="p-4 sm:p-6 lg:p-8 border-b border-border bg-background/60">
 				<div className="flex items-center gap-2 sm:gap-3 lg:gap-4 mb-4 sm:mb-6">
-					<div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-lg">
+					<div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-primary to-secondary rounded-lg sm:rounded-xl flex items-center justify-center shadow-lg">
 						<Layers className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
 					</div>
 					<div className="flex-1">
-						<h3 className="text-lg sm:text-xl lg:text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent mb-0.5 sm:mb-1">
+						<h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground mb-0.5 sm:mb-1">
 							Course Curriculum
 						</h3>
-						<p className="text-xs sm:text-sm text-gray-600">
+						<p className="text-xs sm:text-sm text-muted-foreground">
 							Complete learning path for this course
 						</p>
 					</div>
@@ -146,36 +146,36 @@ const CourseCurriculum = ({chapters, isLoading}: CourseCurriculumProps) => {
 
 				{/* Course Stats */}
 				<div className="grid grid-cols-3 gap-2 sm:gap-3 lg:gap-4">
-					<div className="bg-white/70 rounded-lg sm:rounded-xl p-2.5 sm:p-3 lg:p-4 border border-blue-200/50">
+					<div className="bg-background/60 rounded-lg sm:rounded-xl p-2.5 sm:p-3 lg:p-4 border border-border">
 						<div className="flex items-center gap-1 sm:gap-2 mb-0.5 sm:mb-1">
-							<Award className="h-3 w-3 sm:h-4 sm:w-4 text-blue-600" />
-							<span className="text-[10px] sm:text-xs font-medium text-gray-600 uppercase tracking-wide">
+							<Award className="h-3 w-3 sm:h-4 sm:w-4 text-primary" />
+							<span className="text-[10px] sm:text-xs font-medium text-muted-foreground uppercase tracking-wide">
 								Chapters
 							</span>
 						</div>
-						<p className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
+						<p className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground">
 							{chapters.length}
 						</p>
 					</div>
-					<div className="bg-white/70 rounded-lg sm:rounded-xl p-2.5 sm:p-3 lg:p-4 border border-purple-200/50">
+					<div className="bg-background/60 rounded-lg sm:rounded-xl p-2.5 sm:p-3 lg:p-4 border border-border">
 						<div className="flex items-center gap-1 sm:gap-2 mb-0.5 sm:mb-1">
-							<PlayCircle className="h-3 w-3 sm:h-4 sm:w-4 text-purple-600" />
-							<span className="text-[10px] sm:text-xs font-medium text-gray-600 uppercase tracking-wide">
+							<PlayCircle className="h-3 w-3 sm:h-4 sm:w-4 text-secondary" />
+							<span className="text-[10px] sm:text-xs font-medium text-muted-foreground uppercase tracking-wide">
 								Lessons
 							</span>
 						</div>
-						<p className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
+						<p className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground">
 							{totalLessons}
 						</p>
 					</div>
-					<div className="bg-white/70 rounded-lg sm:rounded-xl p-2.5 sm:p-3 lg:p-4 border border-green-200/50">
+					<div className="bg-background/60 rounded-lg sm:rounded-xl p-2.5 sm:p-3 lg:p-4 border border-border">
 						<div className="flex items-center gap-1 sm:gap-2 mb-0.5 sm:mb-1">
 							<Clock className="h-3 w-3 sm:h-4 sm:w-4 text-green-600" />
-							<span className="text-[10px] sm:text-xs font-medium text-gray-600 uppercase tracking-wide">
+							<span className="text-[10px] sm:text-xs font-medium text-muted-foreground uppercase tracking-wide">
 								Duration
 							</span>
 						</div>
-						<p className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
+						<p className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground">
 							{formatDuration(totalDuration || 0)}
 						</p>
 					</div>
@@ -183,20 +183,20 @@ const CourseCurriculum = ({chapters, isLoading}: CourseCurriculumProps) => {
 			</div>
 
 			{/* Curriculum Content */}
-			<div className="bg-white rounded-b-xl border border-gray-200 overflow-hidden">
+			<div className="bg-background rounded-b-xl border border-border overflow-hidden">
 				<Accordion type="multiple" className="w-full">
 					{chapters.map((chapter, chapterIndex) => (
 						<AccordionItem
 							key={chapter._id}
 							value={chapter._id}
-							className="border-b border-gray-200 last:border-b-0"
+							className="border-b border-border last:border-b-0"
 						>
-							<AccordionTrigger className="px-4 sm:px-6 py-3 sm:py-4 flex items-center bg-gradient-to-r from-blue-50/50 to-purple-50/50 hover:no-underline">
+							<AccordionTrigger className="px-4 sm:px-6 py-3 sm:py-4 flex items-center bg-background/50 hover:no-underline">
 								<div className="flex items-center justify-between w-full text-left">
 									<span className="text-sm sm:text-base font-semibold pr-2">
 										{chapterIndex + 1}. {chapter.title}
 									</span>
-									<span className="text-xs sm:text-sm text-gray-600 flex-shrink-0">
+									<span className="text-xs sm:text-sm text-muted-foreground flex-shrink-0">
 										{chapter.lessons?.length || 0} lessons
 									</span>
 								</div>
@@ -216,7 +216,7 @@ const CourseCurriculum = ({chapters, isLoading}: CourseCurriculumProps) => {
 													<div
 														key={lesson._id}
 														className={cn(
-															"flex items-center justify-between py-3 sm:py-4 px-4 sm:px-6 transition-colors relative group hover:bg-gray-50"
+															"flex items-center justify-between py-3 sm:py-4 px-4 sm:px-6 transition-colors relative group hover:bg-muted/20"
 														)}
 													>
 														<div className="flex items-center gap-2 flex-1 min-w-0 pr-2">
@@ -226,25 +226,25 @@ const CourseCurriculum = ({chapters, isLoading}: CourseCurriculumProps) => {
 																)}
 															>
 																{lesson.contentType === "video" && (
-																	<MdOutlineSlowMotionVideo className="h-3 w-3 sm:h-4 sm:w-4 text-gray-400" />
+																	<MdOutlineSlowMotionVideo className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground" />
 																)}
 																{lesson.contentType === "quiz" && (
-																	<HelpCircle className="h-3 w-3 sm:h-4 sm:w-4 text-gray-400" />
+																	<HelpCircle className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground" />
 																)}
 																{lesson.contentType === "article" && (
-																	<LucideFileText className="h-3 w-3 sm:h-4 sm:w-4 text-gray-400" />
+																	<LucideFileText className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground" />
 																)}
 															</div>
-															<span className="text-xs sm:text-sm text-gray-900 truncate">
+															<span className="text-xs sm:text-sm text-foreground truncate">
 																{lessonIndex + 1}. {lesson.title}
 															</span>
 														</div>
-														<span className="text-xs sm:text-sm text-gray-500 flex-shrink-0">
+														<span className="text-xs sm:text-sm text-muted-foreground flex-shrink-0">
 															{secondsToDisplayTime(lesson.duration || 0)}
 														</span>
 													</div>
 													{!isLastLesson && (
-														<div className="border-t border-dotted border-gray-300"></div>
+														<div className="border-t border-dotted border-border"></div>
 													)}
 												</React.Fragment>
 											);
