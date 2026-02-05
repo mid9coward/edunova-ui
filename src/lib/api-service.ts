@@ -18,7 +18,14 @@ export interface ApiResponse<T = unknown> {
 export interface ApiErrorResponse {
 	message: string;
 	errors?: Record<string, string[]>;
-	code?: string;
+	errorCode?: string;
+	meta?: {
+		retryAfter?: number;
+		limit?: number;
+		remaining?: number;
+		resetTime?: string;
+		[key: string]: unknown;
+	};
 	success: false;
 }
 
@@ -26,7 +33,8 @@ export interface ApiErrorResponse {
 export interface ApiError {
 	message: string;
 	errors?: Record<string, string[]>;
-	code?: string;
+	errorCode?: string;
+	meta?: ApiErrorResponse["meta"];
 }
 
 // Generic API service class
@@ -124,20 +132,21 @@ export class ApiService {
 			const apiError: ApiError = {
 				message: axiosError.response.data?.message || "An error occurred",
 				errors: axiosError.response.data?.errors,
-				code: axiosError.response.data?.code,
+				errorCode: axiosError.response.data?.errorCode,
+				meta: axiosError.response.data?.meta,
 			};
 			return apiError;
 		} else if (axiosError.request) {
 			// Request was made but no response received
 			return {
 				message: "Network error - please check your connection",
-				code: "NETWORK_ERROR",
+				errorCode: "NETWORK_ERROR",
 			};
 		} else {
 			// Something else happened
 			return {
 				message: axiosError.message || "An unexpected error occurred",
-				code: "UNKNOWN_ERROR",
+				errorCode: "UNKNOWN_ERROR",
 			};
 		}
 	}

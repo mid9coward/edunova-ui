@@ -12,7 +12,7 @@ export interface IChapter {
 	lessons?: Array<{
 		_id: string;
 		title: string;
-		contentType: "video" | "quiz" | "article";
+		contentType: "video" | "quiz" | "article" | "coding";
 		isPublished: boolean;
 		preview: boolean;
 		order: number;
@@ -87,7 +87,7 @@ export interface IPublicChapter {
 		_id: string;
 		id: string;
 		title: string;
-		contentType: "video" | "quiz" | "article";
+		contentType: "video" | "quiz" | "article" | "coding";
 		preview: boolean;
 		duration?: number;
 	}>;

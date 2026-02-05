@@ -6,6 +6,7 @@ import {IoIosEyeOff} from "react-icons/io";
 import {
 	MdAccessTime,
 	MdDelete,
+	MdCode,
 	MdDescription,
 	MdDragIndicator,
 	MdEdit,
@@ -45,6 +46,11 @@ const getContentTypeConfig = (type: ContentType) => {
 			return {
 				icon: <MdHelpOutline className="h-4 w-4" />,
 				label: "Quiz",
+			};
+		case "coding":
+			return {
+				icon: <MdCode className="h-4 w-4" />,
+				label: "Coding",
 			};
 		default:
 			return {

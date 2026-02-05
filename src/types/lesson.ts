@@ -2,17 +2,77 @@
 
 import type {QuestionType} from "@/types/quiz";
 
-export type ContentType = "video" | "quiz" | "article";
+export type ContentType = "video" | "quiz" | "article" | "coding";
+
+export type CodeSubmissionStatus =
+	| "PENDING"
+	| "ACCEPTED"
+	| "WRONG_ANSWER"
+	| "COMPILE_ERROR";
+
+export interface CodingTestCaseRequest {
+	input: string;
+	expectedOutput: string;
+	isHidden?: boolean;
+}
+
+export interface CodingTestCaseHiddenResponse {
+	_id: string;
+	isHidden: true;
+}
+
+export interface CodingTestCaseVisibleResponse {
+	_id: string;
+	input: string;
+	expectedOutput: string;
+	isHidden?: false;
+}
+
+export type CodingTestCaseResponse =
+	| CodingTestCaseHiddenResponse
+	| CodingTestCaseVisibleResponse;
+
+export interface CodingExerciseConstraints {
+	timeLimit?: number;
+	memoryLimit?: number;
+}
+
+export interface CodingExerciseResourceRequest {
+	_id?: string;
+	title: string;
+	language: string;
+	version: string;
+	problemStatement: string;
+	starterCode: string;
+	solutionCode: string;
+	testCases: CodingTestCaseRequest[];
+	constraints?: CodingExerciseConstraints;
+}
+
+export interface CodingExerciseResourceResponse
+	extends Omit<CodingExerciseResourceRequest, "solutionCode" | "testCases"> {
+	testCases: CodingTestCaseResponse[];
+}
 
 // Lesson resource interface
 export interface ILessonResource {
 	_id?: string;
 	title?: string;
 	description?: string;
+	duration?: number;
 	url?: string; // for video
 	totalAttemptsAllowed?: number; // for quiz
 	passingScorePercentage?: number; // for quiz
 	questions?: QuizQuestionForm[]; // for quiz
+	// Coding exercise fields
+	language?: string;
+	version?: string;
+	problemStatement?: string;
+	starterCode?: string;
+	// Never exposed by API responses; only used when creating/updating
+	solutionCode?: string;
+	testCases?: Array<CodingTestCaseRequest | CodingTestCaseResponse>;
+	constraints?: CodingExerciseConstraints;
 }
 
 // Quiz question interface for form management
@@ -43,15 +103,7 @@ export interface ILesson {
 		title: string;
 		slug: string;
 	};
-	resource?: {
-		_id?: string;
-		title?: string;
-		description?: string;
-		duration?: number;
-		url?: string;
-		totalAttemptsAllowed?: number;
-		passingScorePercentage?: number;
-	};
+	resource?: ILessonResource;
 	createdAt: string;
 	updatedAt: string;
 }
@@ -71,6 +123,9 @@ export interface DisplayLesson {
 		url?: string;
 		totalAttemptsAllowed?: number;
 		passingScorePercentage?: number;
+		// Coding exercise fields (optional for list views)
+		language?: string;
+		version?: string;
 	};
 }
 

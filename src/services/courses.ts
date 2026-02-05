@@ -15,9 +15,18 @@ const ENDPOINTS = {
 	PUBLIC_COURSES: "/courses/public",
 	MY_COURSES: "/courses/my-courses",
 	COURSE: (id: string) => `/courses/${id}`,
+	COURSE_COMPLETION: (courseId: string) => `/courses/${courseId}/completion`,
 	PUBLIC_COURSE_BY_SLUG: (slug: string) => `/courses/slug/${slug}`,
 	ENROLL_FREE: (id: string) => `/courses/${id}/enroll-free`,
 } as const;
+
+export interface CourseCompletionStatus {
+	completed: boolean;
+	completedAt: string | null;
+	totalLessons: number;
+	completedLessons: number;
+	progressPercent: number;
+}
 
 export class CoursesService {
 	// Get courses with filtering
@@ -164,6 +173,13 @@ export class CoursesService {
 		} catch {
 			return [];
 		}
+	}
+
+	// Get course completion status for the current user
+	static async getCompletion(courseId: string): Promise<CourseCompletionStatus> {
+		return ApiService.get<CourseCompletionStatus>(
+			ENDPOINTS.COURSE_COMPLETION(courseId)
+		);
 	}
 }
 

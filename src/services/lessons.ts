@@ -1,6 +1,7 @@
 import {ApiService} from "@/lib/api-service";
 import type {
 	ILesson,
+	CodeSubmissionStatus,
 	LessonFormData,
 	CreateLessonRequest,
 	UpdateLessonRequest,
@@ -14,7 +15,43 @@ const ENDPOINTS = {
 	LESSON_BY_SLUG: (slug: string) => `/lessons/slug/${slug}`,
 	LESSON_TOGGLE_PUBLISH: (id: string) => `/lessons/${id}/toggle-publish`,
 	LESSON_REORDER: "/lessons/reorder",
+	LESSON_RUN: (id: string) => `/lessons/${id}/run`,
+	LESSON_SUBMIT: (id: string) => `/lessons/${id}/submit`,
 } as const;
+
+export interface RunCodeRequest {
+	sourceCode: string;
+	language: string;
+	version: string;
+	stdin?: string;
+}
+
+export interface RunCodeResponse {
+	status: "OK";
+}
+
+export interface SubmitCodeRequest {
+	sourceCode: string;
+	language: string;
+	version: string;
+}
+
+export interface SubmitCodeFailedTest {
+	index: number;
+	input: string;
+	expected: string;
+	actual: string;
+}
+
+export interface SubmitCodeSummaryResponse {
+	status: CodeSubmissionStatus;
+	passedTestCases: number;
+	totalTestCases: number;
+	runtimeMs: number;
+	memoryKb: number | null;
+	compileError?: string;
+	failedTest?: SubmitCodeFailedTest;
+}
 
 export class LessonsService {
 	// Get lessons with filtering
@@ -86,6 +123,28 @@ export class LessonsService {
 		return ApiService.put<void, ReorderLessonsRequest>(
 			ENDPOINTS.LESSON_REORDER,
 			reorderData
+		);
+	}
+
+	// Run code for coding exercises (stateless)
+	static async runCode(
+		lessonId: string,
+		payload: RunCodeRequest
+	): Promise<RunCodeResponse> {
+		return ApiService.post<RunCodeResponse, RunCodeRequest>(
+			ENDPOINTS.LESSON_RUN(lessonId),
+			payload
+		);
+	}
+
+	// Submit code for grading (stateful)
+	static async submitCode(
+		lessonId: string,
+		payload: SubmitCodeRequest
+	): Promise<SubmitCodeSummaryResponse> {
+		return ApiService.post<SubmitCodeSummaryResponse, SubmitCodeRequest>(
+			ENDPOINTS.LESSON_SUBMIT(lessonId),
+			payload
 		);
 	}
 }

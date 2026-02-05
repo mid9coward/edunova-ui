@@ -5,12 +5,15 @@ import {
 	keepPreviousData,
 } from "@tanstack/react-query";
 import CoursesService from "@/services/courses";
+import type {CourseCompletionStatus} from "@/services/courses";
 import {
 	CreateCourseRequest,
 	UpdateCourseRequest,
 	CoursesListParams,
 } from "@/types/course";
+import type {ApiError} from "@/lib/api-service";
 import {toast} from "sonner";
+import {isMongoObjectId} from "@/utils/mongo";
 
 // Query keys for courses
 export const courseKeys = {
@@ -24,6 +27,8 @@ export const courseKeys = {
 	related: (courseId: string) =>
 		[...courseKeys.all, "related", courseId] as const,
 	myCourses: () => [...courseKeys.all, "my-courses"] as const,
+	completion: (courseId: string) =>
+		[...courseKeys.all, "completion", courseId] as const,
 };
 
 // Hooks for courses
@@ -157,5 +162,22 @@ export function useMyCourses() {
 	return useQuery({
 		queryKey: courseKeys.myCourses(),
 		queryFn: () => CoursesService.getMyCourses(),
+	});
+}
+
+export function useCourseCompletion(courseId: string) {
+	return useQuery({
+		queryKey: courseKeys.completion(courseId),
+		queryFn: async (): Promise<CourseCompletionStatus> => {
+			if (!isMongoObjectId(courseId)) {
+				const err: ApiError = {
+					message: "Invalid course ID",
+					errorCode: "INVALID_INPUT_FORMAT",
+				};
+				throw err;
+			}
+			return CoursesService.getCompletion(courseId);
+		},
+		enabled: !!courseId,
 	});
 }

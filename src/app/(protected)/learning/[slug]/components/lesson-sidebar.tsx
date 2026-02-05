@@ -15,12 +15,13 @@ import {secondsToDisplayTime} from "@/utils/format";
 import {ChevronDown, HelpCircle, LucideFileText} from "lucide-react";
 import Link from "next/link";
 import React from "react";
-import {MdOutlineSlowMotionVideo} from "react-icons/md";
+import {MdCode, MdOutlineSlowMotionVideo} from "react-icons/md";
+import type {ContentType} from "@/types/lesson";
 
 interface SidebarLesson {
 	_id: string;
 	title: string;
-	contentType: "video" | "quiz" | "article";
+	contentType: ContentType;
 	duration?: number;
 	isCompleted?: boolean;
 	isLocked?: boolean;
@@ -244,6 +245,9 @@ const LessonSidebar = ({
 																			)}
 																			{lesson.contentType === "article" && (
 																				<LucideFileText className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-gray-400 group-hover:text-blue-600 flex-shrink-0" />
+																			)}
+																			{lesson.contentType === "coding" && (
+																				<MdCode className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-gray-400 group-hover:text-blue-600 flex-shrink-0" />
 																			)}
 																			<span className="text-[10px] sm:text-xs text-gray-500 whitespace-nowrap">
 																				{secondsToDisplayTime(

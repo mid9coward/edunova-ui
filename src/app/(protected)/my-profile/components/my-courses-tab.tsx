@@ -13,7 +13,9 @@ const AccountInfoTab = () => {
 	const totalCourses = myCourses.length;
 	const completedCourses = myCourses.filter(
 		(course) =>
-			course.completedLessons === course.totalLessons && course.totalLessons > 0
+			(course.isCompleted ??
+				(course.completedLessons === course.totalLessons &&
+					course.totalLessons > 0)) === true
 	).length;
 	const studyingCourses = totalCourses - completedCourses;
 

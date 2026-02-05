@@ -1,6 +1,12 @@
 import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
 import LessonsService from "@/services/lessons";
 import type {
+	RunCodeRequest,
+	RunCodeResponse,
+	SubmitCodeRequest,
+	SubmitCodeSummaryResponse,
+} from "@/services/lessons";
+import type {
 	ILesson,
 	DisplayLesson,
 	CreateLessonRequest,
@@ -9,6 +15,8 @@ import type {
 	LessonsFilterParams,
 } from "@/types/lesson";
 import {chapterKeys} from "./use-chapters";
+import {trackKeys} from "./use-track";
+import {courseKeys} from "./use-courses";
 
 // Query keys for lessons
 export const lessonsKeys = {
@@ -163,6 +171,46 @@ export function useReorderLessons() {
 			queryClient.invalidateQueries({
 				queryKey: chapterKeys.all,
 			});
+		},
+	});
+}
+
+export type RunCodeVariables = {
+	lessonId: string;
+	payload: RunCodeRequest;
+};
+
+export function useRunCode() {
+	return useMutation({
+		mutationFn: ({lessonId, payload}: RunCodeVariables): Promise<RunCodeResponse> =>
+			LessonsService.runCode(lessonId, payload),
+	});
+}
+
+export type SubmitCodeVariables = {
+	lessonId: string;
+	courseId?: string;
+	payload: SubmitCodeRequest;
+};
+
+export function useSubmitCode() {
+	const queryClient = useQueryClient();
+
+	return useMutation({
+		mutationFn: ({
+			lessonId,
+			payload,
+		}: SubmitCodeVariables): Promise<SubmitCodeSummaryResponse> =>
+			LessonsService.submitCode(lessonId, payload),
+		onSuccess: (data, variables) => {
+			if (data.status === "ACCEPTED") {
+				if (variables.courseId) {
+					queryClient.invalidateQueries({
+						queryKey: trackKeys.courseTracks(variables.courseId),
+					});
+				}
+				queryClient.invalidateQueries({queryKey: courseKeys.myCourses()});
+			}
 		},
 	});
 }

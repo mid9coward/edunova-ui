@@ -5,6 +5,7 @@ import React, {useState} from "react";
 import {useForm} from "react-hook-form";
 import {
 	MdAdd,
+	MdCode,
 	MdDelete,
 	MdDescription,
 	MdEdit,
@@ -76,6 +77,14 @@ interface LessonFormData {
 	videoUrl?: string;
 	totalAttemptsAllowed?: number;
 	passingScorePercentage?: number;
+	// Coding exercise fields
+	codingLanguage?: string;
+	codingVersion?: string;
+	problemStatement?: string;
+	starterCode?: string;
+	solutionCode?: string;
+	timeLimit?: number;
+	memoryLimit?: number;
 	// Quiz questions - managed separately from validation schema
 	questions?: QuizQuestionForm[];
 }
@@ -87,7 +96,7 @@ const lessonFormSchema: yup.ObjectSchema<LessonFormData> = yup.object({
 		.min(1, "Title cannot be empty"),
 	contentType: yup
 		.mixed<ContentType>()
-		.oneOf(["video", "quiz", "article"] as const)
+		.oneOf(["video", "quiz", "article", "coding"] as const)
 		.required("Content type is required"),
 	preview: yup.boolean().default(false),
 	isPublished: yup.boolean().default(false),
@@ -133,6 +142,30 @@ const lessonFormSchema: yup.ObjectSchema<LessonFormData> = yup.object({
 				.required("Passing score is required"),
 		otherwise: (schema) => schema.optional(),
 	}),
+	// Coding exercise fields (testCases is validated in submit handler)
+	codingLanguage: yup.string().when("contentType", {
+		is: "coding",
+		then: (schema) => schema.required("Language is required"),
+		otherwise: (schema) => schema.optional(),
+	}),
+	codingVersion: yup.string().when("contentType", {
+		is: "coding",
+		then: (schema) => schema.required("Version is required"),
+		otherwise: (schema) => schema.optional(),
+	}),
+	problemStatement: yup.string().when("contentType", {
+		is: "coding",
+		then: (schema) => schema.required("Problem statement is required"),
+		otherwise: (schema) => schema.optional(),
+	}),
+	starterCode: yup.string().when("contentType", {
+		is: "coding",
+		then: (schema) => schema.required("Starter code is required"),
+		otherwise: (schema) => schema.optional(),
+	}),
+	solutionCode: yup.string().optional(),
+	timeLimit: yup.number().optional(),
+	memoryLimit: yup.number().optional(),
 	// Questions are managed separately, not validated here
 	questions: yup.array().optional(),
 });
@@ -154,6 +187,8 @@ const getContentTypeIcon = (type: ContentType) => {
 			return <MdDescription className="h-4 w-4" />;
 		case "quiz":
 			return <MdHelpOutline className="h-4 w-4" />;
+		case "coding":
+			return <MdCode className="h-4 w-4" />;
 		default:
 			return <MdDescription className="h-4 w-4" />;
 	}
@@ -461,6 +496,22 @@ const LessonFormDialog = ({
 		number | null
 	>(null);
 
+	type CodingTestCaseForm = {
+		id: string;
+		input: string;
+		expectedOutput: string;
+		isHidden: boolean;
+	};
+
+	// Coding exercise test cases state (managed separately from form)
+	const [codingTestCases, setCodingTestCases] = useState<CodingTestCaseForm[]>(
+		[]
+	);
+
+	// When editing a coding lesson, resource fields are locked by default to avoid
+	// accidentally overwriting hidden test cases / solution code (which the API never returns).
+	const [replaceCodingResource, setReplaceCodingResource] = useState(false);
+
 	// Use mutations directly
 	const createLessonMutation = useCreateLesson();
 	const updateLessonMutation = useUpdateLesson();
@@ -482,6 +533,13 @@ const LessonFormDialog = ({
 			videoUrl: "",
 			totalAttemptsAllowed: 3,
 			passingScorePercentage: 70,
+			codingLanguage: "python",
+			codingVersion: "3.10.0",
+			problemStatement: "",
+			starterCode: "",
+			solutionCode: "",
+			timeLimit: 2,
+			memoryLimit: 128,
 			questions: [],
 		},
 	});
@@ -493,6 +551,7 @@ const LessonFormDialog = ({
 		formState: {isSubmitting},
 	} = form;
 	const selectedContentType = watch("contentType");
+	const isCodingResourceLocked = isEditing && selectedContentType === "coding" && !replaceCodingResource;
 
 	React.useEffect(() => {
 		if (open) {
@@ -509,6 +568,13 @@ const LessonFormDialog = ({
 					videoUrl: lesson.resource?.url || "",
 					totalAttemptsAllowed: lesson.resource?.totalAttemptsAllowed || 3,
 					passingScorePercentage: lesson.resource?.passingScorePercentage || 70,
+					codingLanguage: lesson.resource?.language || "python",
+					codingVersion: lesson.resource?.version || "3.10.0",
+					problemStatement: lesson.resource?.problemStatement || "",
+					starterCode: lesson.resource?.starterCode || "",
+					solutionCode: "",
+					timeLimit: lesson.resource?.constraints?.timeLimit ?? 2,
+					memoryLimit: lesson.resource?.constraints?.memoryLimit ?? 128,
 					questions: [],
 				});
 				// Load existing questions if any (if available in API response)
@@ -520,6 +586,26 @@ const LessonFormDialog = ({
 						id: q.id || `existing-${index}`,
 					}))
 				);
+
+				// Load coding test cases (solution code + hidden details are not returned by API)
+				const existingTestCases = (lesson.resource?.testCases as unknown as Array<{
+					_id?: string;
+					input?: string;
+					expectedOutput?: string;
+					isHidden?: boolean;
+				}>) || [];
+				setCodingTestCases(
+					Array.isArray(existingTestCases)
+						? existingTestCases.map((tc, index) => ({
+								id: tc._id || `existing-tc-${index}`,
+								input: tc.input ?? "",
+								expectedOutput: tc.expectedOutput ?? "",
+								isHidden: Boolean(tc.isHidden),
+							}))
+						: []
+				);
+
+				setReplaceCodingResource(false);
 				setEditingQuestionIndex(null);
 			} else if (!isEditing) {
 				// Create mode
@@ -534,15 +620,46 @@ const LessonFormDialog = ({
 					videoUrl: "",
 					totalAttemptsAllowed: 3,
 					passingScorePercentage: 70,
+					codingLanguage: "python",
+					codingVersion: "3.10.0",
+					problemStatement: "",
+					starterCode: "",
+					solutionCode: "",
+					timeLimit: 2,
+					memoryLimit: 128,
 					questions: [],
 				});
 				// Reset questions state
 				setQuestions([]);
+				// Reset coding test cases
+				setCodingTestCases([
+					{
+						id: `tc-${Date.now()}`,
+						input: "",
+						expectedOutput: "",
+						isHidden: false,
+					},
+				]);
+				setReplaceCodingResource(false);
 				setEditingQuestionIndex(null);
 			}
 			// Don't reset if we're in editing mode but still loading lesson data
 		}
 	}, [open, isEditing, lesson, isLessonLoading, reset]);
+
+	React.useEffect(() => {
+		// Ensure we always have at least one test case when creating a coding lesson
+		if (selectedContentType === "coding" && codingTestCases.length === 0) {
+			setCodingTestCases([
+				{
+					id: `tc-${Date.now()}`,
+					input: "",
+					expectedOutput: "",
+					isHidden: false,
+				},
+			]);
+		}
+	}, [selectedContentType, codingTestCases.length]);
 
 	// Quiz questions management functions
 	const addNewQuestion = () => {
@@ -577,6 +694,32 @@ const LessonFormDialog = ({
 		setQuestions(newQuestions);
 	};
 
+	// Coding test cases management
+	const addNewCodingTestCase = () => {
+		setCodingTestCases((prev) => [
+			...prev,
+			{
+				id: `tc-${Date.now()}`,
+				input: "",
+				expectedOutput: "",
+				isHidden: false,
+			},
+		]);
+	};
+
+	const deleteCodingTestCase = (id: string) => {
+		setCodingTestCases((prev) => prev.filter((tc) => tc.id !== id));
+	};
+
+	const updateCodingTestCase = (
+		id: string,
+		patch: Partial<Omit<CodingTestCaseForm, "id">>
+	) => {
+		setCodingTestCases((prev) =>
+			prev.map((tc) => (tc.id === id ? {...tc, ...patch} : tc))
+		);
+	};
+
 	const handleFormSubmit = (data: LessonFormData) => {
 		// Convert duration from HH:MM:SS to seconds for backend
 		const durationInSeconds = timeStringToSeconds(data.duration || "00:00:00");
@@ -591,7 +734,68 @@ const LessonFormDialog = ({
 			preview: data.preview,
 			isPublished: data.isPublished,
 			duration: durationInSeconds, // Backend expects seconds
-			resource: {
+		};
+
+		if (data.contentType === "coding") {
+			const shouldIncludeResource = !isEditing || replaceCodingResource;
+
+			if (shouldIncludeResource) {
+				const codingLanguage = (data.codingLanguage || "").trim();
+				const codingVersion = (data.codingVersion || "").trim();
+
+				if (!codingLanguage) {
+					toast.error("Language is required for coding exercises");
+					return;
+				}
+				if (!codingVersion) {
+					toast.error("Version is required for coding exercises");
+					return;
+				}
+				if (!data.problemStatement?.trim()) {
+					toast.error("Problem statement is required");
+					return;
+				}
+				if (!data.starterCode?.trim()) {
+					toast.error("Starter code is required");
+					return;
+				}
+				if (!data.solutionCode?.trim()) {
+					toast.error("Solution code is required");
+					return;
+				}
+				if (codingTestCases.length < 1) {
+					toast.error("At least one test case is required");
+					return;
+				}
+
+				const invalidTestCase = codingTestCases.find(
+					(tc) => (tc.expectedOutput || "").trim().length === 0
+				);
+				if (invalidTestCase) {
+					toast.error("Each test case must have an expected output");
+					return;
+				}
+
+				lessonData.resource = {
+					title: data.title,
+					language: codingLanguage,
+					version: codingVersion,
+					problemStatement: data.problemStatement,
+					starterCode: data.starterCode,
+					solutionCode: data.solutionCode,
+					testCases: codingTestCases.map((tc) => ({
+						input: tc.input ?? "",
+						expectedOutput: tc.expectedOutput ?? "",
+						isHidden: tc.isHidden,
+					})),
+					constraints: {
+						timeLimit: data.timeLimit ?? 2,
+						memoryLimit: data.memoryLimit ?? 128,
+					},
+				};
+			}
+		} else {
+			lessonData.resource = {
 				description:
 					data.contentType === "quiz"
 						? data.quizDescription
@@ -609,8 +813,8 @@ const LessonFormDialog = ({
 						point: q.point,
 					})),
 				}),
-			},
-		};
+			};
+		}
 
 		if (isEditing && lesson) {
 			lessonData._id = lesson._id;
@@ -715,7 +919,7 @@ const LessonFormDialog = ({
 													</SelectTrigger>
 												</FormControl>
 												<SelectContent>
-													{(["video", "article", "quiz"] as const).map(
+													{(["video", "article", "quiz", "coding"] as const).map(
 														(type) => (
 															<SelectItem key={type} value={type}>
 																<div className="flex items-center gap-2">
@@ -957,7 +1161,347 @@ const LessonFormDialog = ({
 									</div>
 								)}
 
-								{selectedContentType !== "quiz" && (
+								{/* Coding exercise fields */}
+								{selectedContentType === "coding" && (
+									<div className="space-y-4">
+										{isEditing && (
+											<div className="flex items-center justify-between rounded-lg border p-4">
+												<div className="space-y-0.5">
+													<Label className="text-base">
+														Replace coding exercise data
+													</Label>
+													<div className="text-sm text-gray-600">
+														Solution code and hidden test case details are not
+														returned by the API. Enable this only if you want to
+														replace the resource and provide full data again.
+													</div>
+												</div>
+												<Switch
+													checked={replaceCodingResource}
+													onCheckedChange={setReplaceCodingResource}
+													disabled={isLoading || isSubmitting}
+												/>
+											</div>
+										)}
+
+										<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+											<FormField
+												control={form.control}
+												name="codingLanguage"
+												render={({field}) => (
+													<FormItem>
+														<FormLabel>
+															Language <span className="text-red-500">*</span>
+														</FormLabel>
+														<FormControl>
+															<Input
+																{...field}
+																placeholder="python / javascript / cpp / java"
+																disabled={
+																	isLoading || isSubmitting || isCodingResourceLocked
+																}
+															/>
+														</FormControl>
+														<FormMessage />
+													</FormItem>
+												)}
+											/>
+
+											<FormField
+												control={form.control}
+												name="codingVersion"
+												render={({field}) => (
+													<FormItem>
+														<FormLabel>
+															Version <span className="text-red-500">*</span>
+														</FormLabel>
+														<FormControl>
+															<Input
+																{...field}
+																placeholder="3.10.0"
+																disabled={
+																	isLoading || isSubmitting || isCodingResourceLocked
+																}
+															/>
+														</FormControl>
+														<FormMessage />
+													</FormItem>
+												)}
+											/>
+										</div>
+
+										<FormField
+											control={form.control}
+											name="problemStatement"
+											render={({field}) => (
+												<FormItem>
+													<FormLabel>
+														Problem Statement{" "}
+														<span className="text-red-500">*</span>
+													</FormLabel>
+													<FormControl>
+														<Textarea
+															{...field}
+															placeholder="HTML/Markdown problem statement"
+															rows={6}
+															disabled={
+																isLoading || isSubmitting || isCodingResourceLocked
+															}
+														/>
+													</FormControl>
+													<FormMessage />
+												</FormItem>
+											)}
+										/>
+
+										<FormField
+											control={form.control}
+											name="starterCode"
+											render={({field}) => (
+												<FormItem>
+													<FormLabel>
+														Starter Code <span className="text-red-500">*</span>
+													</FormLabel>
+													<FormControl>
+														<Textarea
+															{...field}
+															placeholder="Starter code shown to students"
+															rows={6}
+															className="font-mono text-sm"
+															disabled={
+																isLoading || isSubmitting || isCodingResourceLocked
+															}
+														/>
+													</FormControl>
+													<FormMessage />
+												</FormItem>
+											)}
+										/>
+
+										<FormField
+											control={form.control}
+											name="solutionCode"
+											render={({field}) => (
+												<FormItem>
+													<FormLabel>
+														Solution Code{" "}
+														{(!isEditing || replaceCodingResource) && (
+															<span className="text-red-500">*</span>
+														)}
+													</FormLabel>
+													<FormControl>
+														<Textarea
+															{...field}
+															placeholder={
+																isEditing
+																	? "API does not return solutionCode. Re-enter it here."
+																	: "Author solution code for grading"
+															}
+															rows={6}
+															className="font-mono text-sm"
+															disabled={
+																isLoading ||
+																isSubmitting ||
+																(isEditing && !replaceCodingResource)
+															}
+														/>
+													</FormControl>
+													<FormMessage />
+													{isEditing && !replaceCodingResource && (
+														<p className="text-xs text-muted-foreground mt-1">
+															Enable “Replace coding exercise data” to update
+															solution/test cases.
+														</p>
+													)}
+												</FormItem>
+											)}
+										/>
+
+										<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+											<FormField
+												control={form.control}
+												name="timeLimit"
+												render={({field}) => (
+													<FormItem>
+														<FormLabel>Time Limit (s)</FormLabel>
+														<FormControl>
+															<Input
+																{...field}
+																type="number"
+																min="0"
+																step="1"
+																disabled={
+																	isLoading || isSubmitting || isCodingResourceLocked
+																}
+																onChange={(e) =>
+																	field.onChange(
+																		e.target.value === ""
+																			? undefined
+																			: parseInt(e.target.value, 10)
+																	)
+																}
+															/>
+														</FormControl>
+														<FormMessage />
+													</FormItem>
+												)}
+											/>
+
+											<FormField
+												control={form.control}
+												name="memoryLimit"
+												render={({field}) => (
+													<FormItem>
+														<FormLabel>Memory Limit (MB)</FormLabel>
+														<FormControl>
+															<Input
+																{...field}
+																type="number"
+																min="0"
+																step="1"
+																disabled={
+																	isLoading || isSubmitting || isCodingResourceLocked
+																}
+																onChange={(e) =>
+																	field.onChange(
+																		e.target.value === ""
+																			? undefined
+																			: parseInt(e.target.value, 10)
+																	)
+																}
+															/>
+														</FormControl>
+														<FormMessage />
+													</FormItem>
+												)}
+											/>
+										</div>
+
+										{/* Test cases */}
+										<div className="space-y-3">
+											<div className="flex items-center justify-between">
+												<div>
+													<h3 className="text-lg font-medium">
+														Test Cases ({codingTestCases.length})
+													</h3>
+													<p className="text-sm text-gray-500">
+														Hidden test cases are never shown to students.
+													</p>
+												</div>
+												<Button
+													type="button"
+													variant="outline"
+													onClick={addNewCodingTestCase}
+													disabled={
+														isLoading ||
+														isSubmitting ||
+														(isEditing && !replaceCodingResource)
+													}
+												>
+													<MdAdd className="h-4 w-4 mr-2" />
+													Add Test
+												</Button>
+											</div>
+
+											{codingTestCases.length === 0 ? (
+												<div className="text-center py-8 text-gray-500 border border-dashed border-gray-300 rounded-lg">
+													<p>No test cases yet. Add your first test case!</p>
+												</div>
+											) : (
+												<div className="space-y-3">
+													{codingTestCases.map((tc, index) => (
+														<Card key={tc.id} className="p-4">
+															<div className="flex items-center justify-between mb-3">
+																<div className="flex items-center gap-2">
+																	<Badge variant="outline">
+																		Test {index + 1}
+																	</Badge>
+																	<div className="flex items-center gap-2">
+																		<Checkbox
+																			checked={tc.isHidden}
+																			disabled={
+																				isLoading ||
+																				isSubmitting ||
+																				(isEditing && !replaceCodingResource)
+																			}
+																			onCheckedChange={(checked) =>
+																				updateCodingTestCase(tc.id, {
+																					isHidden: Boolean(checked),
+																				})
+																			}
+																		/>
+																		<span className="text-sm text-gray-700">
+																			Hidden
+																		</span>
+																	</div>
+																</div>
+																<Button
+																	type="button"
+																	variant="outline"
+																	size="sm"
+																	onClick={() => deleteCodingTestCase(tc.id)}
+																	disabled={
+																		isLoading ||
+																		isSubmitting ||
+																		(isEditing && !replaceCodingResource) ||
+																		codingTestCases.length <= 1
+																	}
+																	className="text-red-600 hover:text-red-700"
+																>
+																	<MdDelete className="h-3 w-3" />
+																</Button>
+															</div>
+
+															<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+																<div>
+																	<Label className="text-sm">Input</Label>
+																	<Textarea
+																		value={tc.input}
+																		onChange={(e) =>
+																			updateCodingTestCase(tc.id, {
+																				input: e.target.value,
+																			})
+																		}
+																		rows={4}
+																		className="font-mono text-sm mt-1"
+																		disabled={
+																			isLoading ||
+																			isSubmitting ||
+																			(isEditing && !replaceCodingResource)
+																		}
+																	/>
+																</div>
+																<div>
+																	<Label className="text-sm">
+																		Expected Output{" "}
+																		<span className="text-red-500">*</span>
+																	</Label>
+																	<Textarea
+																		value={tc.expectedOutput}
+																		onChange={(e) =>
+																			updateCodingTestCase(tc.id, {
+																				expectedOutput: e.target.value,
+																			})
+																		}
+																		rows={4}
+																		className="font-mono text-sm mt-1"
+																		disabled={
+																			isLoading ||
+																			isSubmitting ||
+																			(isEditing && !replaceCodingResource)
+																		}
+																	/>
+																</div>
+															</div>
+														</Card>
+													))}
+												</div>
+											)}
+										</div>
+									</div>
+								)}
+
+								{selectedContentType !== "quiz" && selectedContentType !== "coding" && (
 									<FormField
 										control={form.control}
 										name="resourceDescription"

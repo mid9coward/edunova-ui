@@ -5,6 +5,7 @@ import {Card} from "@/components/ui/card";
 import {ROUTE_CONFIG} from "@/configs/routes";
 import {DEFAULT_THUMBNAIL} from "@/constants";
 import {IEnrolledCourse} from "@/types/course";
+import dayjs from "dayjs";
 import Image from "next/image";
 import Link from "next/link";
 import {MdStar} from "react-icons/md";
@@ -23,11 +24,22 @@ const CourseProgressCard = ({course}: CourseProgressCardProps) => {
 		averageRating,
 		completedLessons,
 		totalLessons,
+		progressPercent,
+		isCompleted,
+		completedAt,
 		level,
 	} = course;
 
 	const progressPercentage =
-		totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0;
+		typeof progressPercent === "number"
+			? progressPercent
+			: totalLessons > 0
+			? Math.round((completedLessons / totalLessons) * 100)
+			: 0;
+
+	const completed =
+		(isCompleted ?? (completedLessons === totalLessons && totalLessons > 0)) ===
+		true;
 	return (
 		<Link href={`${ROUTE_CONFIG.COURSES}/${slug}`}>
 			<Card className="group relative overflow-hidden border-0 bg-gradient-to-br from-white via-blue-50/30 to-purple-50/30 dark:from-gray-900 dark:via-blue-950/20 dark:to-purple-950/20 shadow-lg sm:shadow-xl hover:shadow-xl sm:hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 sm:hover:-translate-y-2 hover:scale-[1.01] sm:hover:scale-[1.02] cursor-pointer">
@@ -82,6 +94,19 @@ const CourseProgressCard = ({course}: CourseProgressCardProps) => {
 									</Badge>
 								</div>
 							</div>
+
+							{completed && (
+								<div className="mb-2 sm:mb-3">
+									<Badge className="bg-gradient-to-r from-emerald-500 to-green-600 text-white font-medium px-2 sm:px-3 py-0.5 sm:py-1 text-[10px] sm:text-xs shadow-md sm:shadow-lg">
+										Completed
+									</Badge>
+									{completedAt && (
+										<span className="ml-2 text-[10px] sm:text-xs text-gray-600 dark:text-gray-400">
+											{dayjs(completedAt).format("MMM D, YYYY")}
+										</span>
+									)}
+								</div>
+							)}
 
 							{/* Course Title */}
 							<h3 className="font-bold text-sm sm:text-base md:text-lg lg:text-xl text-gray-900 dark:text-white mb-1 sm:mb-2 leading-tight line-clamp-2">

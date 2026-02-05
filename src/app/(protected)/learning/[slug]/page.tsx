@@ -9,6 +9,7 @@ import React from "react";
 import {usePublicCourseChapters} from "@/hooks/use-chapters";
 import {useLesson} from "@/hooks/use-lessons";
 import {useUserCourseTracks} from "@/hooks/use-track";
+import type {ContentType} from "@/types/lesson";
 
 // Static imports for critical components
 import Loader from "@/components/loader";
@@ -41,6 +42,13 @@ const LessonQuiz = dynamic(() => import("./components/quiz/lesson-quiz"), {
 	ssr: false,
 });
 
+const LessonCodingExercise = dynamic(
+	() => import("./components/lesson-coding-exercise"),
+	{
+		ssr: false,
+	}
+);
+
 // Types
 interface ChapterWithLessons {
 	_id: string;
@@ -51,7 +59,7 @@ interface ChapterWithLessons {
 interface LessonInChapter {
 	_id: string;
 	title: string;
-	contentType: "video" | "quiz" | "article";
+	contentType: ContentType;
 	duration?: number;
 	preview?: boolean;
 	isPublished?: boolean;
@@ -168,6 +176,9 @@ const LessonPage = () => {
 
 			case "quiz":
 				return <LessonQuiz lesson={lesson} />;
+
+			case "coding":
+				return <LessonCodingExercise lesson={lesson} />;
 
 			default:
 				return (

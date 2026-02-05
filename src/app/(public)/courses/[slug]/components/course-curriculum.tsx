@@ -14,6 +14,7 @@ import {
 	Award,
 	BookOpen,
 	Clock,
+	Code2,
 	HelpCircle,
 	Layers,
 	LucideFileText,
@@ -233,6 +234,9 @@ const CourseCurriculum = ({chapters, isLoading}: CourseCurriculumProps) => {
 																)}
 																{lesson.contentType === "article" && (
 																	<LucideFileText className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground" />
+																)}
+																{lesson.contentType === "coding" && (
+																	<Code2 className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground" />
 																)}
 															</div>
 															<span className="text-xs sm:text-sm text-foreground truncate">

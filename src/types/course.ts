@@ -264,9 +264,13 @@ export interface IEnrolledCourse {
 	slug: string;
 	image: string;
 	description: string;
+	excerpt?: string;
 	level: CourseLevel;
 	averageRating: number;
 	totalReviews: number;
 	totalLessons: number;
 	completedLessons: number;
+	progressPercent: number;
+	isCompleted: boolean;
+	completedAt?: string | null;
 }
