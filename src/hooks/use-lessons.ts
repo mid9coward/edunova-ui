@@ -1,6 +1,7 @@
 import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
 import LessonsService from "@/services/lessons";
 import type {
+	CodingRuntimeOption,
 	RunCodeRequest,
 	RunCodeResponse,
 	SubmitCodeRequest,
@@ -30,6 +31,7 @@ export const lessonsKeys = {
 	detail: (id: string, params?: Record<string, unknown>) =>
 		[...lessonsKeys.details(), id, params] as const,
 	slug: (slug: string) => [...lessonsKeys.details(), "slug", slug] as const,
+	codingRuntimes: () => [...lessonsKeys.all, "coding-runtimes"] as const,
 };
 
 // Default empty params object for stable reference
@@ -72,6 +74,17 @@ export function useLesson(id: string, params?: Record<string, unknown>) {
 		queryKey: lessonsKeys.detail(id, params),
 		queryFn: () => LessonsService.getLesson(id, params),
 		enabled: !!id,
+	});
+}
+
+// Hook to list available coding runtimes for lesson authoring
+export function useCodingRuntimes(enabled: boolean = true) {
+	return useQuery({
+		queryKey: lessonsKeys.codingRuntimes(),
+		queryFn: (): Promise<CodingRuntimeOption[]> =>
+			LessonsService.getCodingRuntimes(),
+		enabled,
+		staleTime: 10 * 60 * 1000,
 	});
 }
 

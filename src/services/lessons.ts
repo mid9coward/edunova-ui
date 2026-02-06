@@ -17,6 +17,7 @@ const ENDPOINTS = {
 	LESSON_REORDER: "/lessons/reorder",
 	LESSON_RUN: (id: string) => `/lessons/${id}/run`,
 	LESSON_SUBMIT: (id: string) => `/lessons/${id}/submit`,
+	LESSON_CODING_RUNTIMES: "/lessons/coding/runtimes",
 } as const;
 
 export interface RunCodeRequest {
@@ -51,6 +52,12 @@ export interface SubmitCodeSummaryResponse {
 	memoryKb: number | null;
 	compileError?: string;
 	failedTest?: SubmitCodeFailedTest;
+}
+
+export interface CodingRuntimeOption {
+	language: string;
+	versions: string[];
+	aliases: string[];
 }
 
 export class LessonsService {
@@ -146,6 +153,11 @@ export class LessonsService {
 			ENDPOINTS.LESSON_SUBMIT(lessonId),
 			payload
 		);
+	}
+
+	// List available coding runtimes for authoring forms
+	static async getCodingRuntimes(): Promise<CodingRuntimeOption[]> {
+		return ApiService.get<CodingRuntimeOption[]>(ENDPOINTS.LESSON_CODING_RUNTIMES);
 	}
 }
 

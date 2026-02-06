@@ -15,7 +15,12 @@ import {
 import {toast} from "sonner";
 import * as yup from "yup";
 
-import {useCreateLesson, useLesson, useUpdateLesson} from "@/hooks/use-lessons";
+import {
+	useCodingRuntimes,
+	useCreateLesson,
+	useLesson,
+	useUpdateLesson,
+} from "@/hooks/use-lessons";
 import {QuestionType} from "@/types/quiz";
 import type {
 	ContentType,
@@ -39,6 +44,7 @@ import {
 import {
 	Form,
 	FormControl,
+	FormDescription,
 	FormField,
 	FormItem,
 	FormLabel,
@@ -196,6 +202,31 @@ const getContentTypeIcon = (type: ContentType) => {
 
 const normalizeEscapedNewlines = (value: string): string =>
 	value.replace(/\\n/g, "\n").replace(/\\t/g, "\t");
+
+const normalizeLanguageValue = (value?: string): string =>
+	(value || "").trim().toLowerCase();
+
+type CodingRuntimeFormOption = {
+	language: string;
+	versions: string[];
+	aliases: string[];
+};
+
+const findRuntimeByLanguage = (
+	runtimes: CodingRuntimeFormOption[],
+	language?: string
+) => {
+	const normalizedLanguage = normalizeLanguageValue(language);
+	if (!normalizedLanguage) return null;
+
+	return (
+		runtimes.find(
+			(runtime) =>
+				runtime.language === normalizedLanguage ||
+				runtime.aliases.includes(normalizedLanguage)
+		) || null
+	);
+};
 
 // Question Editor Component
 interface QuestionEditorProps {
@@ -551,10 +582,22 @@ const LessonFormDialog = ({
 		handleSubmit,
 		reset,
 		watch,
+		setValue,
+		getValues,
 		formState: {isSubmitting},
 	} = form;
 	const selectedContentType = watch("contentType");
+	const selectedCodingLanguage = watch("codingLanguage");
 	const isCodingResourceLocked = isEditing && selectedContentType === "coding" && !replaceCodingResource;
+
+	const {data: codingRuntimes = [], isLoading: isCodingRuntimesLoading} =
+		useCodingRuntimes(open && selectedContentType === "coding");
+
+	const selectedCodingRuntime = React.useMemo(() => {
+		return findRuntimeByLanguage(codingRuntimes, selectedCodingLanguage);
+	}, [codingRuntimes, selectedCodingLanguage]);
+
+	const availableCodingVersions = selectedCodingRuntime?.versions || [];
 
 	React.useEffect(() => {
 		if (open) {
@@ -669,6 +712,34 @@ const LessonFormDialog = ({
 			]);
 		}
 	}, [selectedContentType, codingTestCases.length]);
+
+	React.useEffect(() => {
+		if (selectedContentType !== "coding") return;
+		if (codingRuntimes.length === 0) return;
+
+		const currentLanguage = normalizeLanguageValue(getValues("codingLanguage"));
+		const currentVersion = (getValues("codingVersion") || "").trim();
+		const matchedRuntime = findRuntimeByLanguage(codingRuntimes, currentLanguage);
+
+		if (!matchedRuntime) {
+			const firstRuntime = codingRuntimes[0];
+			setValue("codingLanguage", firstRuntime.language, {shouldValidate: true});
+			setValue("codingVersion", firstRuntime.versions[0] || "", {
+				shouldValidate: true,
+			});
+			return;
+		}
+
+		if (matchedRuntime.language !== currentLanguage) {
+			setValue("codingLanguage", matchedRuntime.language, {shouldValidate: true});
+		}
+
+		if (!matchedRuntime.versions.includes(currentVersion)) {
+			setValue("codingVersion", matchedRuntime.versions[0] || "", {
+				shouldValidate: true,
+			});
+		}
+	}, [selectedContentType, codingRuntimes, getValues, setValue]);
 
 	// Quiz questions management functions
 	const addNewQuestion = () => {
@@ -1204,15 +1275,72 @@ const LessonFormDialog = ({
 														<FormLabel>
 															Language <span className="text-red-500">*</span>
 														</FormLabel>
-														<FormControl>
-															<Input
-																{...field}
-																placeholder="python / javascript / cpp / java"
-																disabled={
-																	isLoading || isSubmitting || isCodingResourceLocked
+														<Select
+															value={field.value || undefined}
+															onValueChange={(value) => {
+																field.onChange(value);
+																const matchedRuntime = codingRuntimes.find(
+																	(runtime) => runtime.language === value
+																);
+																if (!matchedRuntime) {
+																	setValue("codingVersion", "", {
+																		shouldValidate: true,
+																	});
+																	return;
 																}
-															/>
-														</FormControl>
+
+																const currentVersion = (
+																	getValues("codingVersion") || ""
+																).trim();
+																if (
+																	!matchedRuntime.versions.includes(currentVersion)
+																) {
+																	setValue(
+																		"codingVersion",
+																		matchedRuntime.versions[0] || "",
+																		{shouldValidate: true}
+																	);
+																}
+															}}
+															disabled={
+																isLoading ||
+																isSubmitting ||
+																isCodingResourceLocked ||
+																isCodingRuntimesLoading ||
+																codingRuntimes.length === 0
+															}
+														>
+															<FormControl>
+																<SelectTrigger className="w-full">
+																	<SelectValue placeholder="Select language" />
+																</SelectTrigger>
+															</FormControl>
+															<SelectContent>
+																{codingRuntimes.map((runtime) => (
+																	<SelectItem
+																		key={runtime.language}
+																		value={runtime.language}
+																	>
+																		<div className="flex flex-col">
+																			<span className="capitalize">
+																				{runtime.language}
+																			</span>
+																			{runtime.aliases.length > 0 && (
+																				<span className="text-xs text-muted-foreground">
+																					{runtime.aliases.join(", ")}
+																				</span>
+																			)}
+																		</div>
+																	</SelectItem>
+																))}
+															</SelectContent>
+														</Select>
+														{codingRuntimes.length === 0 && (
+															<FormDescription>
+																Runtime list unavailable. Keep default values or
+																check Piston connection.
+															</FormDescription>
+														)}
 														<FormMessage />
 													</FormItem>
 												)}
@@ -1226,15 +1354,36 @@ const LessonFormDialog = ({
 														<FormLabel>
 															Version <span className="text-red-500">*</span>
 														</FormLabel>
-														<FormControl>
-															<Input
-																{...field}
-																placeholder="3.10.0"
-																disabled={
-																	isLoading || isSubmitting || isCodingResourceLocked
-																}
-															/>
-														</FormControl>
+														<Select
+															value={field.value || undefined}
+															onValueChange={field.onChange}
+															disabled={
+																isLoading ||
+																isSubmitting ||
+																isCodingResourceLocked ||
+																isCodingRuntimesLoading ||
+																availableCodingVersions.length === 0
+															}
+														>
+															<FormControl>
+																<SelectTrigger className="w-full">
+																	<SelectValue placeholder="Select version" />
+																</SelectTrigger>
+															</FormControl>
+															<SelectContent>
+																{availableCodingVersions.map((version) => (
+																	<SelectItem key={version} value={version}>
+																		{version}
+																	</SelectItem>
+																))}
+															</SelectContent>
+														</Select>
+														{selectedCodingLanguage &&
+															availableCodingVersions.length === 0 && (
+																<FormDescription>
+																	No versions found for selected language.
+																</FormDescription>
+															)}
 														<FormMessage />
 													</FormItem>
 												)}
