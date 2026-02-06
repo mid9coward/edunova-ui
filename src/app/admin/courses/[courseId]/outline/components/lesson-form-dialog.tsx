@@ -194,6 +194,9 @@ const getContentTypeIcon = (type: ContentType) => {
 	}
 };
 
+const normalizeEscapedNewlines = (value: string): string =>
+	value.replace(/\\n/g, "\n").replace(/\\t/g, "\t");
+
 // Question Editor Component
 interface QuestionEditorProps {
 	question: QuizQuestionForm;
@@ -570,8 +573,12 @@ const LessonFormDialog = ({
 					passingScorePercentage: lesson.resource?.passingScorePercentage || 70,
 					codingLanguage: lesson.resource?.language || "python",
 					codingVersion: lesson.resource?.version || "3.10.0",
-					problemStatement: lesson.resource?.problemStatement || "",
-					starterCode: lesson.resource?.starterCode || "",
+					problemStatement: normalizeEscapedNewlines(
+						lesson.resource?.problemStatement || ""
+					),
+					starterCode: normalizeEscapedNewlines(
+						lesson.resource?.starterCode || ""
+					),
 					solutionCode: "",
 					timeLimit: lesson.resource?.constraints?.timeLimit ?? 2,
 					memoryLimit: lesson.resource?.constraints?.memoryLimit ?? 128,
@@ -598,8 +605,10 @@ const LessonFormDialog = ({
 					Array.isArray(existingTestCases)
 						? existingTestCases.map((tc, index) => ({
 								id: tc._id || `existing-tc-${index}`,
-								input: tc.input ?? "",
-								expectedOutput: tc.expectedOutput ?? "",
+								input: normalizeEscapedNewlines(tc.input ?? ""),
+								expectedOutput: normalizeEscapedNewlines(
+									tc.expectedOutput ?? ""
+								),
 								isHidden: Boolean(tc.isHidden),
 							}))
 						: []
@@ -780,12 +789,14 @@ const LessonFormDialog = ({
 					title: data.title,
 					language: codingLanguage,
 					version: codingVersion,
-					problemStatement: data.problemStatement,
-					starterCode: data.starterCode,
-					solutionCode: data.solutionCode,
+					problemStatement: normalizeEscapedNewlines(data.problemStatement),
+					starterCode: normalizeEscapedNewlines(data.starterCode),
+					solutionCode: normalizeEscapedNewlines(data.solutionCode),
 					testCases: codingTestCases.map((tc) => ({
-						input: tc.input ?? "",
-						expectedOutput: tc.expectedOutput ?? "",
+						input: normalizeEscapedNewlines(tc.input ?? ""),
+						expectedOutput: normalizeEscapedNewlines(
+							tc.expectedOutput ?? ""
+						),
 						isHidden: tc.isHidden,
 					})),
 					constraints: {

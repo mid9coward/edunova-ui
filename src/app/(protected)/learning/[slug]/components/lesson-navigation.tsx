@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import {Button} from "@/components/ui/button";
+import {getRoutes} from "@/configs/routes";
 import {
 	ChevronLeft,
 	ChevronRight,
@@ -85,12 +86,13 @@ const LessonNavigation = ({
 							</Button>
 						</Link>
 					) : (
-						<Button
-							disabled
-							className="flex items-center space-x-1 sm:space-x-2 px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 bg-gradient-to-br from-green-500 via-green-600 to-green-700 text-white cursor-default shadow-md hover:shadow-lg hover:shadow-green-500/25 transition-all duration-300 transform-gpu will-change-transform animate-pulse h-9 sm:h-10"
-						>
-							<span className="font-medium text-xs sm:text-sm">COMPLETED</span>
-						</Button>
+						<Link href={getRoutes.courseDetail(courseSlug)}>
+							<Button className="flex items-center space-x-1 sm:space-x-2 px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 bg-gradient-to-br from-green-500 via-green-600 to-green-700 text-white shadow-md hover:shadow-lg hover:shadow-green-500/25 transition-all duration-300 transform-gpu will-change-transform h-9 sm:h-10">
+								<span className="font-medium text-xs sm:text-sm">
+									COMPLETED
+								</span>
+							</Button>
+						</Link>
 					)}
 				</div>
 
