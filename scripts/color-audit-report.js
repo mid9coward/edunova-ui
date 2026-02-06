@@ -24,17 +24,41 @@ const INLINE_STYLE_COLOR_REGEX =
 	/\b(style\s*=\s*|style\s*:\s*|stopColor\s*=|stroke\s*=|fill\s*=|color\s*:|background(?:Color)?\s*:)/;
 
 const SOURCE_OF_TRUTH_PATHS = [
-	"src/app/styles/base.css",
-	"src/app/styles/components.css",
-	"src/app/styles/utilities.css",
-	"src/app/styles/animations.css",
-	"src/app/styles/tiptap.css",
+	{
+		path: "src/app/styles/base.css",
+		rationale: "Theme tokens and core palette source-of-truth.",
+	},
+	{
+		path: "src/app/styles/components.css",
+		rationale: "Shared component style layer with approved visual effects.",
+	},
+	{
+		path: "src/app/styles/utilities.css",
+		rationale: "Legacy utility compatibility layer intentionally centralizes mappings.",
+	},
+	{
+		path: "src/app/styles/animations.css",
+		rationale: "Animation effects and gradients intentionally authored at style-layer.",
+	},
+	{
+		path: "src/app/styles/tiptap.css",
+		rationale: "Editor-specific styling layer.",
+	},
 ];
 
 const ALLOWED_EXCEPTION_PATHS = [
-	"src/lib/config/stripe.ts",
-	"src/components/tiptap/toolbar.tsx",
-	"src/components/tiptap/mention-node-view.tsx",
+	{
+		path: "src/lib/config/stripe.ts",
+		rationale: "Third-party Stripe appearance configuration.",
+	},
+	{
+		path: "src/components/tiptap/toolbar.tsx",
+		rationale: "Rich text color picker defaults and authoring palette.",
+	},
+	{
+		path: "src/components/tiptap/mention-node-view.tsx",
+		rationale: "Editor node rendering style boundary.",
+	},
 ];
 
 function toPosixPath(filePath) {
@@ -45,15 +69,20 @@ function relativePath(filePath) {
 	return toPosixPath(path.relative(ROOT, filePath));
 }
 
-function isAllowedPath(relPath) {
-	return (
-		SOURCE_OF_TRUTH_PATHS.some((p) => relPath.startsWith(p)) ||
-		ALLOWED_EXCEPTION_PATHS.some((p) => relPath.startsWith(p))
-	);
+function pathMatches(relPath, entries) {
+	return entries.some((entry) => relPath.startsWith(entry.path));
+}
+
+function isSourceOfTruthPath(relPath) {
+	return pathMatches(relPath, SOURCE_OF_TRUTH_PATHS);
+}
+
+function isAllowedExceptionPath(relPath) {
+	return pathMatches(relPath, ALLOWED_EXCEPTION_PATHS);
 }
 
 function classifyFinding({relPath, kind, lineText}) {
-	if (isAllowedPath(relPath)) {
+	if (isAllowedExceptionPath(relPath)) {
 		return "P2";
 	}
 
@@ -145,10 +174,14 @@ function buildMarkdownReport(report) {
 	lines.push("## Summary");
 	lines.push("");
 	lines.push(`- Total findings: **${report.summary.total}**`);
+	lines.push(`- Actionable findings (P0 + P1): **${report.summary.actionable}**`);
+	lines.push(`- Approved exceptions (P2): **${report.summary.exceptions}**`);
 	lines.push(`- P0: **${report.summary.P0}**`);
 	lines.push(`- P1: **${report.summary.P1}**`);
 	lines.push(`- P2: **${report.summary.P2}**`);
-	lines.push(`- Scanned files: **${report.summary.scannedFiles}**`);
+	lines.push(`- Total files discovered: **${report.summary.discoveredFiles}**`);
+	lines.push(`- Source-of-truth files skipped from scan: **${report.summary.skippedSourceOfTruthFiles}**`);
+	lines.push(`- Analyzed files: **${report.summary.analyzedFiles}**`);
 	lines.push("");
 	lines.push("## Top files by finding count");
 	lines.push("");
@@ -171,11 +204,16 @@ function buildMarkdownReport(report) {
 	lines.push("");
 	lines.push("## Approved exceptions");
 	lines.push("");
-	for (const exceptionPath of ALLOWED_EXCEPTION_PATHS) {
-		lines.push(`- \`${exceptionPath}\``);
+	for (const exceptionEntry of ALLOWED_EXCEPTION_PATHS) {
+		lines.push(
+			`- \`${exceptionEntry.path}\`: ${exceptionEntry.rationale}`
+		);
 	}
-	for (const sourcePath of SOURCE_OF_TRUTH_PATHS) {
-		lines.push(`- \`${sourcePath}\` (source-of-truth layer)`);
+	lines.push("");
+	lines.push("## Source-of-truth style layers (excluded from findings)");
+	lines.push("");
+	for (const sourceEntry of SOURCE_OF_TRUTH_PATHS) {
+		lines.push(`- \`${sourceEntry.path}\`: ${sourceEntry.rationale}`);
 	}
 	lines.push("");
 
@@ -185,9 +223,15 @@ function buildMarkdownReport(report) {
 async function run() {
 	const files = await listFiles(SRC_DIR);
 	const findings = [];
+	const skippedSourceOfTruthFiles = [];
 
 	for (const filePath of files) {
 		const relPath = relativePath(filePath);
+		if (isSourceOfTruthPath(relPath)) {
+			skippedSourceOfTruthFiles.push(relPath);
+			continue;
+		}
+
 		const content = await fs.readFile(filePath, "utf8");
 
 		const hardColorFindings = collectLineMatches(content, HARD_COLOR_REGEX);
@@ -238,15 +282,22 @@ async function run() {
 	for (const item of findings) {
 		byFileMap.set(item.file, (byFileMap.get(item.file) || 0) + 1);
 	}
+	const p0Count = findings.filter((f) => f.severity === "P0").length;
+	const p1Count = findings.filter((f) => f.severity === "P1").length;
+	const p2Count = findings.filter((f) => f.severity === "P2").length;
 
 	const report = {
 		generatedAt: new Date().toISOString(),
 		summary: {
 			total: findings.length,
-			P0: findings.filter((f) => f.severity === "P0").length,
-			P1: findings.filter((f) => f.severity === "P1").length,
-			P2: findings.filter((f) => f.severity === "P2").length,
-			scannedFiles: files.length,
+			actionable: p0Count + p1Count,
+			exceptions: p2Count,
+			P0: p0Count,
+			P1: p1Count,
+			P2: p2Count,
+			discoveredFiles: files.length,
+			skippedSourceOfTruthFiles: skippedSourceOfTruthFiles.length,
+			analyzedFiles: files.length - skippedSourceOfTruthFiles.length,
 			byFile: Array.from(byFileMap.entries()).map(([file, count]) => ({
 				file,
 				count,
@@ -260,9 +311,12 @@ async function run() {
 	await fs.writeFile(OUTPUT_MD, buildMarkdownReport(report), "utf8");
 
 	console.log(`Color audit completed: ${report.summary.total} findings`);
+	console.log(`- Actionable: ${report.summary.actionable}`);
+	console.log(`- Exceptions: ${report.summary.exceptions}`);
 	console.log(`- P0: ${report.summary.P0}`);
 	console.log(`- P1: ${report.summary.P1}`);
 	console.log(`- P2: ${report.summary.P2}`);
+	console.log(`- Skipped source-of-truth files: ${report.summary.skippedSourceOfTruthFiles}`);
 	console.log(`Reports:`);
 	console.log(`- ${relativePath(OUTPUT_JSON)}`);
 	console.log(`- ${relativePath(OUTPUT_MD)}`);

@@ -5,6 +5,8 @@ export type ColorAuditRoute = {
 	category: ColorAuditRouteCategory;
 	requiresAuth: boolean;
 	components: string[];
+	requiredEnv?: string[];
+	readySelector?: string;
 };
 
 export const colorRoutesManifest: ColorAuditRoute[] = [
@@ -51,9 +53,10 @@ export const colorRoutesManifest: ColorAuditRoute[] = [
 		components: ["status-page", "buttons", "text-contrast"],
 	},
 	{
-		path: "/learning/dsa-for-beginners-arrays-hashing",
+		path: "/learning/{{COLOR_AUDIT_LEARNING_SLUG}}?id={{COLOR_AUDIT_LESSON_ID}}",
 		category: "protected",
 		requiresAuth: true,
+		requiredEnv: ["COLOR_AUDIT_LEARNING_SLUG", "COLOR_AUDIT_LESSON_ID"],
 		components: ["lesson-sidebar", "coding-editor", "tabs", "badges"],
 	},
 	{

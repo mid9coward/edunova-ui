@@ -59,13 +59,26 @@
 - Output:
   - `docs/reports/ui-color-audit-report.json`
   - `docs/reports/ui-color-audit-report.md`
+- Notes:
+  - Source-of-truth style files (`base.css`, `components.css`, `utilities.css`, `animations.css`, `tiptap.css`) are excluded from findings to keep the report actionable.
+  - Approved exception paths are still tracked as `P2` with rationale.
 
 ### 2) Visual + contrast audit
 - Use `tests/ui/color-routes-manifest.ts` as route matrix.
-- Run optional e2e spec with environment:
-  - `COLOR_AUDIT_E2E=1`
-  - `COLOR_AUDIT_BASE_URL=http://localhost:4000`
+- One-time setup:
+  - `npm install`
+  - `npx playwright install chromium`
+- Run:
+  - `npm run audit:color:e2e:public` (public routes)
+  - `npm run audit:color:e2e` (same as public unless auth flags provided)
+  - `npm run audit:color:e2e:auth` (protected/admin routes; requires auth state)
+- Environment:
+  - `COLOR_AUDIT_BASE_URL=http://localhost:4000` (or deployed URL)
+  - `COLOR_AUDIT_STORAGE_STATE=tests/ui/.auth/user.json` (required for auth routes)
+  - `COLOR_AUDIT_INCLUDE_AUTH=1` (include routes with `requiresAuth: true`)
+  - `COLOR_AUDIT_LEARNING_SLUG=<slug>` + `COLOR_AUDIT_LESSON_ID=<id>` (for learning route template)
 - The spec captures screenshots per viewport and checks contrast heuristics.
+- Artifacts are written to `tests/ui/.artifacts/color-regression/<timestamp>/`.
 
 ### 3) Manual QA states
 - Verify default/hover/active/focus-visible/disabled/error/success/loading/selected.

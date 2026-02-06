@@ -7,7 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "audit:color:static": "node scripts/color-audit-report.js"
+    "audit:color:static": "node scripts/color-audit-report.js",
+    "audit:color:all": "npm run audit:color:static && npm run audit:color:e2e:public",
+    "audit:color:e2e:public": "cross-env COLOR_AUDIT_E2E=1 COLOR_AUDIT_INCLUDE_AUTH=0 tsx --test tests/ui/color-regression.spec.ts",
+    "audit:color:e2e": "cross-env COLOR_AUDIT_E2E=1 tsx --test tests/ui/color-regression.spec.ts",
+    "audit:color:e2e:auth": "cross-env COLOR_AUDIT_E2E=1 COLOR_AUDIT_INCLUDE_AUTH=1 tsx --test tests/ui/color-regression.spec.ts"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
@@ -106,8 +110,10 @@
     "cross-env": "^10.0.0",
     "eslint": "^9",
     "eslint-config-next": "15.4.4",
+    "playwright": "^1.58.1",
     "sass": "^1.93.2",
     "tailwindcss": "^4",
+    "tsx": "^4.21.0",
     "tw-animate-css": "^1.3.5",
     "typescript": "^5"
   }

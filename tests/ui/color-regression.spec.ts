@@ -16,8 +16,12 @@ type PlaywrightPage = {
 		url: string,
 		options?: {waitUntil?: "networkidle" | "load"; timeout?: number}
 	) => Promise<{status?: () => number} | null>;
+	waitForSelector: (
+		selector: string,
+		options?: {timeout?: number; state?: "attached" | "visible"}
+	) => Promise<unknown>;
 	screenshot: (options: {path: string; fullPage: boolean}) => Promise<void>;
-	evaluate: <T>(fn: () => T) => Promise<T>;
+	evaluate: <T>(fn: (() => T) | string, arg?: unknown) => Promise<T>;
 	close: () => Promise<void>;
 };
 
@@ -29,6 +33,7 @@ type PlaywrightContext = {
 type PlaywrightBrowser = {
 	newContext: (options: {
 		viewport: {width: number; height: number};
+		storageState?: string;
 	}) => Promise<PlaywrightContext>;
 	close: () => Promise<void>;
 };
@@ -63,6 +68,127 @@ const BASE_URL = process.env.COLOR_AUDIT_BASE_URL ?? "http://localhost:4000";
 const ENABLE_E2E = process.env.COLOR_AUDIT_E2E === "1";
 const INCLUDE_AUTH_ROUTES = process.env.COLOR_AUDIT_INCLUDE_AUTH === "1";
 const PLAYWRIGHT_MODULE_NAME = process.env.PLAYWRIGHT_PACKAGE ?? "playwright";
+const STORAGE_STATE = process.env.COLOR_AUDIT_STORAGE_STATE;
+
+const CONTRAST_EVAL_SCRIPT = String.raw`(() => {
+  const parseRgba = (value) => {
+    const trimmed = String(value || "").trim().toLowerCase();
+    const match = trimmed.match(
+      /^rgba?\((\d+)[,\s]+(\d+)[,\s]+(\d+)(?:[,\s/]+([\d.]+))?\)$/
+    );
+    if (!match) return null;
+    return {
+      r: Number(match[1]),
+      g: Number(match[2]),
+      b: Number(match[3]),
+      a: match[4] ? Number(match[4]) : 1,
+    };
+  };
+
+  const composite = (fg, bg) => {
+    const alpha = fg.a + bg.a * (1 - fg.a);
+    if (alpha <= 0) return {r: 0, g: 0, b: 0, a: 0};
+    return {
+      r: Math.round((fg.r * fg.a + bg.r * bg.a * (1 - fg.a)) / alpha),
+      g: Math.round((fg.g * fg.a + bg.g * bg.a * (1 - fg.a)) / alpha),
+      b: Math.round((fg.b * fg.a + bg.b * bg.a * (1 - fg.a)) / alpha),
+      a: alpha,
+    };
+  };
+
+  const srgbToLinear = (channel) => {
+    const normalized = channel / 255;
+    return normalized <= 0.04045
+      ? normalized / 12.92
+      : ((normalized + 0.055) / 1.055) ** 2.4;
+  };
+
+  const luminance = (color) => {
+    return (
+      0.2126 * srgbToLinear(color.r) +
+      0.7152 * srgbToLinear(color.g) +
+      0.0722 * srgbToLinear(color.b)
+    );
+  };
+
+  const contrastRatio = (a, b) => {
+    const la = luminance(a);
+    const lb = luminance(b);
+    const lighter = Math.max(la, lb);
+    const darker = Math.min(la, lb);
+    return (lighter + 0.05) / (darker + 0.05);
+  };
+
+  const getEffectiveBackground = (element) => {
+    const fallback = {r: 40, g: 42, b: 54, a: 1};
+    let current = element;
+
+    while (current) {
+      const style = getComputedStyle(current);
+      const parsed = parseRgba(style.backgroundColor);
+      if (parsed && parsed.a > 0) {
+        if (parsed.a >= 1) return parsed;
+        const parent = current.parentElement;
+        const parentColor = parent ? getEffectiveBackground(parent) : fallback;
+        return composite(parsed, parentColor);
+      }
+      current = current.parentElement;
+    }
+
+    return fallback;
+  };
+
+  const candidates = Array.from(
+    document.querySelectorAll(
+      "p, span, a, button, label, li, td, th, h1, h2, h3, h4, h5, h6, small"
+    )
+  ).slice(0, 800);
+
+  const failures = [];
+  let checkedCount = 0;
+
+  for (const element of candidates) {
+    const htmlElement = element;
+    const text = String(htmlElement.innerText || "").trim();
+    if (!text) continue;
+
+    const rect = htmlElement.getBoundingClientRect();
+    if (rect.width < 2 || rect.height < 2) continue;
+
+    const style = getComputedStyle(htmlElement);
+    if (style.visibility === "hidden" || style.display === "none") continue;
+
+    const fg = parseRgba(style.color);
+    if (!fg || fg.a <= 0) continue;
+
+    const bg = getEffectiveBackground(htmlElement);
+    const effectiveFg = fg.a < 1 ? composite(fg, bg) : fg;
+    const ratio = contrastRatio(effectiveFg, bg);
+
+    const fontSize = Number.parseFloat(style.fontSize);
+    const fontWeight = style.fontWeight;
+    const numericWeight = Number.parseInt(fontWeight, 10) || 400;
+    const isLargeText = fontSize >= 24 || (fontSize >= 18.66 && numericWeight >= 700);
+    const threshold = isLargeText ? 3 : 4.5;
+
+    checkedCount += 1;
+    if (ratio < threshold) {
+      failures.push({
+        textSample: text.slice(0, 80),
+        ratio: Number(ratio.toFixed(2)),
+        threshold,
+        fontSize,
+        fontWeight,
+        tagName: htmlElement.tagName.toLowerCase(),
+      });
+    }
+  }
+
+  return {
+    checkedCount,
+    failures: failures.slice(0, 30),
+  };
+})()`;
 
 function isObjectLike(value: unknown): value is Record<string, unknown> {
 	return typeof value === "object" && value !== null;
@@ -99,6 +225,26 @@ function sanitizePathSegment(routePath: string): string {
 		.replace(/_+$/, "") || "root";
 }
 
+function resolvePathTemplate(routePath: string): {
+	path: string;
+	missingEnv: string[];
+} {
+	const missingEnv = new Set<string>();
+	const resolvedPath = routePath.replace(
+		/\{\{([A-Z0-9_]+)\}\}/g,
+		(_match, variableName: string) => {
+			const value = process.env[variableName];
+			if (!value) {
+				missingEnv.add(variableName);
+				return "";
+			}
+			return value;
+		}
+	);
+
+	return {path: resolvedPath, missingEnv: Array.from(missingEnv)};
+}
+
 test("color routes manifest should be valid and unique", () => {
 	assert.ok(colorRoutesManifest.length > 0, "Manifest must contain at least one route");
 
@@ -107,6 +253,12 @@ test("color routes manifest should be valid and unique", () => {
 		assert.ok(route.path.startsWith("/"), `Route must start with '/': ${route.path}`);
 		assert.ok(route.components.length > 0, `Route must define components: ${route.path}`);
 		assert.ok(!seen.has(route.path), `Duplicate route path in manifest: ${route.path}`);
+		if (route.requiredEnv) {
+			assert.ok(
+				route.requiredEnv.length > 0,
+				`requiredEnv must not be empty when provided: ${route.path}`
+			);
+		}
 		seen.add(route.path);
 	}
 });
@@ -141,11 +293,14 @@ test(
 			issue: string;
 			details?: unknown;
 		}> = [];
+		const warnedMissingAuthState = new Set<string>();
+		const warnedMissingEnv = new Set<string>();
 
 		try {
 			for (const viewport of VIEWPORTS) {
 				const context = await browser.newContext({
 					viewport: {width: viewport.width, height: viewport.height},
+					...(STORAGE_STATE ? {storageState: STORAGE_STATE} : {}),
 				});
 
 				try {
@@ -153,10 +308,31 @@ test(
 						if (route.requiresAuth && !INCLUDE_AUTH_ROUTES) {
 							continue;
 						}
+						if (route.requiresAuth && INCLUDE_AUTH_ROUTES && !STORAGE_STATE) {
+							if (!warnedMissingAuthState.has(route.path)) {
+								t.diagnostic(
+									`Skipping auth route '${route.path}' because COLOR_AUDIT_STORAGE_STATE is not set.`
+								);
+								warnedMissingAuthState.add(route.path);
+							}
+							continue;
+						}
+
+						const resolvedRoute = resolvePathTemplate(route.path);
+						if (resolvedRoute.missingEnv.length > 0) {
+							if (!warnedMissingEnv.has(route.path)) {
+								t.diagnostic(
+									`Skipping route '${route.path}' due missing env: ${resolvedRoute.missingEnv.join(", ")}`
+								);
+								warnedMissingEnv.add(route.path);
+							}
+							continue;
+						}
+						const routePath = resolvedRoute.path;
 
 						const page = await context.newPage();
 						try {
-							const url = new URL(route.path, BASE_URL).toString();
+							const url = new URL(routePath, BASE_URL).toString();
 							const response = await page.goto(url, {
 								waitUntil: "networkidle",
 								timeout: 45_000,
@@ -164,149 +340,31 @@ test(
 							const status = response?.status?.() ?? 0;
 							if (status >= 400) {
 								failures.push({
-									route: route.path,
+									route: routePath,
 									viewport: viewport.name,
 									issue: `HTTP ${status}`,
+								});
+							}
+							if (route.readySelector) {
+								await page.waitForSelector(route.readySelector, {
+									timeout: 10_000,
+									state: "visible",
 								});
 							}
 
 							const screenshotFile = path.join(
 								artifactRoot,
-								`${viewport.name}__${sanitizePathSegment(route.path)}.png`
+								`${viewport.name}__${sanitizePathSegment(routePath)}.png`
 							);
 							await page.screenshot({path: screenshotFile, fullPage: true});
 
-							const contrast = await page.evaluate(() => {
-								type RGBA = {r: number; g: number; b: number; a: number};
-
-								const parseRgba = (value: string): RGBA | null => {
-									const trimmed = value.trim().toLowerCase();
-									const match = trimmed.match(
-										/^rgba?\((\d+)[,\s]+(\d+)[,\s]+(\d+)(?:[,\s/]+([\d.]+))?\)$/
-									);
-									if (!match) return null;
-									return {
-										r: Number(match[1]),
-										g: Number(match[2]),
-										b: Number(match[3]),
-										a: match[4] ? Number(match[4]) : 1,
-									};
-								};
-
-								const composite = (fg: RGBA, bg: RGBA): RGBA => {
-									const alpha = fg.a + bg.a * (1 - fg.a);
-									if (alpha <= 0) return {r: 0, g: 0, b: 0, a: 0};
-									return {
-										r: Math.round((fg.r * fg.a + bg.r * bg.a * (1 - fg.a)) / alpha),
-										g: Math.round((fg.g * fg.a + bg.g * bg.a * (1 - fg.a)) / alpha),
-										b: Math.round((fg.b * fg.a + bg.b * bg.a * (1 - fg.a)) / alpha),
-										a: alpha,
-									};
-								};
-
-								const srgbToLinear = (channel: number): number => {
-									const normalized = channel / 255;
-									return normalized <= 0.04045
-										? normalized / 12.92
-										: ((normalized + 0.055) / 1.055) ** 2.4;
-								};
-
-								const luminance = (color: RGBA): number => {
-									return (
-										0.2126 * srgbToLinear(color.r) +
-										0.7152 * srgbToLinear(color.g) +
-										0.0722 * srgbToLinear(color.b)
-									);
-								};
-
-								const contrastRatio = (a: RGBA, b: RGBA): number => {
-									const la = luminance(a);
-									const lb = luminance(b);
-									const lighter = Math.max(la, lb);
-									const darker = Math.min(la, lb);
-									return (lighter + 0.05) / (darker + 0.05);
-								};
-
-								const getEffectiveBackground = (element: Element): RGBA => {
-									const fallback: RGBA = {r: 40, g: 42, b: 54, a: 1};
-									let current: Element | null = element;
-
-									while (current) {
-										const style = getComputedStyle(current);
-										const parsed = parseRgba(style.backgroundColor);
-										if (parsed && parsed.a > 0) {
-											if (parsed.a >= 1) return parsed;
-
-											const parent = current.parentElement;
-											const parentColor = parent
-												? getEffectiveBackground(parent)
-												: fallback;
-											return composite(parsed, parentColor);
-										}
-										current = current.parentElement;
-									}
-
-									return fallback;
-								};
-
-								const candidates = Array.from(
-									document.querySelectorAll(
-										"p, span, a, button, label, li, td, th, h1, h2, h3, h4, h5, h6, small"
-									)
-								).slice(0, 800);
-
-								const failures: ContrastFailure[] = [];
-								let checkedCount = 0;
-
-								for (const element of candidates) {
-									const htmlElement = element as HTMLElement;
-									const text = (htmlElement.innerText || "").trim();
-									if (!text) continue;
-
-									const rect = htmlElement.getBoundingClientRect();
-									if (rect.width < 2 || rect.height < 2) continue;
-
-									const style = getComputedStyle(htmlElement);
-									if (style.visibility === "hidden" || style.display === "none") {
-										continue;
-									}
-
-									const fg = parseRgba(style.color);
-									if (!fg || fg.a <= 0) continue;
-
-									const bg = getEffectiveBackground(htmlElement);
-									const effectiveFg = fg.a < 1 ? composite(fg, bg) : fg;
-									const ratio = contrastRatio(effectiveFg, bg);
-
-									const fontSize = Number.parseFloat(style.fontSize);
-									const fontWeight = style.fontWeight;
-									const numericWeight = Number.parseInt(fontWeight, 10) || 400;
-									const isLargeText =
-										fontSize >= 24 || (fontSize >= 18.66 && numericWeight >= 700);
-									const threshold = isLargeText ? 3 : 4.5;
-
-									checkedCount += 1;
-									if (ratio < threshold) {
-										failures.push({
-											textSample: text.slice(0, 80),
-											ratio: Number(ratio.toFixed(2)),
-											threshold,
-											fontSize,
-											fontWeight,
-											tagName: htmlElement.tagName.toLowerCase(),
-										});
-									}
-								}
-
-								return {
-									checkedCount,
-									failures: failures.slice(0, 30),
-								};
-							});
+							const contrast = (await page.evaluate(
+								CONTRAST_EVAL_SCRIPT
+							)) as ContrastResult;
 
 							if (contrast.failures.length > 0) {
 								failures.push({
-									route: route.path,
+									route: routePath,
 									viewport: viewport.name,
 									issue: `Contrast failures: ${contrast.failures.length}`,
 									details: contrast,
@@ -314,7 +372,7 @@ test(
 							}
 						} catch (error) {
 							failures.push({
-								route: route.path,
+								route: routePath,
 								viewport: viewport.name,
 								issue: "Navigation or capture failed",
 								details:
