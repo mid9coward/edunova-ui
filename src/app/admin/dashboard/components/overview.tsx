@@ -13,7 +13,7 @@ const Chart = dynamic(() => import("./dynamic-bar-chart"), {
 	ssr: false,
 	// 3. Optional: Provide a fallback UI while the chart bundle loads
 	loading: () => (
-		<div className="h-[350px] bg-gray-50 animate-pulse rounded-md flex items-center justify-center">
+		<div className="h-[350px] bg-muted/30 animate-pulse rounded-md flex items-center justify-center">
 			<p className="text-sm text-muted-foreground">Loading chart...</p>
 		</div>
 	),
@@ -101,3 +101,4 @@ export default function Overview() {
 		</Card>
 	);
 }
+

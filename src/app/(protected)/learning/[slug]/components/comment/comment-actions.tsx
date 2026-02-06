@@ -102,7 +102,7 @@ const CommentActions = ({
 			return {
 				icon: <ThumbsUp className="h-4 w-4 mr-1" />,
 				text: "Like",
-				color: "text-gray-500",
+				color: "text-muted-foreground",
 			};
 		}
 
@@ -111,49 +111,49 @@ const CommentActions = ({
 				return {
 					icon: <ThumbsUp className="h-4 w-4 mr-1" />,
 					text: "Like",
-					color: "text-blue-600",
+					color: "text-primary",
 				};
 			case ReactionType.LOVE:
 				return {
 					icon: <span className="text-sm mr-1">❤️</span>,
 					text: "Love",
-					color: "text-red-500",
+					color: "text-destructive",
 				};
 			case ReactionType.CARE:
 				return {
 					icon: <span className="mr-1">🤗</span>,
 					text: "Care",
-					color: "text-yellow-600",
+					color: "text-accent",
 				};
 			case ReactionType.FUN:
 				return {
 					icon: <span className="mr-1">😂</span>,
 					text: "Haha",
-					color: "text-yellow-600",
+					color: "text-accent",
 				};
 			case ReactionType.WOW:
 				return {
 					icon: <span className="mr-1">😮</span>,
 					text: "Wow",
-					color: "text-yellow-600",
+					color: "text-accent",
 				};
 			case ReactionType.SAD:
 				return {
 					icon: <span className="mr-1">😢</span>,
 					text: "Sad",
-					color: "text-yellow-600",
+					color: "text-accent",
 				};
 			case ReactionType.ANGRY:
 				return {
 					icon: <span className="mr-1">😡</span>,
 					text: "Angry",
-					color: "text-red-600",
+					color: "text-destructive",
 				};
 			default:
 				return {
 					icon: <ThumbsUp className="h-3 w-3 mr-1" />,
 					text: "Like",
-					color: "text-gray-500",
+					color: "text-muted-foreground",
 				};
 		}
 	};
@@ -200,7 +200,7 @@ const CommentActions = ({
 							disabled={isLoading}
 							className={cn(
 								"h-auto p-0.5 sm:p-1 text-[10px] sm:text-xs transition-all duration-300 hover:scale-105",
-								"hover:bg-gray-100/50 active:scale-95",
+								"hover:bg-muted/50 active:scale-95",
 								"disabled:opacity-50 disabled:cursor-not-allowed",
 								reactionDisplay.color
 							)}
@@ -213,7 +213,7 @@ const CommentActions = ({
 						<div
 							className={cn(
 								"absolute bottom-full left-0 mb-2 sm:mb-3 hidden sm:block",
-								"bg-white border border-gray-200 shadow-lg rounded-full px-3 sm:px-4 py-1.5 sm:py-2",
+								"bg-card border border-border shadow-lg rounded-full px-3 sm:px-4 py-1.5 sm:py-2",
 								"transition-all duration-200 ease-out z-50",
 								showReactions
 									? "opacity-100 visible translate-y-0"
@@ -229,14 +229,14 @@ const CommentActions = ({
 										className={cn(
 											"group relative cursor-pointer p-1 sm:p-2 rounded-full",
 											"transition-all duration-300 ease-out",
-											"hover:bg-gray-100/80 active:bg-gray-200",
+											"hover:bg-muted/80 active:bg-muted",
 											"transform-gpu will-change-transform",
 											"hover:scale-125 hover:-translate-y-2 hover:rotate-6",
 											"hover:shadow-lg hover:shadow-black/15",
 											"active:scale-95 active:transition-none",
 											"disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:translate-y-0 disabled:hover:rotate-0",
 											userReaction === reaction.type &&
-												"bg-blue-100 scale-110 shadow-md ring-1 ring-blue-200",
+												"bg-primary/10 scale-110 shadow-md ring-1 ring-primary/30",
 											"animate-in fade-in-0 zoom-in-95"
 										)}
 										style={{
@@ -267,7 +267,7 @@ const CommentActions = ({
 										<div
 											className={cn(
 												"absolute -top-8 left-1/2 transform -translate-x-1/2",
-												"bg-gray-900 text-white text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 sm:py-1 rounded",
+												"bg-foreground text-background text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 sm:py-1 rounded",
 												"opacity-0 group-hover:opacity-100 transition-opacity duration-200",
 												"pointer-events-none whitespace-nowrap z-50"
 											)}
@@ -285,7 +285,7 @@ const CommentActions = ({
 							variant="ghost"
 							size="sm"
 							onClick={() => onReply(comment._id, userName)}
-							className="h-auto p-0.5 sm:p-1 text-[10px] sm:text-xs text-gray-500 hover:text-blue-600 transition-all duration-300 hover:scale-105 active:scale-95"
+							className="h-auto p-0.5 sm:p-1 text-[10px] sm:text-xs text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-105 active:scale-95"
 						>
 							Reply
 						</Button>
@@ -295,7 +295,7 @@ const CommentActions = ({
 				{/* Right side: Reaction Summary */}
 				<div className="flex items-center space-x-1.5 sm:space-x-2">
 					{totalReactions > 0 && (
-						<div className="flex items-center bg-gray-50 rounded-full px-1.5 sm:px-2 py-0.5 sm:py-1 cursor-pointer hover:bg-gray-100 transition-colors">
+						<div className="flex items-center bg-muted/40 rounded-full px-1.5 sm:px-2 py-0.5 sm:py-1 cursor-pointer hover:bg-muted/60 transition-colors">
 							<div className="flex items-center space-x-0.5 sm:space-x-1">
 								{activeReactions.slice(0, 3).map((reaction) => (
 									<span key={reaction.type} className="text-xs sm:text-sm">
@@ -304,7 +304,7 @@ const CommentActions = ({
 								))}
 							</div>
 							{totalReactions > 0 && (
-								<span className="text-[10px] sm:text-sm text-gray-600 ml-1 sm:ml-2 font-medium">
+								<span className="text-[10px] sm:text-sm text-muted-foreground ml-1 sm:ml-2 font-medium">
 									{totalReactions}
 								</span>
 							)}
@@ -317,7 +317,7 @@ const CommentActions = ({
 								<Button
 									variant="ghost"
 									size="sm"
-									className="h-auto p-0.5 sm:p-1 text-gray-500 hover:text-gray-700 transition-all duration-300 hover:scale-105"
+									className="h-auto p-0.5 sm:p-1 text-muted-foreground hover:text-foreground transition-all duration-300 hover:scale-105"
 									disabled={deleteCommentMutation.isPending}
 								>
 									<MoreHorizontal className="h-2.5 w-2.5 sm:h-3 sm:w-3" />

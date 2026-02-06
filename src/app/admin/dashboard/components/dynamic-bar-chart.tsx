@@ -34,11 +34,11 @@ export default function DynamicBarChart({data}: DynamicBarChartProps) {
 	}) => {
 		if (active && payload && payload.length) {
 			return (
-				<div className="bg-white p-3 border border-gray-200 rounded-lg shadow-lg">
-					<p className="text-sm font-medium text-gray-900">{label}</p>
+				<div className="bg-card p-3 border border-border rounded-lg shadow-lg">
+					<p className="text-sm font-medium text-foreground">{label}</p>
 					<p className="text-sm text-primary">
 						<span className="font-semibold">Revenue: </span>
-						<span className="text-green-600">
+						<span className="text-primary">
 							{formatPrice(payload[0].value)}
 						</span>
 					</p>
@@ -53,13 +53,13 @@ export default function DynamicBarChart({data}: DynamicBarChartProps) {
 			<BarChart data={data}>
 				<XAxis
 					dataKey="monthName"
-					stroke="#888888"
+					stroke="var(--muted-foreground)"
 					fontSize={12}
 					tickLine={false}
 					axisLine={false}
 				/>
 				<YAxis
-					stroke="#888888"
+					stroke="var(--muted-foreground)"
 					fontSize={12}
 					tickLine={false}
 					axisLine={false}
@@ -76,3 +76,4 @@ export default function DynamicBarChart({data}: DynamicBarChartProps) {
 		</ResponsiveContainer>
 	);
 }
+

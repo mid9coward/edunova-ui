@@ -33,10 +33,10 @@ const BlogPostPage = ({params}: BlogPostPageProps) => {
 		return (
 			<div className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20">
 				<div className="max-w-4xl mx-auto text-center">
-					<h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 px-4">
+					<h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4 px-4">
 						Blog Post Not Found
 					</h1>
-					<p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 sm:mb-8 px-4">
+					<p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-6 sm:mb-8 px-4">
 						The blog post you&apos;re looking for doesn&apos;t exist or has been
 						removed.
 					</p>
@@ -52,7 +52,7 @@ const BlogPostPage = ({params}: BlogPostPageProps) => {
 	}
 
 	return (
-		<div className="min-h-screen bg-white">
+		<div className="min-h-screen bg-background">
 			<div className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20">
 				<div className="max-w-4xl mx-auto">
 					{/* Critical above-the-fold content - loads immediately */}
@@ -67,3 +67,4 @@ const BlogPostPage = ({params}: BlogPostPageProps) => {
 };
 
 export default BlogPostPage;
+

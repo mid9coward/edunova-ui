@@ -69,8 +69,8 @@ export function DeleteDialog({
           <AlertDialogDescription className="space-y-2">
             <div>{description}</div>
             {warningMessage && (
-              <div className="p-3 bg-yellow-50 border border-yellow-200 rounded-md">
-                <p className="text-sm text-yellow-800 font-medium">
+              <div className="p-3 bg-secondary/20 border border-secondary/40 rounded-md">
+                <p className="text-sm text-secondary-foreground font-medium">
                   {warningMessage}
                 </p>
               </div>
@@ -90,3 +90,4 @@ export function DeleteDialog({
     </AlertDialog>
   );
 }
+

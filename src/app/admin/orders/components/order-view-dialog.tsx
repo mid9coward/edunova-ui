@@ -22,17 +22,17 @@ import Image from "next/image";
 const STATUS_CONFIG = {
 	pending: {
 		label: "Chờ thanh toán",
-		className: "bg-amber-50 text-amber-700 border-amber-200",
+		className: "bg-secondary/20 text-secondary-foreground border-secondary/40",
 		variant: "secondary" as const,
 	},
 	completed: {
 		label: "Hoàn thành",
-		className: "bg-emerald-50 text-emerald-700 border-emerald-200",
+		className: "bg-primary/10 text-primary border-primary/30",
 		variant: "default" as const,
 	},
 	cancelled: {
 		label: "Đã hủy",
-		className: "bg-red-50 text-red-700 border-red-200",
+		className: "bg-destructive/10 text-destructive border-destructive/30",
 		variant: "destructive" as const,
 	},
 };
@@ -87,7 +87,7 @@ const OrderViewDialog = ({order, open, onOpenChange}: OrderViewDialogProps) => {
 										<p className="text-sm text-muted-foreground">
 											Total Amount
 										</p>
-										<p className="text-xl font-bold text-green-600">
+										<p className="text-xl font-bold text-primary">
 											{formatPrice(order.totalAmount)}
 										</p>
 									</div>
@@ -132,7 +132,7 @@ const OrderViewDialog = ({order, open, onOpenChange}: OrderViewDialogProps) => {
 											key={item._id}
 											className="flex items-center gap-3 p-3 border rounded-lg"
 										>
-											<div className="relative w-12 h-12 rounded-lg overflow-hidden bg-gray-200 flex-shrink-0">
+											<div className="relative w-12 h-12 rounded-lg overflow-hidden bg-muted flex-shrink-0">
 												<Image
 													src={
 														item.thumbnail || "/images/course-placeholder.jpg"
@@ -143,7 +143,7 @@ const OrderViewDialog = ({order, open, onOpenChange}: OrderViewDialogProps) => {
 												/>
 											</div>
 											<div className="flex-1 min-w-0">
-												<h4 className="font-medium text-gray-900 text-sm">
+												<h4 className="font-medium text-foreground text-sm">
 													{item.title}
 												</h4>
 												<p className="text-xs text-muted-foreground">
@@ -168,7 +168,7 @@ const OrderViewDialog = ({order, open, onOpenChange}: OrderViewDialogProps) => {
 										<span>{formatPrice(order.subTotal)}</span>
 									</div>
 									{order.totalDiscount > 0 && (
-										<div className="flex justify-between text-sm text-emerald-600">
+										<div className="flex justify-between text-sm text-primary">
 											<span>Discount:</span>
 											<span>-{formatPrice(order.totalDiscount)}</span>
 										</div>
@@ -176,7 +176,7 @@ const OrderViewDialog = ({order, open, onOpenChange}: OrderViewDialogProps) => {
 									<Separator />
 									<div className="flex justify-between font-medium">
 										<span>Total:</span>
-										<span className="text-green-600">
+										<span className="text-primary">
 											{formatPrice(order.totalAmount)}
 										</span>
 									</div>

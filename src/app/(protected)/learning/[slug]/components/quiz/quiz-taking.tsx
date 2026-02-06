@@ -375,7 +375,7 @@ const QuizTaking = ({
 		return (
 			<div className="flex items-center justify-center h-64 px-4">
 				<div className="text-center">
-					<div className="text-base sm:text-lg text-red-600 mb-2">
+					<div className="text-base sm:text-lg text-destructive mb-2">
 						Error loading questions
 					</div>
 					<Button
@@ -395,7 +395,7 @@ const QuizTaking = ({
 		return (
 			<div className="flex items-center justify-center h-64 px-4">
 				<div className="text-center">
-					<div className="text-base sm:text-lg text-gray-600 mb-2">
+					<div className="text-base sm:text-lg text-muted-foreground mb-2">
 						No questions available
 					</div>
 					<Button
@@ -411,13 +411,13 @@ const QuizTaking = ({
 	}
 
 	return (
-		<div className="w-full h-full bg-gray-50">
+		<div className="w-full h-full bg-muted/40">
 			{/* Submission Error Banner */}
 			{submissionState.submissionError && (
-				<div className="bg-red-50 flex justify-center border-b border-red-200 px-3 sm:px-4 md:px-6 py-2 sm:py-3">
+				<div className="bg-destructive/10 flex justify-center border-b border-destructive/30 px-3 sm:px-4 md:px-6 py-2 sm:py-3">
 					<div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 w-full max-w-4xl">
 						<div className="flex items-center space-x-2">
-							<div className="text-red-600 text-xs sm:text-sm font-medium">
+							<div className="text-destructive text-xs sm:text-sm font-medium">
 								{submissionState.submissionError}
 							</div>
 						</div>
@@ -426,7 +426,7 @@ const QuizTaking = ({
 								variant="outline"
 								size="sm"
 								onClick={handleRetrySubmission}
-								className="text-red-600 border-red-300 hover:bg-red-50 h-8 text-xs sm:text-sm w-full sm:w-auto"
+								className="text-destructive border-destructive/40 hover:bg-destructive/10 h-8 text-xs sm:text-sm w-full sm:w-auto"
 							>
 								Retry
 							</Button>
@@ -439,7 +439,7 @@ const QuizTaking = ({
 				{/* Main Quiz Area */}
 				<div className="flex-1 flex flex-col">
 					{/* Header */}
-					<div className="bg-white border-b border-gray-200 px-3 sm:px-4 md:px-6 py-3 sm:py-4">
+					<div className="bg-card border-b border-border px-3 sm:px-4 md:px-6 py-3 sm:py-4">
 						<div className="flex items-center space-x-2 sm:space-x-3 md:space-x-4">
 							<Button
 								variant="ghost"
@@ -450,13 +450,13 @@ const QuizTaking = ({
 								<MdArrowBack className="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
 								<span className="text-xs sm:text-sm">Exit</span>
 							</Button>
-							<h1 className="text-sm sm:text-base md:text-lg font-semibold text-gray-900 truncate flex-1">
+							<h1 className="text-sm sm:text-base md:text-lg font-semibold text-foreground truncate flex-1">
 								{quizTitle}
 							</h1>
 							{submissionState.hasSubmitted && (
 								<Badge
 									variant="secondary"
-									className="bg-green-600 text-white shadow-sm text-[10px] sm:text-xs px-2 py-0.5"
+									className="bg-primary text-primary-foreground shadow-sm text-[10px] sm:text-xs px-2 py-0.5"
 								>
 									Submitted
 								</Badge>
@@ -473,8 +473,8 @@ const QuizTaking = ({
 									id={`question-${question._id}`}
 									className={`relative border ${
 										submissionState.hasSubmitted
-											? "border-gray-300 bg-gray-50"
-											: "border-gray-200"
+											? "border-border bg-muted/40"
+											: "border-border"
 									}`}
 								>
 									<CardContent className="p-3 sm:p-4 md:p-6">
@@ -484,7 +484,7 @@ const QuizTaking = ({
 												<div className="flex items-center space-x-2 sm:space-x-3 mb-2 sm:mb-3 flex-wrap gap-y-2">
 													<Badge
 														variant="secondary"
-														className="text-blue-600 bg-blue-50 text-[10px] sm:text-xs px-2 py-0.5"
+														className="text-primary bg-primary/10 text-[10px] sm:text-xs px-2 py-0.5"
 													>
 														Question {questionIndex + 1}
 													</Badge>
@@ -495,8 +495,8 @@ const QuizTaking = ({
 														disabled={submissionState.hasSubmitted}
 														className={`h-7 w-7 sm:h-8 sm:w-8 p-0 ${
 															flaggedQuestions?.has(question._id || "")
-																? "text-orange-600 bg-orange-50"
-																: "text-gray-400"
+																? "text-accent-foreground bg-accent/20"
+																: "text-muted-foreground"
 														} ${
 															submissionState.hasSubmitted
 																? "opacity-50 cursor-not-allowed"
@@ -509,20 +509,20 @@ const QuizTaking = ({
 														answers[question._id || ""].length > 0 && (
 															<Badge
 																variant="outline"
-																className="bg-green-50 text-green-700 border-green-200 text-[10px] sm:text-xs px-2 py-0.5"
+																className="bg-primary/10 text-primary border-primary/30 text-[10px] sm:text-xs px-2 py-0.5"
 															>
 																Answered
 															</Badge>
 														)}
 												</div>
 												<div className="flex flex-col sm:flex-row items-start justify-between gap-2 sm:gap-4">
-													<p className="text-sm sm:text-base md:text-lg text-gray-900 leading-relaxed flex-1">
+													<p className="text-sm sm:text-base md:text-lg text-foreground leading-relaxed flex-1">
 														{question.question}
 													</p>
 													{question.type === "multiple_choice" && (
 														<Badge
 															variant="secondary"
-															className="text-[10px] sm:text-xs bg-purple-100 text-purple-700 border-purple-200 self-start"
+															className="text-[10px] sm:text-xs bg-secondary/20 text-secondary-foreground border-secondary/30 self-start"
 														>
 															Select multiple
 														</Badge>
@@ -552,8 +552,8 @@ const QuizTaking = ({
 																	: "cursor-pointer"
 															} ${
 																isSelected
-																	? "border-blue-500 bg-blue-50"
-																	: "border-gray-200 hover:border-gray-300 hover:bg-gray-50"
+																	? "border-primary bg-primary/10"
+																	: "border-border hover:border-ring hover:bg-muted/40"
 															}`}
 														>
 															<input
@@ -576,19 +576,19 @@ const QuizTaking = ({
 																	isMultipleChoice
 																		? `rounded ${
 																				isSelected
-																					? "border-blue-500 bg-blue-500"
-																					: "border-gray-300"
+																					? "border-primary bg-primary"
+																					: "border-border"
 																		  }`
 																		: `rounded-full ${
 																				isSelected
-																					? "border-blue-500 bg-blue-500"
-																					: "border-gray-300"
+																					? "border-primary bg-primary"
+																					: "border-border"
 																		  }`
 																}`}
 															>
 																{isSelected && (
 																	<div
-																		className={`bg-white ${
+																		className={`bg-primary-foreground ${
 																			isMultipleChoice
 																				? "w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-sm"
 																				: "w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full"
@@ -596,10 +596,10 @@ const QuizTaking = ({
 																	/>
 																)}
 															</div>
-															<span className="font-medium text-gray-700 mr-2 sm:mr-3 text-xs sm:text-sm flex-shrink-0">
+															<span className="font-medium text-muted-foreground mr-2 sm:mr-3 text-xs sm:text-sm flex-shrink-0">
 																{optionLabel}.
 															</span>
-															<span className="text-gray-900 text-xs sm:text-sm md:text-base flex-1">
+															<span className="text-foreground text-xs sm:text-sm md:text-base flex-1">
 																{option}
 															</span>
 														</label>
@@ -615,31 +615,31 @@ const QuizTaking = ({
 				</div>
 
 				{/* Desktop Sidebar - Hidden on mobile */}
-				<div className="hidden lg:flex lg:w-80 bg-white border-l border-gray-200 flex-col">
-					<div className="p-4 sm:p-6 bg-white border-b border-gray-200">
-						<div className="flex items-center space-x-2 text-gray-700 mb-3 sm:mb-4">
-							<div className="p-1.5 sm:p-2 bg-blue-50 rounded-full">
-								<MdAccessTime className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600" />
+				<div className="hidden lg:flex lg:w-80 bg-card border-l border-border flex-col">
+					<div className="p-4 sm:p-6 bg-card border-b border-border">
+						<div className="flex items-center space-x-2 text-muted-foreground mb-3 sm:mb-4">
+							<div className="p-1.5 sm:p-2 bg-primary/10 rounded-full">
+								<MdAccessTime className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
 							</div>
-							<span className="text-xs sm:text-sm font-medium text-gray-600">
+							<span className="text-xs sm:text-sm font-medium text-muted-foreground">
 								Time remaining:
 							</span>
 							<div
 								className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded-lg border ${
 									timeRemaining <= 60 && timeRemaining > 0
-										? "bg-red-100 border-red-200"
+										? "bg-destructive/15 border-destructive/30"
 										: timeRemaining === 0 || submissionState.hasSubmitted
-										? "bg-gray-200 border-gray-300"
-										: "bg-gray-100 border-gray-200"
+										? "bg-muted border-border"
+										: "bg-muted/60 border-border"
 								}`}
 							>
 								<span
 									className={`font-bold tracking-wider text-sm sm:text-base ${
 										timeRemaining <= 60 && timeRemaining > 0
-											? "text-red-700"
+											? "text-destructive"
 											: timeRemaining === 0 || submissionState.hasSubmitted
-											? "text-gray-500"
-											: "text-gray-900"
+											? "text-muted-foreground"
+											: "text-foreground"
 									}`}
 								>
 									{timeRemaining === 0 || submissionState.hasSubmitted ? (
@@ -653,7 +653,7 @@ const QuizTaking = ({
 							</div>
 						</div>
 						{submissionState.hasSubmitted ? (
-							<div className="w-full py-3 sm:py-4 rounded-lg text-base sm:text-lg text-center font-semibold bg-green-100 text-green-700 border border-green-200">
+							<div className="w-full py-3 sm:py-4 rounded-lg text-base sm:text-lg text-center font-semibold bg-primary/10 text-primary border border-primary/30">
 								SUBMITTED
 							</div>
 						) : (
@@ -668,9 +668,9 @@ const QuizTaking = ({
 									submissionState.isSubmitting ||
 									timeRemaining === 0 ||
 									!attemptId
-										? "bg-gray-400 cursor-not-allowed"
-										: "bg-blue-600 hover:bg-blue-700 active:bg-blue-800 hover:shadow-md"
-								} text-white`}
+										? "bg-muted cursor-not-allowed"
+										: "bg-primary hover:bg-primary/90 active:bg-primary/80 hover:shadow-md"
+								} text-primary-foreground`}
 							>
 								{submissionState.isSubmitting ? "SUBMITTING..." : "SUBMIT"}
 							</Button>
@@ -706,12 +706,12 @@ const QuizTaking = ({
 										disabled={!currentQuestion}
 										className={`w-9 h-9 sm:w-10 sm:h-10 text-xs sm:text-sm font-medium rounded border-2 transition-all ${
 											isAnswered
-												? "border-green-500 bg-green-50 text-green-700"
+												? "border-primary bg-primary/10 text-primary"
 												: isFlagged
-												? "border-orange-500 bg-orange-50 text-orange-700"
+												? "border-accent bg-accent/20 text-accent-foreground"
 												: currentQuestion
-												? "border-gray-300 bg-white text-gray-700 hover:border-gray-400"
-												: "border-gray-200 bg-gray-50 text-gray-400 cursor-not-allowed"
+												? "border-border bg-card text-muted-foreground hover:border-ring"
+												: "border-border bg-muted/40 text-muted-foreground cursor-not-allowed"
 										}`}
 									>
 										{questionNum}
@@ -723,32 +723,32 @@ const QuizTaking = ({
 				</div>
 
 				{/* Mobile Bottom Bar - Shown on mobile only */}
-				<div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t-2 border-gray-200 shadow-2xl z-50">
+				<div className="lg:hidden fixed bottom-0 left-0 right-0 bg-card border-t-2 border-border shadow-2xl z-50">
 					<div className="p-3 sm:p-4">
 						<div className="flex items-center justify-between gap-2 sm:gap-3 mb-3">
-							<div className="flex items-center space-x-1.5 sm:space-x-2 text-gray-700 flex-1 min-w-0">
-								<div className="p-1 sm:p-1.5 bg-blue-50 rounded-full">
-									<MdAccessTime className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-blue-600" />
+							<div className="flex items-center space-x-1.5 sm:space-x-2 text-muted-foreground flex-1 min-w-0">
+								<div className="p-1 sm:p-1.5 bg-primary/10 rounded-full">
+									<MdAccessTime className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-primary" />
 								</div>
-								<span className="text-[10px] sm:text-xs font-medium text-gray-600 whitespace-nowrap">
+								<span className="text-[10px] sm:text-xs font-medium text-muted-foreground whitespace-nowrap">
 									Time:
 								</span>
 								<div
 									className={`px-1.5 sm:px-2 py-0.5 rounded border ${
 										timeRemaining <= 60 && timeRemaining > 0
-											? "bg-red-100 border-red-200"
+											? "bg-destructive/15 border-destructive/30"
 											: timeRemaining === 0 || submissionState.hasSubmitted
-											? "bg-gray-200 border-gray-300"
-											: "bg-gray-100 border-gray-200"
+											? "bg-muted border-border"
+											: "bg-muted/60 border-border"
 									}`}
 								>
 									<span
 										className={`font-bold text-[10px] sm:text-xs ${
 											timeRemaining <= 60 && timeRemaining > 0
-												? "text-red-700"
+												? "text-destructive"
 												: timeRemaining === 0 || submissionState.hasSubmitted
-												? "text-gray-500"
-												: "text-gray-900"
+												? "text-muted-foreground"
+												: "text-foreground"
 										}`}
 									>
 										{timeRemaining === 0 || submissionState.hasSubmitted
@@ -758,7 +758,7 @@ const QuizTaking = ({
 								</div>
 							</div>
 							{submissionState.hasSubmitted ? (
-								<div className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-[10px] sm:text-xs font-semibold bg-green-100 text-green-700 border border-green-200">
+								<div className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-[10px] sm:text-xs font-semibold bg-primary/10 text-primary border border-primary/30">
 									SUBMITTED
 								</div>
 							) : (
@@ -773,9 +773,9 @@ const QuizTaking = ({
 										submissionState.isSubmitting ||
 										timeRemaining === 0 ||
 										!attemptId
-											? "bg-gray-400 cursor-not-allowed"
-											: "bg-blue-600 hover:bg-blue-700"
-									} text-white`}
+											? "bg-muted cursor-not-allowed"
+											: "bg-primary hover:bg-primary/90"
+									} text-primary-foreground`}
 								>
 									{submissionState.isSubmitting ? "..." : "SUBMIT"}
 								</Button>

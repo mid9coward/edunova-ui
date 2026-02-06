@@ -75,11 +75,11 @@ function VersionsSection() {
 	function getStatusColor(status: Version["status"]) {
 		switch (status) {
 			case "completed":
-				return "bg-green-500/10 text-green-500 border-green-200 dark:border-green-900";
+				return "bg-primary/10 text-primary border-primary/30";
 			case "current":
-				return "bg-blue-500/10 text-blue-500 border-blue-200 dark:border-blue-900";
+				return "bg-secondary/20 text-secondary-foreground border-secondary/40";
 			case "upcoming":
-				return "bg-purple-500/10 text-purple-500 border-purple-200 dark:border-purple-900";
+				return "bg-accent/20 text-accent-foreground border-accent/40";
 		}
 	}
 

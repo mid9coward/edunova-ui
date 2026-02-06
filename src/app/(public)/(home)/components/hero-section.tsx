@@ -24,9 +24,9 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <section className="relative overflow-hidden bg-gradient-to-br from-background via-card to-secondary/15">
       {/* Background Pattern */}
-      <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10" />
+      <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,var(--foreground),transparent)] -z-10" />
 
       <div className="container mx-auto px-4 sm:px-6  py-12 sm:py-16 md:py-20 lg:py-20">
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16 items-center">
@@ -45,11 +45,11 @@ const HeroSection = () => {
             <div className="space-y-3 sm:space-y-4">
               <h1 className="text-3xl sm:text-4xl md:text-5xl  xl:text-7xl font-bold leading-tight">
                 Learn Skills That{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
                   Matter
                 </span>
               </h1>
-              <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed max-w-lg mx-auto lg:mx-0">
+              <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed max-w-lg mx-auto lg:mx-0">
                 Transform your career with industry-relevant courses taught by
                 world-class instructors. Start learning today and unlock your
                 potential.
@@ -63,8 +63,8 @@ const HeroSection = () => {
                   key={index}
                   className="flex items-center space-x-2 justify-center lg:justify-start"
                 >
-                  <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 text-green-500 flex-shrink-0" />
-                  <span className="text-sm sm:text-base text-gray-600">
+                  <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 text-primary flex-shrink-0" />
+                  <span className="text-sm sm:text-base text-muted-foreground">
                     {feature}
                   </span>
                 </div>
@@ -76,12 +76,12 @@ const HeroSection = () => {
               {/* Primary CTA - Start Learning */}
               <Button
                 size="lg"
-                className="relative text-sm sm:text-base px-6 sm:px-8 h-12 sm:h-14 bg-gradient-to-r from-blue-600 via-blue-700 to-purple-600 hover:from-blue-700 hover:via-blue-800 hover:to-purple-700 text-white shadow-xl hover:shadow-2xl transition-all duration-300 rounded-xl font-semibold overflow-hidden group border-0 w-full sm:flex-1"
+                className="relative text-sm sm:text-base px-6 sm:px-8 h-12 sm:h-14 bg-gradient-to-r from-primary via-primary to-secondary hover:from-primary/90 hover:via-primary/90 hover:to-secondary/90 text-primary-foreground shadow-xl hover:shadow-2xl transition-all duration-300 rounded-xl font-semibold overflow-hidden group border-0 w-full sm:flex-1"
                 asChild
               >
                 <Link href={ROUTE_CONFIG.COURSES}>
                   {/* Animated shine effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-foreground/20 to-transparent transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
                   <span className="relative z-10 group-hover:scale-105 transition-transform duration-300">
                     Start Learning
                   </span>
@@ -93,11 +93,11 @@ const HeroSection = () => {
               <Button
                 variant="ghost"
                 size="lg"
-                className="relative text-sm sm:text-base px-6 sm:px-8 h-12 sm:h-14 text-gray-700 hover:text-blue-600 transition-all duration-300 group hover:bg-gradient-to-br hover:from-blue-50 hover:via-blue-100/50 hover:to-purple-50 hover:shadow-xl hover:shadow-blue-200/25 rounded-xl font-semibold border-2 border-gray-200 hover:border-blue-300 overflow-hidden w-full sm:flex-1"
+                className="relative text-sm sm:text-base px-6 sm:px-8 h-12 sm:h-14 text-muted-foreground hover:text-primary transition-all duration-300 group hover:bg-gradient-to-br hover:from-background hover:via-muted/40 hover:to-secondary/20 hover:shadow-xl hover:shadow-primary/20 rounded-xl font-semibold border-2 border-border hover:border-primary/40 overflow-hidden w-full sm:flex-1"
                 asChild
               >
                 <Link href="#" target="_blank">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-purple-500/0 group-hover:from-blue-500/5 group-hover:to-purple-500/5 rounded-xl transition-all duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-secondary/0 group-hover:from-primary/5 group-hover:to-secondary/5 rounded-xl transition-all duration-300"></div>
                   <SlSocialYoutube className="mr-2 h-4 w-4 sm:h-5 sm:w-5 relative z-10 group-hover:scale-110 transition-transform duration-300 fill-current" />
                   <span className="relative z-10 group-hover:scale-105 transition-transform duration-300">
                     Watch Demo
@@ -115,14 +115,14 @@ const HeroSection = () => {
                     key={index}
                     className="flex items-center space-x-2 min-w-0"
                   >
-                    <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 bg-blue-100 rounded-lg flex-shrink-0">
-                      <Icon className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600" />
+                    <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 bg-primary/15 rounded-lg flex-shrink-0">
+                      <Icon className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
                     </div>
                     <div className="min-w-0">
-                      <div className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900">
+                      <div className="text-lg sm:text-xl md:text-2xl font-bold text-foreground">
                         <AnimatedCounter value={stat.value} duration={2000} />
                       </div>
-                      <div className="text-xs sm:text-sm text-gray-600 truncate">
+                      <div className="text-xs sm:text-sm text-muted-foreground truncate">
                         {stat.label}
                       </div>
                     </div>
@@ -229,11 +229,11 @@ const HeroSection = () => {
         <svg viewBox="0 0 1440 80" className="w-full h-auto">
           <defs>
             <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#fef7ff" stopOpacity="0.6" />
-              <stop offset="25%" stopColor="#f1f5f9" stopOpacity="0.8" />
-              <stop offset="50%" stopColor="white" stopOpacity="1" />
-              <stop offset="75%" stopColor="#eff6ff" stopOpacity="0.8" />
-              <stop offset="100%" stopColor="#fef7ff" stopOpacity="0.6" />
+              <stop offset="0%" stopColor="var(--card)" stopOpacity="0.6" />
+              <stop offset="25%" stopColor="var(--background)" stopOpacity="0.8" />
+              <stop offset="50%" stopColor="var(--background)" stopOpacity="1" />
+              <stop offset="75%" stopColor="var(--background)" stopOpacity="0.8" />
+              <stop offset="100%" stopColor="var(--card)" stopOpacity="0.6" />
             </linearGradient>
           </defs>
           <path
@@ -247,3 +247,5 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
+

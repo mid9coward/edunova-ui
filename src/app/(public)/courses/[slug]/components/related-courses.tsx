@@ -53,10 +53,10 @@ const RelatedCourses = ({currentCourseId}: RelatedCoursesProps) => {
 			{/* Section Header */}
 			<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 sm:mb-8 gap-3 sm:gap-4">
 				<div>
-					<h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-1 sm:mb-2">
+					<h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-1 sm:mb-2">
 						Students also bought
 					</h2>
-					<p className="text-sm sm:text-base text-gray-600">
+					<p className="text-sm sm:text-base text-muted-foreground">
 						Courses frequently taken together with this course
 					</p>
 				</div>
@@ -100,3 +100,4 @@ const RelatedCourses = ({currentCourseId}: RelatedCoursesProps) => {
 };
 
 export default RelatedCourses;
+

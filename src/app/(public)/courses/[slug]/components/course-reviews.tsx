@@ -127,17 +127,17 @@ const CourseReviews = ({
 
 	if (isLoading) {
 		return (
-			<div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden p-4 sm:p-6">
+			<div className="bg-card rounded-xl shadow-sm border border-border overflow-hidden p-4 sm:p-6">
 				<div className="animate-pulse">
-					<div className="h-5 sm:h-6 bg-gray-200 rounded w-1/2 sm:w-1/3 mb-3 sm:mb-4"></div>
+					<div className="h-5 sm:h-6 bg-muted rounded w-1/2 sm:w-1/3 mb-3 sm:mb-4"></div>
 					<div className="space-y-3 sm:space-y-4">
 						{[...Array(3)].map((_, i) => (
 							<div key={i} className="flex space-x-3 sm:space-x-4">
-								<div className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-200 rounded-full flex-shrink-0"></div>
+								<div className="w-10 h-10 sm:w-12 sm:h-12 bg-muted rounded-full flex-shrink-0"></div>
 								<div className="flex-1 space-y-1.5 sm:space-y-2 min-w-0">
-									<div className="h-3 sm:h-4 bg-gray-200 rounded w-1/3 sm:w-1/4"></div>
-									<div className="h-2.5 sm:h-3 bg-gray-200 rounded w-full"></div>
-									<div className="h-2.5 sm:h-3 bg-gray-200 rounded w-4/5 sm:w-3/4"></div>
+									<div className="h-3 sm:h-4 bg-muted rounded w-1/3 sm:w-1/4"></div>
+									<div className="h-2.5 sm:h-3 bg-muted rounded w-full"></div>
+									<div className="h-2.5 sm:h-3 bg-muted rounded w-4/5 sm:w-3/4"></div>
 								</div>
 							</div>
 						))}
@@ -148,11 +148,11 @@ const CourseReviews = ({
 	}
 
 	return (
-		<div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+		<div className="bg-card rounded-xl shadow-sm border border-border overflow-hidden">
 			{/* Header */}
-			<div className="p-4 sm:p-6 border-b border-gray-200">
+			<div className="p-4 sm:p-6 border-b border-border">
 				<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
-					<h3 className="text-lg sm:text-xl font-semibold text-gray-900">
+					<h3 className="text-lg sm:text-xl font-semibold text-foreground">
 						Student Reviews
 					</h3>
 					<div className="flex items-center gap-2">
@@ -202,8 +202,8 @@ const CourseReviews = ({
 														key={i}
 														className={`h-3 w-3 ${
 															i < rating
-																? "text-yellow-400 fill-current"
-																: "text-gray-300"
+																? "text-accent fill-current"
+																: "text-muted"
 														}`}
 													/>
 												))}
@@ -224,11 +224,11 @@ const CourseReviews = ({
 			</div>
 
 			{/* Rating Overview */}
-			<div className="p-4 sm:p-6 border-b border-gray-200">
+			<div className="p-4 sm:p-6 border-b border-border">
 				<div className="grid sm:grid-cols-2 gap-6 sm:gap-8">
 					{/* Overall Rating */}
 					<div className="text-center">
-						<div className="text-4xl sm:text-5xl font-bold text-gray-900 mb-2">
+						<div className="text-4xl sm:text-5xl font-bold text-foreground mb-2">
 							{(averageRating || fallbackAverageRating).toFixed(2)}
 						</div>
 						<div className="flex items-center justify-center mb-2">
@@ -237,13 +237,13 @@ const CourseReviews = ({
 									key={i}
 									className={`h-5 w-5 sm:h-6 sm:w-6 ${
 										i < Math.floor(averageRating || fallbackAverageRating)
-											? "text-yellow-400 fill-current"
-											: "text-gray-300"
+											? "text-accent fill-current"
+											: "text-muted"
 									}`}
 								/>
 							))}
 						</div>
-						<p className="text-xs sm:text-sm text-gray-600">
+						<p className="text-xs sm:text-sm text-muted-foreground">
 							Course Rating • {formatReviewCount(total || fallbackTotalReviews)}{" "}
 							reviews
 						</p>
@@ -256,28 +256,28 @@ const CourseReviews = ({
 								key={item.stars}
 								className="flex items-center space-x-2 sm:space-x-3"
 							>
-								<div className="flex items-center space-x-1 sm:space-x-2 text-xs sm:text-sm text-gray-600">
+								<div className="flex items-center space-x-1 sm:space-x-2 text-xs sm:text-sm text-muted-foreground">
 									<div className="flex items-center">
 										{[...Array(5)].map((_, i) => (
 											<Star
 												key={i}
 												className={`h-3 w-3 sm:h-4 sm:w-4 ${
 													i < item.stars
-														? "text-yellow-400 fill-current"
-														: "text-gray-300"
+														? "text-accent fill-current"
+														: "text-muted"
 												}`}
 											/>
 										))}
 									</div>
 									<span className="w-6 sm:w-8">{item.stars}</span>
 								</div>
-								<div className="flex-1 bg-gray-200 rounded-full h-1.5 sm:h-2">
+								<div className="flex-1 bg-muted rounded-full h-1.5 sm:h-2">
 									<div
-										className="bg-yellow-400 h-1.5 sm:h-2 rounded-full transition-all duration-300"
+										className="bg-accent h-1.5 sm:h-2 rounded-full transition-all duration-300"
 										style={{width: `${item.percentage}%`}}
 									></div>
 								</div>
-								<span className="text-xs sm:text-sm text-gray-600 w-10 sm:w-12 text-right">
+								<span className="text-xs sm:text-sm text-muted-foreground w-10 sm:w-12 text-right">
 									{item.percentage}%
 								</span>
 							</div>
@@ -289,13 +289,13 @@ const CourseReviews = ({
 			{/* Reviews List */}
 			{reviews.length === 0 ? (
 				<div className="p-8 sm:p-12 text-center">
-					<div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 bg-gray-100 rounded-full flex items-center justify-center">
-						<Star className="w-7 h-7 sm:w-8 sm:h-8 text-gray-400" />
+					<div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 bg-muted/60 rounded-full flex items-center justify-center">
+						<Star className="w-7 h-7 sm:w-8 sm:h-8 text-muted-foreground/80" />
 					</div>
-					<h4 className="text-base sm:text-lg font-medium text-gray-900 mb-2">
+					<h4 className="text-base sm:text-lg font-medium text-foreground mb-2">
 						No reviews yet
 					</h4>
-					<p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6">
+					<p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6">
 						Be the first to share your experience with this course
 					</p>
 					{currentUser ? (
@@ -305,13 +305,13 @@ const CourseReviews = ({
 							</Button>
 						</WriteReviewDialog>
 					) : (
-						<p className="text-xs sm:text-sm text-gray-500">
+						<p className="text-xs sm:text-sm text-muted-foreground">
 							Sign in to write a review
 						</p>
 					)}
 				</div>
 			) : (
-				<div className="divide-y divide-gray-200">
+				<div className="divide-y divide-border">
 					{displayedReviews.map((review) => (
 						<div key={review._id} className="p-4 sm:p-6">
 							<div className="flex space-x-3 sm:space-x-4">
@@ -322,7 +322,7 @@ const CourseReviews = ({
 											src={review?.user?.avatar || DEFAULT_AVATAR}
 											alt={review?.user?.username || "User"}
 										/>
-										<AvatarFallback className="bg-gradient-to-br from-blue-600 to-purple-600 text-white text-xs sm:text-sm font-bold">
+										<AvatarFallback className="bg-gradient-to-br from-primary to-secondary text-primary-foreground text-xs sm:text-sm font-bold">
 											{review?.user?.username
 												? review?.user?.username.slice(0, 2).toUpperCase()
 												: "U"}
@@ -334,7 +334,7 @@ const CourseReviews = ({
 								<div className="flex-1 min-w-0">
 									<div className="flex items-start justify-between mb-2 gap-2">
 										<div className="flex-1 min-w-0">
-											<h5 className="text-sm sm:text-base font-medium text-gray-900 truncate">
+											<h5 className="text-sm sm:text-base font-medium text-foreground truncate">
 												{review?.user?.username}
 											</h5>
 											<div className="flex items-center space-x-1 sm:space-x-2 mt-1">
@@ -344,13 +344,13 @@ const CourseReviews = ({
 															key={i}
 															className={`h-3 w-3 sm:h-4 sm:w-4 ${
 																i < review.star
-																	? "text-yellow-400 fill-current"
-																	: "text-gray-300"
+																	? "text-accent fill-current"
+																	: "text-muted"
 															}`}
 														/>
 													))}
 												</div>
-												<span className="text-xs sm:text-sm text-gray-500 whitespace-nowrap">
+												<span className="text-xs sm:text-sm text-muted-foreground whitespace-nowrap">
 													{dayjs(review.createdAt).fromNow()}
 												</span>
 											</div>
@@ -386,7 +386,7 @@ const CourseReviews = ({
 															handleDeleteReview(review._id);
 															setOpenDropdownId(null);
 														}}
-														className="text-red-600 hover:text-red-700"
+														className="text-destructive hover:text-destructive/80"
 													>
 														<Trash2 className="h-4 w-4 mr-2" />
 														Delete Review
@@ -395,7 +395,7 @@ const CourseReviews = ({
 											</DropdownMenu>
 										)}
 									</div>
-									<p className="text-xs sm:text-sm text-gray-700 leading-relaxed break-words">
+									<p className="text-xs sm:text-sm text-foreground leading-relaxed break-words">
 										{review.content}
 									</p>
 								</div>
@@ -407,7 +407,7 @@ const CourseReviews = ({
 
 			{/* Load More Button */}
 			{hasNextPage && (
-				<div className="p-4 sm:p-6 border-t border-gray-200 text-center">
+				<div className="p-4 sm:p-6 border-t border-border text-center">
 					<Button
 						variant="outline"
 						onClick={loadMore}
@@ -416,7 +416,7 @@ const CourseReviews = ({
 					>
 						{isLoadingMore ? (
 							<>
-								<div className="animate-spin rounded-full h-3 w-3 sm:h-4 sm:w-4 border-b-2 border-gray-600 mr-2"></div>
+								<div className="animate-spin rounded-full h-3 w-3 sm:h-4 sm:w-4 border-b-2 border-muted-foreground mr-2"></div>
 								Loading...
 							</>
 						) : (

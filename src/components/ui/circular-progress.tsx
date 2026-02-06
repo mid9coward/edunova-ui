@@ -24,27 +24,27 @@ const colorMap = {
 	blue: {
 		stroke: "stroke-blue-400",
 		background: "stroke-slate-600",
-		text: "text-blue-400",
+		text: "text-primary",
 	},
 	orange: {
 		stroke: "stroke-orange-400",
 		background: "stroke-slate-600",
-		text: "text-orange-400",
+		text: "text-secondary-foreground",
 	},
 	green: {
 		stroke: "stroke-green-400",
 		background: "stroke-slate-600",
-		text: "text-green-400",
+		text: "text-accent-foreground",
 	},
 	red: {
 		stroke: "stroke-red-400",
 		background: "stroke-slate-600",
-		text: "text-red-400",
+		text: "text-destructive",
 	},
 	gray: {
 		stroke: "stroke-gray-400",
 		background: "stroke-gray-600",
-		text: "text-gray-400",
+		text: "text-muted-foreground",
 	},
 };
 
@@ -101,7 +101,7 @@ export function CircularProgress({
 					strokeDashoffset={strokeDashoffset}
 					className={cn(stroke, "transition-all duration-500 ease-in-out")}
 					style={{
-						filter: "drop-shadow(0 0 4px rgba(59, 130, 246, 0.3))",
+						filter: "drop-shadow(0 0 4px var(--primary))",
 					}}
 				/>
 			</svg>
@@ -119,3 +119,4 @@ export function CircularProgress({
 		</div>
 	);
 }
+

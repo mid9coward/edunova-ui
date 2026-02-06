@@ -36,8 +36,8 @@ const CourseStatistics = ({
 			<Card>
 				<CardContent className="p-4">
 					<div className="flex items-center gap-2">
-						<div className="bg-blue-100 p-2 rounded-lg">
-							<MdPeople className="h-4 w-4 text-blue-600" />
+						<div className="bg-primary/15 p-2 rounded-lg">
+							<MdPeople className="h-4 w-4 text-primary" />
 						</div>
 						<div>
 							<p className="text-sm font-medium">Chapters</p>
@@ -53,8 +53,8 @@ const CourseStatistics = ({
 			<Card>
 				<CardContent className="p-4">
 					<div className="flex items-center gap-2">
-						<div className="bg-green-100 p-2 rounded-lg">
-							<MdDescription className="h-4 w-4 text-green-600" />
+						<div className="bg-accent/20 p-2 rounded-lg">
+							<MdDescription className="h-4 w-4 text-accent-foreground" />
 						</div>
 						<div>
 							<p className="text-sm font-medium">Lessons</p>
@@ -74,8 +74,8 @@ const CourseStatistics = ({
 			<Card>
 				<CardContent className="p-4">
 					<div className="flex items-center gap-2">
-						<div className="bg-purple-100 p-2 rounded-lg">
-							<MdAccessTime className="h-4 w-4 text-purple-600" />
+						<div className="bg-secondary/20 p-2 rounded-lg">
+							<MdAccessTime className="h-4 w-4 text-secondary-foreground" />
 						</div>
 						<div>
 							<p className="text-sm font-medium">Duration</p>
@@ -95,8 +95,8 @@ const CourseStatistics = ({
 			<Card>
 				<CardContent className="p-4">
 					<div className="flex items-center gap-2">
-						<div className="bg-orange-100 p-2 rounded-lg">
-							<MdVisibility className="h-4 w-4 text-orange-600" />
+						<div className="bg-primary/15 p-2 rounded-lg">
+							<MdVisibility className="h-4 w-4 text-primary" />
 						</div>
 						<div>
 							<p className="text-sm font-medium">Published</p>
@@ -116,3 +116,4 @@ const CourseStatistics = ({
 };
 
 export default CourseStatistics;
+

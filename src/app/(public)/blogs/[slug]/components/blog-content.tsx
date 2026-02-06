@@ -23,7 +23,7 @@ const BlogContent = ({blog}: BlogContentProps) => {
 			</article>
 
 			{/* Article Footer */}
-			<footer className="mt-10 sm:mt-12 md:mt-16 pt-6 sm:pt-8 border-t border-gray-200">
+			<footer className="mt-10 sm:mt-12 md:mt-16 pt-6 sm:pt-8 border-t border-border">
 				<div className="flex justify-center">
 					<Link href={ROUTE_CONFIG.BLOGS} aria-label="Back to all blog posts">
 						<Button
@@ -42,3 +42,4 @@ const BlogContent = ({blog}: BlogContentProps) => {
 };
 
 export default BlogContent;
+

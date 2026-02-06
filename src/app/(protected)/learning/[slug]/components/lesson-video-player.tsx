@@ -49,15 +49,15 @@ const LessonVideoPlayer = ({
 		return (
 			<div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
 				<div
-					className="relative w-full bg-gray-900 rounded-lg"
+					className="relative w-full bg-muted rounded-lg"
 					style={{paddingBottom: "56.25%"}}
 				>
 					<div className="absolute inset-0 flex items-center justify-center">
-						<div className="text-white text-center px-4">
+						<div className="text-foreground text-center px-4">
 							<h3 className="text-base sm:text-lg font-medium mb-2">
 								Invalid video
 							</h3>
-							<p className="text-sm sm:text-base text-gray-400">
+							<p className="text-sm sm:text-base text-muted-foreground">
 								YouTube video URL is not in correct format
 							</p>
 						</div>
@@ -65,14 +65,14 @@ const LessonVideoPlayer = ({
 				</div>
 
 				{/* Title and Description */}
-				<div className="mt-4 sm:mt-6 bg-white p-4 sm:p-6 rounded-lg">
-					<h1 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">
+				<div className="mt-4 sm:mt-6 bg-card p-4 sm:p-6 rounded-lg">
+					<h1 className="text-xl sm:text-2xl font-bold text-foreground mb-3 sm:mb-4">
 						{title}
 					</h1>
 					{description && (
 						<div className="prose prose-sm sm:prose prose-gray max-w-none">
 							<div
-								className="text-sm sm:text-base text-gray-700 leading-relaxed"
+								className="text-sm sm:text-base text-muted-foreground leading-relaxed"
 								dangerouslySetInnerHTML={{__html: description}}
 							/>
 						</div>
@@ -85,7 +85,7 @@ const LessonVideoPlayer = ({
 	return (
 		<div className="min-h-full">
 			{/* Video Player */}
-			<div className="w-full bg-black px-0 sm:px-4 md:px-8 lg:px-12 xl:px-16">
+			<div className="w-full bg-background px-0 sm:px-4 md:px-8 lg:px-12 xl:px-16">
 				<div className="relative pt-[56.25%]">
 					<iframe
 						src={`https://www.youtube.com/embed/${videoId}?autoplay=0&controls=1&rel=0&showinfo=0&modestbranding=1`}
@@ -101,13 +101,13 @@ const LessonVideoPlayer = ({
 
 			{/* Title and Description */}
 			<div className="w-full mt-4 sm:mt-6 pb-6 sm:pb-8 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
-				<h1 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">
+				<h1 className="text-xl sm:text-2xl font-bold text-foreground mb-3 sm:mb-4">
 					{title}
 				</h1>
 				{description && (
 					<div className="prose prose-sm sm:prose prose-gray max-w-none">
 						<div
-							className="text-sm sm:text-base text-gray-700 leading-relaxed"
+							className="text-sm sm:text-base text-muted-foreground leading-relaxed"
 							dangerouslySetInnerHTML={{__html: description}}
 						/>
 					</div>
@@ -118,3 +118,4 @@ const LessonVideoPlayer = ({
 };
 
 export default LessonVideoPlayer;
+

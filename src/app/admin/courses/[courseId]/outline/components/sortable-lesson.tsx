@@ -186,7 +186,7 @@ const SortableLesson = ({
 					<div className="flex items-center gap-1">
 						<div
 							className={`w-2 h-2 rounded-full ${
-								lesson.isPublished ? "bg-green-500" : "bg-yellow-500"
+								lesson.isPublished ? "bg-primary/100" : "bg-accent"
 							}`}
 						/>
 						<span className="text-muted-foreground">
@@ -227,3 +227,4 @@ const SortableLesson = ({
 };
 
 export default SortableLesson;
+

@@ -20,7 +20,7 @@ export function PaymentInstructions({
 	return (
 		<Card className="mb-4 sm:mb-6">
 			<CardContent className="p-4 sm:p-6">
-				<h2 className="text-base sm:text-lg md:text-xl font-semibold text-center mb-4 sm:mb-6 text-gray-800">
+				<h2 className="text-base sm:text-lg md:text-xl font-semibold text-center mb-4 sm:mb-6 text-foreground">
 					Bank Transfer Payment Instructions
 				</h2>
 
@@ -39,3 +39,4 @@ export function PaymentInstructions({
 		</Card>
 	);
 }
+

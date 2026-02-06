@@ -31,14 +31,14 @@ export function DesktopNavigation() {
             href={item.href}
             className={cn(
               "relative font-semibold text-base transition-all duration-200 group py-2 focus:outline-none rounded-md px-2",
-              isActive ? "text-blue-600" : "text-gray-600 hover:text-blue-600"
+              isActive ? "text-primary" : "text-muted-foreground hover:text-primary"
             )}
             aria-current={isActive ? "page" : undefined}
           >
             {item.name}
             <span
               className={cn(
-                "absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300 rounded-full",
+                "absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary to-secondary transition-all duration-300 rounded-full",
                 isActive ? "w-full" : "w-0 group-hover:w-full"
               )}
             ></span>
@@ -48,3 +48,4 @@ export function DesktopNavigation() {
     </nav>
   );
 }
+

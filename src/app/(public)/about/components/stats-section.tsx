@@ -125,8 +125,8 @@ const StatsSection = () => {
 								</div>
 
 								{/* Decorative Elements */}
-								<div className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-								<div className="absolute -bottom-1 -left-1 w-3 h-3 bg-gradient-to-br from-pink-400 to-red-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100"></div>
+								<div className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br from-primary to-secondary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+								<div className="absolute -bottom-1 -left-1 w-3 h-3 bg-gradient-to-br from-secondary to-destructive rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100"></div>
 							</div>
 						);
 					})}
@@ -187,3 +187,4 @@ const StatsSection = () => {
 };
 
 export default StatsSection;
+

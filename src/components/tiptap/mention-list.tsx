@@ -85,16 +85,16 @@ const MentionList = forwardRef<MentionListRef, MentionListProps>(
 
     return (
       <div
-        className="bg-white border border-gray-200 rounded-lg shadow-lg p-1 max-h-48 overflow-y-auto z-[9999] relative"
+        className="bg-card border border-border rounded-lg shadow-lg p-1 max-h-48 overflow-y-auto z-[9999] relative"
         style={{ pointerEvents: "auto" }}
       >
         {props.items.length ? (
           props.items.map((item, index) => (
             <button
-              className={`w-full text-left px-3 py-2 text-sm rounded hover:bg-gray-100 cursor-pointer transition-colors ${
+              className={`w-full text-left px-3 py-2 text-sm rounded hover:bg-muted cursor-pointer transition-colors ${
                 index === selectedIndex
-                  ? "bg-blue-50 text-blue-600"
-                  : "text-gray-900"
+                  ? "bg-primary/10 text-primary"
+                  : "text-foreground"
               }`}
               key={index}
               onClick={(event) => handleItemClick(index, event)}
@@ -107,7 +107,7 @@ const MentionList = forwardRef<MentionListRef, MentionListProps>(
             </button>
           ))
         ) : (
-          <div className="px-3 py-2 text-sm text-gray-500">
+          <div className="px-3 py-2 text-sm text-muted-foreground">
             Không tìm thấy người dùng
           </div>
         )}
@@ -119,3 +119,4 @@ const MentionList = forwardRef<MentionListRef, MentionListProps>(
 MentionList.displayName = "MentionList";
 
 export default MentionList;
+

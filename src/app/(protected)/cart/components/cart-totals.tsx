@@ -34,32 +34,32 @@ const CartTotals = ({
 
 			{/* Applied Discount */}
 			{appliedDiscount && (
-				<div className="bg-green-500/15 border border-green-500/30 rounded-lg p-2 sm:p-3">
+				<div className="bg-primary/10 border border-primary/30 rounded-lg p-2 sm:p-3">
 					<div className="flex items-center justify-between gap-2">
 						<div className="flex items-center gap-1.5 sm:gap-2 min-w-0 flex-1">
-							<div className="w-5 h-5 sm:w-6 sm:h-6 bg-green-500 rounded flex items-center justify-center flex-shrink-0">
+							<div className="w-5 h-5 sm:w-6 sm:h-6 bg-primary rounded flex items-center justify-center flex-shrink-0">
 								<span className="text-background text-[10px] sm:text-xs font-bold">
 									%
 								</span>
 							</div>
 							<div className="min-w-0">
-								<div className="text-xs sm:text-sm font-medium text-green-500 truncate">
+								<div className="text-xs sm:text-sm font-medium text-primary truncate">
 									Discount Applied
 								</div>
-								<div className="text-[10px] sm:text-xs text-green-500/80 truncate">
+								<div className="text-[10px] sm:text-xs text-primary/80 truncate">
 									Code: {appliedDiscount.code}
 								</div>
 							</div>
 						</div>
 						<div className="text-right flex-shrink-0">
-							<div className="text-xs sm:text-sm font-bold text-green-500">
+							<div className="text-xs sm:text-sm font-bold text-primary">
 								-{formatPrice(summary.discountAmount)}
 							</div>
 							<Button
 								variant="ghost"
 								size="sm"
 								onClick={onRemoveDiscount}
-								className="h-auto px-0.5 sm:px-1 py-0.5 text-[10px] sm:text-xs text-green-500 hover:text-green-400"
+								className="h-auto px-0.5 sm:px-1 py-0.5 text-[10px] sm:text-xs text-primary hover:text-primary/80"
 							>
 								Remove
 							</Button>

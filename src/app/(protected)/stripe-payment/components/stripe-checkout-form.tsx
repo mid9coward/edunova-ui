@@ -43,7 +43,7 @@ const StripeCheckoutForm = ({
 	};
 
 	return (
-		<div className="min-h-screen bg-gray-50 py-4 sm:py-6 md:py-8">
+		<div className="min-h-screen bg-muted/30 py-4 sm:py-6 md:py-8">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6">
 				{/* Back Button */}
 				<div className="mb-4 sm:mb-6">
@@ -85,3 +85,4 @@ const StripeCheckoutForm = ({
 };
 
 export default StripeCheckoutForm;
+

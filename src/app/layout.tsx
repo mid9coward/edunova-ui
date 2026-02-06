@@ -100,11 +100,11 @@ export default function RootLayout({
 			>
 				<NextTopLoader
 					height={4}
-					color="#2563eb"
+					color="var(--primary)"
 					showSpinner={false}
 					easing="ease"
 					speed={500}
-					shadow="0 0 10px rgba(37, 99, 235, 0.6), 0 0 20px rgba(124, 58, 237, 0.3)"
+					shadow="0 0 10px var(--primary), 0 0 20px var(--secondary)"
 					zIndex={9999}
 				/>
 				<NextAuthSessionProvider>

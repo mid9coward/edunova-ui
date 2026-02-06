@@ -49,7 +49,7 @@ const MainFooter = () => {
   ];
 
   return (
-    <footer className="bg-gray-50 border-t">
+    <footer className="bg-background border-t border-border">
       <div className="container mx-auto px-6 py-12">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -59,7 +59,7 @@ const MainFooter = () => {
               <BookOpen className="h-8 w-8 text-primary" />
               <span className="text-2xl font-bold">EduNova</span>
             </Link>
-            <p className="text-gray-600 max-w-sm">
+            <p className="text-muted-foreground max-w-sm">
               Transform your future with our comprehensive online courses. Learn
               from industry experts and advance your career.
             </p>
@@ -70,7 +70,7 @@ const MainFooter = () => {
                   <Link
                     key={social.name}
                     href={social.href}
-                    className="text-gray-400 hover:text-primary transition-colors"
+                    className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     <Icon className="h-5 w-5" />
                     <span className="sr-only">{social.name}</span>
@@ -88,7 +88,7 @@ const MainFooter = () => {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-600 hover:text-primary transition-colors"
+                    className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -105,7 +105,7 @@ const MainFooter = () => {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-600 hover:text-primary transition-colors"
+                    className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -118,15 +118,15 @@ const MainFooter = () => {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Stay Connected</h3>
             <div className="space-y-3">
-              <div className="flex items-center space-x-2 text-gray-600">
+              <div className="flex items-center space-x-2 text-muted-foreground">
                 <Mail className="h-4 w-4" />
                 <span className="text-sm">support@edunova.com</span>
               </div>
-              <div className="flex items-center space-x-2 text-gray-600">
+              <div className="flex items-center space-x-2 text-muted-foreground">
                 <Phone className="h-4 w-4" />
                 <span className="text-sm">+1 (555) 123-4567</span>
               </div>
-              <div className="flex items-center space-x-2 text-gray-600">
+              <div className="flex items-center space-x-2 text-muted-foreground">
                 <MapPin className="h-4 w-4" />
                 <span className="text-sm">Ho Chi Minh City, Vietnam</span>
               </div>
@@ -134,7 +134,7 @@ const MainFooter = () => {
 
             {/* Newsletter Signup */}
             <div className="space-y-2">
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-muted-foreground">
                 Subscribe to our newsletter
               </p>
               <div className="flex space-x-2">
@@ -151,25 +151,25 @@ const MainFooter = () => {
 
         {/* Bottom Footer */}
         <div className="border-t mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-500 text-sm">
+          <p className="text-muted-foreground text-sm">
             © {currentYear} EduNova. All rights reserved.
           </p>
           <div className="flex items-center space-x-4 mt-4 md:mt-0">
             <Link
               href="/terms"
-              className="text-gray-500 hover:text-primary text-sm transition-colors"
+              className="text-muted-foreground hover:text-primary text-sm transition-colors"
             >
               Terms
             </Link>
             <Link
               href="/privacy"
-              className="text-gray-500 hover:text-primary text-sm transition-colors"
+              className="text-muted-foreground hover:text-primary text-sm transition-colors"
             >
               Privacy
             </Link>
             <Link
               href="/cookies"
-              className="text-gray-500 hover:text-primary text-sm transition-colors"
+              className="text-muted-foreground hover:text-primary text-sm transition-colors"
             >
               Cookies
             </Link>

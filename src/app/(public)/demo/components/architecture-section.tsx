@@ -28,11 +28,11 @@ function ArchitectureSection() {
 
 				<div className="grid gap-8 lg:grid-cols-3">
 					{/* Frontend Architecture */}
-					<Card className="border-blue-200 bg-blue-50/50 dark:border-blue-900 dark:bg-blue-950/20">
+					<Card className="border-primary/30 bg-primary/10">
 						<CardHeader>
 							<div className="mb-2 flex items-center gap-2">
-								<div className="rounded-lg bg-blue-500/10 p-2">
-									<Layers className="h-5 w-5 text-blue-500" />
+								<div className="rounded-lg bg-primary/15 p-2">
+									<Layers className="h-5 w-5 text-primary" />
 								</div>
 								<CardTitle className="text-xl">Frontend Layer</CardTitle>
 							</div>
@@ -43,7 +43,7 @@ function ArchitectureSection() {
 						<CardContent className="space-y-3">
 							<div className="space-y-2">
 								<div className="flex items-center gap-2 text-sm font-medium">
-									<Zap className="h-4 w-4 text-blue-500" />
+									<Zap className="h-4 w-4 text-primary" />
 									Rendering Strategy
 								</div>
 								<ul className="ml-6 space-y-1 text-sm text-muted-foreground">
@@ -55,7 +55,7 @@ function ArchitectureSection() {
 							</div>
 							<div className="space-y-2">
 								<div className="flex items-center gap-2 text-sm font-medium">
-									<TrendingUp className="h-4 w-4 text-blue-500" />
+									<TrendingUp className="h-4 w-4 text-primary" />
 									State Management
 								</div>
 								<ul className="ml-6 space-y-1 text-sm text-muted-foreground">
@@ -68,11 +68,11 @@ function ArchitectureSection() {
 					</Card>
 
 					{/* Backend Architecture */}
-					<Card className="border-green-200 bg-green-50/50 dark:border-green-900 dark:bg-green-950/20">
+					<Card className="border-accent/40 bg-accent/10">
 						<CardHeader>
 							<div className="mb-2 flex items-center gap-2">
-								<div className="rounded-lg bg-green-500/10 p-2">
-									<Layers className="h-5 w-5 text-green-500" />
+								<div className="rounded-lg bg-accent/15 p-2">
+									<Layers className="h-5 w-5 text-accent-foreground" />
 								</div>
 								<CardTitle className="text-xl">Backend Layer</CardTitle>
 							</div>
@@ -83,7 +83,7 @@ function ArchitectureSection() {
 						<CardContent className="space-y-3">
 							<div className="space-y-2">
 								<div className="flex items-center gap-2 text-sm font-medium">
-									<Zap className="h-4 w-4 text-green-500" />
+									<Zap className="h-4 w-4 text-accent-foreground" />
 									API Architecture
 								</div>
 								<ul className="ml-6 space-y-1 text-sm text-muted-foreground">
@@ -95,7 +95,7 @@ function ArchitectureSection() {
 							</div>
 							<div className="space-y-2">
 								<div className="flex items-center gap-2 text-sm font-medium">
-									<TrendingUp className="h-4 w-4 text-green-500" />
+									<TrendingUp className="h-4 w-4 text-accent-foreground" />
 									Performance
 								</div>
 								<ul className="ml-6 space-y-1 text-sm text-muted-foreground">
@@ -108,11 +108,11 @@ function ArchitectureSection() {
 					</Card>
 
 					{/* Infrastructure */}
-					<Card className="border-purple-200 bg-purple-50/50 dark:border-purple-900 dark:bg-purple-950/20">
+					<Card className="border-secondary/40 bg-secondary/10">
 						<CardHeader>
 							<div className="mb-2 flex items-center gap-2">
-								<div className="rounded-lg bg-purple-500/10 p-2">
-									<Layers className="h-5 w-5 text-purple-500" />
+								<div className="rounded-lg bg-secondary/20 p-2">
+									<Layers className="h-5 w-5 text-secondary-foreground" />
 								</div>
 								<CardTitle className="text-xl">Infrastructure</CardTitle>
 							</div>
@@ -123,7 +123,7 @@ function ArchitectureSection() {
 						<CardContent className="space-y-3">
 							<div className="space-y-2">
 								<div className="flex items-center gap-2 text-sm font-medium">
-									<Zap className="h-4 w-4 text-purple-500" />
+									<Zap className="h-4 w-4 text-secondary-foreground" />
 									CI/CD Pipeline
 								</div>
 								<ul className="ml-6 space-y-1 text-sm text-muted-foreground">
@@ -135,7 +135,7 @@ function ArchitectureSection() {
 							</div>
 							<div className="space-y-2">
 								<div className="flex items-center gap-2 text-sm font-medium">
-									<TrendingUp className="h-4 w-4 text-purple-500" />
+									<TrendingUp className="h-4 w-4 text-secondary-foreground" />
 									Scalability
 								</div>
 								<ul className="ml-6 space-y-1 text-sm text-muted-foreground">

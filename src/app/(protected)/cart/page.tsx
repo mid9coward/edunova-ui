@@ -55,17 +55,17 @@ const CartPage = () => {
 				<div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
 					{/* Cart Items */}
 					<div className="lg:col-span-2 space-y-3 sm:space-y-4">
-						<div className="bg-white rounded-lg sm:rounded-xl border border-gray-200 shadow-md sm:shadow-lg overflow-hidden">
-							<div className="p-4 sm:p-6 border-b border-gray-100">
-								<h2 className="text-lg sm:text-xl font-semibold text-gray-900">
+						<div className="bg-card rounded-lg sm:rounded-xl border border-border shadow-md sm:shadow-lg overflow-hidden">
+							<div className="p-4 sm:p-6 border-b border-border/70">
+								<h2 className="text-lg sm:text-xl font-semibold text-foreground">
 									Course Items
 								</h2>
-								<p className="text-xs sm:text-sm text-gray-600 mt-1">
+								<p className="text-xs sm:text-sm text-muted-foreground mt-1">
 									Lifetime access to all course materials
 								</p>
 							</div>
 
-							<div className="divide-y divide-gray-100">
+							<div className="divide-y divide-border/70">
 								{cart.items.map((item) => (
 									<div key={item.courseId._id} className="p-3 sm:p-6">
 										<CartItemComponent item={item} />

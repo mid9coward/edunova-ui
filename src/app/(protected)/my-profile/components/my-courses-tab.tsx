@@ -51,7 +51,7 @@ const AccountInfoTab = () => {
 			<div>
 				<div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6 lg:mb-8">
 					<div className="w-1 h-6 sm:h-8 bg-gradient-to-b from-primary to-primary/60 rounded-full"></div>
-					<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 dark:text-white">
+					<h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground">
 						My Courses
 					</h2>
 				</div>
@@ -63,11 +63,11 @@ const AccountInfoTab = () => {
 						))}
 					</div>
 				) : (
-					<div className="text-center py-12 sm:py-16 px-4 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl sm:rounded-2xl border-2 border-dashed border-gray-300 dark:border-gray-600">
+					<div className="text-center py-12 sm:py-16 px-4 bg-gradient-to-br from-card to-muted/40 rounded-xl sm:rounded-2xl border-2 border-dashed border-border">
 						<div className="mb-4 sm:mb-6">
-							<div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-3 sm:mb-4 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-600 rounded-full flex items-center justify-center">
+							<div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-3 sm:mb-4 bg-gradient-to-br from-muted to-muted/70 rounded-full flex items-center justify-center">
 								<svg
-									className="w-10 h-10 sm:w-12 sm:h-12 text-gray-400 dark:text-gray-500"
+									className="w-10 h-10 sm:w-12 sm:h-12 text-muted-foreground"
 									fill="none"
 									viewBox="0 0 24 24"
 									stroke="currentColor"
@@ -82,10 +82,10 @@ const AccountInfoTab = () => {
 								</svg>
 							</div>
 						</div>
-						<h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100 mb-2 sm:mb-3">
+						<h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-3">
 							🎯 No Courses Enrolled Yet
 						</h3>
-						<p className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-md mx-auto">
+						<p className="text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed max-w-md mx-auto">
 							Start your learning journey today! Discover exciting courses
 							waiting for you.
 						</p>

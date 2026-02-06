@@ -163,7 +163,7 @@ const TeamSection = () => {
                 <div className="relative mx-auto mb-6 w-24 h-24 group-hover:scale-110 transition-transform duration-300">
                   <div className="absolute inset-0 bg-gradient-to-br from-primary to-secondary rounded-full animate-pulse opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
                   <div className="relative w-full h-full bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center shadow-lg">
-                    <span className="text-white text-2xl font-bold">
+                    <span className="text-primary-foreground text-2xl font-bold">
                       {member.name
                         .split(" ")
                         .map((n) => n[0])
@@ -171,7 +171,7 @@ const TeamSection = () => {
                     </span>
                   </div>
                   {/* Status Indicator */}
-                  <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-4 border-background flex items-center justify-center">
+                  <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-primary rounded-full border-4 border-background flex items-center justify-center">
                     <div className="w-2 h-2 bg-background rounded-full animate-pulse" />
                   </div>
                 </div>
@@ -205,7 +205,7 @@ const TeamSection = () => {
                 <div className="grid grid-cols-3 gap-4 mb-6 p-3 bg-background/60 rounded-lg group-hover:bg-background/80 transition-colors duration-300">
                   <div className="text-center">
                     <div className="flex items-center justify-center space-x-1">
-                      <Star className="h-3 w-3 text-yellow-500 fill-current" />
+                      <Star className="h-3 w-3 text-primary fill-current" />
                       <span className="text-sm font-bold text-foreground">
                         {member.rating}
                       </span>
@@ -223,7 +223,7 @@ const TeamSection = () => {
                   </div>
                   <div className="text-center">
                     <div className="flex items-center justify-center space-x-1">
-                      <Users className="h-3 w-3 text-green-500" />
+                      <Users className="h-3 w-3 text-primary" />
                       <span className="text-sm font-bold text-foreground">
                         {member.students}
                       </span>
@@ -316,3 +316,4 @@ const TeamSection = () => {
 };
 
 export default TeamSection;
+

@@ -36,7 +36,7 @@ const CourseCurriculum = ({chapters, isLoading}: CourseCurriculumProps) => {
 				<div className="p-4 sm:p-6 lg:p-8 border-b border-border">
 					<div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
 						<div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-primary to-secondary rounded-lg sm:rounded-xl flex items-center justify-center">
-							<Layers className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+							<Layers className="h-5 w-5 sm:h-6 sm:w-6 text-primary-foreground" />
 						</div>
 						<div className="flex-1">
 							<Skeleton className="h-5 sm:h-7 w-36 sm:w-48 mb-1 sm:mb-2" />
@@ -82,7 +82,7 @@ const CourseCurriculum = ({chapters, isLoading}: CourseCurriculumProps) => {
 				<div className="p-4 sm:p-6 lg:p-8 border-b border-border bg-background/60">
 					<div className="flex items-center gap-2 sm:gap-3">
 						<div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-primary to-secondary rounded-lg sm:rounded-xl flex items-center justify-center">
-							<Layers className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+							<Layers className="h-5 w-5 sm:h-6 sm:w-6 text-primary-foreground" />
 						</div>
 						<div>
 							<h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground">
@@ -133,7 +133,7 @@ const CourseCurriculum = ({chapters, isLoading}: CourseCurriculumProps) => {
 			<div className="p-4 sm:p-6 lg:p-8 border-b border-border bg-background/60">
 				<div className="flex items-center gap-2 sm:gap-3 lg:gap-4 mb-4 sm:mb-6">
 					<div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-primary to-secondary rounded-lg sm:rounded-xl flex items-center justify-center shadow-lg">
-						<Layers className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+						<Layers className="h-5 w-5 sm:h-6 sm:w-6 text-primary-foreground" />
 					</div>
 					<div className="flex-1">
 						<h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground mb-0.5 sm:mb-1">
@@ -171,7 +171,7 @@ const CourseCurriculum = ({chapters, isLoading}: CourseCurriculumProps) => {
 					</div>
 					<div className="bg-background/60 rounded-lg sm:rounded-xl p-2.5 sm:p-3 lg:p-4 border border-border">
 						<div className="flex items-center gap-1 sm:gap-2 mb-0.5 sm:mb-1">
-							<Clock className="h-3 w-3 sm:h-4 sm:w-4 text-green-600" />
+							<Clock className="h-3 w-3 sm:h-4 sm:w-4 text-primary" />
 							<span className="text-[10px] sm:text-xs font-medium text-muted-foreground uppercase tracking-wide">
 								Duration
 							</span>
@@ -265,3 +265,4 @@ const CourseCurriculum = ({chapters, isLoading}: CourseCurriculumProps) => {
 };
 
 export default CourseCurriculum;
+

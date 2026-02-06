@@ -52,7 +52,7 @@ const ChatMessage = ({
 			{/* Avatar */}
 			<div className="relative shrink-0">
 				<Avatar className="h-10 w-10">
-					<div className="w-full h-full rounded-full overflow-hidden shadow-lg border-2 border-white/20">
+					<div className="w-full h-full rounded-full overflow-hidden shadow-lg border-2 border-border/40">
 						<Image
 							src={
 								isUser ? user?.avatar || DEFAULT_AVATAR : "/images/chatbot.png"
@@ -81,8 +81,8 @@ const ChatMessage = ({
 							"relative rounded-2xl px-4 py-3 text-sm shadow-lg transition-all duration-300",
 							"border backdrop-blur-sm",
 							isUser
-								? "bg-brand-gradient-main text-white border-white/20 rounded-br-md"
-								: "bg-white/90 text-gray-900 border-gray-200/50 rounded-bl-md"
+								? "bg-brand-gradient-main text-primary-foreground border-border/40 rounded-br-md"
+								: "bg-card/90 text-foreground border-border/50 rounded-bl-md"
 						)}
 					>
 						{isLoading ? (
@@ -124,7 +124,7 @@ const ChatMessage = ({
 								{/* Courses Section */}
 								{!isUser && courses && courses.length > 0 && (
 									<div className="mt-3 w-full">
-										<div className="text-sm font-medium text-gray-700 mb-2">
+										<div className="text-sm font-medium text-foreground/80 mb-2">
 											📚 Khóa học được đề xuất:
 										</div>
 										<div className="space-y-1.5 max-h-[200px] overflow-y-auto w-full ">
@@ -134,11 +134,11 @@ const ChatMessage = ({
 													href={`/courses/${course.slug}`}
 													className="block w-full"
 												>
-													<div className="bg-white/60 border border-gray-200/50 rounded-lg p-2 hover:bg-white/80 transition-colors duration-200 w-full">
+													<div className="bg-card/70 border border-border/50 rounded-lg p-2 hover:bg-card transition-colors duration-200 w-full">
 														<div className="flex gap-2 items-start">
 															{/* Course Image - Khối 1 (Smaller) */}
 															<div className="flex-shrink-0">
-																<div className="relative w-14 h-10 rounded overflow-hidden bg-gray-100">
+																<div className="relative w-14 h-10 rounded overflow-hidden bg-muted">
 																	{course.image ? (
 																		<Image
 																			src={course.image}
@@ -148,8 +148,8 @@ const ChatMessage = ({
 																			sizes="56px"
 																		/>
 																	) : (
-																		<div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-																			<BookOpen className="h-3 w-3 text-white" />
+																		<div className="w-full h-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+																			<BookOpen className="h-3 w-3 text-primary-foreground" />
 																		</div>
 																	)}
 																</div>
@@ -159,7 +159,7 @@ const ChatMessage = ({
 															<div className="flex-1 min-w-0 flex flex-col gap-1.5">
 																{/* Course Title */}
 																<div>
-																	<h4 className="text-xs font-medium text-gray-900 line-clamp-1 leading-tight">
+																	<h4 className="text-xs font-medium text-foreground line-clamp-1 leading-tight">
 																		{course.title}
 																	</h4>
 																</div>
@@ -168,11 +168,11 @@ const ChatMessage = ({
 																<div className="flex items-center gap-2">
 																	{course.oldPrice &&
 																		course.oldPrice > course.price && (
-																			<span className="text-xs text-gray-400 line-through">
+																			<span className="text-xs text-muted-foreground line-through">
 																				{formatPrice(course.oldPrice)}
 																			</span>
 																		)}
-																	<span className="text-sm font-semibold text-blue-600">
+																	<span className="text-sm font-semibold text-primary">
 																		{course.price === 0
 																			? "Miễn phí"
 																			: formatPrice(course.price)}
@@ -190,7 +190,7 @@ const ChatMessage = ({
 								{/* Suggestions Section */}
 								{!isUser && suggestions && suggestions.length > 0 && (
 									<div className="mt-3 w-full max-w-full">
-										<div className="text-sm font-medium text-gray-700 mb-2">
+										<div className="text-sm font-medium text-foreground/80 mb-2">
 											💡 Bạn có thể hỏi:
 										</div>
 										<div className="grid grid-cols-1 gap-1.5 w-full max-w-full">
@@ -199,7 +199,7 @@ const ChatMessage = ({
 													key={index}
 													variant="outline"
 													size="sm"
-													className="text-xs h-auto min-h-[32px] px-3 py-2 rounded-lg bg-white/60 border-gray-200/50 hover:bg-blue-50 hover:border-blue-200 transition-colors duration-200 w-full text-left overflow-hidden justify-start"
+													className="text-xs h-auto min-h-[32px] px-3 py-2 rounded-lg bg-card/70 border-border/50 hover:bg-primary/10 hover:border-primary/30 transition-colors duration-200 w-full text-left overflow-hidden justify-start"
 													onClick={() => onSuggestionClick?.(suggestion)}
 													title={suggestion}
 												>
@@ -223,7 +223,7 @@ const ChatMessage = ({
 
 								{/* Message sent indicator for user messages */}
 								{isUser && (
-									<div className="absolute -bottom-1 -right-1 h-3 w-3 rounded-full bg-white/80 flex items-center justify-center">
+									<div className="absolute -bottom-1 -right-1 h-3 w-3 rounded-full bg-background/80 flex items-center justify-center">
 										<div className="h-1.5 w-1.5 rounded-full bg-brand-purple-primary" />
 									</div>
 								)}
@@ -236,7 +236,7 @@ const ChatMessage = ({
 				{timestamp && !isLoading && (
 					<span
 						className={cn(
-							"text-xs text-gray-500 mt-2 px-2 opacity-70 font-medium"
+							"text-xs text-muted-foreground mt-2 px-2 opacity-70 font-medium"
 						)}
 					>
 						{timestamp.toLocaleTimeString([], {

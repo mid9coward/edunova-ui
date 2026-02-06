@@ -26,7 +26,7 @@ const ManualDiscountInput = ({
 
 	return (
 		<div>
-			<h3 className="text-xs sm:text-sm font-medium text-gray-700 mb-2 sm:mb-3">
+			<h3 className="text-xs sm:text-sm font-medium text-foreground mb-2 sm:mb-3">
 				Enter discount code
 			</h3>
 			<div className="flex gap-1.5 sm:gap-2">

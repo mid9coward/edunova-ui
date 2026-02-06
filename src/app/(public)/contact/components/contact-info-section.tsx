@@ -67,7 +67,7 @@ const ContactInfoSection = () => {
       handle: "@LearnHubEdu",
       url: "https://twitter.com/edunova",
       icon: Twitter,
-      color: "text-blue-500",
+      color: "text-primary",
       followers: "45K",
     },
     {
@@ -75,7 +75,7 @@ const ContactInfoSection = () => {
       handle: "EduNova",
       url: "https://linkedin.com/company/edunova",
       icon: Linkedin,
-      color: "text-blue-700",
+      color: "text-secondary",
       followers: "120K",
     },
     {
@@ -83,7 +83,7 @@ const ContactInfoSection = () => {
       handle: "LearnHubEducation",
       url: "https://facebook.com/edunova",
       icon: Facebook,
-      color: "text-blue-600",
+      color: "text-primary",
       followers: "85K",
     },
     {
@@ -91,13 +91,13 @@ const ContactInfoSection = () => {
       handle: "@edunova_edu",
       url: "https://instagram.com/edunova",
       icon: Instagram,
-      color: "text-pink-600",
+      color: "text-accent",
       followers: "30K",
     },
   ];
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-background">
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -108,13 +108,13 @@ const ContactInfoSection = () => {
             <MapPin className="h-3 w-3" />
             <span>Find Us Worldwide</span>
           </Badge>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
             Our{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
               Global Presence
             </span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             We&apos;re here to support you around the world. Find the best way
             to reach our team or visit one of our offices.
           </p>
@@ -122,7 +122,7 @@ const ContactInfoSection = () => {
 
         {/* Office Locations */}
         <div className="mb-16">
-          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-12">
+          <h3 className="text-2xl md:text-3xl font-bold text-foreground text-center mb-12">
             Office Locations
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -130,14 +130,14 @@ const ContactInfoSection = () => {
               <Card
                 key={index}
                 className={`relative overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-300 group ${
-                  office.isPrimary ? "ring-2 ring-blue-200" : ""
+                  office.isPrimary ? "ring-2 ring-primary/30" : ""
                 }`}
               >
                 {office.isPrimary && (
                   <div className="absolute top-4 right-4 z-10">
                     <Badge
                       variant="secondary"
-                      className="bg-blue-100 text-blue-700"
+                      className="bg-primary/10 text-primary"
                     >
                       Headquarters
                     </Badge>
@@ -145,20 +145,20 @@ const ContactInfoSection = () => {
                 )}
 
                 {/* Background Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-50/0 to-purple-50/0 group-hover:from-blue-50/100 group-hover:to-purple-50/50 transition-all duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-secondary/0 group-hover:from-primary/10 group-hover:to-secondary/10 transition-all duration-300" />
 
                 <CardContent className="relative z-10 p-6">
                   {/* City & Type */}
                   <div className="mb-6">
                     <div className="flex items-center space-x-3 mb-2">
-                      <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
-                        <MapPin className="h-6 w-6 text-white" />
+                      <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center">
+                        <MapPin className="h-6 w-6 text-primary-foreground" />
                       </div>
                       <div>
-                        <h4 className="text-xl font-bold text-gray-900">
+                        <h4 className="text-xl font-bold text-foreground">
                           {office.city}
                         </h4>
-                        <p className="text-sm text-blue-600 font-medium">
+                        <p className="text-sm text-primary font-medium">
                           {office.type}
                         </p>
                       </div>
@@ -168,8 +168,8 @@ const ContactInfoSection = () => {
                   {/* Address */}
                   <div className="space-y-4 mb-6">
                     <div className="flex items-start space-x-3">
-                      <Building className="h-5 w-5 text-gray-400 mt-0.5 flex-shrink-0" />
-                      <div className="text-gray-600">
+                      <Building className="h-5 w-5 text-muted-foreground mt-0.5 flex-shrink-0" />
+                      <div className="text-muted-foreground">
                         <p>{office.address}</p>
                         <p>{office.zipCode}</p>
                         <p className="font-medium">{office.country}</p>
@@ -177,30 +177,30 @@ const ContactInfoSection = () => {
                     </div>
 
                     <div className="flex items-center space-x-3">
-                      <Phone className="h-5 w-5 text-gray-400 flex-shrink-0" />
+                      <Phone className="h-5 w-5 text-muted-foreground flex-shrink-0" />
                       <a
                         href={`tel:${office.phone.replace(/\s/g, "")}`}
-                        className="text-blue-600 hover:underline"
+                        className="text-primary hover:underline"
                       >
                         {office.phone}
                       </a>
                     </div>
 
                     <div className="flex items-center space-x-3">
-                      <Mail className="h-5 w-5 text-gray-400 flex-shrink-0" />
+                      <Mail className="h-5 w-5 text-muted-foreground flex-shrink-0" />
                       <a
                         href={`mailto:${office.email}`}
-                        className="text-blue-600 hover:underline"
+                        className="text-primary hover:underline"
                       >
                         {office.email}
                       </a>
                     </div>
 
                     <div className="flex items-start space-x-3">
-                      <Clock className="h-5 w-5 text-gray-400 mt-0.5 flex-shrink-0" />
-                      <div className="text-gray-600">
+                      <Clock className="h-5 w-5 text-muted-foreground mt-0.5 flex-shrink-0" />
+                      <div className="text-muted-foreground">
                         <p>{office.hours}</p>
-                        <p className="text-sm text-gray-500">
+                        <p className="text-sm text-muted-foreground">
                           {office.timezone}
                         </p>
                       </div>
@@ -212,7 +212,7 @@ const ContactInfoSection = () => {
                     <Button
                       variant="outline"
                       size="sm"
-                      className="w-full group-hover:bg-blue-50 group-hover:border-blue-200"
+                      className="w-full group-hover:bg-primary/10 group-hover:border-primary/30"
                       asChild
                     >
                       <Link href={office.mapUrl} target="_blank">
@@ -224,7 +224,7 @@ const ContactInfoSection = () => {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="w-full text-gray-600 hover:text-blue-600 hover:bg-blue-50"
+                      className="w-full text-muted-foreground hover:text-primary hover:bg-primary/10"
                       asChild
                     >
                       <Link href="#contact-form">
@@ -236,7 +236,7 @@ const ContactInfoSection = () => {
                 </CardContent>
 
                 {/* Decorative Elements */}
-                <div className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-br from-primary/60 to-secondary/60 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </Card>
             ))}
           </div>
@@ -244,7 +244,7 @@ const ContactInfoSection = () => {
 
         {/* Social Media */}
         <div>
-          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-12">
+          <h3 className="text-2xl md:text-3xl font-bold text-foreground text-center mb-12">
             Connect with Us on Social Media
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -257,24 +257,24 @@ const ContactInfoSection = () => {
                 >
                   <CardContent className="p-6">
                     <div className="flex flex-col items-center space-y-4">
-                      <div className="w-16 h-16 bg-gray-50 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <div className="w-16 h-16 bg-muted/40 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                         <Icon className={`h-8 w-8 ${social.color}`} />
                       </div>
                       <div>
-                        <h4 className="text-lg font-semibold text-gray-900">
+                        <h4 className="text-lg font-semibold text-foreground">
                           {social.name}
                         </h4>
-                        <p className="text-sm text-gray-600 mb-1">
+                        <p className="text-sm text-muted-foreground mb-1">
                           {social.handle}
                         </p>
-                        <p className="text-xs text-gray-500">
+                        <p className="text-xs text-muted-foreground">
                           {social.followers} followers
                         </p>
                       </div>
                       <Button
                         variant="outline"
                         size="sm"
-                        className="w-full group-hover:bg-gray-50"
+                        className="w-full group-hover:bg-muted/40"
                         asChild
                       >
                         <Link href={social.url} target="_blank">

@@ -40,11 +40,11 @@ const roleIcons = {
 
 // Role color mapping - aligned with actual system roles
 const roleColors = {
-	[SYSTEM_ROLE_NAMES.ADMIN]: "bg-red-100 text-red-800 border-red-200",
+	[SYSTEM_ROLE_NAMES.ADMIN]: "bg-destructive/10 text-destructive border-destructive/30",
 	[SYSTEM_ROLE_NAMES.SUPER_ADMIN]:
-		"bg-purple-100 text-purple-800 border-purple-200",
-	[SYSTEM_ROLE_NAMES.STUDENT]: "bg-green-100 text-green-800 border-green-200",
-	[SYSTEM_ROLE_NAMES.GUEST]: "bg-gray-100 text-gray-800 border-gray-200",
+		"bg-secondary/20 text-secondary-foreground border-secondary/40",
+	[SYSTEM_ROLE_NAMES.STUDENT]: "bg-primary/10 text-primary border-primary/30",
+	[SYSTEM_ROLE_NAMES.GUEST]: "bg-muted text-muted-foreground border-border",
 } as const;
 
 // Helper function to get role icon with fallback logic
@@ -66,7 +66,7 @@ function getRoleColor(roleName: string) {
 	}
 
 	// Default fallback
-	return "bg-gray-100 text-gray-800 border-gray-200";
+	return "bg-muted text-muted-foreground border-border";
 }
 
 interface RolesGridProps {

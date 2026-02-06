@@ -94,8 +94,8 @@ const CourseHero = ({course}: CourseHeroProps) => {
 												key={i}
 												className={`h-3 w-3 sm:h-4 sm:w-4 ${
 													i < Math.floor(course.averageRating || 4.5)
-														? "text-yellow-400 fill-current"
-														: "text-gray-600"
+														? "text-primary fill-current"
+														: "text-muted-foreground"
 												}`}
 											/>
 										))}
@@ -206,7 +206,7 @@ const CourseHero = ({course}: CourseHeroProps) => {
 
 								{/* Play Button Overlay - Only show if video exists */}
 								{hasIntroVideo && (
-									<div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+									<div className="absolute inset-0 flex items-center justify-center bg-background/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
 										<div className="w-16 h-16 sm:w-20 sm:h-20 bg-foreground rounded-full flex items-center justify-center transform scale-90 group-hover:scale-100 transition-transform duration-300 shadow-lg">
 											<Play className="h-6 w-6 sm:h-8 sm:w-8 text-background ml-1 fill-current" />
 										</div>
@@ -225,7 +225,7 @@ const CourseHero = ({course}: CourseHeroProps) => {
 									</div>
 								</div>
 								<div className="text-center p-3 sm:p-4 bg-card/60 rounded-lg backdrop-blur-sm">
-									<div className="text-lg sm:text-xl lg:text-2xl font-bold text-green-500">
+									<div className="text-lg sm:text-xl lg:text-2xl font-bold text-primary">
 										25
 									</div>
 									<div className="text-xs sm:text-sm text-muted-foreground">
@@ -241,7 +241,7 @@ const CourseHero = ({course}: CourseHeroProps) => {
 									</div>
 								</div>
 								<div className="text-center p-3 sm:p-4 bg-card/60 rounded-lg backdrop-blur-sm">
-									<div className="text-lg sm:text-xl lg:text-2xl font-bold text-amber-500">
+									<div className="text-lg sm:text-xl lg:text-2xl font-bold text-secondary-foreground">
 										⭐
 									</div>
 									<div className="text-xs sm:text-sm text-muted-foreground">
@@ -258,3 +258,5 @@ const CourseHero = ({course}: CourseHeroProps) => {
 };
 
 export default CourseHero;
+
+

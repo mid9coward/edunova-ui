@@ -61,9 +61,9 @@ const ForgotPasswordForm = ({className, ...props}: ForgotPasswordFormProps) => {
 	if (isEmailSent) {
 		return (
 			<div className={cn("grid gap-6", className)}>
-				<Alert className="border-green-200 bg-green-50">
-					<CheckCircle className="h-4 w-4 text-green-600" />
-					<AlertDescription className="text-green-800">
+				<Alert className="border-primary/30 bg-primary/10">
+					<CheckCircle className="h-4 w-4 text-primary" />
+					<AlertDescription className="text-primary">
 						<strong>Email sent successfully!</strong>
 						<br />
 						We&apos;ve sent a password reset link to{" "}
@@ -74,8 +74,8 @@ const ForgotPasswordForm = ({className, ...props}: ForgotPasswordFormProps) => {
 
 				<div className="text-center space-y-4">
 					<div className="flex justify-center">
-						<div className="rounded-full bg-green-100 p-3">
-							<Mail className="h-6 w-6 text-green-600" />
+						<div className="rounded-full bg-primary/15 p-3">
+							<Mail className="h-6 w-6 text-primary" />
 						</div>
 					</div>
 
@@ -117,8 +117,8 @@ const ForgotPasswordForm = ({className, ...props}: ForgotPasswordFormProps) => {
 			>
 				<div className="space-y-2 text-center">
 					<div className="flex justify-center">
-						<div className="rounded-full bg-blue-100 p-3">
-							<AlertCircle className="h-6 w-6 text-blue-600" />
+						<div className="rounded-full bg-secondary/20 p-3">
+							<AlertCircle className="h-6 w-6 text-secondary-foreground" />
 						</div>
 					</div>
 					<p className="text-sm text-muted-foreground">
@@ -166,3 +166,4 @@ const ForgotPasswordForm = ({className, ...props}: ForgotPasswordFormProps) => {
 };
 
 export default ForgotPasswordForm;
+

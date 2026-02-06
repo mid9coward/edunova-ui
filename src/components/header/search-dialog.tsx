@@ -76,12 +76,12 @@ export default function SearchDialog() {
 				<Button
 					variant="ghost"
 					size="sm"
-					className="relative h-8 w-8 sm:h-10 sm:w-10 p-0 text-gray-500 hover:text-blue-600 transition-all duration-300 group hover:bg-gradient-to-br hover:from-blue-50 hover:via-blue-100/50 hover:to-purple-50 hover:shadow-lg hover:shadow-blue-200/20 rounded-full border border-transparent hover:border-blue-100 focus:outline-none"
+					className="relative h-8 w-8 sm:h-10 sm:w-10 p-0 text-muted-foreground hover:text-primary transition-all duration-300 group hover:bg-gradient-to-br hover:from-primary/10 hover:via-primary/15 hover:to-secondary/10 hover:shadow-lg  rounded-full border border-transparent hover:border-primary/20 focus:outline-none"
 					aria-label="Open search dialog"
 					aria-expanded={open}
 					aria-haspopup="dialog"
 				>
-					<div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-purple-500/0 group-hover:from-blue-500/8 group-hover:to-purple-500/8 rounded-full transition-all duration-300"></div>
+					<div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-secondary/0 group-hover:from-primary/10 group-hover:to-secondary/10 rounded-full transition-all duration-300"></div>
 					<Search
 						size={16}
 						className="sm:w-[18px] sm:h-[18px] relative z-10 group-hover:scale-110 transition-transform duration-300"
@@ -108,18 +108,18 @@ export default function SearchDialog() {
 						<CommandList className="max-h-72 sm:max-h-96">
 							{(searchLoading || searchFetching) && searchQuery.length >= 2 && (
 								<div className="flex items-center justify-center py-8">
-									<div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-									<span className="ml-2 text-gray-600">Searching...</span>
+									<div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+									<span className="ml-2 text-muted-foreground">Searching...</span>
 								</div>
 							)}
 
 							{searchError && searchQuery.length >= 2 && (
 								<div className="flex flex-col items-center justify-center py-8 text-center">
-									<Search className="h-12 w-12 text-red-400 mb-3" />
-									<p className="text-lg font-medium text-red-600">
+									<Search className="h-12 w-12 text-destructive mb-3" />
+									<p className="text-lg font-medium text-destructive">
 										An error occurred
 									</p>
-									<p className="text-sm text-gray-500">
+									<p className="text-sm text-muted-foreground">
 										Please try again later
 									</p>
 								</div>
@@ -140,7 +140,7 @@ export default function SearchDialog() {
 											</p>
 											<button
 												onClick={() => handleSearchSubmit(searchQuery)}
-												className="mt-3 text-sm text-blue-600 hover:text-blue-800 underline"
+												className="mt-3 text-sm text-primary hover:text-primary/80 underline"
 												aria-label={`View all search results for "${searchQuery}"`}
 											>
 												View all search results
@@ -165,12 +165,12 @@ export default function SearchDialog() {
 							{!searchLoading && !searchFetching && courses.length > 0 && (
 								<CommandGroup>
 									<div className="flex items-center justify-between px-2 mb-2 py-3 sm:py-4 border-b">
-										<h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide">
+										<h3 className="text-sm font-semibold text-foreground uppercase tracking-wide">
 											COURSES
 										</h3>
 										<button
 											onClick={() => handleViewMore("course")}
-											className="text-sm text-gray-500 hover:text-blue-600 transition-colors min-h-[44px] px-2"
+											className="text-sm text-muted-foreground hover:text-primary transition-colors min-h-[44px] px-2"
 											aria-label="View more courses"
 										>
 											View more
@@ -181,9 +181,9 @@ export default function SearchDialog() {
 											key={course._id}
 											value={course.title}
 											onSelect={() => handleItemSelect("course", course.slug)}
-											className="flex items-center gap-3 p-3 sm:p-2 hover:bg-gray-50 cursor-pointer border-none min-h-[60px] sm:min-h-[auto]"
+											className="flex items-center gap-3 p-3 sm:p-2 hover:bg-muted/40 cursor-pointer border-none min-h-[60px] sm:min-h-[auto]"
 										>
-											<div className="relative w-12 h-12 rounded-full overflow-hidden bg-gradient-to-br from-blue-500 to-purple-600 flex-shrink-0">
+											<div className="relative w-12 h-12 rounded-full overflow-hidden bg-gradient-to-br from-primary to-secondary flex-shrink-0">
 												{course?.image ? (
 													<Image
 														src={course.image}
@@ -194,14 +194,14 @@ export default function SearchDialog() {
 													/>
 												) : (
 													<div className="w-full h-full flex items-center justify-center">
-														<span className="text-white text-lg font-semibold">
+														<span className="text-primary-foreground text-lg font-semibold">
 															{course.title?.charAt(0)?.toUpperCase() || "C"}
 														</span>
 													</div>
 												)}
 											</div>
 											<div className="flex-1 min-w-0">
-												<div className="text-sm font-medium text-gray-900 truncate">
+												<div className="text-sm font-medium text-foreground truncate">
 													{course?.title}
 												</div>
 											</div>
@@ -214,12 +214,12 @@ export default function SearchDialog() {
 							{!searchLoading && !searchFetching && blogs.length > 0 && (
 								<CommandGroup>
 									<div className="flex items-center justify-between px-2 py-3 sm:p-4 border-b">
-										<h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide">
+										<h3 className="text-sm font-semibold text-foreground uppercase tracking-wide">
 											TUTORIALS
 										</h3>
 										<button
 											onClick={() => handleViewMore("blog")}
-											className="text-sm text-gray-500 hover:text-blue-600 transition-colors min-h-[44px] px-2"
+											className="text-sm text-muted-foreground hover:text-primary transition-colors min-h-[44px] px-2"
 											aria-label="View more blog posts"
 										>
 											View more
@@ -230,9 +230,9 @@ export default function SearchDialog() {
 											key={blog._id}
 											value={blog.title}
 											onSelect={() => handleItemSelect("blog", blog.slug)}
-											className="flex items-center gap-3 p-3 sm:p-4 hover:bg-gray-50 cursor-pointer border-none min-h-[60px] sm:min-h-[auto]"
+											className="flex items-center gap-3 p-3 sm:p-4 hover:bg-muted/40 cursor-pointer border-none min-h-[60px] sm:min-h-[auto]"
 										>
-											<div className="relative w-12 h-12 rounded-full overflow-hidden bg-gradient-to-br from-pink-500 to-orange-400 flex-shrink-0">
+											<div className="relative w-12 h-12 rounded-full overflow-hidden bg-gradient-to-br from-secondary to-accent flex-shrink-0">
 												{blog?.thumbnail ? (
 													<Image
 														src={blog.thumbnail}
@@ -243,14 +243,14 @@ export default function SearchDialog() {
 													/>
 												) : (
 													<div className="w-full h-full flex items-center justify-center">
-														<span className="text-white text-lg font-semibold">
+														<span className="text-primary-foreground text-lg font-semibold">
 															{blog.title?.charAt(0)?.toUpperCase() || "B"}
 														</span>
 													</div>
 												)}
 											</div>
 											<div className="flex-1 min-w-0">
-												<div className="text-sm font-medium text-gray-900 line-clamp-2 leading-relaxed">
+												<div className="text-sm font-medium text-foreground line-clamp-2 leading-relaxed">
 													{blog?.title}
 												</div>
 											</div>

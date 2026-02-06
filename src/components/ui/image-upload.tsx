@@ -116,9 +116,9 @@ export function ImageUpload({
           />
           {value && (
             <div className="space-y-2">
-              <div className="flex items-center gap-2 p-2 border rounded-lg bg-gray-50">
-                <MdImage className="h-4 w-4 text-gray-500" />
-                <span className="text-sm text-gray-700 truncate flex-1">
+              <div className="flex items-center gap-2 p-2 border border-border rounded-lg bg-muted/40">
+                <MdImage className="h-4 w-4 text-muted-foreground" />
+                <span className="text-sm text-foreground/90 truncate flex-1">
                   {value}
                 </span>
                 <Button
@@ -127,7 +127,7 @@ export function ImageUpload({
                   size="sm"
                   onClick={() => onChange("")}
                   disabled={disabled}
-                  className="h-6 w-6 p-0 text-red-500 hover:text-red-700"
+                  className="h-6 w-6 p-0 text-destructive hover:text-destructive/90"
                 >
                   <MdDelete className="h-4 w-4" />
                 </Button>
@@ -172,7 +172,7 @@ export function ImageUpload({
                 config={{ mode: "auto" }}
               />
               {isUploading && (
-                <div className="text-center text-sm text-blue-600">
+                <div className="text-center text-sm text-primary">
                   Uploading image...
                 </div>
               )}
@@ -223,16 +223,16 @@ export function ImageUpload({
 
           {!value ? (
             <div
-              className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer hover:border-gray-400 transition-colors"
+              className="border-2 border-dashed border-border rounded-lg p-8 text-center cursor-pointer hover:border-primary/40 transition-colors"
               onClick={() => fileInputRef.current?.click()}
             >
-              <MdFileUpload className="mx-auto h-12 w-12 text-gray-400 mb-4" />
-              <p className="text-sm text-gray-600 mb-2">
+              <MdFileUpload className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+              <p className="text-sm text-muted-foreground mb-2">
                 {isUploading
                   ? "Processing..."
                   : "Click to select an image file"}
               </p>
-              <p className="text-xs text-gray-400">
+              <p className="text-xs text-muted-foreground">
                 Supports JPG, PNG, GIF up to 4MB
               </p>
             </div>
@@ -270,7 +270,7 @@ export function ImageUpload({
           )}
 
           {isUploading && (
-            <div className="text-center text-sm text-blue-600">
+            <div className="text-center text-sm text-primary">
               Processing image...
             </div>
           )}

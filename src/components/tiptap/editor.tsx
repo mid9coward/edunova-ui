@@ -72,7 +72,7 @@ const Editor = ({content = "", onChange, onReady, className}: EditorProps) => {
 			attributes: {
 				style: "padding-left: 10px; padding-right:10px;",
 				class: cn(
-					"tiptap focus:outline-none print:border-0 bg-white border border-gray-100 rounded-b-md flex flex-col min-h-10 pt-2.5 pr-14 pb-10 cursor-text",
+					"tiptap focus:outline-none print:border-0 bg-card border border-border/60 rounded-b-md flex flex-col min-h-10 pt-2.5 pr-14 pb-10 cursor-text",
 					className
 				),
 			},
@@ -122,3 +122,4 @@ const Editor = ({content = "", onChange, onReady, className}: EditorProps) => {
 };
 
 export default Editor;
+

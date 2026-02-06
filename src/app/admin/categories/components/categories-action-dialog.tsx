@@ -156,7 +156,7 @@ const CategoriesActionDialog = ({
 								render={({field}) => (
 									<FormItem>
 										<FormLabel>
-											Category Name <span className="text-red-500">*</span>
+											Category Name <span className="text-destructive">*</span>
 										</FormLabel>
 										<FormControl>
 											<Input
@@ -177,7 +177,7 @@ const CategoriesActionDialog = ({
 								render={({field}) => (
 									<FormItem>
 										<FormLabel>
-											Slug <span className="text-red-500">*</span>
+											Slug <span className="text-destructive">*</span>
 										</FormLabel>
 										<FormControl>
 											<Input
@@ -249,3 +249,4 @@ const CategoriesActionDialog = ({
 };
 
 export default CategoriesActionDialog;
+

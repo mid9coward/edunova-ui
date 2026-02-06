@@ -19,15 +19,15 @@ const LessonArticleContent = ({title, content}: LessonArticleContentProps) => {
 	};
 
 	return (
-		<div className="w-full h-full bg-white">
+		<div className="w-full h-full bg-card">
 			{/* Main Content */}
 			<div className="max-w-4xl mx-auto h-full flex flex-col">
 				{/* Article Header */}
 				<div className="px-4 sm:px-6 pt-6 sm:pt-8 md:pt-12 pb-4 sm:pb-6 md:pb-8 flex-shrink-0">
-					<h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-2 sm:mb-3 md:mb-4 leading-tight">
+					<h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-2 sm:mb-3 md:mb-4 leading-tight">
 						{title}
 					</h1>
-					<p className="text-gray-500 text-sm sm:text-base">
+					<p className="text-muted-foreground text-sm sm:text-base">
 						{getCurrentDate()}
 					</p>
 				</div>
@@ -38,7 +38,7 @@ const LessonArticleContent = ({title, content}: LessonArticleContentProps) => {
 						className="h-full overflow-y-auto px-4 sm:px-6 pb-6 sm:pb-8 md:pb-12"
 						style={{
 							scrollbarWidth: "thin",
-							scrollbarColor: "#CBD5E0 #F7FAFC",
+							scrollbarColor: "var(--border) var(--background)",
 						}}
 					>
 						<div
@@ -53,3 +53,4 @@ const LessonArticleContent = ({title, content}: LessonArticleContentProps) => {
 };
 
 export default LessonArticleContent;
+

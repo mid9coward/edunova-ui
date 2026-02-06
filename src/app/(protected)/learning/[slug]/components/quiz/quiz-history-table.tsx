@@ -66,8 +66,8 @@ const QuizHistoryTable = ({
 						variant={isPassed ? "default" : "destructive"}
 						className={
 							isPassed
-								? "bg-green-500 hover:bg-green-600 text-white border-green-500"
-								: "bg-pink-500 hover:bg-pink-600 text-white border-pink-500"
+								? "bg-primary hover:bg-primary/90 text-primary-foreground border-primary"
+								: "bg-destructive hover:bg-destructive/90 text-destructive-foreground border-destructive"
 						}
 					>
 						{isPassed ? (
@@ -87,7 +87,7 @@ const QuizHistoryTable = ({
 				return (
 					<Badge
 						variant="secondary"
-						className="bg-blue-500 hover:bg-blue-600 text-white border-blue-500"
+						className="bg-secondary hover:bg-secondary/90 text-secondary-foreground border-secondary"
 					>
 						<MdAccessTime className="h-3 w-3 mr-1" />
 						In Progress
@@ -95,7 +95,7 @@ const QuizHistoryTable = ({
 				);
 			case "abandoned":
 				return (
-					<Badge variant="outline" className="border-gray-400 text-gray-600">
+					<Badge variant="outline" className="border-border text-muted-foreground">
 						<MdCancel className="h-3 w-3 mr-1" />
 						Abandoned
 					</Badge>
@@ -109,12 +109,12 @@ const QuizHistoryTable = ({
 		return (
 			<div>
 				<div className="flex items-center justify-between mb-4 sm:mb-6">
-					<h3 className="text-lg sm:text-xl font-bold text-gray-900">
+					<h3 className="text-lg sm:text-xl font-bold text-foreground">
 						Quiz History
 					</h3>
 				</div>
 				<div className="flex items-center justify-center h-32">
-					<div className="text-xs sm:text-sm text-gray-500">Loading...</div>
+					<div className="text-xs sm:text-sm text-muted-foreground">Loading...</div>
 				</div>
 			</div>
 		);
@@ -124,13 +124,13 @@ const QuizHistoryTable = ({
 		return (
 			<div>
 				<div className="flex items-center justify-between mb-4 sm:mb-6">
-					<h3 className="text-lg sm:text-xl font-bold text-gray-900">
+					<h3 className="text-lg sm:text-xl font-bold text-foreground">
 						Quiz History
 					</h3>
 				</div>
 				<div className="flex flex-col items-center justify-center h-32 text-center px-4">
-					<MdQuiz className="h-10 w-10 sm:h-12 sm:w-12 text-gray-400 mb-2" />
-					<div className="text-xs sm:text-sm text-gray-500">
+					<MdQuiz className="h-10 w-10 sm:h-12 sm:w-12 text-muted-foreground mb-2" />
+					<div className="text-xs sm:text-sm text-muted-foreground">
 						You haven&apos;t taken this quiz yet
 					</div>
 				</div>
@@ -142,39 +142,39 @@ const QuizHistoryTable = ({
 		<div>
 			{/* Header */}
 			<div className="flex items-center justify-between mb-3 sm:mb-4">
-				<h3 className="text-base sm:text-lg font-semibold text-gray-900">
+				<h3 className="text-base sm:text-lg font-semibold text-foreground">
 					Quiz History
 				</h3>
 			</div>
 
 			{/* Table - Horizontal scroll on mobile */}
-			<div className="border border-gray-200 rounded-lg overflow-hidden">
+			<div className="border border-border rounded-lg overflow-hidden">
 				<div className="overflow-x-auto">
 					<Table>
 						<TableHeader>
-							<TableRow className="bg-gray-50/50">
-								<TableHead className="font-medium text-gray-700 text-xs sm:text-sm whitespace-nowrap">
+							<TableRow className="bg-muted/40">
+								<TableHead className="font-medium text-muted-foreground text-xs sm:text-sm whitespace-nowrap">
 									Date
 								</TableHead>
-								<TableHead className="font-medium text-gray-700 text-xs sm:text-sm text-center whitespace-nowrap">
+								<TableHead className="font-medium text-muted-foreground text-xs sm:text-sm text-center whitespace-nowrap">
 									Questions
 								</TableHead>
-								<TableHead className="font-medium text-gray-700 text-xs sm:text-sm text-center whitespace-nowrap">
+								<TableHead className="font-medium text-muted-foreground text-xs sm:text-sm text-center whitespace-nowrap">
 									Correct
 								</TableHead>
-								<TableHead className="font-medium text-gray-700 text-xs sm:text-sm text-center whitespace-nowrap">
+								<TableHead className="font-medium text-muted-foreground text-xs sm:text-sm text-center whitespace-nowrap">
 									Wrong
 								</TableHead>
-								<TableHead className="font-medium text-gray-700 text-xs sm:text-sm text-center whitespace-nowrap">
+								<TableHead className="font-medium text-muted-foreground text-xs sm:text-sm text-center whitespace-nowrap">
 									Score
 								</TableHead>
-								<TableHead className="font-medium text-gray-700 text-xs sm:text-sm text-center whitespace-nowrap">
+								<TableHead className="font-medium text-muted-foreground text-xs sm:text-sm text-center whitespace-nowrap">
 									Time
 								</TableHead>
-								<TableHead className="font-medium text-gray-700 text-xs sm:text-sm text-center whitespace-nowrap">
+								<TableHead className="font-medium text-muted-foreground text-xs sm:text-sm text-center whitespace-nowrap">
 									Result
 								</TableHead>
-								<TableHead className="font-medium text-gray-700 text-xs sm:text-sm text-center whitespace-nowrap">
+								<TableHead className="font-medium text-muted-foreground text-xs sm:text-sm text-center whitespace-nowrap">
 									Details
 								</TableHead>
 							</TableRow>
@@ -189,30 +189,30 @@ const QuizHistoryTable = ({
 								.map((attempt) => (
 									<TableRow
 										key={attempt._id}
-										className="hover:bg-gray-50/50 border-b border-gray-100"
+										className="hover:bg-muted/40 border-b border-border/70"
 									>
 										{/* Date */}
-										<TableCell className="font-medium text-xs sm:text-sm text-gray-900 py-2 sm:py-3 whitespace-nowrap">
+										<TableCell className="font-medium text-xs sm:text-sm text-foreground py-2 sm:py-3 whitespace-nowrap">
 											{formatDate(attempt.startedAt)}
 										</TableCell>
 
 										{/* Questions */}
-										<TableCell className="text-center text-xs sm:text-sm text-gray-600 py-2 sm:py-3">
+										<TableCell className="text-center text-xs sm:text-sm text-muted-foreground py-2 sm:py-3">
 											{attempt.totalQuestions}
 										</TableCell>
 
 										{/* Correct Answers */}
-										<TableCell className="text-center text-xs sm:text-sm text-gray-600 py-2 sm:py-3">
+										<TableCell className="text-center text-xs sm:text-sm text-muted-foreground py-2 sm:py-3">
 											{attempt.correctAnswers}
 										</TableCell>
 
 										{/* Wrong Answers */}
-										<TableCell className="text-center text-xs sm:text-sm text-gray-600 py-2 sm:py-3">
+										<TableCell className="text-center text-xs sm:text-sm text-muted-foreground py-2 sm:py-3">
 											{attempt.wrongAnswers}
 										</TableCell>
 
 										{/* Score */}
-										<TableCell className="text-center text-xs sm:text-sm text-gray-600 py-2 sm:py-3 whitespace-nowrap">
+										<TableCell className="text-center text-xs sm:text-sm text-muted-foreground py-2 sm:py-3 whitespace-nowrap">
 											{attempt.earnedPoints} (
 											{(
 												(attempt.earnedPoints / attempt.totalPoints) *
@@ -222,7 +222,7 @@ const QuizHistoryTable = ({
 										</TableCell>
 
 										{/* Completion Time */}
-										<TableCell className="text-center text-xs sm:text-sm text-gray-600 py-2 sm:py-3 whitespace-nowrap">
+										<TableCell className="text-center text-xs sm:text-sm text-muted-foreground py-2 sm:py-3 whitespace-nowrap">
 											{secondsToDisplayTime(attempt.duration)}
 										</TableCell>
 
@@ -236,10 +236,10 @@ const QuizHistoryTable = ({
 											<Button
 												variant="ghost"
 												size="sm"
-												className="h-7 w-7 sm:h-8 sm:w-8 p-0 hover:bg-gray-100"
+												className="h-7 w-7 sm:h-8 sm:w-8 p-0 hover:bg-muted"
 												onClick={() => onViewDetails?.(attempt._id)}
 											>
-												<MdVisibility className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-gray-500" />
+												<MdVisibility className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-muted-foreground" />
 											</Button>
 										</TableCell>
 									</TableRow>
@@ -251,28 +251,28 @@ const QuizHistoryTable = ({
 
 			{/* Summary Statistics */}
 			{summary && summary.totalAttempts > 0 && (
-				<div className="mt-4 sm:mt-6 grid grid-cols-3 gap-3 sm:gap-4 md:gap-6 p-3 sm:p-4 bg-gray-50 rounded-lg">
+				<div className="mt-4 sm:mt-6 grid grid-cols-3 gap-3 sm:gap-4 md:gap-6 p-3 sm:p-4 bg-muted/40 rounded-lg">
 					<div className="text-center">
-						<div className="text-xs sm:text-sm text-gray-600 mb-0.5 sm:mb-1">
+						<div className="text-xs sm:text-sm text-muted-foreground mb-0.5 sm:mb-1">
 							Highest:
 						</div>
-						<div className="text-sm sm:text-base md:text-lg font-semibold text-gray-900">
+						<div className="text-sm sm:text-base md:text-lg font-semibold text-foreground">
 							{summary.highestScore.toFixed(2)}
 						</div>
 					</div>
 					<div className="text-center">
-						<div className="text-xs sm:text-sm text-gray-600 mb-0.5 sm:mb-1">
+						<div className="text-xs sm:text-sm text-muted-foreground mb-0.5 sm:mb-1">
 							Average:
 						</div>
-						<div className="text-sm sm:text-base md:text-lg font-semibold text-gray-900">
+						<div className="text-sm sm:text-base md:text-lg font-semibold text-foreground">
 							{summary.averageScore.toFixed(2)}
 						</div>
 					</div>
 					<div className="text-center">
-						<div className="text-xs sm:text-sm text-gray-600 mb-0.5 sm:mb-1">
+						<div className="text-xs sm:text-sm text-muted-foreground mb-0.5 sm:mb-1">
 							Passed:
 						</div>
-						<div className="text-sm sm:text-base md:text-lg font-semibold text-gray-900">
+						<div className="text-sm sm:text-base md:text-lg font-semibold text-foreground">
 							{summary.passedAttempts}/{summary.totalAttempts}
 						</div>
 					</div>

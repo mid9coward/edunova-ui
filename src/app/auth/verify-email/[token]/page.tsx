@@ -73,13 +73,13 @@ const VerifyEmailPage = () => {
 	const getIcon = () => {
 		switch (currentState) {
 			case "loading":
-				return <Loader2 className="h-12 w-12 animate-spin text-blue-600" />;
+				return <Loader2 className="h-12 w-12 animate-spin text-primary" />;
 			case "success":
-				return <CheckCircle className="h-12 w-12 text-green-600" />;
+				return <CheckCircle className="h-12 w-12 text-primary" />;
 			case "error":
-				return <XCircle className="h-12 w-12 text-red-600" />;
+				return <XCircle className="h-12 w-12 text-destructive" />;
 			default:
-				return <Loader2 className="h-12 w-12 animate-spin text-blue-600" />;
+				return <Loader2 className="h-12 w-12 animate-spin text-primary" />;
 		}
 	};
 
@@ -99,9 +99,9 @@ const VerifyEmailPage = () => {
 	const getTitleColor = () => {
 		switch (currentState) {
 			case "success":
-				return "text-green-600";
+				return "text-primary";
 			case "error":
-				return "text-red-600";
+				return "text-destructive";
 			default:
 				return "text-foreground";
 		}
@@ -110,13 +110,13 @@ const VerifyEmailPage = () => {
 	const getBackgroundColor = () => {
 		switch (currentState) {
 			case "loading":
-				return "bg-blue-100";
+				return "bg-primary/15";
 			case "success":
-				return "bg-green-100";
+				return "bg-primary/15";
 			case "error":
-				return "bg-red-100";
+				return "bg-destructive/15";
 			default:
-				return "bg-blue-100";
+				return "bg-primary/15";
 		}
 	};
 
@@ -149,8 +149,8 @@ const VerifyEmailPage = () => {
 						{/* Success State */}
 						{currentState === "success" && (
 							<div className="text-center space-y-4">
-								<div className="rounded-lg border bg-green-50 p-4">
-									<p className="text-sm text-green-800">
+								<div className="rounded-lg border border-primary/30 bg-primary/10 p-4">
+									<p className="text-sm text-primary">
 										🎉 Your email has been verified successfully! You can now
 										access your account.
 									</p>
@@ -167,8 +167,8 @@ const VerifyEmailPage = () => {
 						{/* Error State */}
 						{currentState === "error" && (
 							<div className="text-center space-y-4">
-								<div className="rounded-lg border bg-red-50 p-4">
-									<p className="text-sm text-red-800">
+								<div className="rounded-lg border border-destructive/30 bg-destructive/10 p-4">
+									<p className="text-sm text-destructive">
 										❌{" "}
 										{message ||
 											"There was a problem verifying your email address."}

@@ -74,7 +74,7 @@ const CoursesPagination = ({
 								key={`dots-${index}`}
 								className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10"
 							>
-								<MoreHorizontal className="h-3 w-3 sm:h-4 sm:w-4 text-gray-400" />
+								<MoreHorizontal className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground" />
 							</div>
 						);
 					}
@@ -110,3 +110,4 @@ const CoursesPagination = ({
 };
 
 export default CoursesPagination;
+

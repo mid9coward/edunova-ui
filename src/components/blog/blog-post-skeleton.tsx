@@ -18,7 +18,7 @@ export function BlogPostSkeleton() {
 					</div>
 
 					{/* Meta Info */}
-					<div className="flex justify-center items-center space-x-6 text-gray-500 mb-8">
+					<div className="flex justify-center items-center space-x-6 text-muted-foreground mb-8">
 						<div className="flex items-center space-x-2">
 							<Skeleton className="h-4 w-4" />
 							<Skeleton className="h-4 w-24" />
@@ -64,3 +64,4 @@ export function BlogPostSkeleton() {
 		</div>
 	);
 }
+

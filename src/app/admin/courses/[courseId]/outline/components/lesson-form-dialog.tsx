@@ -295,7 +295,7 @@ function QuestionEditor({question, onSave, onCancel}: QuestionEditorProps) {
 		<Card className="border-2 shadow-sm">
 			<CardContent className="p-6">
 				<div className="pb-3 mb-4 border-b">
-					<h4 className="text-xl font-semibold text-gray-900">Edit Question</h4>
+					<h4 className="text-xl font-semibold text-foreground">Edit Question</h4>
 				</div>
 
 				<div className="space-y-4">
@@ -414,7 +414,7 @@ function QuestionEditor({question, onSave, onCancel}: QuestionEditorProps) {
 													variant="outline"
 													size="sm"
 													onClick={() => removeOption(optionIndex)}
-													className="text-red-600"
+													className="text-destructive"
 												>
 													<MdDelete className="h-3 w-3" />
 												</Button>
@@ -455,7 +455,7 @@ function QuestionEditor({question, onSave, onCancel}: QuestionEditorProps) {
 													variant="outline"
 													size="sm"
 													onClick={() => removeOption(optionIndex)}
-													className="text-red-600"
+													className="text-destructive"
 												>
 													<MdDelete className="h-3 w-3" />
 												</Button>
@@ -968,7 +968,7 @@ const LessonFormDialog = ({
 								render={({field}) => (
 									<FormItem>
 										<FormLabel>
-											Title <span className="text-red-500">*</span>
+											Title <span className="text-destructive">*</span>
 										</FormLabel>
 										<FormControl>
 											<Input
@@ -988,7 +988,7 @@ const LessonFormDialog = ({
 									render={({field}) => (
 										<FormItem>
 											<FormLabel>
-												Content Type <span className="text-red-500">*</span>
+												Content Type <span className="text-destructive">*</span>
 											</FormLabel>
 											<Select
 												value={field.value}
@@ -1054,7 +1054,7 @@ const LessonFormDialog = ({
 										render={({field}) => (
 											<FormItem>
 												<FormLabel>
-													Video URL <span className="text-red-500">*</span>
+													Video URL <span className="text-destructive">*</span>
 												</FormLabel>
 												<FormControl>
 													<Input
@@ -1078,7 +1078,7 @@ const LessonFormDialog = ({
 											render={({field}) => (
 												<FormItem>
 													<FormLabel>
-														Max Attempts <span className="text-red-500">*</span>
+														Max Attempts <span className="text-destructive">*</span>
 													</FormLabel>
 													<FormControl>
 														<Input
@@ -1104,7 +1104,7 @@ const LessonFormDialog = ({
 												<FormItem>
 													<FormLabel>
 														Passing Score (%){" "}
-														<span className="text-red-500">*</span>
+														<span className="text-destructive">*</span>
 													</FormLabel>
 													<FormControl>
 														<Input
@@ -1154,7 +1154,7 @@ const LessonFormDialog = ({
 												<h3 className="text-lg font-medium">
 													Questions ({questions.length})
 												</h3>
-												<p className="text-sm text-gray-500">
+												<p className="text-sm text-muted-foreground">
 													Add questions for your quiz
 												</p>
 											</div>
@@ -1170,7 +1170,7 @@ const LessonFormDialog = ({
 										</div>
 
 										{questions.length === 0 ? (
-											<div className="text-center py-8 text-gray-500 border border-dashed border-gray-300 rounded-lg">
+											<div className="text-center py-8 text-muted-foreground border border-dashed border-border rounded-lg">
 												<p>No questions yet. Add your first question!</p>
 											</div>
 										) : (
@@ -1193,10 +1193,10 @@ const LessonFormDialog = ({
 																		{question.point} pts
 																	</Badge>
 																</div>
-																<p className="font-medium text-gray-900 mb-2 line-clamp-2">
+																<p className="font-medium text-foreground mb-2 line-clamp-2">
 																	{question.question || "No content yet"}
 																</p>
-																<div className="text-sm text-gray-600">
+																<div className="text-sm text-muted-foreground">
 																	{question.options.length} options,{" "}
 																	{question.correctAnswers.length} correct
 																	answers
@@ -1218,7 +1218,7 @@ const LessonFormDialog = ({
 																	size="sm"
 																	onClick={() => deleteQuestion(index)}
 																	disabled={isLoading || isSubmitting}
-																	className="text-red-600 hover:text-red-700"
+																	className="text-destructive hover:text-destructive/90"
 																>
 																	<MdDelete className="h-3 w-3" />
 																</Button>
@@ -1252,7 +1252,7 @@ const LessonFormDialog = ({
 													<Label className="text-base">
 														Replace coding exercise data
 													</Label>
-													<div className="text-sm text-gray-600">
+													<div className="text-sm text-muted-foreground">
 														Solution code and hidden test case details are not
 														returned by the API. Enable this only if you want to
 														replace the resource and provide full data again.
@@ -1273,7 +1273,7 @@ const LessonFormDialog = ({
 												render={({field}) => (
 													<FormItem>
 														<FormLabel>
-															Language <span className="text-red-500">*</span>
+															Language <span className="text-destructive">*</span>
 														</FormLabel>
 														<Select
 															value={field.value || undefined}
@@ -1320,21 +1320,20 @@ const LessonFormDialog = ({
 																	<SelectItem
 																		key={runtime.language}
 																		value={runtime.language}
+																		textValue={runtime.language}
 																	>
-																		<div className="flex flex-col">
-																			<span className="capitalize">
-																				{runtime.language}
-																			</span>
-																			{runtime.aliases.length > 0 && (
-																				<span className="text-xs text-muted-foreground">
-																					{runtime.aliases.join(", ")}
-																				</span>
-																			)}
-																		</div>
+																		<span className="capitalize">
+																			{runtime.language}
+																		</span>
 																	</SelectItem>
 																))}
 															</SelectContent>
 														</Select>
+														{selectedCodingRuntime?.aliases?.length ? (
+															<FormDescription className="break-words text-xs">
+																Aliases: {selectedCodingRuntime.aliases.join(", ")}
+															</FormDescription>
+														) : null}
 														{codingRuntimes.length === 0 && (
 															<FormDescription>
 																Runtime list unavailable. Keep default values or
@@ -1352,7 +1351,7 @@ const LessonFormDialog = ({
 												render={({field}) => (
 													<FormItem>
 														<FormLabel>
-															Version <span className="text-red-500">*</span>
+															Version <span className="text-destructive">*</span>
 														</FormLabel>
 														<Select
 															value={field.value || undefined}
@@ -1397,7 +1396,7 @@ const LessonFormDialog = ({
 												<FormItem>
 													<FormLabel>
 														Problem Statement{" "}
-														<span className="text-red-500">*</span>
+														<span className="text-destructive">*</span>
 													</FormLabel>
 													<FormControl>
 														<Textarea
@@ -1420,7 +1419,7 @@ const LessonFormDialog = ({
 											render={({field}) => (
 												<FormItem>
 													<FormLabel>
-														Starter Code <span className="text-red-500">*</span>
+														Starter Code <span className="text-destructive">*</span>
 													</FormLabel>
 													<FormControl>
 														<Textarea
@@ -1446,7 +1445,7 @@ const LessonFormDialog = ({
 													<FormLabel>
 														Solution Code{" "}
 														{(!isEditing || replaceCodingResource) && (
-															<span className="text-red-500">*</span>
+															<span className="text-destructive">*</span>
 														)}
 													</FormLabel>
 													<FormControl>
@@ -1544,7 +1543,7 @@ const LessonFormDialog = ({
 													<h3 className="text-lg font-medium">
 														Test Cases ({codingTestCases.length})
 													</h3>
-													<p className="text-sm text-gray-500">
+													<p className="text-sm text-muted-foreground">
 														Hidden test cases are never shown to students.
 													</p>
 												</div>
@@ -1564,7 +1563,7 @@ const LessonFormDialog = ({
 											</div>
 
 											{codingTestCases.length === 0 ? (
-												<div className="text-center py-8 text-gray-500 border border-dashed border-gray-300 rounded-lg">
+												<div className="text-center py-8 text-muted-foreground border border-dashed border-border rounded-lg">
 													<p>No test cases yet. Add your first test case!</p>
 												</div>
 											) : (
@@ -1590,7 +1589,7 @@ const LessonFormDialog = ({
 																				})
 																			}
 																		/>
-																		<span className="text-sm text-gray-700">
+																		<span className="text-sm text-foreground/90">
 																			Hidden
 																		</span>
 																	</div>
@@ -1606,7 +1605,7 @@ const LessonFormDialog = ({
 																		(isEditing && !replaceCodingResource) ||
 																		codingTestCases.length <= 1
 																	}
-																	className="text-red-600 hover:text-red-700"
+																	className="text-destructive hover:text-destructive/90"
 																>
 																	<MdDelete className="h-3 w-3" />
 																</Button>
@@ -1634,7 +1633,7 @@ const LessonFormDialog = ({
 																<div>
 																	<Label className="text-sm">
 																		Expected Output{" "}
-																		<span className="text-red-500">*</span>
+																		<span className="text-destructive">*</span>
 																	</Label>
 																	<Textarea
 																		value={tc.expectedOutput}
@@ -1693,7 +1692,7 @@ const LessonFormDialog = ({
 											<FormItem className="flex items-center justify-between rounded-lg border p-4">
 												<div className="space-y-0.5">
 													<FormLabel className="text-base">Published</FormLabel>
-													<div className="text-sm text-gray-600">
+													<div className="text-sm text-muted-foreground">
 														Make this lesson visible to students
 													</div>
 												</div>
@@ -1717,7 +1716,7 @@ const LessonFormDialog = ({
 													<FormLabel className="text-base">
 														Preview Lesson
 													</FormLabel>
-													<div className="text-sm text-gray-600">
+													<div className="text-sm text-muted-foreground">
 														Allow free access to this lesson as a preview
 													</div>
 												</div>
@@ -1760,3 +1759,4 @@ const LessonFormDialog = ({
 };
 
 export default LessonFormDialog;
+

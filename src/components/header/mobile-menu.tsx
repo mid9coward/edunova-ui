@@ -43,7 +43,7 @@ export default function MobileMenu() {
         <Button
           variant="ghost"
           size="sm"
-          className="lg:hidden h-10 w-10 p-0 text-gray-600 hover:text-blue-600 hover:bg-blue-50"
+          className="lg:hidden h-10 w-10 p-0 text-muted-foreground hover:text-primary hover:bg-primary/10"
           aria-label="Toggle mobile menu"
         >
           <Menu size={20} />
@@ -52,10 +52,10 @@ export default function MobileMenu() {
       <SheetContent side="left" className="w-80 p-0">
         <SheetHeader className="p-6 border-b">
           <SheetTitle className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-              <GiGraduateCap size={18} className="text-white" />
+            <div className="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
+              <GiGraduateCap size={18} className="text-primary-foreground" />
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <span className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
               EduNova
             </span>
           </SheetTitle>
@@ -80,8 +80,8 @@ export default function MobileMenu() {
                     className={cn(
                       "flex items-center gap-3 p-3 rounded-lg font-medium transition-all duration-200",
                       isActive
-                        ? "bg-blue-50 text-blue-600 border border-blue-200"
-                        : "text-gray-600 hover:text-blue-600 hover:bg-gray-50"
+                        ? "bg-primary/10 text-primary border border-primary/30"
+                        : "text-muted-foreground hover:text-primary hover:bg-muted"
                     )}
                     onClick={() => setOpen(false)}
                   >
@@ -93,16 +93,16 @@ export default function MobileMenu() {
           </nav>
 
           {/* Mobile Auth Section */}
-          <div className="p-6 border-t bg-gray-50">
+          <div className="p-6 border-t bg-muted/30">
             {isAuthenticated && user ? (
               <div className="space-y-3">
-                <div className="flex items-center gap-3 p-3 bg-white rounded-lg">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-semibold">
+                <div className="flex items-center gap-3 p-3 bg-card rounded-lg">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-primary-foreground font-semibold">
                     {user.username?.charAt(0)?.toUpperCase() || "U"}
                   </div>
                   <div>
-                    <p className="font-medium text-gray-900">{user.username}</p>
-                    <p className="text-sm text-gray-500">{user.email}</p>
+                    <p className="font-medium text-foreground">{user.username}</p>
+                    <p className="text-sm text-muted-foreground">{user.email}</p>
                   </div>
                 </div>
                 <Button variant="outline" size="sm" className="w-full" asChild>
@@ -118,7 +118,7 @@ export default function MobileMenu() {
                 </Button>
                 <Button
                   size="sm"
-                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+                  className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90"
                   asChild
                 >
                   <Link href={ROUTE_CONFIG.AUTH.SIGN_UP}>Get Started 🚀</Link>

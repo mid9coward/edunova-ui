@@ -126,9 +126,9 @@ function PaymentSuccessPageInner() {
   // Show error state if failed to fetch order
   if (error) {
     return (
-      <div className="min-h-screen bg-gray-50 py-6 sm:py-8 flex items-center justify-center px-4">
+      <div className="min-h-screen bg-muted/30 py-6 sm:py-8 flex items-center justify-center px-4">
         <div className="text-center">
-          <p className="text-sm sm:text-base text-red-600 mb-3 sm:mb-4">
+          <p className="text-sm sm:text-base text-destructive mb-3 sm:mb-4">
             Unable to load order information
           </p>
           <Button
@@ -145,7 +145,7 @@ function PaymentSuccessPageInner() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-4 sm:py-6 md:py-8">
+    <div className="min-h-screen bg-muted/30 py-4 sm:py-6 md:py-8">
       {/* Success Overlay */}
       {isOrderCompleted && <SuccessOverlay countdown={countdown} />}
 
@@ -185,3 +185,4 @@ export default function PaymentSuccessPage() {
     </Suspense>
   );
 }
+

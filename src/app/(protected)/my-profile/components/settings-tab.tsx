@@ -80,8 +80,8 @@ const SettingsTab = () => {
 						</div>
 
 						{user.userType !== "default" && (
-							<div className="p-3 sm:p-4 bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800 rounded-lg">
-								<p className="text-xs sm:text-sm text-blue-600 dark:text-blue-400">
+							<div className="p-3 sm:p-4 bg-primary/10 border border-primary/30 rounded-lg">
+								<p className="text-xs sm:text-sm text-primary">
 									<strong>Note:</strong> Your account is linked with{" "}
 									{user.userType === "google" ? "Google" : "Facebook"}. Please
 									change your password through your{" "}
@@ -141,3 +141,4 @@ const SettingsTab = () => {
 };
 
 export default SettingsTab;
+

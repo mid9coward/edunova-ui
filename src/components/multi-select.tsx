@@ -408,7 +408,7 @@ export const MultiSelect = React.forwardRef<MultiSelectRef, MultiSelectProps>(
 						buttonRef.current.focus();
 						const originalOutline = buttonRef.current.style.outline;
 						const originalOutlineOffset = buttonRef.current.style.outlineOffset;
-						buttonRef.current.style.outline = "2px solid hsl(var(--ring))";
+						buttonRef.current.style.outline = "2px solid var(--ring)";
 						buttonRef.current.style.outlineOffset = "2px";
 						setTimeout(() => {
 							if (buttonRef.current) {
@@ -858,7 +858,7 @@ export const MultiSelect = React.forwardRef<MultiSelectRef, MultiSelectProps>(
 															getBadgeAnimationClass(),
 															multiSelectVariants({variant}),
 															customStyle?.gradient &&
-																"text-white border-transparent",
+																"text-primary-foreground border-transparent",
 															responsiveSettings.compactMode &&
 																"text-xs px-1.5 py-0.5",
 															screenSize === "mobile" &&
@@ -912,7 +912,7 @@ export const MultiSelect = React.forwardRef<MultiSelectRef, MultiSelectProps>(
 																}
 															}}
 															aria-label={`Remove ${option.label} from selection`}
-															className="ml-2 h-4 w-4 cursor-pointer hover:bg-white/20 rounded-sm p-0.5 -m-0.5 focus:outline-none focus:ring-1 focus:ring-white/50"
+															className="ml-2 h-4 w-4 cursor-pointer hover:bg-card/20 rounded-sm p-0.5 -m-0.5 focus:outline-none focus:ring-1 focus:ring-white/50"
 														>
 															<XCircle
 																className={cn(
@@ -1221,3 +1221,4 @@ export const MultiSelect = React.forwardRef<MultiSelectRef, MultiSelectProps>(
 
 MultiSelect.displayName = "MultiSelect";
 export type {MultiSelectOption, MultiSelectGroup, MultiSelectProps};
+

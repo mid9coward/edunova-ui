@@ -41,7 +41,7 @@ export function BlogCard({post}: BlogCardProps) {
 	};
 
 	return (
-		<article className="group overflow-hidden border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-300 bg-white rounded-xl">
+		<article className="group overflow-hidden border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300 bg-card rounded-xl">
 			{/* Thumbnail */}
 			<div className="relative aspect-[16/10] overflow-hidden">
 				<Image
@@ -58,7 +58,7 @@ export function BlogCard({post}: BlogCardProps) {
 				/>
 				{/* Category Badge */}
 				<div className="absolute top-4 left-4">
-					<Badge className="bg-white/90 text-gray-900 hover:bg-white">
+					<Badge className="bg-card/90 text-foreground hover:bg-card">
 						{post.category?.name || "Uncategorized"}
 					</Badge>
 				</div>
@@ -67,7 +67,7 @@ export function BlogCard({post}: BlogCardProps) {
 			{/* Content */}
 			<div className="p-6 space-y-4">
 				{/* Meta Info */}
-				<div className="flex items-center text-sm text-gray-500 justify-between">
+				<div className="flex items-center text-sm text-muted-foreground justify-between">
 					<div className="flex items-center space-x-1">
 						<CalendarDays className="h-4 w-4" />
 						<span>{formatDate(post.publishedAt || post.createdAt)}</span>
@@ -83,13 +83,13 @@ export function BlogCard({post}: BlogCardProps) {
 					href={`/blogs/${post.slug}`}
 					aria-label={`Read article: ${post.title}`}
 				>
-					<h3 className="font-bold text-xl text-gray-900 hover:text-blue-600 transition-colors line-clamp-2 group-hover:text-blue-600 leading-tight">
+					<h3 className="font-bold text-xl text-foreground hover:text-primary transition-colors line-clamp-2 group-hover:text-primary leading-tight">
 						{post.title}
 					</h3>
 				</Link>
 
 				{/* Excerpt */}
-				<p className="text-gray-600 mt-2 line-clamp-3 leading-relaxed">
+				<p className="text-muted-foreground mt-2 line-clamp-3 leading-relaxed">
 					{post.excerpt}
 				</p>
 
@@ -97,12 +97,12 @@ export function BlogCard({post}: BlogCardProps) {
 				<div className="flex items-center justify-between pt-4">
 					{/* Author */}
 					<div className="flex items-center space-x-3">
-						<Avatar className="w-10 h-10 ring-2 ring-white/50 shadow-lg transition-all duration-200">
+						<Avatar className="w-10 h-10 ring-2 ring-border/50 shadow-lg transition-all duration-200">
 							<AvatarImage
 								src={post.author?.avatar}
 								alt={post.author?.username || post.author?.name || "Author"}
 							/>
-							<AvatarFallback className="bg-gradient-to-br from-primary to-primary/80 text-white text-sm font-bold">
+							<AvatarFallback className="bg-gradient-to-br from-primary to-primary/80 text-primary-foreground text-sm font-bold">
 								{post.author?.username
 									? post.author.username.slice(0, 2).toUpperCase()
 									: post.author?.name
@@ -111,17 +111,17 @@ export function BlogCard({post}: BlogCardProps) {
 							</AvatarFallback>
 						</Avatar>
 						<div>
-							<p className="text-sm font-medium text-gray-900">
+							<p className="text-sm font-medium text-foreground">
 								{post.author?.username || post.author?.name || "Anonymous"}
 							</p>
-							<p className="text-xs text-gray-500">Author</p>
+							<p className="text-xs text-muted-foreground">Author</p>
 						</div>
 					</div>
 
 					{/* Read More Link */}
 					<Link
 						href={`/blogs/${post.slug}`}
-						className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium text-sm transition-colors"
+						className="inline-flex items-center text-primary hover:text-primary/90 font-medium text-sm transition-colors"
 						aria-label={`Read full article: ${post.title}`}
 					>
 						Read Article

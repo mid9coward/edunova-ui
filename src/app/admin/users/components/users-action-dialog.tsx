@@ -134,10 +134,10 @@ const UsersActionDialog = ({
                   <span
                     className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${
                       user.status === "active"
-                        ? "bg-green-100 text-green-800"
+                        ? "bg-primary/15 text-primary"
                         : user.status === "inactive"
-                        ? "bg-yellow-100 text-yellow-800"
-                        : "bg-red-100 text-red-800"
+                        ? "bg-secondary/20 text-secondary-foreground"
+                        : "bg-destructive/10 text-destructive"
                     }`}
                   >
                     {user.status}
@@ -240,3 +240,4 @@ const UsersActionDialog = ({
 };
 
 export default UsersActionDialog;
+

@@ -40,15 +40,15 @@ const ChatInput = ({
 	const canSend = message.trim() && !disabled;
 
 	return (
-		<div className="border-t border-gray-200/50 bg-white/90 backdrop-blur-sm">
+		<div className="border-t border-border/50 bg-card/90 backdrop-blur-sm">
 			<form onSubmit={handleSubmit} className="p-3 sm:p-4">
 				<div
 					className={cn(
 						"flex items-end gap-2 sm:gap-3 p-2 sm:p-3 rounded-xl",
-						"bg-white border shadow-sm",
+						"bg-card border shadow-sm",
 						isFocused
-							? "border-blue-400 ring-2 ring-blue-100"
-							: "border-gray-200"
+							? "border-primary ring-2 ring-primary/20"
+							: "border-border"
 					)}
 				>
 					{/* Attachment Button */}
@@ -56,7 +56,7 @@ const ChatInput = ({
 						type="button"
 						variant="ghost"
 						size="icon"
-						className="h-7 w-7 sm:h-8 sm:w-8 rounded-lg shrink-0 text-gray-400 hover:text-blue-600 hover:bg-blue-50"
+						className="h-7 w-7 sm:h-8 sm:w-8 rounded-lg shrink-0 text-muted-foreground hover:text-primary hover:bg-primary/10"
 						disabled={disabled}
 						aria-label="Attach file"
 					>
@@ -73,7 +73,7 @@ const ChatInput = ({
 							onBlur={() => setIsFocused(false)}
 							placeholder={placeholder}
 							disabled={disabled}
-							className="border-0 shadow-none bg-transparent px-0 py-1 sm:py-2 text-sm sm:text-base focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-gray-400"
+							className="border-0 shadow-none bg-transparent px-0 py-1 sm:py-2 text-sm sm:text-base focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-muted-foreground"
 							autoComplete="off"
 							aria-label="Type your message to the AI assistant"
 							aria-describedby="chat-input-help"
@@ -88,7 +88,7 @@ const ChatInput = ({
 						type="button"
 						variant="ghost"
 						size="icon"
-						className="h-7 w-7 sm:h-8 sm:w-8 rounded-lg shrink-0 text-gray-400 hover:text-purple-600 hover:bg-purple-50"
+						className="h-7 w-7 sm:h-8 sm:w-8 rounded-lg shrink-0 text-muted-foreground hover:text-secondary hover:bg-secondary/15"
 						disabled={disabled}
 						aria-label="Add emoji"
 					>
@@ -103,8 +103,8 @@ const ChatInput = ({
 						className={cn(
 							"h-8 w-8 sm:h-10 sm:w-10 rounded-lg shrink-0",
 							canSend
-								? "bg-gradient-to-br from-blue-600 to-purple-600 text-white shadow-sm"
-								: "bg-gray-100 text-gray-400"
+								? "bg-gradient-to-br from-primary to-secondary text-primary-foreground shadow-sm"
+								: "bg-muted text-muted-foreground"
 						)}
 						aria-label="Send message"
 					>

@@ -16,7 +16,7 @@ export function OrderItem({title, thumbnail, price, oldPrice}: OrderItemProps) {
 		: 0;
 
 	return (
-		<div className="flex gap-2.5 sm:gap-4 p-3 sm:p-4 bg-gray-50 rounded-lg">
+		<div className="flex gap-2.5 sm:gap-4 p-3 sm:p-4 bg-muted/30 rounded-lg">
 			<div className="w-14 h-14 sm:w-20 sm:h-20 relative flex-shrink-0">
 				<Image
 					src={thumbnail}
@@ -30,7 +30,7 @@ export function OrderItem({title, thumbnail, price, oldPrice}: OrderItemProps) {
 				<h5 className="font-medium text-xs sm:text-sm line-clamp-2">{title}</h5>
 				<div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
 					{hasDiscount && (
-						<span className="text-xs sm:text-sm text-gray-500 line-through">
+						<span className="text-xs sm:text-sm text-muted-foreground line-through">
 							{formatPrice(oldPrice)}
 						</span>
 					)}
@@ -50,3 +50,4 @@ export function OrderItem({title, thumbnail, price, oldPrice}: OrderItemProps) {
 		</div>
 	);
 }
+

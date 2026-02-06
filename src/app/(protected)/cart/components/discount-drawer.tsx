@@ -70,14 +70,14 @@ const DiscountDrawer = ({
 
 				{/* Available Discount Vouchers */}
 				<div>
-					<h3 className="text-xs sm:text-sm font-medium text-gray-700 mb-3 sm:mb-4">
+					<h3 className="text-xs sm:text-sm font-medium text-foreground mb-3 sm:mb-4">
 						Our discount codes
 					</h3>
 
 					{isCouponsLoading && (
 						<div className="flex items-center justify-center py-6 sm:py-8">
-							<Loader2 className="w-5 h-5 sm:w-6 sm:h-6 animate-spin text-gray-400" />
-							<span className="ml-2 text-xs sm:text-sm text-gray-500">
+							<Loader2 className="w-5 h-5 sm:w-6 sm:h-6 animate-spin text-muted-foreground" />
+							<span className="ml-2 text-xs sm:text-sm text-muted-foreground">
 								Loading coupons...
 							</span>
 						</div>
@@ -85,7 +85,7 @@ const DiscountDrawer = ({
 
 					{couponsData && couponsData.coupons.length === 0 && (
 						<div className="text-center py-6 sm:py-8">
-							<p className="text-xs sm:text-sm text-gray-500">
+							<p className="text-xs sm:text-sm text-muted-foreground">
 								No discount codes available
 							</p>
 						</div>
@@ -111,13 +111,13 @@ const DiscountDrawer = ({
 				{/* Summary Footer */}
 				{appliedDiscount && (
 					<div className="border-t pt-3 sm:pt-4">
-						<div className="bg-green-50 rounded-lg p-3 sm:p-4">
+						<div className="bg-primary/10 rounded-lg p-3 sm:p-4">
 							<div className="flex justify-between items-center mb-1.5 sm:mb-2">
-								<span className="font-semibold text-sm sm:text-base text-green-800">
+								<span className="font-semibold text-sm sm:text-base text-primary">
 									{formatPrice(summary.total)}
 								</span>
 							</div>
-							<div className="text-xs sm:text-sm text-green-600">
+							<div className="text-xs sm:text-sm text-primary">
 								You save {formatPrice(summary.discountAmount)}
 							</div>
 							<Button

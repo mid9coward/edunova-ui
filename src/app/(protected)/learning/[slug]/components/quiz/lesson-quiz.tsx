@@ -84,7 +84,7 @@ const LessonQuiz = ({lesson}: LessonQuizProps) => {
 		return (
 			<div className="flex items-center justify-center h-64 px-4">
 				<div className="text-center">
-					<div className="text-base sm:text-lg text-gray-600 mb-2">
+					<div className="text-base sm:text-lg text-muted-foreground mb-2">
 						This lesson has no quiz
 					</div>
 				</div>
@@ -117,9 +117,9 @@ const LessonQuiz = ({lesson}: LessonQuizProps) => {
 		<div className="w-full h-full">
 			<div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
 				{/* Combined Card for Quiz Overview and History */}
-				<div className="bg-white shadow-md sm:shadow-lg border-0 rounded-lg sm:rounded-xl overflow-hidden">
+				<div className="bg-card shadow-md sm:shadow-lg border-0 rounded-lg sm:rounded-xl overflow-hidden">
 					{/* Quiz Overview Section */}
-					<div className="border-b border-gray-100">
+					<div className="border-b border-border/60">
 						<QuizOverview
 							lesson={lesson}
 							attempts={attempts}
@@ -147,3 +147,4 @@ const LessonQuiz = ({lesson}: LessonQuizProps) => {
 };
 
 export default LessonQuiz;
+

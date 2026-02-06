@@ -34,12 +34,12 @@ function VideoModal({isOpen, onClose, videoUrl, title}: VideoModalProps) {
 		<Dialog open={isOpen} onOpenChange={onClose}>
 			<DialogContent
 				showCloseButton={false}
-				className="sm:max-w-5xl p-0 bg-black border-none overflow-hidden"
+				className="sm:max-w-5xl p-0 bg-background border-none overflow-hidden"
 			>
 				<DialogHeader className="sr-only">
 					<DialogTitle>{title || "Video Preview"}</DialogTitle>
 				</DialogHeader>
-				<div className="relative aspect-video w-full bg-black">
+				<div className="relative aspect-video w-full bg-background">
 					{isOpen && videoUrl && (
 						<iframe
 							src={getVideoEmbedUrl(videoUrl)}
@@ -56,3 +56,4 @@ function VideoModal({isOpen, onClose, videoUrl, title}: VideoModalProps) {
 }
 
 export default VideoModal;
+

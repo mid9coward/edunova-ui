@@ -11,10 +11,10 @@ export function HeaderLogo() {
     >
       <div className="relative">
         {/* Enhanced logo with glass effect */}
-        <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
+        <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-foreground/20 to-transparent"></div>
           <span
-            className="text-white font-bold text-lg relative z-10"
+            className="text-primary-foreground font-bold text-lg relative z-10"
             aria-hidden="true"
           >
             <GiGraduateCap size={16} className="sm:w-6 sm:h-6" />
@@ -22,13 +22,15 @@ export function HeaderLogo() {
         </div>
       </div>
       <div className="hidden sm:block">
-        <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+        <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
           EduNova
         </span>
-        <div className="text-xs text-gray-500 -mt-1 font-medium tracking-wide">
+        <div className="text-xs text-muted-foreground -mt-1 font-medium tracking-wide">
           Learn. Grow. Succeed.
         </div>
       </div>
     </Link>
   );
 }
+
+

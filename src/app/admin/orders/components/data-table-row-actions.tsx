@@ -65,7 +65,7 @@ const DataTableRowActions = ({row}: DataTableRowActionsProps) => {
 
 					{/* Delete order */}
 					{DELETE && (
-						<DropdownMenuItem onClick={handleDelete} className="text-red-600">
+						<DropdownMenuItem onClick={handleDelete} className="text-destructive">
 							<Trash2 className="mr-2 h-4 w-4" />
 							Delete
 							<DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
@@ -96,3 +96,4 @@ const DataTableRowActions = ({row}: DataTableRowActionsProps) => {
 };
 
 export default DataTableRowActions;
+

@@ -24,7 +24,7 @@ const techStack: TechCategory[] = [
 	{
 		icon: Monitor,
 		title: "Frontend",
-		color: "text-blue-500",
+		color: "text-primary",
 		technologies: [
 			{name: "Next.js 15"},
 			{name: "Redux Toolkit"},
@@ -38,7 +38,7 @@ const techStack: TechCategory[] = [
 	{
 		icon: Server,
 		title: "Backend",
-		color: "text-green-500",
+		color: "text-accent-foreground",
 		technologies: [
 			{name: "NestJS"},
 			{name: "Express.js"},
@@ -50,7 +50,7 @@ const techStack: TechCategory[] = [
 	{
 		icon: Database,
 		title: "Database & Cache",
-		color: "text-purple-500",
+		color: "text-secondary-foreground",
 		technologies: [
 			{name: "MongoDB"},
 			{name: "Redis Cache"},
@@ -60,7 +60,7 @@ const techStack: TechCategory[] = [
 	{
 		icon: Lock,
 		title: "Authentication",
-		color: "text-red-500",
+		color: "text-destructive",
 		technologies: [
 			{name: "Access Token"},
 			{name: "Refresh Token"},
@@ -71,13 +71,13 @@ const techStack: TechCategory[] = [
 	{
 		icon: CreditCard,
 		title: "Payment",
-		color: "text-yellow-500",
+		color: "text-primary",
 		technologies: [{name: "VietQR"}, {name: "Stripe"}, {name: "Coupon System"}],
 	},
 	{
 		icon: Cloud,
 		title: "DevOps & Deploy",
-		color: "text-cyan-500",
+		color: "text-accent-foreground",
 		technologies: [
 			{name: "Docker"},
 			{name: "PM2"},
@@ -90,7 +90,7 @@ const techStack: TechCategory[] = [
 	{
 		icon: Video,
 		title: "Upload & Video",
-		color: "text-pink-500",
+		color: "text-secondary-foreground",
 		technologies: [
 			{name: "UploadThing"},
 			{name: "AWS S3"},
@@ -101,7 +101,7 @@ const techStack: TechCategory[] = [
 	{
 		icon: Zap,
 		title: "AI & Automation",
-		color: "text-orange-500",
+		color: "text-primary",
 		technologies: [
 			{name: "Gemini AI"},
 			{name: "Bull Queue"},
@@ -166,3 +166,4 @@ function TechStackSection() {
 }
 
 export default TechStackSection;
+

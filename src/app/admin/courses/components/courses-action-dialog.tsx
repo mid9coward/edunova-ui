@@ -211,7 +211,7 @@ const CoursesActionDialog = ({
 							<div className="space-y-6">
 								{/* Basic Information Section */}
 								<div className="space-y-4">
-									<h3 className="text-lg font-semibold text-gray-900 border-b pb-2">
+									<h3 className="text-lg font-semibold text-foreground border-b pb-2">
 										Basic Information
 									</h3>
 
@@ -222,7 +222,7 @@ const CoursesActionDialog = ({
 											render={({field}) => (
 												<FormItem>
 													<FormLabel>
-														Title <span className="text-red-500">*</span>
+														Title <span className="text-destructive">*</span>
 													</FormLabel>
 													<FormControl>
 														<Input {...field} placeholder="Course title" />
@@ -238,7 +238,7 @@ const CoursesActionDialog = ({
 											render={({field}) => (
 												<FormItem>
 													<FormLabel>
-														Slug <span className="text-red-500">*</span>
+														Slug <span className="text-destructive">*</span>
 													</FormLabel>
 													<FormControl>
 														<Input
@@ -260,7 +260,7 @@ const CoursesActionDialog = ({
 											render={({field}) => (
 												<FormItem>
 													<FormLabel>
-														Status <span className="text-red-500">*</span>
+														Status <span className="text-destructive">*</span>
 													</FormLabel>
 													<Select
 														value={field.value}
@@ -309,7 +309,7 @@ const CoursesActionDialog = ({
 											render={({field}) => (
 												<FormItem>
 													<FormLabel>
-														Category <span className="text-red-500">*</span>
+														Category <span className="text-destructive">*</span>
 													</FormLabel>
 													<Select
 														value={field.value}
@@ -352,7 +352,7 @@ const CoursesActionDialog = ({
 											render={({field}) => (
 												<FormItem>
 													<FormLabel>
-														Level <span className="text-red-500">*</span>
+														Level <span className="text-destructive">*</span>
 													</FormLabel>
 													<Select
 														value={field.value}
@@ -385,7 +385,7 @@ const CoursesActionDialog = ({
 											<FormItem>
 												<FormLabel>
 													Excerpt{" "}
-													<span className="text-gray-500 text-xs font-normal">
+													<span className="text-muted-foreground text-xs font-normal">
 														(Short summary, max 300 characters)
 													</span>
 												</FormLabel>
@@ -393,13 +393,13 @@ const CoursesActionDialog = ({
 													<textarea
 														{...field}
 														placeholder="Brief course summary for preview cards and listings..."
-														className="w-full min-h-[80px] px-3 py-2 text-sm border border-gray-300 rounded-md    resize-y"
+														className="w-full min-h-[80px] px-3 py-2 text-sm border border-border rounded-md    resize-y"
 														maxLength={300}
 													/>
 												</FormControl>
 												<div className="flex justify-between items-center">
 													<FormMessage />
-													<span className="text-xs text-gray-500">
+													<span className="text-xs text-muted-foreground">
 														{field.value?.length || 0}/300
 													</span>
 												</div>
@@ -458,7 +458,7 @@ const CoursesActionDialog = ({
 								{/* Pricing Section */}
 								<div className="space-y-4">
 									<div className="flex items-center justify-between border-b pb-2">
-										<h3 className="text-lg font-semibold text-gray-900">
+										<h3 className="text-lg font-semibold text-foreground">
 											Pricing
 										</h3>
 										<div className="flex items-center space-x-6">
@@ -493,7 +493,7 @@ const CoursesActionDialog = ({
 													<FormLabel>
 														Price{" "}
 														{!form.watch("isFree") && (
-															<span className="text-red-500">*</span>
+															<span className="text-destructive">*</span>
 														)}
 													</FormLabel>
 													<FormControl>
@@ -553,7 +553,7 @@ const CoursesActionDialog = ({
 								</div>
 								{/* Course Details Section */}
 								<div className="space-y-4">
-									<h3 className="text-lg font-semibold text-gray-900 border-b pb-2">
+									<h3 className="text-lg font-semibold text-foreground border-b pb-2">
 										Course Details
 									</h3>
 
@@ -562,7 +562,7 @@ const CoursesActionDialog = ({
 										{/* Requirements */}
 										<div className="space-y-3">
 											<div className="flex items-center justify-between">
-												<Label className="text-sm font-medium text-gray-700">
+												<Label className="text-sm font-medium text-foreground">
 													Requirements
 												</Label>
 												<Button
@@ -596,7 +596,7 @@ const CoursesActionDialog = ({
 															type="button"
 															variant="outline"
 															size="sm"
-															className="h-8 w-8 p-0 text-red-500 hover:text-red-700 hover:bg-red-50"
+															className="h-8 w-8 p-0 text-destructive hover:text-destructive hover:bg-destructive/10"
 															onClick={() =>
 																setCourseInfo((draft) => {
 																	draft.requirements.splice(index, 1);
@@ -608,7 +608,7 @@ const CoursesActionDialog = ({
 													</div>
 												))}
 												{courseInfo.requirements.length === 0 && (
-													<p className="text-sm text-gray-500 italic text-center py-4">
+													<p className="text-sm text-muted-foreground italic text-center py-4">
 														No requirements added yet
 													</p>
 												)}
@@ -618,7 +618,7 @@ const CoursesActionDialog = ({
 										{/* Benefits */}
 										<div className="space-y-3">
 											<div className="flex items-center justify-between">
-												<Label className="text-sm font-medium text-gray-700">
+												<Label className="text-sm font-medium text-foreground">
 													Benefits
 												</Label>
 												<Button
@@ -652,7 +652,7 @@ const CoursesActionDialog = ({
 															type="button"
 															variant="outline"
 															size="sm"
-															className="h-8 w-8 p-0 text-red-500 hover:text-red-700 hover:bg-red-50"
+															className="h-8 w-8 p-0 text-destructive hover:text-destructive hover:bg-destructive/10"
 															onClick={() =>
 																setCourseInfo((draft) => {
 																	draft.benefits.splice(index, 1);
@@ -664,7 +664,7 @@ const CoursesActionDialog = ({
 													</div>
 												))}
 												{courseInfo.benefits.length === 0 && (
-													<p className="text-sm text-gray-500 italic text-center py-4">
+													<p className="text-sm text-muted-foreground italic text-center py-4">
 														No benefits added yet
 													</p>
 												)}
@@ -677,7 +677,7 @@ const CoursesActionDialog = ({
 										{/* Techniques */}
 										<div className="space-y-3">
 											<div className="flex items-center justify-between">
-												<Label className="text-sm font-medium text-gray-700">
+												<Label className="text-sm font-medium text-foreground">
 													Techniques
 												</Label>
 												<Button
@@ -711,7 +711,7 @@ const CoursesActionDialog = ({
 															type="button"
 															variant="outline"
 															size="sm"
-															className="h-8 w-8 p-0 text-red-500 hover:text-red-700 hover:bg-red-50"
+															className="h-8 w-8 p-0 text-destructive hover:text-destructive hover:bg-destructive/10"
 															onClick={() =>
 																setCourseInfo((draft) => {
 																	draft.techniques.splice(index, 1);
@@ -723,7 +723,7 @@ const CoursesActionDialog = ({
 													</div>
 												))}
 												{courseInfo.techniques.length === 0 && (
-													<p className="text-sm text-gray-500 italic text-center py-4">
+													<p className="text-sm text-muted-foreground italic text-center py-4">
 														No techniques added yet
 													</p>
 												)}
@@ -733,7 +733,7 @@ const CoursesActionDialog = ({
 										{/* Documents */}
 										<div className="space-y-3">
 											<div className="flex items-center justify-between">
-												<Label className="text-sm font-medium text-gray-700">
+												<Label className="text-sm font-medium text-foreground">
 													Documents
 												</Label>
 												<Button
@@ -767,7 +767,7 @@ const CoursesActionDialog = ({
 															type="button"
 															variant="outline"
 															size="sm"
-															className="h-8 w-8 p-0 text-red-500 hover:text-red-700 hover:bg-red-50"
+															className="h-8 w-8 p-0 text-destructive hover:text-destructive hover:bg-destructive/10"
 															onClick={() =>
 																setCourseInfo((draft) => {
 																	draft.documents.splice(index, 1);
@@ -779,7 +779,7 @@ const CoursesActionDialog = ({
 													</div>
 												))}
 												{courseInfo.documents.length === 0 && (
-													<p className="text-sm text-gray-500 italic text-center py-4">
+													<p className="text-sm text-muted-foreground italic text-center py-4">
 														No documents added yet
 													</p>
 												)}
@@ -811,17 +811,17 @@ const CoursesActionDialog = ({
 										{courseInfo.qa.map((qaItem, index) => (
 											<div
 												key={index}
-												className="p-4 border rounded-lg bg-gray-50/50 space-y-3"
+												className="p-4 border rounded-lg bg-muted/40 space-y-3"
 											>
 												<div className="flex justify-between items-center">
-													<span className="text-sm font-medium text-gray-600">
+													<span className="text-sm font-medium text-muted-foreground">
 														Q&A #{index + 1}
 													</span>
 													<Button
 														type="button"
 														variant="outline"
 														size="sm"
-														className="h-8 w-8 p-0 text-red-500 hover:text-red-700 hover:bg-red-50"
+														className="h-8 w-8 p-0 text-destructive hover:text-destructive hover:bg-destructive/10"
 														onClick={() =>
 															setCourseInfo((draft) => {
 																draft.qa.splice(index, 1);
@@ -833,7 +833,7 @@ const CoursesActionDialog = ({
 												</div>
 												<div className="grid grid-cols-1 md:grid-cols-2 gap-3">
 													<div className="space-y-1">
-														<Label className="text-xs text-gray-500">
+														<Label className="text-xs text-muted-foreground">
 															Question
 														</Label>
 														<Input
@@ -848,7 +848,7 @@ const CoursesActionDialog = ({
 														/>
 													</div>
 													<div className="space-y-1">
-														<Label className="text-xs text-gray-500">
+														<Label className="text-xs text-muted-foreground">
 															Answer
 														</Label>
 														<Input
@@ -866,11 +866,11 @@ const CoursesActionDialog = ({
 											</div>
 										))}
 										{courseInfo.qa.length === 0 && (
-											<div className="text-center py-8 border-2 border-dashed border-gray-200 rounded-lg">
-												<p className="text-sm text-gray-500">
+											<div className="text-center py-8 border-2 border-dashed border-border rounded-lg">
+												<p className="text-sm text-muted-foreground">
 													No Q&A items added yet
 												</p>
-												<p className="text-xs text-gray-400 mt-1">
+												<p className="text-xs text-muted-foreground/80 mt-1">
 													Click &ldquo;Add Q&A&rdquo; to get started
 												</p>
 											</div>

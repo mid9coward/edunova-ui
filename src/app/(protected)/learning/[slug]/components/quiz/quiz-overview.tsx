@@ -68,10 +68,10 @@ const QuizOverview = ({
 
 	return (
 		<div className="overflow-hidden">
-			<div className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-gray-100 p-4 sm:p-6">
+			<div className="bg-gradient-to-r from-primary/10 to-secondary/10 border-b border-border/70 p-4 sm:p-6">
 				{/* Section Title */}
 				<div className="mb-3 sm:mb-4">
-					<h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
+					<h2 className="text-lg sm:text-xl font-bold text-foreground mb-2">
 						Quiz
 					</h2>
 				</div>
@@ -79,19 +79,19 @@ const QuizOverview = ({
 				{/* Quiz Title with Icon and Status */}
 				<div className="flex items-start gap-3 sm:gap-4">
 					<div className="flex-shrink-0">
-						<div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 rounded-lg sm:rounded-xl flex items-center justify-center">
-							<MdQuiz className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600" />
+						<div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/15 rounded-lg sm:rounded-xl flex items-center justify-center">
+							<MdQuiz className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
 						</div>
 					</div>
 
 					<div className="flex-1 min-w-0">
 						<div className="flex items-center gap-2 sm:gap-3 mb-2">
-							<h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 truncate">
+							<h3 className="text-lg sm:text-xl md:text-2xl font-bold text-foreground truncate">
 								{quizTitle}
 							</h3>
 						</div>
 
-						<p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+						<p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
 							{description}
 						</p>
 					</div>
@@ -102,60 +102,60 @@ const QuizOverview = ({
 				{/* Quiz Statistics Grid */}
 				<div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8">
 					<div className="space-y-3 sm:space-y-4">
-						<div className="flex items-center justify-between py-2 sm:py-3 border-b border-gray-100">
+						<div className="flex items-center justify-between py-2 sm:py-3 border-b border-border/70">
 							<div className="flex items-center gap-2 sm:gap-3 min-w-0">
-								<div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-									<MdQuestionAnswer className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600" />
+								<div className="w-8 h-8 sm:w-10 sm:h-10 bg-primary/15 rounded-lg flex items-center justify-center flex-shrink-0">
+									<MdQuestionAnswer className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
 								</div>
-								<span className="text-xs sm:text-sm text-gray-600 font-medium truncate">
+								<span className="text-xs sm:text-sm text-muted-foreground font-medium truncate">
 									Number of questions:
 								</span>
 							</div>
-							<span className="text-base sm:text-lg font-bold text-gray-900 ml-2 flex-shrink-0">
+							<span className="text-base sm:text-lg font-bold text-foreground ml-2 flex-shrink-0">
 								{totalQuestions}
 							</span>
 						</div>
 
-						<div className="flex items-center justify-between py-2 sm:py-3 border-b border-gray-100">
+						<div className="flex items-center justify-between py-2 sm:py-3 border-b border-border/70">
 							<div className="flex items-center gap-2 sm:gap-3 min-w-0">
-								<div className="w-8 h-8 sm:w-10 sm:h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-									<MdAccessTime className="h-4 w-4 sm:h-5 sm:w-5 text-green-600" />
+								<div className="w-8 h-8 sm:w-10 sm:h-10 bg-accent/20 rounded-lg flex items-center justify-center flex-shrink-0">
+									<MdAccessTime className="h-4 w-4 sm:h-5 sm:w-5 text-accent-foreground" />
 								</div>
-								<span className="text-xs sm:text-sm text-gray-600 font-medium truncate">
+								<span className="text-xs sm:text-sm text-muted-foreground font-medium truncate">
 									Time limit:
 								</span>
 							</div>
-							<span className="text-base sm:text-lg font-bold text-gray-900 ml-2 flex-shrink-0">
+							<span className="text-base sm:text-lg font-bold text-foreground ml-2 flex-shrink-0">
 								{secondsToDisplayTime(timeLimit)}
 							</span>
 						</div>
 					</div>
 
 					<div className="space-y-3 sm:space-y-4">
-						<div className="flex items-center justify-between py-2 sm:py-3 border-b border-gray-100">
+						<div className="flex items-center justify-between py-2 sm:py-3 border-b border-border/70">
 							<div className="flex items-center gap-2 sm:gap-3 min-w-0">
-								<div className="w-8 h-8 sm:w-10 sm:h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
-									<MdRefresh className="h-4 w-4 sm:h-5 sm:w-5 text-purple-600" />
+								<div className="w-8 h-8 sm:w-10 sm:h-10 bg-secondary/20 rounded-lg flex items-center justify-center flex-shrink-0">
+									<MdRefresh className="h-4 w-4 sm:h-5 sm:w-5 text-secondary" />
 								</div>
-								<span className="text-xs sm:text-sm text-gray-600 font-medium truncate">
+								<span className="text-xs sm:text-sm text-muted-foreground font-medium truncate">
 									Total attempts:
 								</span>
 							</div>
-							<span className="text-base sm:text-lg font-bold text-gray-900 ml-2 flex-shrink-0">
+							<span className="text-base sm:text-lg font-bold text-foreground ml-2 flex-shrink-0">
 								{currentAttempts}/{maxAttempts}
 							</span>
 						</div>
 
-						<div className="flex items-center justify-between py-2 sm:py-3 border-b border-gray-100">
+						<div className="flex items-center justify-between py-2 sm:py-3 border-b border-border/70">
 							<div className="flex items-center gap-2 sm:gap-3 min-w-0">
-								<div className="w-8 h-8 sm:w-10 sm:h-10 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0">
-									<MdTrendingUp className="h-4 w-4 sm:h-5 sm:w-5 text-orange-600" />
+								<div className="w-8 h-8 sm:w-10 sm:h-10 bg-secondary/20 rounded-lg flex items-center justify-center flex-shrink-0">
+									<MdTrendingUp className="h-4 w-4 sm:h-5 sm:w-5 text-secondary-foreground" />
 								</div>
-								<span className="text-xs sm:text-sm text-gray-600 font-medium truncate">
+								<span className="text-xs sm:text-sm text-muted-foreground font-medium truncate">
 									Minimum score to pass:
 								</span>
 							</div>
-							<span className="text-base sm:text-lg font-bold text-gray-900 ml-2 flex-shrink-0">
+							<span className="text-base sm:text-lg font-bold text-foreground ml-2 flex-shrink-0">
 								{passingScore}%
 							</span>
 						</div>
@@ -163,11 +163,11 @@ const QuizOverview = ({
 				</div>
 
 				{/* Action Buttons */}
-				<div className="pt-4 sm:pt-6 border-t border-gray-100">
+				<div className="pt-4 sm:pt-6 border-t border-border/70">
 					{/* Status Messages */}
 					{hasOngoingAttempt && (
-						<div className="mb-3 sm:mb-4 p-3 sm:p-4 bg-blue-50 rounded-lg text-center border border-blue-200">
-							<p className="text-xs sm:text-sm text-blue-700 font-medium">
+						<div className="mb-3 sm:mb-4 p-3 sm:p-4 bg-primary/10 rounded-lg text-center border border-primary/30">
+							<p className="text-xs sm:text-sm text-primary font-medium">
 								You have an ongoing quiz. Click &ldquo;Continue Quiz&rdquo; to
 								complete it.
 							</p>
@@ -175,8 +175,8 @@ const QuizOverview = ({
 					)}
 
 					{currentAttempts >= maxAttempts && (
-						<div className="mb-3 sm:mb-4 p-3 sm:p-4 bg-gray-50 rounded-lg text-center">
-							<p className="text-xs sm:text-sm text-gray-500 italic font-medium">
+						<div className="mb-3 sm:mb-4 p-3 sm:p-4 bg-muted/40 rounded-lg text-center">
+							<p className="text-xs sm:text-sm text-muted-foreground italic font-medium">
 								No attempts remaining
 							</p>
 						</div>
@@ -190,7 +190,7 @@ const QuizOverview = ({
 							{hasOngoingAttempt && (
 								<Button
 									onClick={onStartQuiz}
-									className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg transition-colors duration-200 text-sm sm:text-base h-10 sm:h-12"
+									className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg transition-colors duration-200 text-sm sm:text-base h-10 sm:h-12"
 								>
 									<MdPlayArrow className="h-4 w-4 sm:h-5 sm:w-5 mr-1.5 sm:mr-2" />
 									Continue Quiz
@@ -201,7 +201,7 @@ const QuizOverview = ({
 							{!hasOngoingAttempt && !hasStarted && currentAttempts === 0 && (
 								<Button
 									onClick={onStartQuiz}
-									className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg transition-colors duration-200 text-sm sm:text-base h-10 sm:h-12"
+									className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground font-semibold py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg transition-colors duration-200 text-sm sm:text-base h-10 sm:h-12"
 								>
 									<MdPlayArrow className="h-4 w-4 sm:h-5 sm:w-5 mr-1.5 sm:mr-2" />
 									Start Quiz
@@ -216,7 +216,7 @@ const QuizOverview = ({
 									<Button
 										onClick={onStartQuiz}
 										variant="outline"
-										className="w-full border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg transition-colors duration-200 text-sm sm:text-base h-10 sm:h-12"
+										className="w-full border-2 border-primary text-primary hover:bg-primary/10 font-semibold py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg transition-colors duration-200 text-sm sm:text-base h-10 sm:h-12"
 									>
 										<MdRestartAlt className="h-4 w-4 sm:h-5 sm:w-5 mr-1.5 sm:mr-2" />
 										Retake

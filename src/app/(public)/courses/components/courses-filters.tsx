@@ -262,7 +262,7 @@ const CoursesFilters = ({
 											key={i}
 											className={`h-2.5 w-2.5 sm:h-3 sm:w-3 ${
 												i < Math.floor(rating)
-													? "text-yellow-400 fill-current"
+													? "text-primary fill-current"
 													: "text-muted-foreground"
 											}`}
 										/>
@@ -281,3 +281,4 @@ const CoursesFilters = ({
 };
 
 export default CoursesFilters;
+

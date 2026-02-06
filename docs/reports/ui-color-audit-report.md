@@ -1,0 +1,2507 @@
+# UI Color Audit Report
+
+Generated at: `2026-02-06T10:15:34.072Z`
+
+## Summary
+
+- Total findings: **824**
+- P0: **0**
+- P1: **0**
+- P2: **824**
+- Scanned files: **407**
+
+## Top files by finding count
+
+- `src/app/styles/utilities.css`: 669
+- `src/app/styles/base.css`: 113
+- `src/app/styles/components.css`: 23
+- `src/app/styles/animations.css`: 11
+- `src/lib/config/stripe.ts`: 4
+- `src/components/tiptap/mention-node-view.tsx`: 2
+- `src/components/tiptap/toolbar.tsx`: 2
+
+## Findings
+
+- [P2] `src/app/styles/animations.css:28` - `rgba(59, 130, 246, 0.3)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/animations.css:31` - `rgba(59, 130, 246, 0.5)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/animations.css:32` - `rgba(59, 130, 246, 0.2)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/animations.css:128` - `rgba(37, 99, 235, 0.6)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/animations.css:129` - `rgba(124, 58, 237, 0.4)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/animations.css:133` - `rgba(124, 58, 237, 0.8)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/animations.css:134` - `rgba(37, 99, 235, 0.6)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/animations.css:134` - `rgba(124, 58, 237, 0.3)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/animations.css:138` - `rgba(37, 99, 235, 0.6)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/animations.css:139` - `rgba(124, 58, 237, 0.4)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/animations.css:302` - `rgba(59, 130, 246, 0.4)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:49` - `#282a36`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:50` - `#f8f8f2`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:51` - `#44475a`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:52` - `#f8f8f2`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:53` - `#44475a`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:54` - `#f8f8f2`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:55` - `#bd93f9`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:56` - `#282a36`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:57` - `#ff79c6`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:58` - `#282a36`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:59` - `#44475a`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:60` - `rgba(248, 248, 242, 0.7)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:61` - `#8be9fd`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:62` - `#282a36`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:63` - `#ff5555`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:64` - `#282a36`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:65` - `rgba(248, 248, 242, 0.12)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:66` - `#44475a`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:67` - `#bd93f9`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:68` - `#bd93f9`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:69` - `#8be9fd`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:70` - `#ff79c6`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:71` - `#50fa7b`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:72` - `#ffb86c`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:73` - `#282a36`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:74` - `#f8f8f2`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:75` - `#bd93f9`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:76` - `#282a36`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:77` - `#44475a`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:78` - `#f8f8f2`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:79` - `rgba(248, 248, 242, 0.12)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:80` - `#bd93f9`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:83` - `#bd93f9`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:84` - `#ff79c6`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:85` - `#bd93f9`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:86` - `#8be9fd`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:87` - `#282a36`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:88` - `#44475a`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:89` - `#44475a`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:91` - `#8be9fd`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:92` - `#bd93f9`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:93` - `#8be9fd`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:94` - `#ff79c6`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:95` - `#282a36`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:96` - `#44475a`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:99` - `rgba(68, 71, 90, 0.3)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:100` - `rgba(68, 71, 90, 0.4)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:101` - `rgba(68, 71, 90, 0.5)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:102` - `rgba(68, 71, 90, 0.6)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:103` - `rgba(68, 71, 90, 0.7)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:104` - `rgba(68, 71, 90, 0.8)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:105` - `rgba(68, 71, 90, 0.85)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:106` - `rgba(68, 71, 90, 0.9)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:107` - `rgba(68, 71, 90, 0.95)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:108` - `rgba(68, 71, 90, 1)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:110` - `#282a36`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:111` - `#44475a`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:112` - `#44475a`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:113` - `#44475a`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:114` - `#44475a`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:115` - `#44475a`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:116` - `#f8f8f2`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:117` - `#f8f8f2`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:118` - `#f8f8f2`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:119` - `#f8f8f2`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:122` - `#50fa7b`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:123` - `#282a36`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:124` - `#ff5555`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:125` - `#282a36`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:126` - `#ffb86c`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:127` - `#282a36`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:128` - `#8be9fd`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:129` - `#282a36`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:133` - `#282a36`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:134` - `#f8f8f2`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:135` - `#44475a`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:136` - `#f8f8f2`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:137` - `#44475a`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:138` - `#f8f8f2`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:139` - `#bd93f9`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:140` - `#282a36`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:141` - `#ff79c6`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:142` - `#282a36`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:143` - `#44475a`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:144` - `rgba(248, 248, 242, 0.7)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:145` - `#8be9fd`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:146` - `#282a36`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:147` - `#ff5555`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:148` - `#282a36`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:149` - `rgba(248, 248, 242, 0.12)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:150` - `#44475a`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:151` - `#bd93f9`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:152` - `#bd93f9`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:153` - `#8be9fd`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:154` - `#ff79c6`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:155` - `#50fa7b`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:156` - `#ffb86c`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:157` - `#282a36`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:158` - `#f8f8f2`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:159` - `#bd93f9`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:160` - `#282a36`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:161` - `#44475a`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:162` - `#f8f8f2`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:163` - `rgba(248, 248, 242, 0.12)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:164` - `#bd93f9`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:167` - `#50fa7b`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:168` - `#282a36`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:169` - `#ff5555`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:170` - `#282a36`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:171` - `#ffb86c`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:172` - `#282a36`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:173` - `#8be9fd`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/base.css:174` - `#282a36`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/components.css:26` - `rgba(0, 0, 0, 0.4)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/components.css:32` - `rgba(0, 0, 0, 0.4)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/components.css:81` - `rgba(0, 0, 0, 0.15)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/components.css:86` - `rgba(68, 71, 90, 0.5)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/components.css:88` - `rgba(248, 248, 242, 0.2)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/components.css:92` - `rgba(40, 42, 54, 0.4)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/components.css:94` - `rgba(248, 248, 242, 0.12)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/components.css:105` - `rgba(189, 147, 249, 0.85)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/components.css:106` - `rgba(255, 121, 198, 0.95)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/components.css:107` - `rgba(139, 233, 253, 0.95)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/components.css:108` - `rgba(189, 147, 249, 0.85)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/components.css:118` - `rgba(189, 147, 249, 0.5)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/components.css:119` - `rgba(255, 121, 198, 0.35)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/components.css:120` - `rgba(139, 233, 253, 0.25)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/components.css:133` - `rgba(248, 248, 242, 0.7)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/components.css:209` - `rgba(248, 248, 242, 0.1)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/components.css:214` - `rgba(248, 248, 242, 0.12)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/components.css:216` - `rgba(248, 248, 242, 0.25)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/components.css:220` - `rgba(248, 248, 242, 0.2)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/components.css:225` - `rgba(248, 248, 242, 0.08)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/components.css:230` - `rgba(248, 248, 242, 0.12)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/components.css:347` - `rgba(0, 0, 0, 0.1)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/components.css:433` - `rgba(0, 0, 0, 0.1)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:194` - `#bd93f9`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:195` - `rgba(189, 147, 249, 0.8)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:196` - `rgba(189, 147, 249, 0.4)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:197` - `rgba(189, 147, 249, 0.2)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:201` - `#8be9fd`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:202` - `rgba(139, 233, 253, 0.8)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:203` - `rgba(139, 233, 253, 0.4)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:204` - `rgba(139, 233, 253, 0.2)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:208` - `#ff79c6`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:209` - `rgba(255, 121, 198, 0.8)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:210` - `rgba(255, 121, 198, 0.4)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:211` - `rgba(255, 121, 198, 0.2)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:215` - `#ffb86c`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:216` - `rgba(255, 184, 108, 0.8)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:217` - `rgba(255, 184, 108, 0.4)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:218` - `rgba(255, 184, 108, 0.2)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:222` - `#8be9fd`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:223` - `rgba(139, 233, 253, 0.8)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:224` - `rgba(139, 233, 253, 0.4)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:225` - `rgba(139, 233, 253, 0.2)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:229` - `#bd93f9`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:230` - `rgba(189, 147, 249, 0.8)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:231` - `rgba(189, 147, 249, 0.4)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:232` - `rgba(189, 147, 249, 0.2)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:236` - `#50fa7b`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:237` - `rgba(80, 250, 123, 0.8)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:238` - `rgba(80, 250, 123, 0.4)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:239` - `rgba(80, 250, 123, 0.2)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:243` - `#ff5555`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:244` - `rgba(255, 85, 85, 0.8)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:245` - `rgba(255, 85, 85, 0.4)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:246` - `rgba(255, 85, 85, 0.2)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:250` - `#bd93f9`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:251` - `rgba(189, 147, 249, 0.8)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:252` - `rgba(189, 147, 249, 0.4)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:253` - `rgba(189, 147, 249, 0.2)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:257` - `#ffb86c`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:258` - `rgba(255, 184, 108, 0.8)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:259` - `rgba(255, 184, 108, 0.4)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:260` - `rgba(255, 184, 108, 0.2)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:264` - `text-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:267` - `text-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:268` - `rgba(248, 248, 242, 0.9)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:270` - `text-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:271` - `rgba(248, 248, 242, 0.8)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:273` - `text-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:274` - `rgba(248, 248, 242, 0.7)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:276` - `text-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:277` - `rgba(248, 248, 242, 0.6)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:279` - `text-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:280` - `rgba(248, 248, 242, 0.5)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:282` - `text-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:283` - `rgba(248, 248, 242, 0.4)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:285` - `text-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:286` - `rgba(248, 248, 242, 0.3)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:289` - `border-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use border-border.
+- [P2] `src/app/styles/utilities.css:290` - `rgba(248, 248, 242, 1)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:292` - `border-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use border-border.
+- [P2] `src/app/styles/utilities.css:293` - `rgba(248, 248, 242, 0.5)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:295` - `border-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use border-border.
+- [P2] `src/app/styles/utilities.css:296` - `rgba(248, 248, 242, 0.3)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:298` - `border-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use border-border.
+- [P2] `src/app/styles/utilities.css:299` - `rgba(248, 248, 242, 0.2)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:301` - `border-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use border-border.
+- [P2] `src/app/styles/utilities.css:302` - `rgba(248, 248, 242, 0.1)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:305` - `bg-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use bg-card or bg-background.
+- [P2] `src/app/styles/utilities.css:308` - `bg-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use bg-card or bg-background.
+- [P2] `src/app/styles/utilities.css:309` - `rgba(68, 71, 90, 0.9)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:311` - `bg-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use bg-card or bg-background.
+- [P2] `src/app/styles/utilities.css:312` - `rgba(68, 71, 90, 0.8)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:314` - `bg-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use bg-card or bg-background.
+- [P2] `src/app/styles/utilities.css:315` - `rgba(68, 71, 90, 0.7)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:317` - `bg-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use bg-card or bg-background.
+- [P2] `src/app/styles/utilities.css:318` - `rgba(68, 71, 90, 0.6)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:320` - `bg-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use bg-card or bg-background.
+- [P2] `src/app/styles/utilities.css:321` - `rgba(68, 71, 90, 0.5)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:323` - `bg-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use bg-card or bg-background.
+- [P2] `src/app/styles/utilities.css:324` - `rgba(68, 71, 90, 0.4)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:326` - `bg-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use bg-card or bg-background.
+- [P2] `src/app/styles/utilities.css:327` - `rgba(68, 71, 90, 0.3)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:329` - `bg-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use bg-card or bg-background.
+- [P2] `src/app/styles/utilities.css:330` - `rgba(68, 71, 90, 0.2)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:332` - `bg-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use bg-card or bg-background.
+- [P2] `src/app/styles/utilities.css:333` - `rgba(68, 71, 90, 0.15)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:335` - `bg-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use bg-card or bg-background.
+- [P2] `src/app/styles/utilities.css:336` - `rgba(68, 71, 90, 0.1)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:338` - `bg-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use bg-card or bg-background.
+- [P2] `src/app/styles/utilities.css:339` - `rgba(68, 71, 90, 0.05)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:342` - `bg-gray-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use bg-card or bg-background.
+- [P2] `src/app/styles/utilities.css:343` - `bg-slate-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:344` - `bg-zinc-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:345` - `bg-neutral-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:346` - `bg-stone-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:347` - `bg-blue-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:348` - `bg-indigo-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:349` - `bg-purple-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:350` - `bg-pink-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:351` - `bg-rose-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:352` - `bg-cyan-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:353` - `bg-sky-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:354` - `bg-teal-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:355` - `bg-emerald-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:356` - `bg-green-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:357` - `bg-red-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:358` - `bg-orange-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:359` - `bg-amber-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:360` - `bg-yellow-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:364` - `bg-gray-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use bg-card or bg-background.
+- [P2] `src/app/styles/utilities.css:365` - `bg-slate-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:366` - `bg-zinc-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:367` - `bg-neutral-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:368` - `bg-stone-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:369` - `bg-blue-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:370` - `bg-indigo-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:371` - `bg-purple-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:372` - `bg-pink-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:373` - `bg-rose-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:374` - `bg-cyan-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:375` - `bg-sky-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:376` - `bg-teal-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:377` - `bg-emerald-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:378` - `bg-green-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:379` - `bg-red-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:380` - `bg-orange-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:381` - `bg-amber-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:382` - `bg-yellow-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:383` - `bg-gray-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use bg-card or bg-background.
+- [P2] `src/app/styles/utilities.css:384` - `bg-slate-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:385` - `bg-zinc-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:386` - `bg-neutral-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:387` - `bg-stone-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:388` - `bg-blue-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:389` - `bg-indigo-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:390` - `bg-purple-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:391` - `bg-pink-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:392` - `bg-rose-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:393` - `bg-cyan-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:394` - `bg-sky-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:395` - `bg-teal-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:396` - `bg-emerald-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:397` - `bg-green-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:398` - `bg-red-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:399` - `bg-orange-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:400` - `bg-amber-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:401` - `bg-yellow-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:405` - `bg-gray-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use bg-card or bg-background.
+- [P2] `src/app/styles/utilities.css:406` - `rgba(40, 42, 54, 0.5)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:408` - `bg-gray-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use bg-card or bg-background.
+- [P2] `src/app/styles/utilities.css:409` - `rgba(68, 71, 90, 0.8)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:411` - `bg-gray-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use bg-card or bg-background.
+- [P2] `src/app/styles/utilities.css:412` - `rgba(68, 71, 90, 0.5)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:414` - `bg-neutral-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:415` - `rgba(68, 71, 90, 0.8)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:418` - `text-black`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:419` - `text-gray-900`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use text-foreground/text-muted-foreground depending emphasis.
+- [P2] `src/app/styles/utilities.css:420` - `text-gray-800`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use text-foreground/text-muted-foreground depending emphasis.
+- [P2] `src/app/styles/utilities.css:421` - `text-gray-700`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use text-foreground/text-muted-foreground depending emphasis.
+- [P2] `src/app/styles/utilities.css:422` - `text-slate-900`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use text-foreground/text-muted-foreground depending emphasis.
+- [P2] `src/app/styles/utilities.css:423` - `text-slate-800`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use text-foreground/text-muted-foreground depending emphasis.
+- [P2] `src/app/styles/utilities.css:424` - `text-slate-700`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use text-foreground/text-muted-foreground depending emphasis.
+- [P2] `src/app/styles/utilities.css:425` - `text-zinc-900`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:426` - `text-zinc-800`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:427` - `text-zinc-700`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:428` - `text-neutral-900`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:429` - `text-neutral-800`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:430` - `text-neutral-700`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:431` - `text-stone-900`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:432` - `text-stone-800`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:433` - `text-stone-700`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:437` - `text-gray-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use text-foreground/text-muted-foreground depending emphasis.
+- [P2] `src/app/styles/utilities.css:438` - `text-gray-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use text-foreground/text-muted-foreground depending emphasis.
+- [P2] `src/app/styles/utilities.css:439` - `text-slate-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use text-foreground/text-muted-foreground depending emphasis.
+- [P2] `src/app/styles/utilities.css:440` - `text-slate-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use text-foreground/text-muted-foreground depending emphasis.
+- [P2] `src/app/styles/utilities.css:441` - `text-zinc-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:442` - `text-zinc-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:443` - `text-neutral-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:444` - `text-neutral-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:445` - `text-stone-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:446` - `text-stone-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:450` - `text-gray-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use text-foreground/text-muted-foreground depending emphasis.
+- [P2] `src/app/styles/utilities.css:451` - `text-slate-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use text-foreground/text-muted-foreground depending emphasis.
+- [P2] `src/app/styles/utilities.css:452` - `text-zinc-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:453` - `text-neutral-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:454` - `text-stone-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:455` - `rgba(248, 248, 242, 0.6)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:458` - `text-gray-300`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use text-foreground/text-muted-foreground depending emphasis.
+- [P2] `src/app/styles/utilities.css:459` - `text-slate-300`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use text-foreground/text-muted-foreground depending emphasis.
+- [P2] `src/app/styles/utilities.css:460` - `text-zinc-300`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:461` - `text-neutral-300`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:462` - `text-stone-300`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:463` - `rgba(248, 248, 242, 0.5)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:466` - `text-gray-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use text-foreground/text-muted-foreground depending emphasis.
+- [P2] `src/app/styles/utilities.css:467` - `text-slate-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use text-foreground/text-muted-foreground depending emphasis.
+- [P2] `src/app/styles/utilities.css:468` - `text-zinc-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:469` - `text-neutral-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:470` - `text-stone-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:471` - `rgba(248, 248, 242, 0.4)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:474` - `text-gray-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use text-foreground/text-muted-foreground depending emphasis.
+- [P2] `src/app/styles/utilities.css:475` - `text-slate-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use text-foreground/text-muted-foreground depending emphasis.
+- [P2] `src/app/styles/utilities.css:476` - `text-zinc-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:477` - `text-neutral-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:478` - `text-stone-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:479` - `rgba(248, 248, 242, 0.3)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:482` - `border-gray-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use border-border.
+- [P2] `src/app/styles/utilities.css:483` - `border-gray-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use border-border.
+- [P2] `src/app/styles/utilities.css:484` - `border-gray-300`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use border-border.
+- [P2] `src/app/styles/utilities.css:485` - `border-gray-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use border-border.
+- [P2] `src/app/styles/utilities.css:486` - `border-slate-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:487` - `border-slate-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:488` - `border-slate-300`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:489` - `border-slate-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:490` - `border-zinc-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:491` - `border-zinc-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:492` - `border-zinc-300`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:493` - `border-zinc-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:494` - `border-neutral-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:495` - `border-neutral-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:496` - `border-neutral-300`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:497` - `border-neutral-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:498` - `border-stone-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:499` - `border-stone-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:500` - `border-stone-300`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:501` - `border-stone-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:504` - `border-gray-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use border-border.
+- [P2] `src/app/styles/utilities.css:505` - `border-gray-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use border-border.
+- [P2] `src/app/styles/utilities.css:506` - `border-gray-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use border-border.
+- [P2] `src/app/styles/utilities.css:510` - `text-blue-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:511` - `text-blue-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:512` - `text-blue-300`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:513` - `text-blue-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:514` - `text-blue-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:515` - `text-blue-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:516` - `text-blue-700`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:517` - `text-blue-800`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:518` - `text-blue-900`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:519` - `text-indigo-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:520` - `text-indigo-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:521` - `text-indigo-700`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:527` - `text-purple-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:528` - `text-purple-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:529` - `text-purple-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:530` - `text-purple-700`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:531` - `text-purple-800`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:532` - `text-pink-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:533` - `text-pink-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:534` - `text-pink-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:535` - `text-rose-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:540` - `text-cyan-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:541` - `text-cyan-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:542` - `text-cyan-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:543` - `text-sky-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:544` - `text-sky-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:545` - `text-sky-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:546` - `text-teal-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:550` - `text-green-300`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:551` - `text-green-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:552` - `text-green-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:553` - `text-green-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:554` - `text-green-700`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:555` - `text-green-800`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:556` - `text-emerald-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:557` - `text-emerald-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:558` - `text-emerald-700`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:560` - `#50fa7b`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:563` - `text-amber-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:564` - `text-amber-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:565` - `text-amber-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:566` - `text-amber-700`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:567` - `text-amber-800`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:568` - `text-orange-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:569` - `text-orange-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:570` - `text-orange-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:571` - `text-orange-700`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:572` - `text-yellow-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:573` - `text-yellow-300`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:574` - `text-yellow-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:575` - `text-yellow-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:576` - `text-yellow-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:577` - `text-yellow-700`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:578` - `text-yellow-800`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:579` - `#ffb86c`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:582` - `text-red-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:583` - `text-red-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:584` - `text-red-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:585` - `text-red-700`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:586` - `text-red-800`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:587` - `#ff5555`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:590` - `bg-blue-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:591` - `bg-blue-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:592` - `bg-blue-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:593` - `bg-blue-700`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:594` - `bg-indigo-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:595` - `bg-indigo-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:600` - `bg-purple-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:601` - `bg-purple-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:602` - `bg-purple-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:603` - `bg-purple-700`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:604` - `bg-pink-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:605` - `bg-pink-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:606` - `bg-pink-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:607` - `bg-rose-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:612` - `bg-cyan-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:613` - `bg-cyan-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:614` - `bg-sky-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:615` - `bg-sky-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:616` - `bg-sky-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:617` - `bg-teal-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:621` - `bg-green-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:622` - `bg-green-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:623` - `bg-green-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:624` - `bg-emerald-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:625` - `bg-emerald-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:627` - `#50fa7b`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:630` - `bg-amber-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:631` - `bg-amber-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:632` - `bg-orange-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:633` - `bg-orange-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:634` - `bg-orange-700`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:635` - `bg-yellow-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:636` - `bg-yellow-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:637` - `#ffb86c`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:640` - `bg-red-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:641` - `bg-red-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:642` - `bg-red-700`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:643` - `#ff5555`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:646` - `bg-blue-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:647` - `bg-blue-950`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:648` - `rgb(189 147 249 / 0.2)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:650` - `bg-blue-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:651` - `rgb(40 42 54 / 0.5)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:653` - `bg-blue-300`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:654` - `rgb(189 147 249 / 0.15)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:656` - `bg-blue-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:657` - `bg-blue-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:658` - `rgb(189 147 249 / 0.1)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:661` - `bg-purple-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:662` - `bg-purple-300`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:663` - `bg-purple-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:664` - `bg-purple-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:665` - `bg-purple-950`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:666` - `rgb(255 121 198 / 0.2)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:668` - `bg-purple-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:669` - `rgb(40 42 54 / 0.5)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:671` - `bg-purple-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:672` - `rgb(255 121 198 / 0.1)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:675` - `bg-pink-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:676` - `rgb(255 121 198 / 0.1)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:679` - `bg-sky-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:680` - `rgb(139 233 253 / 0.2)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:682` - `bg-cyan-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:683` - `rgb(139 233 253 / 0.1)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:686` - `bg-green-950`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:687` - `rgb(80 250 123 / 0.2)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:689` - `bg-green-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:690` - `rgb(40 42 54 / 0.5)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:692` - `bg-green-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:693` - `rgb(80 250 123 / 0.15)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:695` - `bg-green-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:696` - `rgb(80 250 123 / 0.1)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:699` - `bg-orange-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:700` - `bg-yellow-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:701` - `rgb(255 184 108 / 0.1)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:704` - `bg-red-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:705` - `bg-red-950`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:706` - `rgb(255 85 85 / 0.2)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:708` - `bg-gray-900`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use bg-card or bg-background.
+- [P2] `src/app/styles/utilities.css:709` - `rgb(68 71 90 / 0.9)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:711` - `bg-red-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:712` - `rgb(255 85 85 / 0.1)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:715` - `border-blue-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:716` - `border-blue-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:717` - `border-indigo-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:722` - `border-purple-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:723` - `border-purple-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:724` - `border-pink-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:725` - `border-rose-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:730` - `border-cyan-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:731` - `border-sky-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:732` - `border-teal-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:736` - `border-green-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:737` - `border-emerald-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:739` - `#50fa7b`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:742` - `border-amber-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:743` - `border-orange-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:744` - `border-yellow-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:745` - `#ffb86c`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:748` - `border-red-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:749` - `border-red-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:750` - `#ff5555`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:753` - `from-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:754` - `from-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:755` - `from-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:756` - `from-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:757` - `from-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:758` - `from-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:759` - `from-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:761` - `rgb(68 71 90 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:765` - `via-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:766` - `via-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:767` - `via-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:768` - `via-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:769` - `via-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:770` - `via-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:776` - `to-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:777` - `to-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:778` - `to-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:779` - `to-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:780` - `to-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:781` - `to-white`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:785` - `from-blue-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:786` - `from-blue-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:787` - `from-blue-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:788` - `from-blue-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:789` - `from-blue-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:791` - `rgb(40 42 54 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:795` - `via-blue-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:796` - `via-blue-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:797` - `via-blue-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:798` - `via-blue-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:799` - `via-blue-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:805` - `to-blue-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:806` - `to-blue-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:807` - `to-blue-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:808` - `to-blue-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:809` - `to-blue-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:813` - `from-purple-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-secondary/to-secondary.
+- [P2] `src/app/styles/utilities.css:814` - `from-purple-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-secondary/to-secondary.
+- [P2] `src/app/styles/utilities.css:815` - `from-purple-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-secondary/to-secondary.
+- [P2] `src/app/styles/utilities.css:816` - `from-purple-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-secondary/to-secondary.
+- [P2] `src/app/styles/utilities.css:817` - `from-purple-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-secondary/to-secondary.
+- [P2] `src/app/styles/utilities.css:819` - `rgb(40 42 54 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:823` - `via-purple-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:824` - `via-purple-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:825` - `via-purple-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:831` - `to-purple-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-secondary/to-secondary.
+- [P2] `src/app/styles/utilities.css:832` - `to-purple-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-secondary/to-secondary.
+- [P2] `src/app/styles/utilities.css:833` - `to-purple-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-secondary/to-secondary.
+- [P2] `src/app/styles/utilities.css:834` - `to-purple-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-secondary/to-secondary.
+- [P2] `src/app/styles/utilities.css:835` - `to-purple-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-secondary/to-secondary.
+- [P2] `src/app/styles/utilities.css:839` - `from-gray-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:840` - `from-gray-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:841` - `from-slate-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:842` - `from-red-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:843` - `from-orange-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:844` - `from-yellow-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:845` - `from-green-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:846` - `from-cyan-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-accent/to-accent.
+- [P2] `src/app/styles/utilities.css:848` - `rgb(40 42 54 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:852` - `to-gray-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:853` - `to-gray-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:854` - `to-slate-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:855` - `to-indigo-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:856` - `to-red-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:857` - `to-orange-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:858` - `to-yellow-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:859` - `to-green-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:860` - `to-cyan-50`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-accent/to-accent.
+- [P2] `src/app/styles/utilities.css:861` - `to-red-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:862` - `to-orange-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:863` - `to-yellow-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:864` - `to-green-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:865` - `to-cyan-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-accent/to-accent.
+- [P2] `src/app/styles/utilities.css:870` - `from-blue-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:871` - `from-blue-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:872` - `from-blue-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:873` - `from-blue-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:874` - `from-blue-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:875` - `from-blue-700`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:876` - `from-blue-800`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:877` - `from-blue-900`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:878` - `from-blue-950`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:880` - `rgb(189 147 249 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:883` - `from-blue-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:884` - `rgb(189 147 249 / 0.3)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:885` - `rgb(189 147 249 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:888` - `from-blue-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:889` - `rgb(189 147 249 / 0.5)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:890` - `rgb(189 147 249 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:893` - `from-blue-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:894` - `rgb(189 147 249 / 0.1)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:895` - `rgb(189 147 249 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:898` - `from-blue-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:899` - `rgb(189 147 249 / 0.2)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:900` - `rgb(189 147 249 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:903` - `from-blue-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:904` - `rgb(189 147 249 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:905` - `rgb(189 147 249 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:908` - `from-blue-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:909` - `rgb(189 147 249 / 0.05)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:910` - `rgb(189 147 249 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:913` - `from-blue-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:914` - `rgb(189 147 249 / 0.08)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:915` - `rgb(189 147 249 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:918` - `from-blue-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:919` - `rgb(189 147 249 / 0.1)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:920` - `rgb(189 147 249 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:923` - `from-blue-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:924` - `rgb(189 147 249 / 0.3)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:925` - `rgb(189 147 249 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:928` - `from-blue-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:929` - `rgb(189 147 249 / 0.05)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:930` - `rgb(189 147 249 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:933` - `from-blue-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:934` - `rgb(189 147 249 / 0.1)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:935` - `rgb(189 147 249 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:938` - `from-blue-900`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:939` - `rgb(189 147 249 / 0.2)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:940` - `rgb(189 147 249 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:943` - `via-blue-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:944` - `rgb(189 147 249 / 0.5)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:948` - `via-blue-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:949` - `rgb(189 147 249 / 0.05)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:953` - `via-blue-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:954` - `rgb(189 147 249 / 0.3)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:958` - `via-blue-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:959` - `via-blue-700`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:960` - `via-blue-800`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:965` - `via-blue-700`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:966` - `rgb(189 147 249 / 0.05)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:970` - `via-blue-950`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:971` - `rgb(189 147 249 / 0.2)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:975` - `to-blue-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:976` - `to-blue-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:977` - `to-blue-700`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:978` - `to-blue-800`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:981` - `to-blue-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:982` - `rgb(189 147 249 / 0.9)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:984` - `to-blue-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-primary/to-primary.
+- [P2] `src/app/styles/utilities.css:985` - `rgb(189 147 249 / 0.3)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:988` - `from-indigo-900`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:990` - `rgb(189 147 249 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:993` - `from-indigo-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:994` - `rgb(189 147 249 / 0.3)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:995` - `rgb(189 147 249 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:999` - `from-purple-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-secondary/to-secondary.
+- [P2] `src/app/styles/utilities.css:1000` - `from-purple-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-secondary/to-secondary.
+- [P2] `src/app/styles/utilities.css:1002` - `rgb(255 121 198 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1005` - `from-purple-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-secondary/to-secondary.
+- [P2] `src/app/styles/utilities.css:1006` - `from-purple-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-secondary/to-secondary.
+- [P2] `src/app/styles/utilities.css:1007` - `rgb(255 121 198 / 0.2)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1008` - `rgb(255 121 198 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1011` - `via-purple-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1012` - `via-purple-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1017` - `via-purple-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1018` - `via-purple-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1019` - `rgb(255 121 198 / 0.1)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1023` - `via-purple-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1024` - `rgb(255 121 198 / 0.05)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1028` - `to-purple-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-secondary/to-secondary.
+- [P2] `src/app/styles/utilities.css:1029` - `to-purple-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-secondary/to-secondary.
+- [P2] `src/app/styles/utilities.css:1030` - `to-purple-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-secondary/to-secondary.
+- [P2] `src/app/styles/utilities.css:1031` - `to-purple-700`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-secondary/to-secondary.
+- [P2] `src/app/styles/utilities.css:1032` - `to-purple-800`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-secondary/to-secondary.
+- [P2] `src/app/styles/utilities.css:1035` - `to-purple-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-secondary/to-secondary.
+- [P2] `src/app/styles/utilities.css:1036` - `rgb(255 121 198 / 0.5)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1038` - `to-purple-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-secondary/to-secondary.
+- [P2] `src/app/styles/utilities.css:1039` - `to-purple-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-secondary/to-secondary.
+- [P2] `src/app/styles/utilities.css:1040` - `rgb(255 121 198 / 0.2)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1042` - `to-purple-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-secondary/to-secondary.
+- [P2] `src/app/styles/utilities.css:1043` - `rgb(255 121 198 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1045` - `to-purple-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-secondary/to-secondary.
+- [P2] `src/app/styles/utilities.css:1046` - `rgb(255 121 198 / 0.05)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1048` - `to-purple-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-secondary/to-secondary.
+- [P2] `src/app/styles/utilities.css:1049` - `rgb(255 121 198 / 0.08)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1051` - `to-purple-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-secondary/to-secondary.
+- [P2] `src/app/styles/utilities.css:1052` - `rgb(255 121 198 / 0.3)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1054` - `to-purple-900`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-secondary/to-secondary.
+- [P2] `src/app/styles/utilities.css:1055` - `to-purple-950`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-secondary/to-secondary.
+- [P2] `src/app/styles/utilities.css:1056` - `rgb(255 121 198 / 0.2)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1059` - `from-pink-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1061` - `rgb(255 121 198 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1064` - `from-pink-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1065` - `rgb(255 121 198 / 0.2)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1066` - `rgb(255 121 198 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1069` - `to-pink-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1070` - `to-pink-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1071` - `rgb(255 121 198 / 0.15)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1073` - `to-pink-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1074` - `rgb(255 121 198 / 0.1)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1076` - `to-pink-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1080` - `from-sky-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1081` - `from-sky-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1083` - `rgb(139 233 253 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1086` - `from-sky-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1087` - `rgb(139 233 253 / 0.3)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1088` - `rgb(139 233 253 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1092` - `to-cyan-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Use from-accent/to-accent.
+- [P2] `src/app/styles/utilities.css:1093` - `rgb(139 233 253 / 0.1)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1096` - `from-green-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1097` - `#50fa7b`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1098` - `rgb(80 250 123 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1101` - `via-green-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1102` - `#50fa7b`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1106` - `to-green-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1107` - `to-green-700`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1108` - `#50fa7b`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1111` - `from-yellow-300`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1112` - `from-yellow-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1113` - `from-yellow-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1114` - `#ffb86c`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1115` - `rgb(255 184 108 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1118` - `via-yellow-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1119` - `via-yellow-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1120` - `#ffb86c`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1124` - `from-orange-300`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1125` - `#ffb86c`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1126` - `rgb(255 184 108 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1129` - `from-orange-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1130` - `rgb(255 184 108 / 0.15)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1131` - `rgb(255 184 108 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1134` - `via-orange-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1135` - `#ffb86c`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1139` - `to-orange-300`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1140` - `to-orange-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1141` - `to-orange-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1142` - `to-orange-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1143` - `to-orange-700`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1144` - `#ffb86c`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1146` - `to-orange-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1147` - `rgb(255 184 108 / 0.2)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1150` - `from-red-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1151` - `from-red-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1152` - `from-red-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1153` - `from-red-700`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1154` - `#ff5555`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1155` - `rgb(255 85 85 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1158` - `from-red-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1159` - `rgb(255 85 85 / 0.1)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1160` - `rgb(255 85 85 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1163` - `from-red-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1164` - `rgb(255 85 85 / 0.2)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1165` - `rgb(255 85 85 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1168` - `via-red-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1169` - `via-red-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1170` - `via-red-700`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1171` - `via-red-800`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1172` - `#ff5555`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1176` - `to-red-400`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1177` - `rgb(255 85 85 / 0.15)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1179` - `to-red-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1180` - `to-red-800`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1181` - `#ff5555`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1184` - `from-gray-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1185` - `from-gray-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1187` - `rgb(68 71 90 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1190` - `from-gray-700`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1191` - `from-gray-800`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1192` - `from-gray-900`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1194` - `rgb(40 42 54 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1197` - `from-gray-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1198` - `rgb(40 42 54 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1199` - `rgb(40 42 54 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1202` - `from-gray-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1203` - `rgb(40 42 54 / 0.05)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1204` - `rgb(40 42 54 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1207` - `via-gray-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1208` - `rgb(68 71 90 / 0.5)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1212` - `via-gray-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1217` - `to-gray-100`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1218` - `to-gray-200`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1219` - `to-gray-300`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1220` - `to-gray-600`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1223` - `to-gray-700`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1224` - `to-gray-800`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1225` - `to-gray-900`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1228` - `to-gray-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1229` - `rgb(40 42 54 / 0)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/app/styles/utilities.css:1231` - `to-gray-500`
+  - Kind: riskyUtilityClass
+  - Suggestion: Map to semantic token from base.css contract.
+- [P2] `src/app/styles/utilities.css:1232` - `rgb(40 42 54 / 0.05)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/components/tiptap/mention-node-view.tsx:24` - `#f3f4f6`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/components/tiptap/mention-node-view.tsx:25` - `#2563eb`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/components/tiptap/toolbar.tsx:356` - `#ffff00`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/components/tiptap/toolbar.tsx:398` - `#f8f8f2`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/lib/config/stripe.ts:8` - `hsl(var(--primary)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/lib/config/stripe.ts:9` - `hsl(var(--background)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/lib/config/stripe.ts:10` - `hsl(var(--foreground)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+- [P2] `src/lib/config/stripe.ts:11` - `hsl(var(--destructive)`
+  - Kind: hardColor
+  - Suggestion: Replace hardcoded value with semantic token (e.g. var(--primary), var(--foreground), var(--border)).
+
+## Approved exceptions
+
+- `src/lib/config/stripe.ts`
+- `src/components/tiptap/toolbar.tsx`
+- `src/components/tiptap/mention-node-view.tsx`
+- `src/app/styles/base.css` (source-of-truth layer)
+- `src/app/styles/components.css` (source-of-truth layer)
+- `src/app/styles/utilities.css` (source-of-truth layer)
+- `src/app/styles/animations.css` (source-of-truth layer)
+- `src/app/styles/tiptap.css` (source-of-truth layer)

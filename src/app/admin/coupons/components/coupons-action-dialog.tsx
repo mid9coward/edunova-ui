@@ -164,7 +164,7 @@ const CouponsActionDialog = ({
 						<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
 							{/* Basic Information Section */}
 							<div className="space-y-4">
-								<h3 className="text-lg font-semibold text-gray-900 border-b pb-2">
+								<h3 className="text-lg font-semibold text-foreground border-b pb-2">
 									Basic Information
 								</h3>
 
@@ -175,7 +175,7 @@ const CouponsActionDialog = ({
 										render={({field}) => (
 											<FormItem>
 												<FormLabel>
-													Title <span className="text-red-500">*</span>
+													Title <span className="text-destructive">*</span>
 												</FormLabel>
 												<FormControl>
 													<Input {...field} placeholder="Coupon title" />
@@ -191,7 +191,7 @@ const CouponsActionDialog = ({
 										render={({field}) => (
 											<FormItem>
 												<FormLabel>
-													Code <span className="text-red-500">*</span>
+													Code <span className="text-destructive">*</span>
 												</FormLabel>
 												<FormControl>
 													<Input
@@ -213,7 +213,7 @@ const CouponsActionDialog = ({
 										render={({field}) => (
 											<FormItem>
 												<FormLabel>
-													Discount Type <span className="text-red-500">*</span>
+													Discount Type <span className="text-destructive">*</span>
 												</FormLabel>
 												<Select
 													value={field.value}
@@ -244,7 +244,7 @@ const CouponsActionDialog = ({
 										render={({field: {onChange, onBlur, name, value, ref}}) => (
 											<FormItem>
 												<FormLabel>
-													Discount Value <span className="text-red-500">*</span>
+													Discount Value <span className="text-destructive">*</span>
 												</FormLabel>
 												<FormControl>
 													<NumericFormat
@@ -289,7 +289,7 @@ const CouponsActionDialog = ({
 
 							{/* Eligibility Section */}
 							<div className="space-y-4">
-								<h3 className="text-lg font-semibold text-gray-900 border-b pb-2">
+								<h3 className="text-lg font-semibold text-foreground border-b pb-2">
 									Eligibility & Restrictions
 								</h3>
 
@@ -410,7 +410,7 @@ const CouponsActionDialog = ({
 
 							{/* Validity Period Section */}
 							<div className="space-y-4">
-								<h3 className="text-lg font-semibold text-gray-900 border-b pb-2">
+								<h3 className="text-lg font-semibold text-foreground border-b pb-2">
 									Validity Period
 								</h3>
 
@@ -421,7 +421,7 @@ const CouponsActionDialog = ({
 										render={({field}) => (
 											<FormItem className="flex flex-col">
 												<FormLabel>
-													Start Date <span className="text-red-500">*</span>
+													Start Date <span className="text-destructive">*</span>
 												</FormLabel>
 												<Popover modal={true}>
 													<PopoverTrigger asChild>
@@ -588,3 +588,4 @@ const CouponsActionDialog = ({
 };
 
 export default CouponsActionDialog;
+

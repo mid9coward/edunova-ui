@@ -43,11 +43,11 @@ export const getStatusConfig = (status: string) => {
 		case "approved":
 		case "published":
 			return {
-				bgColor: "bg-emerald-50",
-				textColor: "text-emerald-700",
-				borderColor: "border-emerald-200",
-				dotColor: "bg-emerald-600",
-				ringColor: "focus-visible:ring-emerald-600/20",
+				bgColor: "bg-primary/10",
+				textColor: "text-primary",
+				borderColor: "border-primary/30",
+				dotColor: "bg-primary",
+				ringColor: "focus-visible:ring-primary/20",
 				label: status,
 			};
 		case "expired":
@@ -55,31 +55,31 @@ export const getStatusConfig = (status: string) => {
 		case "rejected":
 		case "banned":
 			return {
-				bgColor: "bg-red-50",
-				textColor: "text-red-700",
-				borderColor: "border-red-200",
-				dotColor: "bg-red-600",
-				ringColor: "focus-visible:ring-red-600/20",
+				bgColor: "bg-destructive/10",
+				textColor: "text-destructive",
+				borderColor: "border-destructive/30",
+				dotColor: "bg-destructive",
+				ringColor: "focus-visible:ring-destructive/20",
 				label: status,
 			};
 		case "inactive":
 		case "pending":
 		case "draft":
 			return {
-				bgColor: "bg-amber-50",
-				textColor: "text-amber-700",
-				borderColor: "border-amber-200",
-				dotColor: "bg-amber-600",
-				ringColor: "focus-visible:ring-amber-600/20",
+				bgColor: "bg-secondary/20",
+				textColor: "text-secondary-foreground",
+				borderColor: "border-secondary/40",
+				dotColor: "bg-secondary",
+				ringColor: "focus-visible:ring-secondary/20",
 				label: status,
 			};
 		default:
 			return {
-				bgColor: "bg-gray-50",
-				textColor: "text-gray-700",
-				borderColor: "border-gray-200",
-				dotColor: "bg-gray-600",
-				ringColor: "focus-visible:ring-gray-600/20",
+				bgColor: "bg-muted/40",
+				textColor: "text-muted-foreground",
+				borderColor: "border-border",
+				dotColor: "bg-muted-foreground",
+				ringColor: "focus-visible:ring-muted-foreground/20",
 				label: status,
 			};
 	}

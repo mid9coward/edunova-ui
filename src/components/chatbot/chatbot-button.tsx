@@ -15,24 +15,24 @@ const ChatbotButton = ({isOpen, onClick}: ChatbotButtonProps) => {
 			{/* Enhanced Glass Background with Multiple Layers */}
 			<div className="absolute inset-0 rounded-full">
 				{/* Base gradient background */}
-				<div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-700 to-purple-600 rounded-full opacity-90 transition-all duration-500" />
+				<div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-secondary rounded-full opacity-90 transition-all duration-500" />
 				{/* Glass overlay */}
-				<div className="absolute inset-0 bg-white/10 backdrop-blur-xl rounded-full transition-all duration-500" />
+				<div className="absolute inset-0 bg-background/10 backdrop-blur-xl rounded-full transition-all duration-500" />
 				{/* Animated gradient overlay */}
-				<div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-full transition-all duration-500" />
+				<div className="absolute inset-0 bg-gradient-to-r from-transparent via-background/20 to-transparent rounded-full transition-all duration-500" />
 			</div>
 
 			{/* Floating Animation Ring */}
 			<div
 				className={cn(
 					"absolute inset-0 rounded-full transition-all duration-500",
-					"bg-gradient-to-br from-blue-500/30 via-purple-500/30 to-blue-600/30 animate-pulse",
+					"bg-gradient-to-br from-primary/30 via-secondary/30 to-primary/30 animate-pulse",
 					isOpen ? "scale-125 opacity-40" : "scale-110 opacity-20"
 				)}
 			/>
 
 			{/* Pulsing outer ring - radiating effect */}
-			<div className="absolute inset-0 rounded-full bg-purple-500/20 animate-ping opacity-75" />
+			<div className="absolute inset-0 rounded-full bg-secondary/20 animate-ping opacity-75" />
 
 			{/* Main Button */}
 			<Button
@@ -40,10 +40,10 @@ const ChatbotButton = ({isOpen, onClick}: ChatbotButtonProps) => {
 				size="icon"
 				className={cn(
 					"relative h-14 w-14 sm:h-16 sm:w-16 rounded-full shadow-2xl transition-all duration-300 overflow-hidden",
-					"bg-gradient-to-br from-blue-600 via-blue-700 to-purple-600 text-white",
-					"border-2 border-white/30 backdrop-blur-xl",
-					"hover:scale-110 hover:shadow-xl hover:shadow-purple-500/25",
-					"hover:from-blue-700 hover:via-blue-800 hover:to-purple-700",
+					"bg-gradient-to-br from-primary via-primary to-secondary text-primary-foreground",
+					"border-2 border-border/40 backdrop-blur-xl",
+					"hover:scale-110 hover:shadow-xl hover:shadow-secondary/25",
+					"hover:from-primary/90 hover:via-primary/90 hover:to-secondary/90",
 					"transform-gpu will-change-transform group",
 					"animate-bounce-gentle",
 					"focus:outline-none ",
@@ -56,10 +56,10 @@ const ChatbotButton = ({isOpen, onClick}: ChatbotButtonProps) => {
 				aria-controls={isOpen ? "chatbot-dialog" : undefined}
 			>
 				{/* Animated shine effect like header */}
-				<div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 rounded-full"></div>
+				<div className="absolute inset-0 bg-gradient-to-r from-transparent via-background/20 to-transparent transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 rounded-full"></div>
 
 				{/* Glass morphism overlay */}
-				<div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-full"></div>
+				<div className="absolute inset-0 bg-gradient-to-br from-background/20 to-transparent rounded-full"></div>
 
 				{/* Icon Container */}
 				<div className="relative z-10 flex items-center justify-center">
@@ -81,7 +81,7 @@ const ChatbotButton = ({isOpen, onClick}: ChatbotButtonProps) => {
 							{/* Enhanced Sparkle Animation */}
 							<Sparkles
 								className={cn(
-									"absolute h-3 w-3 sm:h-4 sm:w-4 text-white/80 transition-all duration-500",
+									"absolute h-3 w-3 sm:h-4 sm:w-4 text-primary-foreground/80 transition-all duration-500",
 									"animate-pulse opacity-0 group-hover:opacity-100",
 									"-top-1 -right-1 group-hover:scale-110"
 								)}

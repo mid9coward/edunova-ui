@@ -287,10 +287,10 @@ const LessonCommentDrawer = ({
 		>
 			<DrawerContent className="h-full !w-full sm:!w-[600px] md:!w-[700px] lg:!w-[800px] !max-w-[800px]">
 				<div className="w-full h-full">
-					<DrawerHeader className="border-b border-gray-200 pb-3 sm:pb-4 px-4 sm:px-6">
+					<DrawerHeader className="border-b border-border pb-3 sm:pb-4 px-4 sm:px-6">
 						<div className="flex items-center justify-between gap-2">
 							<div className="flex-1 min-w-0">
-								<DrawerTitle className="text-base sm:text-lg font-semibold text-gray-900 truncate">
+								<DrawerTitle className="text-base sm:text-lg font-semibold text-foreground truncate">
 									{isLoading ? (
 										<div className="flex items-center gap-2">
 											<Loader2 className="h-3.5 w-3.5 sm:h-4 sm:w-4 animate-spin" />
@@ -300,7 +300,7 @@ const LessonCommentDrawer = ({
 										`${totalComments} comments`
 									)}
 								</DrawerTitle>
-								<DrawerDescription className="text-xs sm:text-sm text-gray-500 mt-0.5 sm:mt-1 hidden sm:block">
+								<DrawerDescription className="text-xs sm:text-sm text-muted-foreground mt-0.5 sm:mt-1 hidden sm:block">
 									If you see spam comments, please report them to admin
 								</DrawerDescription>
 							</div>
@@ -358,7 +358,7 @@ const LessonCommentDrawer = ({
 							{/* Infinite scroll loading indicator */}
 							{isFetchingNextPage && (
 								<div className="flex justify-center py-3 sm:py-4">
-									<div className="flex items-center gap-1.5 sm:gap-2 text-gray-500">
+									<div className="flex items-center gap-1.5 sm:gap-2 text-muted-foreground">
 										<Loader2 className="h-3.5 w-3.5 sm:h-4 sm:w-4 animate-spin" />
 										<span className="text-xs sm:text-sm">Loading more...</span>
 									</div>
@@ -368,7 +368,7 @@ const LessonCommentDrawer = ({
 							{/* No more comments indicator */}
 							{!hasNextPage && comments.length > 0 && (
 								<div className="flex justify-center py-3 sm:py-4">
-									<span className="text-xs sm:text-sm text-gray-400">
+									<span className="text-xs sm:text-sm text-muted-foreground">
 										All comments loaded
 									</span>
 								</div>

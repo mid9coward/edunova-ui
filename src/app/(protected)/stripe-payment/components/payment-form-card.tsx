@@ -19,7 +19,7 @@ export function PaymentFormCard({
 		<Card className="gap-0">
 			<CardHeader className="px-4 sm:px-6 sm:gap-0">
 				<CardTitle className="flex items-center space-x-1.5 sm:space-x-2 text-base sm:text-lg">
-					<CreditCard className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500" />
+					<CreditCard className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
 					<span>Complete Your Payment</span>
 				</CardTitle>
 			</CardHeader>
@@ -27,10 +27,10 @@ export function PaymentFormCard({
 				<form onSubmit={onSubmit} className="space-y-4 sm:space-y-6">
 					{/* Payment Element */}
 					<div className="space-y-1.5 sm:space-y-2">
-						<label className="text-xs sm:text-sm font-medium text-gray-700">
+						<label className="text-xs sm:text-sm font-medium text-foreground/90">
 							Payment Information
 						</label>
-						<div className="border border-gray-200 rounded-lg p-3 sm:p-4 bg-white">
+						<div className="border border-border rounded-lg p-3 sm:p-4 bg-card">
 							<PaymentElement
 								options={{
 									layout: "tabs",
@@ -49,10 +49,10 @@ export function PaymentFormCard({
 
 					{/* Billing Address */}
 					<div className="space-y-1.5 sm:space-y-2">
-						<label className="text-xs sm:text-sm font-medium text-gray-700">
+						<label className="text-xs sm:text-sm font-medium text-foreground/90">
 							Billing Address
 						</label>
-						<div className="border border-gray-200 rounded-lg p-3 sm:p-4 bg-white">
+						<div className="border border-border rounded-lg p-3 sm:p-4 bg-card">
 							<AddressElement
 								options={{
 									mode: "billing",
@@ -66,8 +66,8 @@ export function PaymentFormCard({
 					</div>
 
 					{/* Security Info */}
-					<div className="flex items-center space-x-1.5 sm:space-x-2 text-xs sm:text-sm text-gray-600 bg-blue-50 p-2.5 sm:p-3 rounded-lg">
-						<Shield className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-500 flex-shrink-0" />
+					<div className="flex items-center space-x-1.5 sm:space-x-2 text-xs sm:text-sm text-muted-foreground bg-primary/10 p-2.5 sm:p-3 rounded-lg">
+						<Shield className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary flex-shrink-0" />
 						<span>Your payment information is secure and encrypted</span>
 					</div>
 
@@ -94,7 +94,7 @@ export function PaymentFormCard({
 				</form>
 
 				{/* Terms */}
-				<div className="text-[10px] sm:text-xs text-gray-500 text-center space-y-0.5 sm:space-y-1">
+				<div className="text-[10px] sm:text-xs text-muted-foreground text-center space-y-0.5 sm:space-y-1">
 					<p>
 						By completing your payment, you agree to our Terms of Service and
 						Privacy Policy

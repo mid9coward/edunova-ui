@@ -80,8 +80,8 @@ const ResetPasswordForm = ({
 			>
 				<div className="space-y-2 text-center">
 					<div className="flex justify-center">
-						<div className="rounded-full bg-blue-100 p-3">
-							<KeyRound className="h-6 w-6 text-blue-600" />
+						<div className="rounded-full bg-primary/15 p-3">
+							<KeyRound className="h-6 w-6 text-primary" />
 						</div>
 					</div>
 					<p className="text-sm text-muted-foreground">
@@ -151,3 +151,4 @@ const ResetPasswordForm = ({
 };
 
 export default ResetPasswordForm;
+

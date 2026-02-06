@@ -107,7 +107,7 @@ const HeadingButton = () => {
 			<DropdownMenuTrigger asChild>
 				<button
 					type="button"
-					className="h-7 min-w-9 shrink-0 flex items-center justify-center rounded-sm hover:bg-neutral-200/80 px-2 overflow-hidden text-sm"
+					className="h-7 min-w-9 shrink-0 flex items-center justify-center rounded-sm hover:bg-muted px-2 overflow-hidden text-sm"
 				>
 					<CurrentIcon className="size-4" />
 				</button>
@@ -119,8 +119,8 @@ const HeadingButton = () => {
 						type="button"
 						onClick={onClick}
 						className={cn(
-							"flex items-center gap-x-2 px-2 py-1 w-full hover:bg-neutral-200/80",
-							isActive() && "bg-neutral-200/80"
+							"flex items-center gap-x-2 px-2 py-1 w-full hover:bg-muted",
+							isActive() && "bg-muted"
 						)}
 					>
 						<Icon className="size-4" />
@@ -155,7 +155,7 @@ const ListButton = () => {
 			<DropdownMenuTrigger asChild>
 				<button
 					type="button"
-					className="h-7 min-w-9 shrink-0 flex items-center justify-center rounded-sm hover:bg-neutral-200/80 px-2 overflow-hidden text-sm"
+					className="h-7 min-w-9 shrink-0 flex items-center justify-center rounded-sm hover:bg-muted px-2 overflow-hidden text-sm"
 				>
 					<ListIcon className="size-4" />
 				</button>
@@ -167,8 +167,8 @@ const ListButton = () => {
 						type="button"
 						onClick={onClick}
 						className={cn(
-							"flex items-center gap-x-2 px-2 py-1 w-full hover:bg-neutral-200/80",
-							isActive() && "bg-neutral-200/80"
+							"flex items-center gap-x-2 px-2 py-1 w-full hover:bg-muted",
+							isActive() && "bg-muted"
 						)}
 					>
 						<Icon className="size-4" />
@@ -211,7 +211,7 @@ const AlignButton = () => {
 			<DropdownMenuTrigger asChild>
 				<button
 					type="button"
-					className="h-7 min-w-9 shrink-0 flex items-center justify-center rounded-sm hover:bg-neutral-200/80 px-2 overflow-hidden text-sm"
+					className="h-7 min-w-9 shrink-0 flex items-center justify-center rounded-sm hover:bg-muted px-2 overflow-hidden text-sm"
 				>
 					<AlignLeftIcon className={"size-4"} />
 				</button>
@@ -225,8 +225,8 @@ const AlignButton = () => {
 							editor?.chain().focus().setTextAlign(value).run();
 						}}
 						className={cn(
-							"flex items-center gap-x-2 px-2 py-1 w-full hover:bg-neutral-200/80",
-							editor?.isActive("textAlign", {value}) && "bg-neutral-200/80"
+							"flex items-center gap-x-2 px-2 py-1 w-full hover:bg-muted",
+							editor?.isActive("textAlign", {value}) && "bg-muted"
 						)}
 					>
 						<Icon className="size-4" />
@@ -277,7 +277,7 @@ const ImageButton = () => {
 				<DropdownMenuTrigger asChild>
 					<button
 						type="button"
-						className="h-7 min-w-9 shrink-0 flex items-center justify-center rounded-sm hover:bg-neutral-200/80 px-2 overflow-hidden text-sm"
+						className="h-7 min-w-9 shrink-0 flex items-center justify-center rounded-sm hover:bg-muted px-2 overflow-hidden text-sm"
 					>
 						<ImageIcon className={"size-4"} />
 					</button>
@@ -331,7 +331,7 @@ const LinkButton = () => {
 			<DropdownMenuTrigger asChild>
 				<button
 					type="button"
-					className="h-7 min-w-9 shrink-0 flex items-center justify-center rounded-sm hover:bg-neutral-200/80 px-2 overflow-hidden text-sm"
+					className="h-7 min-w-9 shrink-0 flex items-center justify-center rounded-sm hover:bg-muted px-2 overflow-hidden text-sm"
 				>
 					<Link2Icon className={"size-4"} />
 				</button>
@@ -366,7 +366,7 @@ const HighlightColorButton = () => {
 			<DropdownMenuTrigger asChild>
 				<button
 					type="button"
-					className="h-7 min-w-9 shrink-0 flex items-center justify-center rounded-sm hover:bg-neutral-200/80 px-2 overflow-hidden text-sm"
+					className="h-7 min-w-9 shrink-0 flex items-center justify-center rounded-sm hover:bg-muted px-2 overflow-hidden text-sm"
 				>
 					<HighlighterIcon className={"size-4"} />
 				</button>
@@ -403,53 +403,18 @@ const TextColorButton = () => {
 		editor?.chain().focus().setColor(newColor).run();
 	};
 
-	// Common colors for quick selection
-	const commonColors = [
-		"#f8f8f2",
-		"#bd93f9",
-		"#ff79c6",
-		"#8be9fd",
-		"#50fa7b",
-		"#ffb86c",
-		"#ff5555",
-		"#ffffff",
-		"#000000",
-		"#ffff00",
-		"#ff00ff",
-		"#00ffff",
-		"#808080",
-		"#800000",
-		"#008000",
-		"#000080",
-	];
-
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
 				<button
 					type="button"
-					className="h-7 min-w-9 shrink-0 flex items-center justify-center rounded-sm hover:bg-neutral-200/80 px-2 overflow-hidden text-sm"
+					className="h-7 min-w-9 shrink-0 flex items-center justify-center rounded-sm hover:bg-muted px-2 overflow-hidden text-sm"
 				>
 					<BaselineIcon className="size-4" style={{color}} />
 				</button>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent className="p-3 w-64">
 				<div className="space-y-3">
-					{/* Quick color selection */}
-					<div className="grid grid-cols-6 gap-1">
-						{commonColors.map((commonColor) => (
-							<button
-								key={commonColor}
-								type="button"
-								className={`w-6 h-6 rounded border-2 hover:scale-110 transition-transform ${
-									color === commonColor ? "border-gray-400" : "border-gray-200"
-								}`}
-								style={{backgroundColor: commonColor}}
-								onClick={() => onChange(commonColor)}
-							/>
-						))}
-					</div>
-
 					{/* Custom color picker */}
 					<HexColorPicker color={color} onChange={onChange} />
 					<div className="flex items-center gap-2">
@@ -486,8 +451,8 @@ const ToolbarButton: FC<ToolbarButtonProps> = ({
 			type="button"
 			onClick={onClick}
 			className={cn(
-				"text-sm h-7 min-w-7 flex items-center justify-center rounded-sm hover:bg-neutral-200/80",
-				isActive && "bg-neutral-200/80"
+				"text-sm h-7 min-w-7 flex items-center justify-center rounded-sm hover:bg-muted",
+				isActive && "bg-muted"
 			)}
 		>
 			<Icon className="size-4" />
@@ -562,15 +527,15 @@ const Toolbar = ({}) => {
 				<ToolbarButton key={item.label} {...item} />
 			))}
 
-			<Separator orientation="vertical" className="h-6 bg-neutral-300" />
+			<Separator orientation="vertical" className="h-6 bg-border" />
 			<HeadingButton />
-			<Separator orientation="vertical" className="h-6 bg-neutral-300" />
+			<Separator orientation="vertical" className="h-6 bg-border" />
 			{section[1].map((item) => (
 				<ToolbarButton key={item.label} {...item} />
 			))}
 			<TextColorButton />
 			<HighlightColorButton />
-			<Separator orientation="vertical" className="h-6 bg-neutral-300" />
+			<Separator orientation="vertical" className="h-6 bg-border" />
 			<LinkButton />
 			<ImageButton />
 			<AlignButton />

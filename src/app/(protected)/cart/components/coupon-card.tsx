@@ -54,15 +54,15 @@ const CouponCard = ({
 
 	return (
 		<>
-			<div className="relative overflow-hidden border border-gray-200 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow duration-200">
+			<div className="relative overflow-hidden border border-border rounded-lg bg-card shadow-sm hover:shadow-md transition-shadow duration-200">
 				{/* Hot Badge */}
 				<div className="absolute top-0 left-0">
-					<div className="bg-gradient-to-r from-blue-600 via-blue-700 to-purple-600 text-white px-2 sm:px-3 py-0.5 sm:py-1 rounded-br-lg relative overflow-hidden">
+					<div className="bg-gradient-to-r from-primary via-secondary to-accent text-primary-foreground px-2 sm:px-3 py-0.5 sm:py-1 rounded-br-lg relative overflow-hidden">
 						{/* Animated background pattern like header */}
 						<div className="absolute inset-0 opacity-20">
-							<div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 animate-pulse"></div>
+							<div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary-foreground/10 to-transparent transform -skew-x-12 animate-pulse"></div>
 						</div>
-						<div className="absolute inset-0 bg-black/10"></div>
+						<div className="absolute inset-0 bg-foreground/10"></div>
 						<div className="relative z-10">
 							<div className="text-[10px] sm:text-xs font-bold">
 								HOT DISCOUNT
@@ -80,10 +80,10 @@ const CouponCard = ({
 				<div className="pt-10 sm:pt-12 px-3 sm:px-4 pb-2.5 sm:pb-3">
 					{/* Coupon Code */}
 					<div className="mb-1.5 sm:mb-2">
-						<h3 className="font-bold text-sm sm:text-base text-gray-900 mb-0.5 truncate">
+						<h3 className="font-bold text-sm sm:text-base text-foreground mb-0.5 truncate">
 							{coupon.code}
 						</h3>
-						<p className="text-xs sm:text-sm text-gray-600 line-clamp-2">
+						<p className="text-xs sm:text-sm text-muted-foreground line-clamp-2">
 							{coupon.title}{" "}
 						</p>
 					</div>
@@ -91,7 +91,7 @@ const CouponCard = ({
 					{/* Bottom Section */}
 					<div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-0">
 						{/* Expiry Date */}
-						<div className="flex items-center text-xs sm:text-sm text-gray-500">
+						<div className="flex items-center text-xs sm:text-sm text-muted-foreground">
 							<Clock className="w-3 h-3 sm:w-4 sm:h-4 mr-1 flex-shrink-0" />
 							<span className="truncate">Expires: {expiryDate}</span>
 						</div>
@@ -100,7 +100,7 @@ const CouponCard = ({
 						<div className="flex items-center space-x-1.5 sm:space-x-2 w-full sm:w-auto">
 							<button
 								onClick={() => setShowConditions(true)}
-								className="text-xs sm:text-sm text-blue-600 hover:text-blue-700 font-medium underline whitespace-nowrap"
+								className="text-xs sm:text-sm text-primary hover:text-primary/80 font-medium underline whitespace-nowrap"
 							>
 								Conditions
 							</button>
@@ -109,7 +109,7 @@ const CouponCard = ({
 								<Button
 									variant="outline"
 									onClick={onRemoveDiscount}
-									className="text-red-600 border-red-200 hover:bg-red-50 h-8 sm:h-9 text-xs sm:text-sm flex-1 sm:flex-none"
+									className="text-destructive border-destructive/30 hover:bg-destructive/10 h-8 sm:h-9 text-xs sm:text-sm flex-1 sm:flex-none"
 									size="sm"
 								>
 									Remove
@@ -118,11 +118,11 @@ const CouponCard = ({
 								<Button
 									onClick={() => onApplyDiscount(coupon.code)}
 									disabled={isApplyingDiscount || !isApplicable}
-									className="bg-gradient-to-r from-blue-600 via-blue-700 to-purple-600 hover:from-blue-700 hover:via-blue-800 hover:to-purple-700 text-white disabled:bg-gray-400 shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group h-8 sm:h-9 text-xs sm:text-sm flex-1 sm:flex-none"
+									className="bg-gradient-to-r from-primary via-secondary to-accent hover:from-primary/90 hover:via-secondary/90 hover:to-accent/90 text-primary-foreground disabled:bg-muted disabled:text-muted-foreground shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group h-8 sm:h-9 text-xs sm:text-sm flex-1 sm:flex-none"
 									size="sm"
 								>
 									{/* Animated shine effect like header */}
-									<div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+									<div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary-foreground/15 to-transparent transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
 									<span className="relative z-10">
 										{isApplyingDiscount ? (
 											<div className="flex items-center justify-center gap-0.5 sm:gap-1">

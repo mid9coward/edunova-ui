@@ -138,7 +138,7 @@ const CourseOverview = ({
 										key={index}
 										className="flex items-center space-x-2 sm:space-x-3 text-xs sm:text-sm text-muted-foreground"
 									>
-										<CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 text-green-500 flex-shrink-0" />
+										<CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 text-primary flex-shrink-0" />
 										<span>{feature}</span>
 									</div>
 								))}
@@ -190,7 +190,7 @@ const CourseOverview = ({
 									key={index}
 									className="flex items-start space-x-2 sm:space-x-3 p-3 sm:p-4 bg-background/60 rounded-lg"
 								>
-									<CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 text-green-500 flex-shrink-0 mt-0.5" />
+									<CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 text-primary flex-shrink-0 mt-0.5" />
 									<span className="text-xs sm:text-sm text-foreground">
 										{objective}
 									</span>
@@ -276,7 +276,7 @@ const CourseOverview = ({
 										<span className="flex-1">{item.question}</span>
 									</h4>
 									<p className="text-xs sm:text-sm text-muted-foreground ml-6">
-										<span className="text-green-500 font-semibold mr-2">
+										<span className="text-primary font-semibold mr-2">
 											A:
 										</span>
 										{item.answer}

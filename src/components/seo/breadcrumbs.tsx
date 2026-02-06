@@ -42,14 +42,14 @@ export function Breadcrumbs({items, className = ""}: BreadcrumbsProps) {
 						<li key={item.href} className="flex items-center">
 							{index > 0 && (
 								<ChevronRight
-									className="h-4 w-4 text-gray-400 mx-2"
+									className="h-4 w-4 text-muted-foreground mx-2"
 									aria-hidden="true"
 								/>
 							)}
 
 							{item.current ? (
 								<span
-									className="text-sm font-medium text-gray-900 dark:text-gray-100"
+									className="text-sm font-medium text-foreground"
 									aria-current="page"
 								>
 									{index === 0 && <Home className="h-4 w-4 mr-1 inline" />}
@@ -58,7 +58,7 @@ export function Breadcrumbs({items, className = ""}: BreadcrumbsProps) {
 							) : (
 								<Link
 									href={item.href}
-									className="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+									className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
 								>
 									{index === 0 && <Home className="h-4 w-4 mr-1 inline" />}
 									{item.name}
@@ -144,3 +144,4 @@ export const BREADCRUMB_CONFIGS = {
 		...(itemName ? [{name: itemName, href: "#", current: true}] : []),
 	],
 };
+

@@ -145,17 +145,17 @@ const WriteReviewDialog = ({
 	const getStarColor = (starValue: number) => {
 		switch (starValue) {
 			case 1:
-				return "bg-red-100 border-red-200";
+				return "bg-destructive/10 border-destructive/30";
 			case 2:
-				return "bg-orange-100 border-orange-200";
+				return "bg-secondary/20 border-secondary/40";
 			case 3:
-				return "bg-yellow-100 border-yellow-200";
+				return "bg-muted border-border";
 			case 4:
-				return "bg-green-100 border-green-200";
+				return "bg-accent/20 border-accent/40";
 			case 5:
-				return "bg-blue-100 border-blue-200";
+				return "bg-primary/15 border-primary/40";
 			default:
-				return "bg-gray-100 border-gray-200";
+				return "bg-muted border-border";
 		}
 	};
 
@@ -198,7 +198,7 @@ const WriteReviewDialog = ({
 										className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full border flex items-center justify-center transition-all duration-200 ease-in-out ${
 											starValue === (hoverStar || star)
 												? getStarColor(starValue)
-												: "bg-gray-50 border-gray-200 hover:bg-gray-100 hover:border-gray-300"
+												: "bg-muted/50 border-border hover:bg-muted hover:border-primary/30"
 										}`}
 									>
 										<span className="text-xl sm:text-2xl">
@@ -208,8 +208,8 @@ const WriteReviewDialog = ({
 									<span
 										className={`text-[10px] sm:text-xs font-medium whitespace-nowrap ${
 											starValue === (hoverStar || star)
-												? "text-gray-700"
-												: "text-gray-500"
+												? "text-foreground/80"
+												: "text-muted-foreground"
 										}`}
 									>
 										{getStarText(starValue)}
@@ -232,7 +232,7 @@ const WriteReviewDialog = ({
 							className="min-h-[100px] sm:min-h-[120px] resize-none text-sm"
 							maxLength={1000}
 						/>
-						<div className="flex justify-between text-[10px] sm:text-xs text-gray-500">
+						<div className="flex justify-between text-[10px] sm:text-xs text-muted-foreground">
 							<span className="hidden sm:inline">
 								Share your honest experience to help others
 							</span>

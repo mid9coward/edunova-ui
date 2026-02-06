@@ -34,7 +34,7 @@ export function OrderSummaryCard({
 				{/* Order Details */}
 				<div className="space-y-2 sm:space-y-3">
 					<div className="flex justify-between items-center">
-						<span className="text-xs sm:text-sm text-gray-600">
+						<span className="text-xs sm:text-sm text-muted-foreground">
 							Order Code:
 						</span>
 						<span className="font-medium text-xs sm:text-sm truncate ml-2">
@@ -64,7 +64,7 @@ export function OrderSummaryCard({
 						<span>{formatPrice(subTotal)}</span>
 					</div>
 					{!!totalDiscount && totalDiscount > 0 && (
-						<div className="flex justify-between text-green-600 text-sm sm:text-base">
+						<div className="flex justify-between text-primary text-sm sm:text-base">
 							<span>Discount:</span>
 							<span>-{formatPrice(totalDiscount)}</span>
 						</div>
@@ -78,3 +78,4 @@ export function OrderSummaryCard({
 		</Card>
 	);
 }
+

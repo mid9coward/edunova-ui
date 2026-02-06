@@ -83,7 +83,7 @@ const BlogsContent = () => {
 					{/* End of Results Message */}
 					{pagination && !pagination.hasNextPage && allBlogs.length > 0 && (
 						<div className="text-center py-6 sm:py-8">
-							<p className="text-gray-500 text-xs sm:text-sm">
+							<p className="text-muted-foreground text-xs sm:text-sm">
 								You&apos;ve reached the end of all articles
 							</p>
 						</div>
@@ -91,11 +91,11 @@ const BlogsContent = () => {
 				</>
 			) : (
 				<div className="text-center py-12 sm:py-16 md:py-20 px-4">
-					<BookOpen className="mx-auto h-10 w-10 sm:h-12 sm:w-12 text-gray-400 mb-3 sm:mb-4" />
-					<h3 className="text-base sm:text-lg font-medium text-gray-900 mb-1.5 sm:mb-2">
+					<BookOpen className="mx-auto h-10 w-10 sm:h-12 sm:w-12 text-muted-foreground mb-3 sm:mb-4" />
+					<h3 className="text-base sm:text-lg font-medium text-foreground mb-1.5 sm:mb-2">
 						No articles found
 					</h3>
-					<p className="text-sm sm:text-base text-gray-600">
+					<p className="text-sm sm:text-base text-muted-foreground">
 						Check back later for new articles and insights.
 					</p>
 				</div>
@@ -105,3 +105,4 @@ const BlogsContent = () => {
 };
 
 export default BlogsContent;
+

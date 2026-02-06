@@ -197,7 +197,7 @@ const BlogsActionDialog = ({
 							<div className="space-y-6">
 								{/* Basic Information Section */}
 								<div className="space-y-4">
-									<h3 className="text-lg font-semibold text-gray-900 border-b pb-2">
+									<h3 className="text-lg font-semibold text-foreground border-b pb-2">
 										Basic Information
 									</h3>
 
@@ -208,7 +208,7 @@ const BlogsActionDialog = ({
 											render={({field}) => (
 												<FormItem>
 													<FormLabel>
-														Title <span className="text-red-500">*</span>
+														Title <span className="text-destructive">*</span>
 													</FormLabel>
 													<FormControl>
 														<Input {...field} placeholder="Blog title" />
@@ -224,7 +224,7 @@ const BlogsActionDialog = ({
 											render={({field}) => (
 												<FormItem>
 													<FormLabel>
-														Slug <span className="text-red-500">*</span>
+														Slug <span className="text-destructive">*</span>
 													</FormLabel>
 													<FormControl>
 														<Input
@@ -247,7 +247,7 @@ const BlogsActionDialog = ({
 											render={({field}) => (
 												<FormItem>
 													<FormLabel>
-														Status <span className="text-red-500">*</span>
+														Status <span className="text-destructive">*</span>
 													</FormLabel>
 													<Select
 														value={field.value}
@@ -279,7 +279,7 @@ const BlogsActionDialog = ({
 											render={({field}) => (
 												<FormItem>
 													<FormLabel>
-														Category <span className="text-red-500">*</span>
+														Category <span className="text-destructive">*</span>
 													</FormLabel>
 													<Select
 														value={field.value}
@@ -330,7 +330,7 @@ const BlogsActionDialog = ({
 													{statusValue === BlogStatus.PUBLISHED
 														? "Published Date"
 														: "Scheduled Publish Date"}{" "}
-													<span className="text-red-500">*</span>
+													<span className="text-destructive">*</span>
 												</FormLabel>
 												<Popover modal={true}>
 													<PopoverTrigger asChild>
@@ -400,7 +400,7 @@ const BlogsActionDialog = ({
 										render={({field}) => (
 											<FormItem>
 												<FormLabel>
-													Excerpt <span className="text-red-500">*</span>
+													Excerpt <span className="text-destructive">*</span>
 												</FormLabel>
 												<FormControl>
 													<Textarea
@@ -446,7 +446,7 @@ const BlogsActionDialog = ({
 										render={({field}) => (
 											<FormItem>
 												<FormLabel>
-													Content <span className="text-red-500">*</span>
+													Content <span className="text-destructive">*</span>
 												</FormLabel>
 												<FormControl>
 													<div className="border rounded-md overflow-hidden">
@@ -501,3 +501,4 @@ const BlogsActionDialog = ({
 };
 
 export default BlogsActionDialog;
+

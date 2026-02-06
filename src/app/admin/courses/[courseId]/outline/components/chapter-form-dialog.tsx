@@ -202,7 +202,7 @@ const ChapterFormDialog = ({
 								render={({field}) => (
 									<FormItem>
 										<FormLabel>
-											Title <span className="text-red-500">*</span>
+											Title <span className="text-destructive">*</span>
 										</FormLabel>
 										<FormControl>
 											<Input
@@ -242,7 +242,7 @@ const ChapterFormDialog = ({
 									<FormItem className="flex items-center justify-between rounded-lg border p-4">
 										<div className="space-y-0.5">
 											<FormLabel className="text-base">Published</FormLabel>
-											<div className="text-sm text-gray-600">
+											<div className="text-sm text-muted-foreground">
 												Make this chapter visible to students
 											</div>
 										</div>
@@ -285,3 +285,4 @@ const ChapterFormDialog = ({
 };
 
 export default ChapterFormDialog;
+

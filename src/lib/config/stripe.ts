@@ -5,10 +5,10 @@ export const stripeConfig = {
 	appearance: {
 		theme: "stripe" as const,
 		variables: {
-			colorPrimary: "#bd93f9",
-			colorBackground: "#282a36",
-			colorText: "#f8f8f2",
-			colorDanger: "#ff5555",
+			colorPrimary: "hsl(var(--primary))",
+			colorBackground: "hsl(var(--background))",
+			colorText: "hsl(var(--foreground))",
+			colorDanger: "hsl(var(--destructive))",
 			fontFamily: '"Inter", system-ui, sans-serif',
 			spacingUnit: "4px",
 			borderRadius: "8px",
@@ -24,3 +24,4 @@ export const stripeConfig = {
 		base: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:4000",
 	},
 } as const;
+

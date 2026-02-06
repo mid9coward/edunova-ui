@@ -111,9 +111,9 @@ const DashboardStats = () => {
 						<p
 							className={`text-xs ${
 								stat.changeType === "positive"
-									? "text-green-600"
+									? "text-primary"
 									: stat.changeType === "negative"
-									? "text-red-600"
+									? "text-destructive"
 									: "text-muted-foreground"
 							}`}
 						>
@@ -127,3 +127,4 @@ const DashboardStats = () => {
 };
 
 export default DashboardStats;
+

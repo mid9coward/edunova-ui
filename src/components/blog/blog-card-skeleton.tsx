@@ -2,7 +2,7 @@ import {Skeleton} from "@/components/ui/skeleton";
 
 export function BlogCardSkeleton() {
 	return (
-		<article className="group overflow-hidden border border-gray-200 bg-white rounded-xl">
+		<article className="group overflow-hidden border border-border bg-card rounded-xl">
 			{/* Thumbnail Skeleton */}
 			<div className="relative aspect-[16/10] overflow-hidden">
 				<Skeleton className="w-full h-full" />
@@ -57,3 +57,4 @@ export function BlogCardSkeleton() {
 		</article>
 	);
 }
+

@@ -177,7 +177,7 @@ const SortableChapter = ({
 										<div className="flex items-center gap-1">
 											<div
 												className={`w-2 h-2 rounded-full ${
-													chapter.isPublished ? "bg-green-500" : "bg-yellow-500"
+													chapter.isPublished ? "bg-primary/100" : "bg-accent"
 												}`}
 											/>
 											<span className="text-muted-foreground">
@@ -320,3 +320,4 @@ const SortableChapter = ({
 };
 
 export default SortableChapter;
+

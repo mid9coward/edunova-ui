@@ -49,7 +49,7 @@ function CTASection() {
           {/* Support Message */}
           <div className="mt-12 rounded-xl border bg-card p-6 shadow-lg">
             <div className="mb-3 flex items-center justify-center gap-2 text-lg font-semibold">
-              <Heart className="h-5 w-5 fill-red-500 text-red-500" />
+              <Heart className="h-5 w-5 fill-red-500 text-destructive" />
               Hỗ trợ dự án
             </div>
             <p className="text-sm text-muted-foreground">
@@ -94,3 +94,4 @@ function CTASection() {
 }
 
 export default CTASection;
+

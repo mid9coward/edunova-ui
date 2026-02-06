@@ -50,16 +50,16 @@ const CourseListItem = ({course}: CourseListItemProps) => {
 
 					<div className="absolute top-1.5 sm:top-2 right-1.5 sm:right-2 hidden sm:block">
 						{course?.isFree ? (
-							<Badge className="bg-green-600 text-white border-green-700 backdrop-blur-sm text-[10px] sm:text-xs font-bold px-1.5 sm:px-2.5 py-0.5 sm:py-1 border transition-all duration-200 hover:scale-105 hover:bg-green-700">
+							<Badge className="bg-primary text-primary-foreground border-primary/70 backdrop-blur-sm text-[10px] sm:text-xs font-bold px-1.5 sm:px-2.5 py-0.5 sm:py-1 border transition-all duration-200 hover:scale-105 hover:bg-primary/90">
 								FREE
 							</Badge>
 						) : (
 							<div className="flex flex-col items-end space-y-1">
 								{course.oldPrice > 0 && course.oldPrice > course.price && (
-									<div className="relative bg-gradient-to-r from-red-500 via-red-600 to-orange-500 text-white px-2 sm:px-3 py-1 sm:py-1.5 font-bold text-[10px] sm:text-xs flex items-center gap-1 sm:gap-1.5 hover:from-red-600 hover:via-red-700 hover:to-orange-600 hover:scale-110 transition-all duration-300 cursor-default shadow-lg hover:shadow-xl rounded-full">
+									<div className="relative bg-gradient-to-r from-destructive via-destructive to-secondary text-destructive-foreground px-2 sm:px-3 py-1 sm:py-1.5 font-bold text-[10px] sm:text-xs flex items-center gap-1 sm:gap-1.5 hover:from-destructive/90 hover:via-destructive/90 hover:to-secondary/90 hover:scale-110 transition-all duration-300 cursor-default shadow-lg hover:shadow-xl rounded-full">
 										{/* Glow effect */}
-										<div className="absolute inset-0 bg-gradient-to-r from-red-400 via-red-500 to-orange-400 rounded-full blur-sm -z-10"></div>
-										<span className="text-yellow-200 text-xs sm:text-sm">
+										<div className="absolute inset-0 bg-gradient-to-r from-destructive/70 via-destructive/80 to-secondary/70 rounded-full blur-sm -z-10"></div>
+										<span className="text-primary-foreground text-xs sm:text-sm">
 											🔥
 										</span>
 										{Math.round(
@@ -98,7 +98,7 @@ const CourseListItem = ({course}: CourseListItemProps) => {
 								</Badge>
 								{/* Free Badge - Mobile only */}
 								{course?.isFree && (
-									<Badge className="sm:hidden bg-green-600 text-white text-[10px] font-bold px-1.5 py-0.5">
+									<Badge className="sm:hidden bg-primary text-primary-foreground text-[10px] font-bold px-1.5 py-0.5">
 										FREE
 									</Badge>
 								)}
@@ -107,7 +107,7 @@ const CourseListItem = ({course}: CourseListItemProps) => {
 							{!course?.isFree &&
 								course.oldPrice > 0 &&
 								course.oldPrice > course.price && (
-									<div className="sm:hidden bg-gradient-to-r from-red-500 to-orange-500 text-white px-1.5 py-0.5 font-bold text-[10px] rounded-full flex-shrink-0">
+									<div className="sm:hidden bg-gradient-to-r from-destructive to-secondary text-destructive-foreground px-1.5 py-0.5 font-bold text-[10px] rounded-full flex-shrink-0">
 										{Math.round(
 											((course.oldPrice - course.price) / course.oldPrice) * 100
 										)}
@@ -151,7 +151,7 @@ const CourseListItem = ({course}: CourseListItemProps) => {
 							</div>
 							{/* Rating - Mobile only */}
 							<div className="flex items-center space-x-0.5 sm:hidden">
-								<Star className="h-3 w-3 text-yellow-400 fill-current" />
+								<Star className="h-3 w-3 text-primary fill-current" />
 								<span className="font-medium text-foreground">
 									{formatRating(course.averageRating || 0)}
 								</span>
@@ -169,8 +169,8 @@ const CourseListItem = ({course}: CourseListItemProps) => {
 										key={i}
 										className={`h-3 w-3 sm:h-4 sm:w-4 ${
 											i < Math.floor(course.averageRating || 0)
-												? "text-yellow-400 fill-current"
-												: "text-gray-300"
+												? "text-primary fill-current"
+												: "text-muted"
 										}`}
 									/>
 								))}
@@ -189,7 +189,7 @@ const CourseListItem = ({course}: CourseListItemProps) => {
 							<div className="text-right">
 								{course?.isFree ? (
 									<span
-										className="text-base sm:text-xl font-bold text-green-600"
+										className="text-base sm:text-xl font-bold text-primary"
 										itemProp="price"
 										content="0"
 										aria-label="Free course"

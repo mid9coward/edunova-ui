@@ -39,14 +39,14 @@ const ReplyEditor = ({
 				<Avatar className={avatarClasses}>
 					<AvatarImage src="" />
 					<AvatarFallback
-						className={`bg-gray-300 text-gray-600 ${avatarTextSize}`}
+						className={`bg-muted text-muted-foreground ${avatarTextSize}`}
 					>
 						{currentUser?.username?.charAt(0) || "U"}
 					</AvatarFallback>
 				</Avatar>
 
-				<div className="flex-1 rounded-lg overflow-hidden bg-white border border-gray-200">
-					<div className="bg-gray-50">
+				<div className="flex-1 rounded-lg overflow-hidden bg-card border border-border">
+					<div className="bg-muted/40">
 						<Toolbar />
 					</div>
 
@@ -61,7 +61,7 @@ const ReplyEditor = ({
 							variant="outline"
 							size="sm"
 							onClick={onCancel}
-							className="text-gray-600 border-gray-300 hover:bg-gray-100 h-8 sm:h-9 text-xs sm:text-sm"
+							className="text-muted-foreground border-border hover:bg-muted h-8 sm:h-9 text-xs sm:text-sm"
 						>
 							CANCEL
 						</Button>
@@ -69,7 +69,7 @@ const ReplyEditor = ({
 							onClick={onSubmit}
 							disabled={!hasContent || isPending}
 							size="sm"
-							className="bg-blue-600 hover:bg-blue-700 text-white h-8 sm:h-9 text-xs sm:text-sm"
+							className="bg-primary hover:bg-primary/90 text-primary-foreground h-8 sm:h-9 text-xs sm:text-sm"
 						>
 							{isPending ? (
 								<>

@@ -34,8 +34,8 @@ const CartItemComponent = ({item}: CartItemProps) => {
 							sizes="(max-width: 640px) 64px, 96px"
 						/>
 					) : (
-						<div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-							<span className="text-white text-[10px] sm:text-xs font-medium">
+						<div className="w-full h-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+							<span className="text-primary-foreground text-[10px] sm:text-xs font-medium">
 								Course
 							</span>
 						</div>
@@ -53,10 +53,10 @@ const CartItemComponent = ({item}: CartItemProps) => {
 						{/* Show old price if available and greater than current price */}
 						{item.oldPrice && item.oldPrice > item.price && (
 							<div className="flex items-center gap-1.5 sm:gap-2">
-								<span className="text-xs sm:text-sm text-gray-500 line-through">
+								<span className="text-xs sm:text-sm text-muted-foreground line-through">
 									{formatPrice(item.oldPrice)}
 								</span>
-								<span className="text-[10px] sm:text-xs bg-red-600 text-white px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full font-medium shadow-sm">
+								<span className="text-[10px] sm:text-xs bg-destructive text-primary-foreground px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full font-medium shadow-sm">
 									{Math.round(
 										((item.oldPrice - item.price) / item.oldPrice) * 100
 									)}
@@ -78,7 +78,7 @@ const CartItemComponent = ({item}: CartItemProps) => {
 					size="sm"
 					onClick={handleRemove}
 					disabled={removeFromCart.isPending}
-					className="text-red-600 hover:text-red-700 hover:bg-red-50 p-1.5 sm:p-2 h-auto"
+					className="text-destructive hover:text-destructive hover:bg-destructive/10 p-1.5 sm:p-2 h-auto"
 				>
 					{removeFromCart.isPending ? (
 						<Loader2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 animate-spin" />

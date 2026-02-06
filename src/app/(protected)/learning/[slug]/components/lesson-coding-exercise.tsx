@@ -21,7 +21,7 @@ import type {
 const MonacoEditor = dynamic(() => import("@monaco-editor/react"), {
 	ssr: false,
 	loading: () => (
-		<div className="h-[420px] rounded-md border border-gray-200 bg-gray-50 animate-pulse" />
+		<div className="h-[420px] rounded-md border border-border bg-muted/40 animate-pulse" />
 	),
 });
 
@@ -285,7 +285,7 @@ const LessonCodingExercise = ({lesson}: LessonCodingExerciseProps) => {
 	const StatementPanel = (
 		<div className="space-y-4">
 			<div className="flex flex-wrap items-center gap-2">
-				<h1 className="text-xl sm:text-2xl font-bold text-gray-900">
+				<h1 className="text-xl sm:text-2xl font-bold text-foreground">
 					{exercise?.title || lesson.title}
 				</h1>
 				{language && (
@@ -300,13 +300,13 @@ const LessonCodingExercise = ({lesson}: LessonCodingExerciseProps) => {
 				)}
 			</div>
 
-			<Card className="border border-gray-200">
+			<Card className="border border-border">
 				<CardHeader className="pb-2">
 					<CardTitle className="text-base">Problem</CardTitle>
 				</CardHeader>
 				<CardContent>
 					<div
-						className="prose prose-sm sm:prose max-w-none text-gray-800"
+						className="prose prose-sm sm:prose max-w-none text-foreground"
 					>
 						{isLikelyHtml(normalizedProblemStatement) ? (
 							<div
@@ -324,32 +324,32 @@ const LessonCodingExercise = ({lesson}: LessonCodingExerciseProps) => {
 			</Card>
 
 			{visibleExamples.length > 0 && (
-				<Card className="border border-gray-200">
+				<Card className="border border-border">
 					<CardHeader className="pb-2">
 						<CardTitle className="text-base">Examples</CardTitle>
 					</CardHeader>
 					<CardContent className="space-y-3">
 						{visibleExamples.map((tc, index) => (
 							<div key={(tc as { _id?: string })._id || index}>
-								<div className="text-sm font-semibold text-gray-900 mb-1">
+								<div className="text-sm font-semibold text-foreground mb-1">
 									Example {index + 1}
 								</div>
 								<div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-									<div className="rounded-md border bg-gray-50 p-3">
-										<div className="text-xs font-semibold text-gray-600 mb-1">
+									<div className="rounded-md border bg-muted/40 p-3">
+										<div className="text-xs font-semibold text-muted-foreground mb-1">
 											Input
 										</div>
-										<pre className="text-xs whitespace-pre-wrap break-words text-gray-800">
+										<pre className="text-xs whitespace-pre-wrap break-words text-foreground">
 											{normalizeEscapedNewlines(
 												(tc as { input?: string }).input ?? ""
 											)}
 										</pre>
 									</div>
-									<div className="rounded-md border bg-gray-50 p-3">
-										<div className="text-xs font-semibold text-gray-600 mb-1">
+									<div className="rounded-md border bg-muted/40 p-3">
+										<div className="text-xs font-semibold text-muted-foreground mb-1">
 											Expected Output
 										</div>
-										<pre className="text-xs whitespace-pre-wrap break-words text-gray-800">
+										<pre className="text-xs whitespace-pre-wrap break-words text-foreground">
 											{normalizeEscapedNewlines(
 												(tc as { expectedOutput?: string }).expectedOutput ?? ""
 											)}
@@ -362,11 +362,11 @@ const LessonCodingExercise = ({lesson}: LessonCodingExerciseProps) => {
 				</Card>
 			)}
 
-			<Card className="border border-gray-200">
+			<Card className="border border-border">
 				<CardHeader className="pb-2">
 					<CardTitle className="text-base">Constraints</CardTitle>
 				</CardHeader>
-				<CardContent className="text-sm text-gray-700">
+				<CardContent className="text-sm text-muted-foreground">
 					<div className="flex flex-wrap gap-2">
 						<Badge variant="outline">
 							Time limit: {exercise?.constraints?.timeLimit ?? 2}s
@@ -432,12 +432,12 @@ const LessonCodingExercise = ({lesson}: LessonCodingExerciseProps) => {
 				Shortcuts: Ctrl+Enter submit, Ctrl+Shift+Enter run, Ctrl+/ toggle comment
 			</div>
 
-			<Card className="border border-gray-200">
+			<Card className="border border-border">
 				<CardHeader className="pb-2">
 					<CardTitle className="text-base">Code</CardTitle>
 				</CardHeader>
 				<CardContent>
-					<div className="rounded-md overflow-hidden border border-gray-200">
+					<div className="rounded-md overflow-hidden border border-border">
 						<MonacoEditor
 							height="420px"
 							language={editorLanguage}
@@ -465,7 +465,7 @@ const LessonCodingExercise = ({lesson}: LessonCodingExerciseProps) => {
 					</div>
 
 					<div className="mt-3">
-						<div className="text-xs font-semibold text-gray-600 mb-1">
+						<div className="text-xs font-semibold text-muted-foreground mb-1">
 							Custom Input (optional)
 						</div>
 						<Textarea
@@ -484,7 +484,7 @@ const LessonCodingExercise = ({lesson}: LessonCodingExerciseProps) => {
 
 	const ResultPanel = (
 		<div className="space-y-4">
-			<Card className="border border-gray-200">
+			<Card className="border border-border">
 				<CardHeader className="pb-2">
 					<CardTitle className="text-base">Result</CardTitle>
 				</CardHeader>
@@ -507,47 +507,47 @@ const LessonCodingExercise = ({lesson}: LessonCodingExerciseProps) => {
 							</div>
 
 							{submitSummary.compileError && (
-								<div className="rounded-md border border-red-200 bg-red-50 p-3">
-									<div className="text-sm font-semibold text-red-800 mb-1">
+								<div className="rounded-md border border-destructive/30 bg-destructive/10 p-3">
+									<div className="text-sm font-semibold text-destructive mb-1">
 										Compile Error
 									</div>
-									<pre className="text-xs whitespace-pre-wrap break-words text-red-900">
+									<pre className="text-xs whitespace-pre-wrap break-words text-destructive">
 										{submitSummary.compileError}
 									</pre>
 								</div>
 							)}
 
 							{submitSummary.failedTest && (
-								<div className="rounded-md border border-amber-200 bg-amber-50 p-3">
-									<div className="text-sm font-semibold text-amber-900 mb-2">
+								<div className="rounded-md border border-secondary/40 bg-secondary/20 p-3">
+									<div className="text-sm font-semibold text-secondary-foreground mb-2">
 										Failed Test #{submitSummary.failedTest.index + 1}
 									</div>
 									<div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-										<div className="rounded-md border bg-white p-2">
-											<div className="text-xs font-semibold text-gray-600 mb-1">
+										<div className="rounded-md border bg-card p-2">
+											<div className="text-xs font-semibold text-muted-foreground mb-1">
 												Input
 											</div>
-											<pre className="text-xs whitespace-pre-wrap break-words text-gray-800">
+											<pre className="text-xs whitespace-pre-wrap break-words text-foreground">
 												{normalizeEscapedNewlines(
 													submitSummary.failedTest.input
 												)}
 											</pre>
 										</div>
-										<div className="rounded-md border bg-white p-2">
-											<div className="text-xs font-semibold text-gray-600 mb-1">
+										<div className="rounded-md border bg-card p-2">
+											<div className="text-xs font-semibold text-muted-foreground mb-1">
 												Expected
 											</div>
-											<pre className="text-xs whitespace-pre-wrap break-words text-gray-800">
+											<pre className="text-xs whitespace-pre-wrap break-words text-foreground">
 												{normalizeEscapedNewlines(
 													submitSummary.failedTest.expected
 												)}
 											</pre>
 										</div>
-										<div className="rounded-md border bg-white p-2">
-											<div className="text-xs font-semibold text-gray-600 mb-1">
+										<div className="rounded-md border bg-card p-2">
+											<div className="text-xs font-semibold text-muted-foreground mb-1">
 												Actual
 											</div>
-											<pre className="text-xs whitespace-pre-wrap break-words text-gray-800">
+											<pre className="text-xs whitespace-pre-wrap break-words text-foreground">
 												{normalizeEscapedNewlines(
 													submitSummary.failedTest.actual
 												)}
@@ -641,3 +641,4 @@ const LessonCodingExercise = ({lesson}: LessonCodingExerciseProps) => {
 };
 
 export default LessonCodingExercise;
+

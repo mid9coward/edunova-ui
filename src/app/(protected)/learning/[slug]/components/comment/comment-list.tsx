@@ -52,7 +52,7 @@ const CommentList = ({
 	// Error State
 	if (error) {
 		return (
-			<div className="text-center text-red-500 py-8 sm:py-12 px-4">
+			<div className="text-center text-destructive py-8 sm:py-12 px-4">
 				<MessageCircle className="h-10 w-10 sm:h-12 sm:w-12 mx-auto mb-3 sm:mb-4 opacity-50" />
 				<p className="text-xs sm:text-sm">Failed to load comments</p>
 				<Button
@@ -70,7 +70,7 @@ const CommentList = ({
 	// Loading State
 	if (isLoading) {
 		return (
-			<div className="text-center text-gray-500 py-8 sm:py-12 px-4">
+			<div className="text-center text-muted-foreground py-8 sm:py-12 px-4">
 				<Loader2 className="h-10 w-10 sm:h-12 sm:w-12 mx-auto mb-3 sm:mb-4 animate-spin opacity-50" />
 				<p className="text-xs sm:text-sm">Loading comments...</p>
 			</div>
@@ -80,7 +80,7 @@ const CommentList = ({
 	// Empty State
 	if (comments.length === 0) {
 		return (
-			<div className="text-center text-gray-500 py-8 sm:py-12 px-4">
+			<div className="text-center text-muted-foreground py-8 sm:py-12 px-4">
 				<MessageCircle className="h-10 w-10 sm:h-12 sm:w-12 mx-auto mb-3 sm:mb-4 opacity-50" />
 				<p className="text-xs sm:text-sm">No comments yet</p>
 				<p className="text-[10px] sm:text-xs mt-1">Be the first to comment!</p>

@@ -358,7 +358,7 @@ const CourseOutlinePage = () => {
 				<div className="flex items-center justify-between">
 					<div>
 						<h1 className="text-3xl font-bold">Course Outline</h1>
-						<p className="text-gray-600 mt-1">
+						<p className="text-muted-foreground mt-1">
 							Organize your course content with chapters and lessons
 						</p>
 					</div>
@@ -388,13 +388,13 @@ const CourseOutlinePage = () => {
 						// Empty state
 						<Card>
 							<CardContent className="p-12 text-center">
-								<div className="text-gray-400 mb-4">
+								<div className="text-muted-foreground mb-4">
 									<MdDescription className="h-12 w-12 mx-auto" />
 								</div>
-								<h3 className="text-lg font-semibold text-gray-600 mb-2">
+								<h3 className="text-lg font-semibold text-muted-foreground mb-2">
 									No chapters yet
 								</h3>
-								<p className="text-gray-500 mb-6">
+								<p className="text-muted-foreground mb-6">
 									Get started by creating your first chapter
 								</p>
 								<Button onClick={handleAddChapter}>
@@ -436,9 +436,9 @@ const CourseOutlinePage = () => {
 							{/* Drag Overlay */}
 							<DragOverlay>
 								{activeId ? (
-									<div className="bg-white rounded-lg shadow-lg border border-blue-500 p-4">
+									<div className="bg-card rounded-lg shadow-lg border border-primary/40 p-4">
 										<div className="flex items-center gap-2">
-											<MdDragIndicator className="h-5 w-5 text-blue-500" />
+											<MdDragIndicator className="h-5 w-5 text-primary" />
 											<span className="font-medium">
 												{chaptersToRender.find((c) => c._id === activeId)
 													?.title || "Item"}
@@ -473,3 +473,4 @@ const CourseOutlinePage = () => {
 };
 
 export default CourseOutlinePage;
+

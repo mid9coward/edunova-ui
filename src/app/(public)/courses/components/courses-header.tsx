@@ -39,7 +39,7 @@ const CoursesHeader = () => {
 					{/* Main heading */}
 					<h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 sm:mb-6 leading-tight">
 						Discover Amazing
-						<span className="block bg-gradient-to-r from-foreground via-primary to-secondary bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(248,248,242,0.35)]">
+						<span className="block bg-gradient-to-r from-foreground via-primary to-secondary bg-clip-text text-transparent drop-shadow-md">
 							Courses
 						</span>
 					</h1>

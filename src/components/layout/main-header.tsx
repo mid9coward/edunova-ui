@@ -11,21 +11,21 @@ import {NotificationBar} from "../header/notification-bar";
 const MobileMenu = dynamic(() => import("../header/mobile-menu"), {
 	ssr: false,
 	loading: () => (
-		<div className="lg:hidden h-10 w-10 p-0 animate-pulse bg-gray-200 rounded" />
+		<div className="lg:hidden h-10 w-10 p-0 animate-pulse bg-muted rounded" />
 	),
 });
 
 const SearchDialog = dynamic(() => import("../header/search-dialog"), {
 	ssr: false,
 	loading: () => (
-		<div className="h-8 w-8 sm:h-10 sm:w-10 animate-pulse bg-gray-200 rounded-full" />
+		<div className="h-8 w-8 sm:h-10 sm:w-10 animate-pulse bg-muted rounded-full" />
 	),
 });
 
 const CartTooltip = dynamic(() => import("../header/cart-tooltip"), {
 	ssr: false,
 	loading: () => (
-		<div className="h-8 w-8 sm:h-10 sm:w-10 animate-pulse bg-gray-200 rounded-full" />
+		<div className="h-8 w-8 sm:h-10 sm:w-10 animate-pulse bg-muted rounded-full" />
 	),
 });
 
@@ -33,8 +33,8 @@ const AuthSection = dynamic(() => import("../header/auth-section"), {
 	ssr: false,
 	loading: () => (
 		<div className="flex items-center gap-1 sm:gap-2">
-			<div className="h-8 sm:h-10 w-16 sm:w-20 animate-pulse bg-gray-200 rounded-xl" />
-			<div className="h-8 sm:h-10 w-20 sm:w-28 animate-pulse bg-gray-200 rounded-xl" />
+			<div className="h-8 sm:h-10 w-16 sm:w-20 animate-pulse bg-muted rounded-xl" />
+			<div className="h-8 sm:h-10 w-20 sm:w-28 animate-pulse bg-muted rounded-xl" />
 		</div>
 	),
 });
@@ -43,12 +43,12 @@ function MainHeader() {
 	return (
 		<header className="sticky top-0 z-50 w-full">
 			{/* Enhanced background with gradient and glass effect */}
-			<div className="absolute inset-0 bg-gradient-to-br from-white via-blue-50/30 to-purple-50/20 backdrop-blur-xl"></div>
-			<div className="absolute inset-0 bg-white/90 backdrop-blur-xl"></div>
-			<div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/5 to-purple-500/5"></div>
+			<div className="absolute inset-0 bg-gradient-to-br from-background via-card to-secondary/15 backdrop-blur-xl"></div>
+			<div className="absolute inset-0 bg-background/90 backdrop-blur-xl"></div>
+			<div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-secondary/5"></div>
 
 			{/* Subtle border with gradient */}
-			<div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
+			<div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
 
 			{/* Content container */}
 			<div className="relative z-10">

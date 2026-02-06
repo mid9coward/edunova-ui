@@ -41,15 +41,15 @@ const ProfileStatsCards = ({
 
 				// Define colors for each card based on the image
 				const iconColors = [
-					"bg-red-500", // Các khóa học của bạn - red
-					"bg-orange-500", // Đang học - orange
-					"bg-green-500", // Đã hoàn thành - red
+					"bg-primary", // Các khóa học của bạn
+					"bg-secondary", // Đang học
+					"bg-accent", // Đã hoàn thành
 				];
 
 				return (
 					<Card
 						key={index}
-						className="border border-gray-200 dark:border-gray-700"
+						className="border border-border"
 					>
 						<CardContent className="p-4 sm:p-5 md:p-6">
 							<div className="text-center space-y-2 sm:space-y-3 md:space-y-4">
@@ -57,16 +57,16 @@ const ProfileStatsCards = ({
 								<div
 									className={`w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 ${iconColors[index]} rounded-full flex items-center justify-center mx-auto`}
 								>
-									<Icon className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-white" />
+									<Icon className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-primary-foreground" />
 								</div>
 
 								{/* Value */}
-								<div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
+								<div className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
 									{stat.value}
 								</div>
 
 								{/* Title */}
-								<div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+								<div className="text-xs sm:text-sm text-muted-foreground">
 									{stat.title}
 								</div>
 							</div>

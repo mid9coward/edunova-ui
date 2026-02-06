@@ -114,24 +114,24 @@ const CommentItem = ({
 						alt={comment.user?.username || "User"}
 					/>
 					<AvatarFallback
-						className={`bg-blue-500 text-white ${avatarTextSize}`}
+						className={`bg-primary text-primary-foreground ${avatarTextSize}`}
 					>
 						{comment.user?.username?.charAt(0) || "U"}
 					</AvatarFallback>
 				</Avatar>
 				<div className="flex-1 min-w-0">
 					<div className="flex items-center space-x-1.5 sm:space-x-2">
-						<span className="font-medium text-blue-600 text-xs sm:text-sm truncate">
+						<span className="font-medium text-primary text-xs sm:text-sm truncate">
 							{comment.user?.username || "Unknown User"}
 						</span>
-						<span className="text-gray-500 text-[10px] sm:text-xs whitespace-nowrap">
+						<span className="text-muted-foreground text-[10px] sm:text-xs whitespace-nowrap">
 							{new Date(comment.createdAt).toLocaleDateString()}
 						</span>
 					</div>
 					{isEditing ? (
 						<div className="mt-1">
-							<div className="rounded-lg overflow-hidden bg-white border border-gray-200">
-								<div className="bg-gray-50">
+							<div className="rounded-lg overflow-hidden bg-card border border-border">
+								<div className="bg-muted/40">
 									<Toolbar />
 								</div>
 								<Editor
@@ -145,7 +145,7 @@ const CommentItem = ({
 										size="sm"
 										onClick={handleEditCancel}
 										disabled={isUpdating}
-										className="text-gray-600 border-gray-300 hover:bg-gray-100 h-8 sm:h-9 text-xs sm:text-sm"
+										className="text-muted-foreground border-border hover:bg-muted h-8 sm:h-9 text-xs sm:text-sm"
 									>
 										Cancel
 									</Button>
@@ -153,7 +153,7 @@ const CommentItem = ({
 										onClick={handleEditSave}
 										disabled={isUpdating}
 										size="sm"
-										className="bg-blue-600 hover:bg-blue-700 text-white h-8 sm:h-9 text-xs sm:text-sm"
+										className="bg-primary hover:bg-primary/90 text-primary-foreground h-8 sm:h-9 text-xs sm:text-sm"
 									>
 										{isUpdating ? (
 											<>
@@ -170,7 +170,7 @@ const CommentItem = ({
 						</div>
 					) : (
 						<div
-							className="text-gray-900 text-xs sm:text-sm mt-1 leading-relaxed break-words"
+							className="text-foreground text-xs sm:text-sm mt-1 leading-relaxed break-words"
 							dangerouslySetInnerHTML={{__html: comment.content}}
 						/>
 					)}
@@ -209,7 +209,7 @@ const CommentItem = ({
 									}
 								}}
 								disabled={loadingReplies}
-								className="h-auto p-0 text-xs sm:text-sm text-gray-600 cursor-pointer hover:text-blue-600 font-medium underline-offset-4 hover:underline"
+								className="h-auto p-0 text-xs sm:text-sm text-muted-foreground cursor-pointer hover:text-primary font-medium underline-offset-4 hover:underline"
 							>
 								{loadingReplies ? (
 									<>
@@ -230,7 +230,7 @@ const CommentItem = ({
 						<div className="mt-2 sm:mt-3 space-y-3 sm:space-y-4 relative ml-3 sm:ml-4">
 							{/* Vertical line from parent avatar center to last child avatar center */}
 							<div
-								className="absolute -left-[32px] sm:-left-[40px] top-[-4rem] w-[1px] bg-gray-200"
+								className="absolute -left-[32px] sm:-left-[40px] top-[-4rem] w-[1px] bg-border"
 								style={{
 									height: `${4 + (comment.replies.length - 1) * 5.5 + 3.2}rem`,
 								}}
@@ -242,7 +242,7 @@ const CommentItem = ({
 										variant="link"
 										size="sm"
 										onClick={onToggleReplies}
-										className="h-auto p-0 text-xs sm:text-sm text-gray-600 cursor-pointer hover:text-blue-600 font-medium underline-offset-4 hover:underline"
+										className="h-auto p-0 text-xs sm:text-sm text-muted-foreground cursor-pointer hover:text-primary font-medium underline-offset-4 hover:underline"
 									>
 										Hide {comment.replyCount}{" "}
 										{comment.replyCount === 1 ? "reply" : "replies"}
@@ -253,7 +253,7 @@ const CommentItem = ({
 								{comment.replies.map((reply: IComment) => (
 									<div key={reply._id} className="relative">
 										{/* Curved connecting line from vertical line to each immediate child */}
-										<div className="absolute -left-12 sm:-left-16 top-2 w-12 sm:w-16 h-4 border-l border-b border-gray-200 border-t-0 border-r-0 rounded-bl-2xl"></div>
+										<div className="absolute -left-12 sm:-left-16 top-2 w-12 sm:w-16 h-4 border-l border-b border-border border-t-0 border-r-0 rounded-bl-2xl"></div>
 
 										<CommentItem
 											comment={reply}

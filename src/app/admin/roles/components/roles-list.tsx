@@ -34,11 +34,11 @@ const roleIcons = {
 
 // Role color mapping - aligned with actual system roles
 const roleColors = {
-  admin: "bg-red-100 text-red-800 border-red-200",
-  "Super Admin": "bg-purple-100 text-purple-800 border-purple-200",
-  super_admin: "bg-purple-100 text-purple-800 border-purple-200", // fallback for underscore version
-  student: "bg-green-100 text-green-800 border-green-200",
-  guest: "bg-gray-100 text-gray-800 border-gray-200",
+  admin: "bg-destructive/10 text-destructive border-destructive/30",
+  "Super Admin": "bg-secondary/20 text-secondary-foreground border-secondary/40",
+  super_admin: "bg-secondary/20 text-secondary-foreground border-secondary/40", // fallback for underscore version
+  student: "bg-primary/10 text-primary border-primary/30",
+  guest: "bg-muted text-muted-foreground border-border",
 } as const;
 
 // Helper function to get role icon with fallback logic
@@ -60,7 +60,7 @@ function getRoleColor(roleName: string) {
   }
 
   // Default fallback
-  return "bg-gray-100 text-gray-800 border-gray-200";
+  return "bg-muted text-muted-foreground border-border";
 }
 
 interface RolesListProps {

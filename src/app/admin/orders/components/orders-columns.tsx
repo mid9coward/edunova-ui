@@ -160,7 +160,7 @@ export const columns: ColumnDef<IOrder>[] = [
 		cell: ({row}) => {
 			const amount = row.original.totalAmount;
 			return (
-				<span className="font-semibold text-green-600">
+				<span className="font-semibold text-primary">
 					{formatPrice(amount)}
 				</span>
 			);
@@ -209,3 +209,4 @@ export const columns: ColumnDef<IOrder>[] = [
 		enableHiding: false,
 	},
 ];
+

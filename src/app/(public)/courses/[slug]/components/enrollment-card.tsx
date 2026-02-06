@@ -160,9 +160,9 @@ const EnrollmentCard = ({course, lastLessonId}: EnrollmentCardProps) => {
 	];
 
 	return (
-		<div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+		<div className="bg-card rounded-xl shadow-lg border border-border overflow-hidden">
 			{/* Video Preview */}
-			<div className="relative aspect-video bg-gray-900 group cursor-pointer">
+			<div className="relative aspect-video bg-muted group cursor-pointer">
 				<Image
 					src={course.image || DEFAULT_THUMBNAIL}
 					alt={course.title}
@@ -175,28 +175,28 @@ const EnrollmentCard = ({course, lastLessonId}: EnrollmentCardProps) => {
 			<div className="p-4 sm:p-6">
 				<div className="mb-4 sm:mb-6">
 					{course.isFree ? (
-						<div className="text-2xl sm:text-3xl font-bold text-green-600">
+						<div className="text-2xl sm:text-3xl font-bold text-primary">
 							Free
 						</div>
 					) : (
 						<div className="space-y-2">
 							<div className="flex flex-wrap items-center gap-2 sm:gap-3">
-								<span className="text-xl sm:text-2xl font-bold text-gray-900">
+								<span className="text-xl sm:text-2xl font-bold text-foreground">
 									{formatPrice(course.price)}
 								</span>
 								{course.oldPrice && (
 									<>
-										<span className="text-lg sm:text-xl text-gray-500 line-through">
+										<span className="text-lg sm:text-xl text-muted-foreground line-through">
 											{formatPrice(course.oldPrice)}
 										</span>
-										<Badge className="bg-red-600 text-white hover:bg-red-700 text-xs sm:text-sm font-bold px-2 py-1 shadow-sm">
+										<Badge className="bg-destructive text-destructive-foreground hover:bg-destructive/90 text-xs sm:text-sm font-bold px-2 py-1 shadow-sm">
 											{discountPercentage}% OFF
 										</Badge>
 									</>
 								)}
 							</div>
 							{daysRemaining > 0 && (
-								<div className="flex items-center gap-1 text-red-600">
+								<div className="flex items-center gap-1 text-destructive">
 									<Clock className="h-3 w-3 sm:h-4 sm:w-4" />
 									<span className="text-xs sm:text-sm font-medium">
 										{daysRemaining} {daysRemaining === 1 ? "day" : "days"} left
@@ -214,7 +214,7 @@ const EnrollmentCard = ({course, lastLessonId}: EnrollmentCardProps) => {
 						// User is already enrolled - show continue learning button
 						<Button
 							size="lg"
-							className="w-full bg-green-600 hover:bg-green-700 h-12 text-sm sm:text-base"
+							className="w-full bg-primary hover:bg-primary/90 h-12 text-sm sm:text-base"
 							onClick={handleContinueLearning}
 						>
 							<PlayCircle className="h-4 w-4 mr-2" />
@@ -224,7 +224,7 @@ const EnrollmentCard = ({course, lastLessonId}: EnrollmentCardProps) => {
 						// Course is free and user is not enrolled - show enroll button
 						<Button
 							size="lg"
-							className="w-full bg-green-600 hover:bg-green-700 h-12 text-sm sm:text-base"
+							className="w-full bg-primary hover:bg-primary/90 h-12 text-sm sm:text-base"
 							onClick={handleEnrollNow}
 							disabled={enrollFreeMutation.isPending}
 						>
@@ -236,7 +236,7 @@ const EnrollmentCard = ({course, lastLessonId}: EnrollmentCardProps) => {
 						<>
 							<Button
 								size="lg"
-								className="w-full bg-purple-600 hover:bg-purple-700 h-12 text-sm sm:text-base"
+								className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground h-12 text-sm sm:text-base"
 								onClick={handleAddToCart}
 								disabled={addToCartMutation.isPending}
 							>
@@ -263,7 +263,7 @@ const EnrollmentCard = ({course, lastLessonId}: EnrollmentCardProps) => {
 						size="sm"
 						onClick={() => setIsWishlisted(!isWishlisted)}
 						className={`flex flex-col sm:flex-row items-center justify-center h-auto py-2 text-xs sm:text-sm ${
-							isWishlisted ? "text-red-600" : "text-gray-600"
+							isWishlisted ? "text-destructive" : "text-muted-foreground"
 						}`}
 					>
 						<Heart
@@ -279,7 +279,7 @@ const EnrollmentCard = ({course, lastLessonId}: EnrollmentCardProps) => {
 					<Button
 						variant="ghost"
 						size="sm"
-						className="flex flex-col sm:flex-row items-center justify-center h-auto py-2 text-xs sm:text-sm text-gray-600"
+						className="flex flex-col sm:flex-row items-center justify-center h-auto py-2 text-xs sm:text-sm text-muted-foreground"
 					>
 						<Share2 className="h-3 w-3 sm:h-4 sm:w-4 sm:mr-1" />
 						<span className="hidden sm:inline">Share</span>
@@ -288,7 +288,7 @@ const EnrollmentCard = ({course, lastLessonId}: EnrollmentCardProps) => {
 					<Button
 						variant="ghost"
 						size="sm"
-						className="flex flex-col sm:flex-row items-center justify-center h-auto py-2 text-xs sm:text-sm text-gray-600"
+						className="flex flex-col sm:flex-row items-center justify-center h-auto py-2 text-xs sm:text-sm text-muted-foreground"
 					>
 						<Gift className="h-3 w-3 sm:h-4 sm:w-4 sm:mr-1" />
 						<span className="hidden sm:inline">Gift</span>
@@ -298,8 +298,8 @@ const EnrollmentCard = ({course, lastLessonId}: EnrollmentCardProps) => {
 
 				{/* Money-back Guarantee */}
 				{!course.isFree && (
-					<div className="text-center mb-4 sm:mb-6 p-2.5 sm:p-3 bg-green-50 border border-green-200 rounded-lg">
-						<p className="text-xs sm:text-sm text-green-800 font-medium">
+					<div className="text-center mb-4 sm:mb-6 p-2.5 sm:p-3 bg-primary/10 border border-primary/30 rounded-lg">
+						<p className="text-xs sm:text-sm text-primary font-medium">
 							30-Day Money-Back Guarantee
 						</p>
 					</div>
@@ -307,7 +307,7 @@ const EnrollmentCard = ({course, lastLessonId}: EnrollmentCardProps) => {
 
 				{/* Course Includes */}
 				<div>
-					<h4 className="font-medium text-sm sm:text-base text-gray-900 mb-2 sm:mb-3">
+					<h4 className="font-medium text-sm sm:text-base text-foreground mb-2 sm:mb-3">
 						This course includes:
 					</h4>
 					<div className="space-y-1.5 sm:space-y-2">
@@ -331,8 +331,8 @@ const EnrollmentCard = ({course, lastLessonId}: EnrollmentCardProps) => {
 									key={index}
 									className="flex items-center space-x-2 text-xs sm:text-sm"
 								>
-									<IconComponent className="h-3 w-3 sm:h-4 sm:w-4 text-gray-500 flex-shrink-0" />
-									<span className="text-gray-700">{feature}</span>
+									<IconComponent className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground flex-shrink-0" />
+									<span className="text-foreground/90">{feature}</span>
 								</div>
 							);
 						})}

@@ -36,19 +36,19 @@ const CouponConditionsDialog = ({
 
 				<div className="space-y-3 sm:space-y-4">
 					<div>
-						<div className="text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
+						<div className="text-xs sm:text-sm font-medium text-foreground mb-1.5 sm:mb-2">
 							Expiry date:
 						</div>
-						<div className="text-xs sm:text-sm text-gray-600">{expiryDate}</div>
+						<div className="text-xs sm:text-sm text-muted-foreground">{expiryDate}</div>
 					</div>
 
 					<div>
-						<div className="text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">
+						<div className="text-xs sm:text-sm font-medium text-foreground mb-1.5 sm:mb-2">
 							Conditions
 						</div>
-						<div className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-gray-600">
+						<div className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-muted-foreground">
 							<div className="flex items-start space-x-2">
-								<span className="w-1 h-1 bg-gray-400 rounded-full mt-1.5 sm:mt-2 flex-shrink-0"></span>
+								<span className="w-1 h-1 bg-muted-foreground rounded-full mt-1.5 sm:mt-2 flex-shrink-0"></span>
 								<span>
 									Get instant discount of{" "}
 									{coupon.discountType === "percent"
@@ -59,7 +59,7 @@ const CouponConditionsDialog = ({
 							</div>
 
 							<div className="flex items-start space-x-2">
-								<span className="w-1 h-1 bg-gray-400 rounded-full mt-1.5 sm:mt-2 flex-shrink-0"></span>
+								<span className="w-1 h-1 bg-muted-foreground rounded-full mt-1.5 sm:mt-2 flex-shrink-0"></span>
 								<span>
 									{coupon.courseIds && coupon.courseIds.length > 0
 										? `Applies to specified course${
@@ -71,7 +71,7 @@ const CouponConditionsDialog = ({
 
 							{coupon.minPurchaseAmount > 0 && (
 								<div className="flex items-start space-x-2">
-									<span className="w-1 h-1 bg-gray-400 rounded-full mt-1.5 sm:mt-2 flex-shrink-0"></span>
+									<span className="w-1 h-1 bg-muted-foreground rounded-full mt-1.5 sm:mt-2 flex-shrink-0"></span>
 									<span>
 										Minimum order: {formatPrice(coupon.minPurchaseAmount)}
 									</span>
@@ -79,8 +79,8 @@ const CouponConditionsDialog = ({
 							)}
 
 							{coupon.courseIds && coupon.courseIds.length > 0 && (
-								<div className="mt-2 sm:mt-3 p-2.5 sm:p-3 bg-blue-50 rounded-lg border border-blue-200">
-									<div className="text-xs sm:text-sm font-medium text-blue-800 mb-1.5 sm:mb-2">
+								<div className="mt-2 sm:mt-3 p-2.5 sm:p-3 bg-primary/10 rounded-lg border border-primary/30">
+									<div className="text-xs sm:text-sm font-medium text-primary mb-1.5 sm:mb-2">
 										Applicable courses:
 									</div>
 									<div className="space-y-0.5 sm:space-y-1">
@@ -93,14 +93,14 @@ const CouponConditionsDialog = ({
 												) => (
 													<div
 														key={course._id || index}
-														className="text-xs sm:text-sm text-blue-700 line-clamp-1"
+														className="text-xs sm:text-sm text-primary line-clamp-1"
 													>
 														• {course.title || `Course ${index + 1}`}
 													</div>
 												)
 											)}
 										{coupon.courseIds.length > 3 && (
-											<div className="text-xs sm:text-sm text-blue-600 font-medium">
+											<div className="text-xs sm:text-sm text-primary/80 font-medium">
 												+{coupon.courseIds.length - 3} more courses
 											</div>
 										)}

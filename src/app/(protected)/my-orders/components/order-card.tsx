@@ -36,23 +36,23 @@ import {useState} from "react";
 const STATUS_CONFIG = {
 	pending: {
 		label: "Pending payment",
-		color: "bg-amber-50 text-amber-700 border border-amber-200",
-		bgColor: "bg-amber-50",
-		textColor: "text-amber-700",
+		color: "bg-secondary/20 text-secondary-foreground border border-secondary/30",
+		bgColor: "bg-secondary/20",
+		textColor: "text-secondary-foreground",
 		icon: Clock,
 	},
 	completed: {
 		label: "Completed",
-		color: "bg-emerald-50 text-emerald-700 border border-emerald-200",
-		bgColor: "bg-emerald-50",
-		textColor: "text-emerald-700",
+		color: "bg-primary/10 text-primary border border-primary/30",
+		bgColor: "bg-primary/10",
+		textColor: "text-primary",
 		icon: Package,
 	},
 	cancelled: {
 		label: "Cancelled",
-		color: "bg-red-50 text-red-700 border border-red-200",
-		bgColor: "bg-red-50",
-		textColor: "text-red-700",
+		color: "bg-destructive/10 text-destructive border border-destructive/30",
+		bgColor: "bg-destructive/10",
+		textColor: "text-destructive",
 		icon: X,
 	},
 } as const;
@@ -99,9 +99,9 @@ const OrderCard = ({
 	};
 
 	return (
-		<Card className="overflow-hidden border-0 shadow-md sm:shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-gray-50/50">
+		<Card className="overflow-hidden border-0 shadow-md sm:shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-card to-muted/30">
 			{/* Order Header */}
-			<CardHeader className="bg-gradient-to-r from-gray-50 to-white border-b border-gray-100/50 p-3 sm:p-6">
+			<CardHeader className="bg-gradient-to-r from-muted/40 to-card border-b border-border/60 p-3 sm:p-6">
 				<div className="flex flex-col sm:flex-row items-start justify-between gap-3 sm:gap-0">
 					<div className="flex items-start gap-2 sm:gap-3 flex-1 min-w-0">
 						<div
@@ -112,10 +112,10 @@ const OrderCard = ({
 							/>
 						</div>
 						<div className="min-w-0 flex-1">
-							<h3 className="text-base sm:text-lg font-bold text-gray-900 mb-1 truncate">
+							<h3 className="text-base sm:text-lg font-bold text-foreground mb-1 truncate">
 								#{order.code}
 							</h3>
-							<div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 text-xs sm:text-sm text-gray-600">
+							<div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
 								<div className="flex items-center gap-1.5 sm:gap-2">
 									<Calendar className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
 									<span className="truncate">
@@ -148,9 +148,9 @@ const OrderCard = ({
 					{order?.items.map((item) => (
 						<div
 							key={item._id}
-							className="flex items-start gap-2 sm:gap-3 p-2 sm:p-3 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+							className="flex items-start gap-2 sm:gap-3 p-2 sm:p-3 bg-card border border-border rounded-lg shadow-sm hover:shadow-md transition-shadow"
 						>
-							<div className="relative w-12 h-12 sm:w-16 sm:h-16 rounded-lg overflow-hidden bg-gray-200 shadow-sm flex-shrink-0">
+							<div className="relative w-12 h-12 sm:w-16 sm:h-16 rounded-lg overflow-hidden bg-muted shadow-sm flex-shrink-0">
 								<Image
 									src={item.thumbnail || DEFAULT_THUMBNAIL}
 									alt={item.title}
@@ -159,7 +159,7 @@ const OrderCard = ({
 								/>
 							</div>
 							<div className="flex-1 min-w-0">
-								<h4 className="font-semibold text-gray-900 text-xs sm:text-sm md:text-base mb-1 sm:mb-2 line-clamp-2">
+								<h4 className="font-semibold text-foreground text-xs sm:text-sm md:text-base mb-1 sm:mb-2 line-clamp-2">
 									{item.title}
 								</h4>
 
@@ -167,10 +167,10 @@ const OrderCard = ({
 								<div className="space-y-0.5 sm:space-y-1">
 									{item.oldPrice && item.oldPrice > item.price && (
 										<div className="flex items-center gap-1.5 sm:gap-2">
-											<span className="text-xs sm:text-sm text-gray-500 line-through">
+											<span className="text-xs sm:text-sm text-muted-foreground line-through">
 												{formatPrice(item.oldPrice)}
 											</span>
-											<span className="text-[10px] sm:text-xs bg-red-600 text-white px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full font-medium shadow-sm">
+											<span className="text-[10px] sm:text-xs bg-destructive text-destructive-foreground px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full font-medium shadow-sm">
 												{Math.round(
 													((item.oldPrice - item.price) / item.oldPrice) * 100
 												)}
@@ -178,7 +178,7 @@ const OrderCard = ({
 											</span>
 										</div>
 									)}
-									<div className="text-base sm:text-lg font-bold text-gray-900">
+									<div className="text-base sm:text-lg font-bold text-foreground">
 										{formatPrice(item.price)}
 									</div>
 								</div>
@@ -188,17 +188,17 @@ const OrderCard = ({
 				</div>
 
 				{/* Summary & Actions */}
-				<div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pt-2 sm:pt-3 border-t border-gray-100 gap-3">
+				<div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pt-2 sm:pt-3 border-t border-border/70 gap-3">
 					<div className="space-y-0.5 sm:space-y-1">
-						<div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 text-xs sm:text-sm text-gray-600">
+						<div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 text-xs sm:text-sm text-muted-foreground">
 							<span>Subtotal: {formatPrice(order.subTotal)}</span>
 							{order.totalDiscount > 0 && (
-								<span className="text-emerald-600">
+								<span className="text-primary">
 									Discount: -{formatPrice(order.totalDiscount)}
 								</span>
 							)}
 						</div>
-						<div className="text-sm sm:text-base font-bold text-gray-900">
+						<div className="text-sm sm:text-base font-bold text-foreground">
 							Total: {formatPrice(order.totalAmount)}
 						</div>
 					</div>
@@ -213,7 +213,7 @@ const OrderCard = ({
 											variant="outline"
 											size="sm"
 											disabled={isCancelling}
-											className="border-red-200 text-red-600 hover:bg-red-50 hover:border-red-300 disabled:opacity-50 h-8 sm:h-9 text-xs sm:text-sm flex-1 sm:flex-none"
+											className="border-destructive/30 text-destructive hover:bg-destructive/10 hover:border-destructive/40 disabled:opacity-50 h-8 sm:h-9 text-xs sm:text-sm flex-1 sm:flex-none"
 										>
 											{isCancelling ? (
 												<>
@@ -251,7 +251,7 @@ const OrderCard = ({
 											<AlertDialogAction
 												onClick={() => onCancel(order._id, order.code)}
 												disabled={isCancelling}
-												className="bg-red-600 hover:bg-red-700 disabled:opacity-50 h-9 text-sm w-full sm:w-auto"
+												className="bg-destructive hover:bg-destructive/90 disabled:opacity-50 h-9 text-sm w-full sm:w-auto"
 											>
 												{isCancelling ? (
 													<>
@@ -272,7 +272,7 @@ const OrderCard = ({
 								<Button
 									onClick={() => onPayment(order._id)}
 									size="sm"
-									className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white shadow-lg hover:shadow-xl transition-all duration-200 h-8 sm:h-9 text-xs sm:text-sm flex-1 sm:flex-none"
+									className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-200 h-8 sm:h-9 text-xs sm:text-sm flex-1 sm:flex-none"
 								>
 									<Banknote className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
 									Pay now
@@ -286,7 +286,7 @@ const OrderCard = ({
 								size="sm"
 								onClick={handleDownloadInvoice}
 								disabled={isDownloading}
-								className="border-gray-200 hover:bg-gray-50 disabled:opacity-50 h-8 sm:h-9 text-xs sm:text-sm w-full sm:w-auto"
+								className="border-border hover:bg-muted/40 disabled:opacity-50 h-8 sm:h-9 text-xs sm:text-sm w-full sm:w-auto"
 							>
 								{isDownloading ? (
 									<>

@@ -205,7 +205,7 @@ const LessonPage = () => {
 			{/* Backdrop overlay for mobile sidebar */}
 			{isSidebarOpen && (
 				<div
-					className="fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity duration-300 lg:hidden"
+					className="fixed inset-0 bg-background/80 z-40 transition-opacity duration-300 lg:hidden"
 					onClick={toggleSidebar}
 				/>
 			)}
@@ -267,3 +267,4 @@ const LessonPage = () => {
 };
 
 export default LessonPage;
+

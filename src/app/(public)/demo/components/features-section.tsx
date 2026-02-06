@@ -32,7 +32,7 @@ const features: Feature[] = [
 		icon: Palette,
 		title: "UI & Kiến trúc hiện đại",
 		description: "Giao diện đẹp mắt, trải nghiệm người dùng mượt mà",
-		color: "text-blue-500 bg-blue-500/10",
+		color: "text-primary bg-primary/15",
 		highlights: [
 			"Thiết kế với shadcn/ui, Zustand, React Query",
 			"Cấu trúc dự án chuẩn hoá, dễ maintain",
@@ -44,7 +44,7 @@ const features: Feature[] = [
 		icon: Shield,
 		title: "Auth & Bảo mật",
 		description: "Hệ thống xác thực và phân quyền mạnh mẽ",
-		color: "text-red-500 bg-red-500/10",
+		color: "text-destructive bg-destructive/15",
 		highlights: [
 			"Login OAuth2 (Google, Facebook)",
 			"OTP & reset password qua email",
@@ -56,7 +56,7 @@ const features: Feature[] = [
 		icon: MessageSquare,
 		title: "Tương tác Realtime",
 		description: "Kết nối và tương tác trực tiếp với người dùng",
-		color: "text-green-500 bg-green-500/10",
+		color: "text-accent-foreground bg-accent/20",
 		highlights: [
 			"Comment nhiều cấp (như Facebook)",
 			"Notification realtime (Socket.IO)",
@@ -68,7 +68,7 @@ const features: Feature[] = [
 		icon: Brain,
 		title: "AI & Tự động hoá",
 		description: "Trí tuệ nhân tạo và quy trình tự động",
-		color: "text-purple-500 bg-purple-500/10",
+		color: "text-secondary-foreground bg-secondary/20",
 		highlights: [
 			"Chatbot AI (Gemini) tư vấn khóa học",
 			"Hỗ trợ học viên 24/7",
@@ -80,7 +80,7 @@ const features: Feature[] = [
 		icon: CreditCard,
 		title: "Thanh toán & Khuyến mãi",
 		description: "Hệ thống thanh toán đa dạng và linh hoạt",
-		color: "text-yellow-500 bg-yellow-500/10",
+		color: "text-primary bg-primary/15",
 		highlights: [
 			"VietQR, Stripe, thanh toán thủ công",
 			"Coupon code, flash sale",
@@ -92,7 +92,7 @@ const features: Feature[] = [
 		icon: GraduationCap,
 		title: "Quản lý khoá học",
 		description: "Công cụ quản lý khoá học toàn diện",
-		color: "text-cyan-500 bg-cyan-500/10",
+		color: "text-accent-foreground bg-accent/20",
 		highlights: [
 			"Tạo & quản lý khóa học (Instructor)",
 			"Drag & Drop sắp xếp bài học",
@@ -104,7 +104,7 @@ const features: Feature[] = [
 		icon: Video,
 		title: "Video & Upload",
 		description: "Xử lý video và upload file chuyên nghiệp",
-		color: "text-pink-500 bg-pink-500/10",
+		color: "text-secondary-foreground bg-secondary/20",
 		highlights: [
 			"UploadThing + AWS S3 + MUX",
 			"Upload video lớn (chunk upload)",
@@ -116,7 +116,7 @@ const features: Feature[] = [
 		icon: Cog,
 		title: "Backend & Hạ tầng",
 		description: "Kiến trúc backend mạnh mẽ và có thể mở rộng",
-		color: "text-orange-500 bg-orange-500/10",
+		color: "text-primary bg-primary/15",
 		highlights: [
 			"NestJS + Redis Cache",
 			"CI/CD GitHub Action, Docker",

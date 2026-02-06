@@ -87,9 +87,9 @@ export const columns: ColumnDef<Coupon>[] = [
 			return (
 				<div className="flex items-center space-x-2">
 					{isPercentage ? (
-						<Percent className="h-4 w-4 text-blue-600" />
+						<Percent className="h-4 w-4 text-primary" />
 					) : (
-						<DollarSign className="h-4 w-4 text-green-600" />
+						<DollarSign className="h-4 w-4 text-primary" />
 					)}
 					<div>
 						<div className="font-medium">
@@ -217,7 +217,7 @@ export const columns: ColumnDef<Coupon>[] = [
 				<div className="flex items-center space-x-2">
 					<Calendar className="h-4 w-4 text-muted-foreground" />
 					<div className="text-sm">
-						<div className={`font-medium ${isExpired ? "text-red-600" : ""}`}>
+						<div className={`font-medium ${isExpired ? "text-destructive" : ""}`}>
 							{dayjs(endDate).format("MMM DD, YYYY")}
 						</div>
 						<div className="text-xs text-muted-foreground">
@@ -233,3 +233,4 @@ export const columns: ColumnDef<Coupon>[] = [
 		cell: ({row}) => <DataTableRowActions row={row} />,
 	},
 ];
+
