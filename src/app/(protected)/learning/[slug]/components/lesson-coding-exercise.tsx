@@ -14,6 +14,10 @@ import type {ApiError} from "@/lib/api-service";
 import {cn} from "@/lib/utils";
 import {useRunCode, useSubmitCode} from "@/hooks/use-lessons";
 import type {
+	RunCodeResponse,
+	SubmitCodeSummaryResponse,
+} from "@/services/lessons";
+import type {
 	CodingExerciseResourceResponse,
 	ILesson,
 } from "@/types/lesson";
@@ -45,6 +49,89 @@ function normalizeEscapedNewlines(value: string): string {
 
 function isLikelyHtml(content: string): boolean {
 	return /<\/?[a-z][\s\S]*>/i.test(content);
+}
+
+function renderInlineMarkdown(text: string): React.ReactNode[] {
+	const parts = text.split(/(\*\*[^*]+\*\*)/g);
+
+	return parts.map((part, index) => {
+		if (part.startsWith("**") && part.endsWith("**")) {
+			return (
+				<strong key={`${part}-${index}`} className="font-semibold text-foreground">
+					{part.slice(2, -2)}
+				</strong>
+			);
+		}
+
+		return <React.Fragment key={`${part}-${index}`}>{part}</React.Fragment>;
+	});
+}
+
+function renderMarkdownLikeContent(rawContent: string): React.ReactNode[] {
+	const lines = rawContent.replace(/\r\n/g, "\n").split("\n");
+	const nodes: React.ReactNode[] = [];
+	let listBuffer: string[] = [];
+
+	const flushList = (keyPrefix: string) => {
+		if (listBuffer.length === 0) return;
+
+		nodes.push(
+			<ul key={`${keyPrefix}-list-${nodes.length}`} className="my-4 list-disc pl-6 space-y-1 text-foreground/95">
+				{listBuffer.map((item, index) => (
+					<li key={`${keyPrefix}-item-${index}`} className="leading-relaxed break-words">
+						{renderInlineMarkdown(item)}
+					</li>
+				))}
+			</ul>
+		);
+
+		listBuffer = [];
+	};
+
+	lines.forEach((line, lineIndex) => {
+		const trimmed = line.trim();
+
+		if (!trimmed) {
+			flushList(`line-${lineIndex}`);
+			nodes.push(<div key={`spacer-${lineIndex}`} className="h-3" />);
+			return;
+		}
+
+		if (trimmed.startsWith("- ")) {
+			listBuffer.push(trimmed.slice(2));
+			return;
+		}
+
+		flushList(`line-${lineIndex}`);
+
+		if (trimmed.startsWith("### ")) {
+			nodes.push(
+				<h3 key={`h3-${lineIndex}`} className="text-lg md:text-xl font-semibold text-foreground mt-6 mb-2 break-words">
+					{renderInlineMarkdown(trimmed.slice(4))}
+				</h3>
+			);
+			return;
+		}
+
+		if (trimmed.startsWith("## ")) {
+			nodes.push(
+				<h2 key={`h2-${lineIndex}`} className="text-xl md:text-2xl font-bold text-foreground mt-8 mb-3 break-words">
+					{renderInlineMarkdown(trimmed.slice(3))}
+				</h2>
+			);
+			return;
+		}
+
+		nodes.push(
+			<p key={`p-${lineIndex}`} className="my-3 leading-relaxed text-foreground/95 break-words">
+				{renderInlineMarkdown(trimmed)}
+			</p>
+		);
+	});
+
+	flushList("final");
+
+	return nodes;
 }
 
 function getMonacoLanguage(language: string): string {
@@ -92,20 +179,9 @@ const LessonCodingExercise = ({lesson}: LessonCodingExerciseProps) => {
 	const [submitCooldownUntil, setSubmitCooldownUntil] = React.useState<number>(0);
 	const [lastRunAt, setLastRunAt] = React.useState<string | null>(null);
 
-	const [submitSummary, setSubmitSummary] = React.useState<{
-		status: string;
-		passedTestCases: number;
-		totalTestCases: number;
-		runtimeMs: number;
-		memoryKb: number | null;
-		compileError?: string;
-		failedTest?: {
-			index: number;
-			input: string;
-			expected: string;
-			actual: string;
-		};
-	} | null>(null);
+	const [runResult, setRunResult] = React.useState<RunCodeResponse | null>(null);
+	const [submitSummary, setSubmitSummary] =
+		React.useState<SubmitCodeSummaryResponse | null>(null);
 
 	const runMutation = useRunCode();
 	const submitMutation = useSubmitCode();
@@ -168,6 +244,7 @@ const LessonCodingExercise = ({lesson}: LessonCodingExerciseProps) => {
 
 	const handleReset = () => {
 		setCode(normalizeEscapedNewlines(exercise?.starterCode ?? ""));
+		setRunResult(null);
 		setSubmitSummary(null);
 		setLastRunAt(null);
 		toast.message("Reset to starter code");
@@ -180,10 +257,11 @@ const LessonCodingExercise = ({lesson}: LessonCodingExerciseProps) => {
 			return;
 		}
 
+		setRunResult(null);
 		setSubmitSummary(null);
 
 		try {
-			await runMutation.mutateAsync({
+			const result = await runMutation.mutateAsync({
 				lessonId: lesson._id,
 				payload: {
 					sourceCode: code,
@@ -192,7 +270,13 @@ const LessonCodingExercise = ({lesson}: LessonCodingExerciseProps) => {
 					stdin: normalizeEscapedNewlines(stdin),
 				},
 			});
-			toast.success("Executed (output hidden)");
+			setRunResult(result);
+
+			if (result.status === "COMPILE_ERROR") toast.error("Compile error");
+			else if (result.status === "RUNTIME_ERROR") toast.error("Runtime error");
+			else if (result.status === "SUCCESS") toast.success("Run successful");
+			else toast.success("Executed");
+
 			setLastRunAt(new Date().toISOString());
 			setActiveMobileTab("result");
 		} catch (err) {
@@ -315,8 +399,8 @@ const LessonCodingExercise = ({lesson}: LessonCodingExerciseProps) => {
 								}}
 							/>
 						) : (
-							<div className="whitespace-pre-wrap break-words">
-								{normalizedProblemStatement}
+							<div className="max-w-none">
+								{renderMarkdownLikeContent(normalizedProblemStatement)}
 							</div>
 						)}
 					</div>
@@ -473,7 +557,7 @@ const LessonCodingExercise = ({lesson}: LessonCodingExerciseProps) => {
 							onChange={(e) => setStdin(e.target.value)}
 							rows={4}
 							className="font-mono text-xs sm:text-sm"
-							placeholder="Enter input for Run (output is hidden)"
+							placeholder="Enter input for Run"
 							disabled={!canInteract || runMutation.isPending || submitMutation.isPending}
 						/>
 					</div>
@@ -520,7 +604,9 @@ const LessonCodingExercise = ({lesson}: LessonCodingExerciseProps) => {
 							{submitSummary.failedTest && (
 								<div className="rounded-md border border-secondary/40 bg-secondary/20 p-3">
 									<div className="text-sm font-semibold text-secondary-foreground mb-2">
-										Failed Test #{submitSummary.failedTest.index + 1}
+										{submitSummary.failedTest.isHidden
+											? `Hidden Test #${submitSummary.failedTest.index + 1}`
+											: `Failed Test #${submitSummary.failedTest.index + 1}`}
 									</div>
 									<div className="grid grid-cols-1 md:grid-cols-3 gap-3">
 										<div className="rounded-md border bg-card p-2">
@@ -557,10 +643,100 @@ const LessonCodingExercise = ({lesson}: LessonCodingExerciseProps) => {
 								</div>
 							)}
 
+							{(submitSummary.stdout || submitSummary.stderr) && (
+								<div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+									{submitSummary.stdout && (
+										<div className="rounded-md border bg-muted/30 p-3">
+											<div className="text-xs font-semibold text-muted-foreground mb-1">
+												Stdout
+											</div>
+											<pre className="text-xs whitespace-pre-wrap break-words text-foreground">
+												{normalizeEscapedNewlines(submitSummary.stdout)}
+											</pre>
+										</div>
+									)}
+									{submitSummary.stderr && (
+										<div className="rounded-md border border-destructive/30 bg-destructive/5 p-3">
+											<div className="text-xs font-semibold text-destructive mb-1">
+												Stderr
+											</div>
+											<pre className="text-xs whitespace-pre-wrap break-words text-destructive">
+												{normalizeEscapedNewlines(submitSummary.stderr)}
+											</pre>
+										</div>
+									)}
+								</div>
+							)}
+
 							<Separator />
 							<div className="text-xs text-muted-foreground">
-								Run output is intentionally hidden to prevent cheating.
+								{submitSummary.resultMode === "strict"
+									? "Detailed output is hidden in strict mode."
+									: "Submission diagnostics are shown in LeetCode mode."}
 							</div>
+						</div>
+					) : runResult ? (
+						<div className="space-y-3">
+							<div className="flex flex-wrap items-center gap-2">
+								<Badge
+									variant={
+										runResult.status === "SUCCESS"
+											? "default"
+											: runResult.status === "OK"
+											? "secondary"
+											: "destructive"
+									}
+								>
+									{runResult.status}
+								</Badge>
+								{typeof runResult.runtimeMs === "number" && (
+									<Badge variant="outline">
+										Runtime: {formatRuntime(runResult.runtimeMs)}
+									</Badge>
+								)}
+								{typeof runResult.exitCode === "number" && (
+									<Badge variant="outline">Exit code: {runResult.exitCode}</Badge>
+								)}
+							</div>
+
+							{runResult.compileOutput && (
+								<div className="rounded-md border border-destructive/30 bg-destructive/10 p-3">
+									<div className="text-sm font-semibold text-destructive mb-1">
+										Compile Output
+									</div>
+									<pre className="text-xs whitespace-pre-wrap break-words text-destructive">
+										{normalizeEscapedNewlines(runResult.compileOutput)}
+									</pre>
+								</div>
+							)}
+
+							{runResult.stdout && (
+								<div className="rounded-md border bg-muted/30 p-3">
+									<div className="text-xs font-semibold text-muted-foreground mb-1">
+										Stdout
+									</div>
+									<pre className="text-xs whitespace-pre-wrap break-words text-foreground">
+										{normalizeEscapedNewlines(runResult.stdout)}
+									</pre>
+								</div>
+							)}
+
+							{runResult.stderr && (
+								<div className="rounded-md border border-destructive/30 bg-destructive/5 p-3">
+									<div className="text-xs font-semibold text-destructive mb-1">
+										Stderr
+									</div>
+									<pre className="text-xs whitespace-pre-wrap break-words text-destructive">
+										{normalizeEscapedNewlines(runResult.stderr)}
+									</pre>
+								</div>
+							)}
+
+							{runResult.status === "OK" && (
+								<div className="text-xs text-muted-foreground">
+									Run executed. Output is hidden in strict mode.
+								</div>
+							)}
 						</div>
 					) : (
 						<div className="text-sm text-muted-foreground space-y-1">

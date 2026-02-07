@@ -27,8 +27,18 @@ export interface RunCodeRequest {
 	stdin?: string;
 }
 
+export type RunCodeStatus = "OK" | "SUCCESS" | "RUNTIME_ERROR" | "COMPILE_ERROR";
+
 export interface RunCodeResponse {
-	status: "OK";
+	status: RunCodeStatus;
+	language?: string;
+	version?: string;
+	runtimeMs?: number;
+	stdout?: string;
+	stderr?: string;
+	exitCode?: number | null;
+	signal?: string | null;
+	compileOutput?: string;
 }
 
 export interface SubmitCodeRequest {
@@ -42,6 +52,7 @@ export interface SubmitCodeFailedTest {
 	input: string;
 	expected: string;
 	actual: string;
+	isHidden?: boolean;
 }
 
 export interface SubmitCodeSummaryResponse {
@@ -52,6 +63,9 @@ export interface SubmitCodeSummaryResponse {
 	memoryKb: number | null;
 	compileError?: string;
 	failedTest?: SubmitCodeFailedTest;
+	stdout?: string;
+	stderr?: string;
+	resultMode?: "strict" | "leetcode";
 }
 
 export interface CodingRuntimeOption {
