@@ -177,7 +177,12 @@ function getMonacoLanguage(language: string): string {
 
 function getStatusBadgeVariant(status: string): "default" | "secondary" | "destructive" | "outline" {
 	if (status === "ACCEPTED") return "default";
-	if (status === "WRONG_ANSWER" || status === "COMPILE_ERROR") return "destructive";
+	if (
+		status === "WRONG_ANSWER" ||
+		status === "COMPILE_ERROR" ||
+		status === "TIME_LIMIT_EXCEEDED"
+	)
+		return "destructive";
 	return "secondary";
 }
 
@@ -303,6 +308,8 @@ const LessonCodingExercise = ({lesson}: LessonCodingExerciseProps) => {
 
 			if (result.status === "COMPILE_ERROR") toast.error("Compile error");
 			else if (result.status === "RUNTIME_ERROR") toast.error("Runtime error");
+			else if (result.status === "TIME_LIMIT_EXCEEDED")
+				toast.error("Time limit exceeded");
 			else if (result.status === "SUCCESS") toast.success("Run successful");
 			else toast.success("Executed");
 
@@ -342,6 +349,8 @@ const LessonCodingExercise = ({lesson}: LessonCodingExerciseProps) => {
 
 			if (summary.status === "ACCEPTED") toast.success("Accepted");
 			else if (summary.status === "COMPILE_ERROR") toast.error("Compile error");
+			else if (summary.status === "TIME_LIMIT_EXCEEDED")
+				toast.error("Time limit exceeded");
 			else toast.error("Wrong answer");
 		} catch (err) {
 			const error = err as ApiError;

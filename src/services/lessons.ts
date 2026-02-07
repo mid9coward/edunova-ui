@@ -27,7 +27,12 @@ export interface RunCodeRequest {
 	stdin?: string;
 }
 
-export type RunCodeStatus = "OK" | "SUCCESS" | "RUNTIME_ERROR" | "COMPILE_ERROR";
+export type RunCodeStatus =
+	| "OK"
+	| "SUCCESS"
+	| "RUNTIME_ERROR"
+	| "COMPILE_ERROR"
+	| "TIME_LIMIT_EXCEEDED";
 
 export interface RunCodeResponse {
 	status: RunCodeStatus;

@@ -8,7 +8,8 @@ export type CodeSubmissionStatus =
 	| "PENDING"
 	| "ACCEPTED"
 	| "WRONG_ANSWER"
-	| "COMPILE_ERROR";
+	| "COMPILE_ERROR"
+	| "TIME_LIMIT_EXCEEDED";
 
 export interface CodingTestCaseRequest {
 	input: string;
