@@ -39,12 +39,41 @@ function getCooldownUntilFromRateLimitError(error: ApiError): number {
 
 function formatRuntime(runtimeMs: number): string {
 	if (!Number.isFinite(runtimeMs)) return "-";
+	if (runtimeMs === 0) return "<1 ms";
 	if (runtimeMs < 1000) return `${runtimeMs} ms`;
 	return `${(runtimeMs / 1000).toFixed(2)} s`;
 }
 
+function formatRuntimeWithLimit(runtimeMs: number, timeLimitMs?: number): string {
+	if (typeof timeLimitMs !== "number" || !Number.isFinite(timeLimitMs)) {
+		return formatRuntime(runtimeMs);
+	}
+	return `${formatRuntime(runtimeMs)} / ${formatRuntime(timeLimitMs)}`;
+}
+
+function formatMemory(memoryKb?: number | null): string {
+	if (typeof memoryKb !== "number" || !Number.isFinite(memoryKb)) return "N/A";
+	if (memoryKb < 1024) return `${Math.round(memoryKb)} KB`;
+	return `${(memoryKb / 1024).toFixed(2)} MB`;
+}
+
+function formatMemoryWithLimit(
+	memoryKb?: number | null,
+	memoryLimitKb?: number
+): string {
+	if (typeof memoryLimitKb !== "number" || !Number.isFinite(memoryLimitKb)) {
+		return formatMemory(memoryKb);
+	}
+	return `${formatMemory(memoryKb)} / ${formatMemory(memoryLimitKb)}`;
+}
+
 function normalizeEscapedNewlines(value: string): string {
 	return value.replace(/\\n/g, "\n").replace(/\\t/g, "\t");
+}
+
+function normalizeOutputForDisplay(value?: string): string {
+	if (typeof value !== "string") return "";
+	return normalizeEscapedNewlines(value).trim();
 }
 
 function isLikelyHtml(content: string): boolean {
@@ -583,10 +612,18 @@ const LessonCodingExercise = ({lesson}: LessonCodingExerciseProps) => {
 									{submitSummary.passedTestCases}/{submitSummary.totalTestCases} passed
 								</Badge>
 								<Badge variant="outline">
-									Runtime: {formatRuntime(submitSummary.runtimeMs)}
+									Runtime:{" "}
+									{formatRuntimeWithLimit(
+										submitSummary.runtimeMs,
+										submitSummary.timeLimitMs
+									)}
 								</Badge>
 								<Badge variant="outline">
-									Memory: {submitSummary.memoryKb ?? "-"} KB
+									Memory:{" "}
+									{formatMemoryWithLimit(
+										submitSummary.memoryKb,
+										submitSummary.memoryLimitKb
+									)}
 								</Badge>
 							</div>
 
@@ -645,26 +682,22 @@ const LessonCodingExercise = ({lesson}: LessonCodingExerciseProps) => {
 
 							{(submitSummary.stdout || submitSummary.stderr) && (
 								<div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-									{submitSummary.stdout && (
-										<div className="rounded-md border bg-muted/30 p-3">
-											<div className="text-xs font-semibold text-muted-foreground mb-1">
-												Stdout
-											</div>
-											<pre className="text-xs whitespace-pre-wrap break-words text-foreground">
-												{normalizeEscapedNewlines(submitSummary.stdout)}
-											</pre>
+									<div className="rounded-md border bg-muted/30 p-3">
+										<div className="text-xs font-semibold text-muted-foreground mb-1">
+											Stdout
 										</div>
-									)}
-									{submitSummary.stderr && (
-										<div className="rounded-md border border-destructive/30 bg-destructive/5 p-3">
-											<div className="text-xs font-semibold text-destructive mb-1">
-												Stderr
-											</div>
-											<pre className="text-xs whitespace-pre-wrap break-words text-destructive">
-												{normalizeEscapedNewlines(submitSummary.stderr)}
-											</pre>
+										<pre className="text-xs whitespace-pre-wrap break-words text-foreground">
+											{normalizeOutputForDisplay(submitSummary.stdout) || "No output"}
+										</pre>
+									</div>
+									<div className="rounded-md border border-destructive/30 bg-destructive/5 p-3">
+										<div className="text-xs font-semibold text-destructive mb-1">
+											Stderr
 										</div>
-									)}
+										<pre className="text-xs whitespace-pre-wrap break-words text-destructive">
+											{normalizeOutputForDisplay(submitSummary.stderr) || "No error output"}
+										</pre>
+									</div>
 								</div>
 							)}
 
@@ -691,13 +724,31 @@ const LessonCodingExercise = ({lesson}: LessonCodingExerciseProps) => {
 								</Badge>
 								{typeof runResult.runtimeMs === "number" && (
 									<Badge variant="outline">
-										Runtime: {formatRuntime(runResult.runtimeMs)}
+										Runtime:{" "}
+										{formatRuntimeWithLimit(
+											runResult.runtimeMs,
+											runResult.timeLimitMs
+										)}
 									</Badge>
 								)}
-								{typeof runResult.exitCode === "number" && (
+								<Badge variant="outline">
+									Memory:{" "}
+									{formatMemoryWithLimit(
+										runResult.memoryKb,
+										runResult.memoryLimitKb
+									)}
+								</Badge>
+								{typeof runResult.exitCode === "number" &&
+									runResult.exitCode !== 0 && (
 									<Badge variant="outline">Exit code: {runResult.exitCode}</Badge>
 								)}
 							</div>
+
+							{runResult.status === "SUCCESS" && runResult.runtimeMs === 0 && (
+								<div className="text-xs text-muted-foreground">
+									Runtime is below the minimum measurable millisecond range.
+								</div>
+							)}
 
 							{runResult.compileOutput && (
 								<div className="rounded-md border border-destructive/30 bg-destructive/10 p-3">
@@ -710,27 +761,24 @@ const LessonCodingExercise = ({lesson}: LessonCodingExerciseProps) => {
 								</div>
 							)}
 
-							{runResult.stdout && (
+							<div className="grid grid-cols-1 md:grid-cols-2 gap-3">
 								<div className="rounded-md border bg-muted/30 p-3">
 									<div className="text-xs font-semibold text-muted-foreground mb-1">
 										Stdout
 									</div>
 									<pre className="text-xs whitespace-pre-wrap break-words text-foreground">
-										{normalizeEscapedNewlines(runResult.stdout)}
+										{normalizeOutputForDisplay(runResult.stdout) || "No output"}
 									</pre>
 								</div>
-							)}
-
-							{runResult.stderr && (
 								<div className="rounded-md border border-destructive/30 bg-destructive/5 p-3">
 									<div className="text-xs font-semibold text-destructive mb-1">
 										Stderr
 									</div>
 									<pre className="text-xs whitespace-pre-wrap break-words text-destructive">
-										{normalizeEscapedNewlines(runResult.stderr)}
+										{normalizeOutputForDisplay(runResult.stderr) || "No error output"}
 									</pre>
 								</div>
-							)}
+							</div>
 
 							{runResult.status === "OK" && (
 								<div className="text-xs text-muted-foreground">

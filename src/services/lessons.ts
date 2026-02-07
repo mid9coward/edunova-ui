@@ -34,6 +34,9 @@ export interface RunCodeResponse {
 	language?: string;
 	version?: string;
 	runtimeMs?: number;
+	timeLimitMs?: number;
+	memoryKb?: number | null;
+	memoryLimitKb?: number;
 	stdout?: string;
 	stderr?: string;
 	exitCode?: number | null;
@@ -60,7 +63,9 @@ export interface SubmitCodeSummaryResponse {
 	passedTestCases: number;
 	totalTestCases: number;
 	runtimeMs: number;
+	timeLimitMs?: number;
 	memoryKb: number | null;
+	memoryLimitKb?: number;
 	compileError?: string;
 	failedTest?: SubmitCodeFailedTest;
 	stdout?: string;
