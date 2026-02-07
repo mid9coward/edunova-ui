@@ -7,6 +7,91 @@ interface LessonArticleContentProps {
 	content: string;
 }
 
+const HTML_TAG_PATTERN = /<\/?[a-z][\s\S]*>/i;
+
+const renderInlineMarkdown = (text: string) => {
+	const parts = text.split(/(\*\*[^*]+\*\*)/g);
+
+	return parts.map((part, index) => {
+		if (part.startsWith("**") && part.endsWith("**")) {
+			return (
+				<strong key={`${part}-${index}`} className="font-semibold text-foreground">
+					{part.slice(2, -2)}
+				</strong>
+			);
+		}
+
+		return <React.Fragment key={`${part}-${index}`}>{part}</React.Fragment>;
+	});
+};
+
+const renderMarkdownLikeContent = (rawContent: string) => {
+	const lines = rawContent.replace(/\r\n/g, "\n").split("\n");
+	const nodes: React.ReactNode[] = [];
+	let listBuffer: string[] = [];
+
+	const flushList = (keyPrefix: string) => {
+		if (listBuffer.length === 0) return;
+
+		nodes.push(
+			<ul key={`${keyPrefix}-list-${nodes.length}`} className="my-4 list-disc pl-6 space-y-1 text-foreground/95">
+				{listBuffer.map((item, index) => (
+					<li key={`${keyPrefix}-item-${index}`} className="leading-relaxed break-words">
+						{renderInlineMarkdown(item)}
+					</li>
+				))}
+			</ul>
+		);
+
+		listBuffer = [];
+	};
+
+	lines.forEach((line, lineIndex) => {
+		const trimmed = line.trim();
+
+		if (!trimmed) {
+			flushList(`line-${lineIndex}`);
+			nodes.push(<div key={`spacer-${lineIndex}`} className="h-3" />);
+			return;
+		}
+
+		if (trimmed.startsWith("- ")) {
+			listBuffer.push(trimmed.slice(2));
+			return;
+		}
+
+		flushList(`line-${lineIndex}`);
+
+		if (trimmed.startsWith("### ")) {
+			nodes.push(
+				<h3 key={`h3-${lineIndex}`} className="text-lg md:text-xl font-semibold text-foreground mt-6 mb-2 break-words">
+					{renderInlineMarkdown(trimmed.slice(4))}
+				</h3>
+			);
+			return;
+		}
+
+		if (trimmed.startsWith("## ")) {
+			nodes.push(
+				<h2 key={`h2-${lineIndex}`} className="text-xl md:text-2xl font-bold text-foreground mt-8 mb-3 break-words">
+					{renderInlineMarkdown(trimmed.slice(3))}
+				</h2>
+			);
+			return;
+		}
+
+		nodes.push(
+			<p key={`p-${lineIndex}`} className="my-3 leading-relaxed text-foreground/95 break-words">
+				{renderInlineMarkdown(trimmed)}
+			</p>
+		);
+	});
+
+	flushList("final");
+
+	return nodes;
+};
+
 // Lesson article content component - Arrow function
 const LessonArticleContent = ({title, content}: LessonArticleContentProps) => {
 	const getCurrentDate = () => {
@@ -41,10 +126,14 @@ const LessonArticleContent = ({title, content}: LessonArticleContentProps) => {
 							scrollbarColor: "var(--border) var(--background)",
 						}}
 					>
-						<div
-							className="prose prose-sm sm:prose md:prose-lg prose-gray max-w-none leading-relaxed"
-							dangerouslySetInnerHTML={{__html: content}}
-						/>
+						{HTML_TAG_PATTERN.test(content) ? (
+							<div
+								className="prose prose-sm sm:prose md:prose-lg prose-gray max-w-none leading-relaxed"
+								dangerouslySetInnerHTML={{__html: content}}
+							/>
+						) : (
+							<div className="max-w-none">{renderMarkdownLikeContent(content)}</div>
+						)}
 					</div>
 				</div>
 			</div>

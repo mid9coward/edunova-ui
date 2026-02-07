@@ -164,7 +164,7 @@ const LessonSidebar = ({
 									className="w-full justify-between px-3 sm:px-4 py-2.5 sm:py-3 h-auto hover:bg-muted/60 bg-muted/40 text-left border-b border-border/70 transition-all duration-200 ease-in-out"
 								>
 									<div className="flex-1 min-w-0">
-										<div className="font-medium text-xs sm:text-sm text-foreground mb-1 truncate">
+										<div className="font-medium text-xs sm:text-sm text-foreground mb-1 whitespace-normal break-words leading-snug">
 											{chapterIndex + 1}. {chapter.title}
 										</div>
 										<div className="text-[10px] sm:text-xs text-muted-foreground">
@@ -218,10 +218,10 @@ const LessonSidebar = ({
 															}}
 														>
 															<div className="px-3 sm:px-4 py-2 sm:py-3 transition-colors">
-																<div className="flex items-center justify-between">
+																<div className="flex items-start justify-between gap-2">
 																	<div className="flex-1 min-w-0">
 																		<h4
-																			className={`text-xs sm:text-sm mb-1 truncate ${
+																			className={`text-xs sm:text-sm mb-1 whitespace-normal break-words leading-snug ${
 																				isCurrentLesson
 																					? "text-primary font-semibold"
 																					: "text-foreground group-hover:text-primary"
@@ -261,7 +261,7 @@ const LessonSidebar = ({
 														</Link>
 
 														{/* Completion Checkbox */}
-														<div className="pr-4 flex items-center">
+														<div className="pr-4 flex items-center flex-shrink-0">
 															<Checkbox
 																checked={lessonCompleted}
 																disabled={
