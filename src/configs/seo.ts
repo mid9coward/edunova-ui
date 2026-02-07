@@ -36,7 +36,7 @@ export const SEO_CONFIG = {
 
   // 🌐 OpenGraph (for social sharing)
   openGraph: {
-    defaultImage: "/images/og-default.jpg", // 1200x630px
+    defaultImage: "/images/dracula.png",
     imageAlt: "EduNova - Learn Skills That Matter",
   },
 
