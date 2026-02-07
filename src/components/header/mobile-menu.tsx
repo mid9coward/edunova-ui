@@ -23,7 +23,7 @@ const navigation = [
   { name: "Blogs", href: ROUTE_CONFIG.BLOGS },
   { name: "About", href: ROUTE_CONFIG.ABOUT },
   { name: "Contact", href: ROUTE_CONFIG.CONTACT },
-  { name: "Demo", href: ROUTE_CONFIG.DEMO },
+  // { name: "Demo", href: ROUTE_CONFIG.DEMO },
 ];
 
 export default function MobileMenu() {
@@ -81,7 +81,7 @@ export default function MobileMenu() {
                       "flex items-center gap-3 p-3 rounded-lg font-medium transition-all duration-200",
                       isActive
                         ? "bg-primary/10 text-primary border border-primary/30"
-                        : "text-muted-foreground hover:text-primary hover:bg-muted"
+                        : "text-muted-foreground hover:text-primary hover:bg-muted",
                     )}
                     onClick={() => setOpen(false)}
                   >
@@ -101,8 +101,12 @@ export default function MobileMenu() {
                     {user.username?.charAt(0)?.toUpperCase() || "U"}
                   </div>
                   <div>
-                    <p className="font-medium text-foreground">{user.username}</p>
-                    <p className="text-sm text-muted-foreground">{user.email}</p>
+                    <p className="font-medium text-foreground">
+                      {user.username}
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      {user.email}
+                    </p>
                   </div>
                 </div>
                 <Button variant="outline" size="sm" className="w-full" asChild>

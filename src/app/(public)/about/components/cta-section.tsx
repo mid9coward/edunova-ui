@@ -25,17 +25,17 @@ const CallToActionSection = () => {
   ];
 
   return (
-    <section className="relative py-20 overflow-hidden bg-gradient-to-br from-primary via-secondary to-accent">
+    <section className="relative py-20 overflow-hidden bg-gradient-to-br from-background via-primary/10 to-secondary/10">
       {/* Background Pattern */}
-      <div className="absolute inset-0 [background-image:radial-gradient(var(--primary-foreground)_1px,transparent_1px)] [background-size:22px_22px] [mask-image:linear-gradient(0deg,var(--foreground),transparent)] opacity-20" />
+      <div className="absolute inset-0 [background-image:radial-gradient(var(--primary)_1px,transparent_1px)] [background-size:22px_22px] [mask-image:linear-gradient(0deg,var(--foreground),transparent)] opacity-10" />
 
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Floating Orbs */}
-        <div className="absolute top-20 left-10 w-32 h-32 bg-primary-foreground/10 rounded-full blur-xl animate-float-slow" />
+        <div className="absolute top-20 left-10 w-32 h-32 bg-primary/15 rounded-full blur-xl animate-float-slow" />
         <div className="absolute top-40 right-20 w-24 h-24 bg-secondary/20 rounded-full blur-2xl animate-float-medium" />
         <div className="absolute bottom-32 left-1/4 w-40 h-40 bg-primary/20 rounded-full blur-3xl animate-float-fast" />
-        <div className="absolute bottom-20 right-10 w-28 h-28 bg-primary-foreground/10 rounded-full blur-xl animate-float-slow" />
+        <div className="absolute bottom-20 right-10 w-28 h-28 bg-primary/15 rounded-full blur-xl animate-float-slow" />
 
         {/* Animated Stars */}
         {[...Array(20)].map((_, i) => (
@@ -48,7 +48,7 @@ const CallToActionSection = () => {
               animationDelay: `${i * 0.3}s`,
             }}
           >
-            <Star className="h-2 w-2 text-primary-foreground/30 fill-current" />
+            <Star className="h-2 w-2 text-primary/40 fill-current" />
           </div>
         ))}
       </div>
@@ -58,21 +58,21 @@ const CallToActionSection = () => {
         <div className="text-center mb-12">
           <Badge
             variant="secondary"
-            className="inline-flex items-center space-x-2 mb-6 bg-primary-foreground/15 text-primary-foreground border-primary-foreground/30 hover:bg-primary-foreground/25"
+            className="inline-flex items-center space-x-2 mb-6 bg-primary/15 text-primary border-primary/30 hover:bg-primary/20"
           >
             <Sparkles className="h-3 w-3" />
             <span>Start Your Journey Today</span>
           </Badge>
 
-          <h2 className="text-4xl md:text-6xl font-bold text-primary-foreground mb-6 leading-tight">
+          <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
             Ready to{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-secondary">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
               Transform
             </span>{" "}
             Your Future?
           </h2>
 
-          <p className="text-xl text-primary-foreground/80 max-w-3xl mx-auto leading-relaxed mb-8">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8">
             Join over 50,000 students who have already started their learning
             journey with us. Don&apos;t just dream about your goals – achieve
             them with EduNova.
@@ -80,16 +80,16 @@ const CallToActionSection = () => {
 
           {/* Trust Indicators */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12">
-            <div className="flex items-center space-x-2 text-primary-foreground/90">
-              <Star className="h-5 w-5 fill-current text-accent" />
+            <div className="flex items-center space-x-2 text-foreground">
+              <Star className="h-5 w-5 fill-current text-primary" />
               <span className="font-semibold">4.9/5 Rating</span>
             </div>
-            <div className="flex items-center space-x-2 text-primary-foreground/90">
-              <Users className="h-5 w-5" />
+            <div className="flex items-center space-x-2 text-foreground">
+              <Users className="h-5 w-5 text-secondary" />
               <span className="font-semibold">50,000+ Students</span>
             </div>
-            <div className="flex items-center space-x-2 text-primary-foreground/90">
-              <BookOpen className="h-5 w-5" />
+            <div className="flex items-center space-x-2 text-foreground">
+              <BookOpen className="h-5 w-5 text-accent" />
               <span className="font-semibold">1,200+ Courses</span>
             </div>
           </div>
@@ -100,19 +100,19 @@ const CallToActionSection = () => {
           {/* Left Content - Benefits */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl md:text-3xl font-bold text-primary-foreground mb-6">
+              <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
                 What You&apos;ll Get:
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {benefits.map((benefit, index) => (
                   <div
                     key={index}
-                    className="flex items-center space-x-3 bg-primary-foreground/10 backdrop-blur-sm rounded-lg p-3 border border-primary-foreground/20 hover:bg-primary-foreground/15 transition-all duration-300"
+                    className="flex items-center space-x-3 bg-card/70 backdrop-blur-sm rounded-lg p-3 border border-border hover:bg-card transition-all duration-300"
                   >
                     <div className="flex-shrink-0">
-                      <CheckCircle className="h-5 w-5 text-accent" />
+                      <CheckCircle className="h-5 w-5 text-primary" />
                     </div>
-                    <span className="text-primary-foreground text-sm font-medium">
+                    <span className="text-foreground text-sm font-medium">
                       {benefit}
                     </span>
                   </div>
@@ -121,21 +121,23 @@ const CallToActionSection = () => {
             </div>
 
             {/* Special Offer */}
-            <div className="bg-primary-foreground/10 backdrop-blur-sm rounded-2xl p-6 border border-primary-foreground/20">
+            <div className="bg-card/70 backdrop-blur-sm rounded-2xl p-6 border border-border">
               <div className="flex items-center space-x-2 mb-3">
                 <Heart className="h-5 w-5 text-destructive fill-current" />
-                <span className="text-accent font-semibold">
+                <span className="text-secondary font-semibold">
                   Limited Time Offer
                 </span>
               </div>
-              <p className="text-primary-foreground mb-4">
+              <p className="text-muted-foreground mb-4">
                 Get 50% off your first course when you sign up this month. Start
                 learning with the world&apos;s best instructors today!
               </p>
-              <div className="text-2xl font-bold text-primary-foreground">
-                <span className="line-through text-primary-foreground/60 text-lg">$99</span>{" "}
-                <span className="text-accent">$49</span>
-                <span className="text-sm font-normal text-primary-foreground/80 ml-2">
+              <div className="text-2xl font-bold text-foreground">
+                <span className="line-through text-muted-foreground text-lg">
+                  $99
+                </span>{" "}
+                <span className="text-primary">$49</span>
+                <span className="text-sm font-normal text-muted-foreground ml-2">
                   for first course
                 </span>
               </div>
@@ -144,17 +146,17 @@ const CallToActionSection = () => {
 
           {/* Right Content - CTA */}
           <div className="text-center lg:text-left">
-            <div className="bg-primary-foreground/10 backdrop-blur-lg rounded-3xl p-8 border border-primary-foreground/20 shadow-2xl">
+            <div className="bg-card/80 backdrop-blur-lg rounded-3xl p-8 border border-border shadow-2xl">
               <div className="mb-8">
-                <div className="w-20 h-20 bg-gradient-to-br from-accent to-secondary rounded-2xl flex items-center justify-center mx-auto lg:mx-0 mb-6 shadow-lg animate-pulse">
-                  <BookOpen className="h-10 w-10 text-primary-foreground" />
+                <div className="w-20 h-20 bg-gradient-to-br from-primary/30 to-secondary/20 rounded-2xl flex items-center justify-center mx-auto lg:mx-0 mb-6 shadow-lg">
+                  <BookOpen className="h-10 w-10 text-primary" />
                 </div>
 
-                <h3 className="text-3xl font-bold text-primary-foreground mb-4">
+                <h3 className="text-3xl font-bold text-foreground mb-4">
                   Start Learning Today
                 </h3>
 
-                <p className="text-primary-foreground/80 mb-8 leading-relaxed">
+                <p className="text-muted-foreground mb-8 leading-relaxed">
                   Choose from thousands of courses across technology, business,
                   design, and more. Your journey to success starts with a single
                   click.
@@ -165,12 +167,10 @@ const CallToActionSection = () => {
               <div className="space-y-4">
                 <Button
                   size="lg"
-                  className="w-full bg-gradient-to-r from-accent via-secondary to-primary hover:from-accent/90 hover:via-secondary/90 hover:to-primary/90 text-primary-foreground font-bold text-lg py-6 shadow-lg hover:shadow-xl transition-all duration-300 border-0 group"
+                  className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/95 hover:to-secondary/95 text-primary-foreground font-bold text-lg py-6 shadow-lg hover:shadow-xl transition-all duration-300 border-0 group"
                   asChild
                 >
                   <Link href="/courses">
-                    {/* Animated shine effect */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary-foreground/25 to-transparent transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 rounded-lg"></div>
                     <span className="relative z-10 flex items-center justify-center">
                       Explore Courses Now
                       <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -181,7 +181,7 @@ const CallToActionSection = () => {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="w-full border-2 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 hover:border-primary-foreground/50 font-semibold py-6 backdrop-blur-sm"
+                  className="w-full border-2 border-border bg-muted text-foreground hover:bg-muted/80 hover:border-border font-semibold py-6 backdrop-blur-sm"
                   asChild
                 >
                   <Link href="/auth/sign-up">Create Free Account</Link>
@@ -190,8 +190,8 @@ const CallToActionSection = () => {
 
               {/* Money Back Guarantee */}
               <div className="mt-6 text-center">
-                <div className="inline-flex items-center space-x-2 text-accent text-sm">
-                  <CheckCircle className="h-4 w-4" />
+                <div className="inline-flex items-center space-x-2 text-muted-foreground text-sm">
+                  <CheckCircle className="h-4 w-4 text-primary" />
                   <span>30-day money-back guarantee</span>
                 </div>
               </div>
@@ -199,20 +199,17 @@ const CallToActionSection = () => {
 
             {/* Bottom Trust Signal */}
             <div className="mt-8 text-center lg:text-left">
-              <p className="text-primary-foreground/80 text-sm">
+              <p className="text-muted-foreground text-sm">
                 Trusted by learners from{" "}
-                <span className="text-accent font-semibold">
+                <span className="text-primary font-semibold">
                   150+ countries
                 </span>
               </p>
               <div className="flex items-center justify-center lg:justify-start space-x-1 mt-2">
                 {[...Array(5)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className="h-4 w-4 text-accent fill-current"
-                  />
+                  <Star key={i} className="h-4 w-4 text-primary fill-current" />
                 ))}
-                <span className="text-primary-foreground/90 text-sm ml-2">
+                <span className="text-foreground text-sm ml-2">
                   15,000+ five-star reviews
                 </span>
               </div>
